@@ -17,13 +17,25 @@ public class Inventory {
     }
 
 
-
-
-    public void addItem (Item item) {
+    private void addItem(String itemName, String itemDescription){
+        Item item = new Item(itemName,itemDescription);
         itemlist.add(item);
     }
 
-    public List <String> getCategories() { return categories; }
+    public void addItem (String itemName, String itemDescription, int amount) {
+        if(amount > 1){
+            for(int i = 0; i < amount; i++){
+                Item item = new Item(itemName, itemDescription);
+                itemlist.add(item);
+            }
+        }else{
+            addItem(itemName, itemDescription);
+        }
+    }
+
+    public List <String> getCategories() {
+        return categories;
+    }
 
     public String getName() {
         return this.name;
