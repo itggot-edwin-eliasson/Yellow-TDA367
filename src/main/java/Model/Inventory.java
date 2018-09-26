@@ -17,12 +17,12 @@ public class Inventory {
     }
 
 
-    private void addItem(String itemName, String itemDescription){
+    private void addItem(String itemName, String itemDescription){ //Add Item to list if amount =1
         Item item = new Item(itemName,itemDescription);
         itemlist.add(item);
     }
 
-    public void addItem (String itemName, String itemDescription, int amount) {
+    public void addItem (String itemName, String itemDescription, int amount) { //Adds Items to list if amout > 1
         if(amount > 1){
             for(int i = 0; i < amount; i++){
                 Item item = new Item(itemName, itemDescription);
