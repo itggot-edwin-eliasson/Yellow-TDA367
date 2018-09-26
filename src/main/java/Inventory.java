@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {
@@ -9,17 +10,13 @@ public class Inventory {
 
     public Inventory (String name) {
         this.name = name;
+        this.itemlist = new ArrayList<>();
+        this.categories = new ArrayList<>();
 
     }
 
-    public void setCategories () {
 
-    }
-
-    public List <String> getCategories() {
-        return categories;
-
-    }
+    public List <String> getCategories() { return categories; }
 
     public void addItem (Item item) {
         itemlist.add(item);
@@ -35,5 +32,10 @@ public class Inventory {
 
     public List <Item> getItemList ()  {
         return itemlist;
+    }
+
+
+    public void setCategories () {
+
     }
 }
