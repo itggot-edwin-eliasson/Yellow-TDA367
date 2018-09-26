@@ -12,27 +12,30 @@ public class Inventory {
         this.name = name;
         this.itemlist = new ArrayList<>();
         this.categories = new ArrayList<>();
-
     }
 
 
-    public List <String> getCategories() { return categories; }
+
 
     public void addItem (Item item) {
         itemlist.add(item);
     }
 
+    public List <String> getCategories() { return categories; }
+
     public String getName() {
         return this.name;
+    }
+
+    public List <Item> getItemList ()  {
+        return itemlist;
     }
 
     public void setName (String name) {
         this.name = name;
     }
 
-    public List <Item> getItemList ()  {
-        return itemlist;
-    }
+
 
 
     public void setCategories () {
