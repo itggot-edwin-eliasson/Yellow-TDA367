@@ -19,4 +19,14 @@ public class InventoryTest {
         assertEquals(1, i.getItemList().size());
     }
 
+    @Test
+    public void removeItem () {
+        Inventory i = new Inventory("Testing");
+        i.addItem("Boll", "Rund boll");
+        if (i.getItemList().size() == 1) {
+            i.removeItem("RandomId");
+            assertEquals(0, i.getItemList().size());
+        }
+    }
+
 }

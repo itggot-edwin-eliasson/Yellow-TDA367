@@ -17,7 +17,7 @@ public class Inventory {
     }
 
 
-    private void addItem(String itemName, String itemDescription){ //Add Item to list if amount =1
+    public void addItem(String itemName, String itemDescription){ //Add Item to list if amount =1
         Item item = new Item(itemName,itemDescription);
         itemlist.add(item);
     }
@@ -32,6 +32,26 @@ public class Inventory {
             addItem(itemName, itemDescription);
         }
     }
+
+    public void removeItem (String id) {
+        if (itemlist.size() > 0) {
+            Item item;
+            for (int i = 0; i < itemlist.size(); i++) {
+                item = itemlist.get(i);
+
+                if (item.getId().equals(id)) {
+                    itemlist.remove(i);
+                }
+            }
+        }
+        else {
+            System.out.print ("Nothing to remove, the list is empty");
+        }
+    }
+
+
+
+
 
     public List <String> getCategories() {
         return categories;
