@@ -103,12 +103,12 @@ public class Inventory {
         return categories;
     }
 
-=======
+
     /**
      * Get the inventory name
      * @return The name of the inventory
      */
->>>>>>> adds javadoc to inventory and item including tests
+ 
     public String getName() {
         return this.name;
     }
