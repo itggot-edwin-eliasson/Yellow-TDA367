@@ -86,8 +86,6 @@ public class Inventory {
         }
     }
 
-<<<<<<< HEAD
-
     public List<Item> searchItem(String search){
         List<Item> results = new ArrayList<>();
         for(int i = 0; i < itemlist.size(); i++){
@@ -108,7 +106,7 @@ public class Inventory {
      * Get the inventory name
      * @return The name of the inventory
      */
- 
+
     public String getName() {
         return this.name;
     }
