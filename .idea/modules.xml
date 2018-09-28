@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yellow.iml" filepath="$PROJECT_DIR$/.idea/modules/Yellow.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yellow.iml" filepath="$PROJECT_DIR$/.idea/modules/Yellow.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yellow_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Yellow_main.iml" group="Yellow" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yellow_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Yellow_main.iml" group="Yellow" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yellow_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Yellow_test.iml" group="Yellow" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yellow_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Yellow_test.iml" group="Yellow" />
     </modules>
   </component>
