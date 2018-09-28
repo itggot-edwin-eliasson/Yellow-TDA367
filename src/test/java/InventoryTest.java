@@ -29,4 +29,11 @@ public class InventoryTest {
         }
     }
 
+    @Test
+    public void searchItem(){
+        Inventory i = new Inventory("Testing");
+        i.addItem("Grill", "En vanlig grill för bruk utomhus");
+        assertEquals("Grill", i.searchItem("Grill").get(0).getName());
+    }
+
 }

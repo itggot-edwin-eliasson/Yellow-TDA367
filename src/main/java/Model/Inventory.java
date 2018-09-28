@@ -50,7 +50,15 @@ public class Inventory {
     }
 
 
-
+    public List<Item> searchItem(String search){
+        List<Item> results = new ArrayList<>();
+        for(int i = 0; i < itemlist.size(); i++){
+            if(itemlist.get(i).getName().contains(search)){
+                results.add(itemlist.get(i));
+            }
+        }
+        return results;
+    }
 
 
     public List <String> getCategories() {
