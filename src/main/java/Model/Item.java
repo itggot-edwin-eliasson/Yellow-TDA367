@@ -1,5 +1,8 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Item {
 
     /**
@@ -16,6 +19,7 @@ public class Item {
     private String name;
     private String description;
     private String id;
+    private List<String> categories = new ArrayList<>();
 
     /**
      *
@@ -41,4 +45,14 @@ public class Item {
     public String getDescription(){
         return this.description;
     }
+
+    public List<String> getCategories(){
+        return this.categories;
+    }
+
+    public void addCategory(String category){
+        categories.add(category);
+    }
+
+
 }

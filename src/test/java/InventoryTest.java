@@ -43,4 +43,12 @@ public class InventoryTest {
         assertEquals("Grill", i.searchItem("Grill").get(0).getName());
     }
 
+    @Test
+    public void searchCategory(){
+        Inventory i = new Inventory("Testinv");
+        i.addItem("Boll", "Rund boll");
+        i.getItemList().get(0).addCategory("Sport");
+        assertTrue(i.getItemList().get(0).getCategories().contains("Sport"));
+    }
+
 }
