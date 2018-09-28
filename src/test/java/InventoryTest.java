@@ -4,6 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Joakim Agnemyr
+ * @date 2018-09-28
+ *
+ *
+ */
+
 public class InventoryTest {
     @Test
     public void addItem() {
