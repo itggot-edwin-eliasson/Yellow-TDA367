@@ -24,7 +24,7 @@ public class InventoryTest {
         Inventory i = new Inventory("Testing");
         i.addItem("Boll", "Rund boll");
         if (i.getItemList().size() == 1) {
-            i.removeItem("RandomId");
+            i.removeItem(i.getItemList().get(0).getId());
             assertEquals(0, i.getItemList().size());
         }
     }
