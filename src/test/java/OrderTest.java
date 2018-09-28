@@ -17,11 +17,23 @@ public class OrderTest {
     }
 
     @Test // tests if a new item can be added to the item list in the order.
-    public void AddItemTest(){
+    public void addItemTest(){
         Order o = new Order("id");
         Item tmp = new Item("test","test");
         o.addItem(tmp);
         assertEquals(1,o.getOrderList().size());
+    }
+
+    @Test // tests the removeitem function
+     public void removeItemTest(){
+        Order o = new Order ("id");
+        Item tmp = new Item("test","test");
+        o.addItem(tmp);
+        assertEquals(1,o.getOrderList().size());
+        Item tmpItem = o.removeItem("WrongId");
+        assertEquals(1,o.getOrderList().size());
+        Item tmpItem2 = o.removeItem("RandomId");
+        assertEquals(0,o.getOrderList().size());
     }
 
 

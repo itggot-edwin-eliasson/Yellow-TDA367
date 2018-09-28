@@ -23,10 +23,15 @@ public class Order {
     }
 
     //TO DO: This should remove the said item and add it back to the inventory list.
-    public void removeItem(String ID){
-        for (Item item: itemList) {
-
+    public Item removeItem(String ID){
+        for (int i = 0; i < itemList.size(); i++) {
+            if (itemList.get(i).getId() == ID){
+                Item tmpItem = itemList.get(i);
+                itemList.remove(i);
+                return tmpItem;
+            }
         }
+        return null;
     }
 
     //Sets date of return from the GUI when the order is sent.
