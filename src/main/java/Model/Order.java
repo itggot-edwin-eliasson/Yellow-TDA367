@@ -5,24 +5,51 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/** @author Viktor Valadi
+ * @date 2018-09-27
+ *
+ * A class representing an order made on the inventory.
+ *
+ * --
+ * 26/09 Modified by Viktor. Makes it possible to create an order and add items
+ * to it. Also added timestamps to the order.
+ * 28/09 Modified by Viktor. Made it possible to remove items from the order.
+ * 02/10 Modified by Viktor. Added javadoc documentation.
+ *
+ */
+
 public class Order {
     private String orderDate;
     private String dateOfReturn;
     private List <Item> itemList = new ArrayList<>();
     private String orderID;
+    private Renter renter;
 
-    //Creates a new Order with today's date as the date.
+    /**
+     * Creates a new Order
+     * @param orderID the generated ID assigned to the order.
+     */
     public Order (String orderID){
         this.orderDate = getCurrentTimeStamp();
         this.orderID = orderID;
     }
 
-    //Adds a new item to the order from said inventory.
+    /**
+     * Adds an item to the list of items in the order.
+     * @param item the item that should be added.
+     */
     public void addItem (Item item){
         itemList.add(item);
     }
+    public void addRenter(String name, String phoneNr){
+        renter = new Renter(name,phoneNr);
+    }
 
-    //TO DO: This should remove the said item and add it back to the inventory list.
+    /**
+     * Removes an item from the inventory
+     * @param ID the ID of the item that should be removed.
+     * @return returns the item back to the inventory.
+     */
     public Item removeItem(String ID){
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getId() == ID){
@@ -34,29 +61,32 @@ public class Order {
         return null;
     }
 
-    //Sets date of return from the GUI when the order is sent.
+    /**
+     * Sets the date the order should be returned.
+     * @param dateOfReturn generated from the GUI to address when the order is to be returned.
+     */
     public void setDateOfReturn (String dateOfReturn){
         this.dateOfReturn = dateOfReturn;
     }
 
-    //returns the date the order should be returned.
     public String getDateOfReturn(){
         return dateOfReturn;
     }
 
-    //returns the Date in the Date format
+
     public String getOrderDate(){
         return orderDate;
     }
 
-    //returns the list of items the order has
     public List<Item> getOrderList(){
         return itemList;
     }
 
 
-
-
+    /**
+     * Gets the current date for the GUI
+     * @return the date as a string.
+     */
     private static String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
         Date now = new Date();

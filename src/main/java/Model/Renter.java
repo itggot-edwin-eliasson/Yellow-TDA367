@@ -6,7 +6,7 @@ public class Renter {
     private String name;
     private String phoneNr;
 
-    public Renter (String name, String phoneNr, Observable o){
+    public Renter (String name, String phoneNr){
         this.name = name;
         this.phoneNr = phoneNr;
 

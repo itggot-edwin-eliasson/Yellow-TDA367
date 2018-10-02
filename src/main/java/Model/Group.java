@@ -21,6 +21,7 @@ public class Group {
    private Inventory selectedInventory;
    private int inviteCode;
    private List <Inventory> inventories;
+   private List <Order> orderList;
 
     /**
      * Creates a group
@@ -60,8 +61,29 @@ public class Group {
      * @param name The name of the new inventory
      */
     public void createInventory (String name) {
-        Inventory i = new Inventory(name);
+        Inventory i = new Inventory(name, "ID");
         inventories.add(i);
+    }
+
+    /**
+     * Creates a new order.
+     * @param ID the generated ID for the order.
+     */
+    public void createOrder (String ID){
+        Order order = new Order(ID);
+        orderList.add(order);
+    }
+    public void findOrder (String ID){
+
+    }
+    public void addItemToOrder (String ItemID){
+
+    }
+    public void findItemByID (){
+
+    }
+    public void removeItemFromOrder(){
+
     }
 
 
@@ -71,7 +93,6 @@ public class Group {
 
     public void selectInventory (Inventory i) {
         selectedInventory = i;
-
     }
 
 

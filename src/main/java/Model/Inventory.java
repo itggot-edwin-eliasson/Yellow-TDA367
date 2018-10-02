@@ -11,6 +11,7 @@ import java.util.List;
  *---
  * 26/09 Modified by Joakim. Makes it possible to add items.
  * 28/09 Modified by Joakim. Makes it possible to remove items.
+ * 02/10 Modified by Viktor. Added ID to the constructor.
  */
 
 public class Inventory {
@@ -19,16 +20,18 @@ public class Inventory {
     private String name;
     private List <Item> itemlist;
     private List <String> categories;
+    private String ID;
 
     /**
      * Create a new inventory
      * @param name Name of the inventory
      */
 
-    public Inventory (String name) {
+    public Inventory (String name, String ID) {
         this.name = name;
         this.itemlist = new ArrayList<>();
         this.categories = new ArrayList<>();
+        this.ID = ID;
     }
 
     /**

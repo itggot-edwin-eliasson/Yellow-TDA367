@@ -15,21 +15,21 @@ import static org.junit.Assert.*;
 public class InventoryTest {
     @Test
     public void addItem() {
-        Inventory i = new Inventory("Testinv");
+        Inventory i = new Inventory("Testinv", "ID");
         i.addItem("Boll", "En boll", 3);
         assertEquals(3, i.getItemList().size());
     }
 
     @Test
     public void addOneItem(){
-        Inventory i = new Inventory("Testinc");
+        Inventory i = new Inventory("Testinc", "ID");
         i.addItem("Boll", "Rund boll",1);
         assertEquals(1, i.getItemList().size());
     }
 
     @Test
     public void removeItem () {
-        Inventory i = new Inventory("Testing");
+        Inventory i = new Inventory("Testing", "ID");
         i.addItem("Boll", "Rund boll");
         if (i.getItemList().size() == 1) {
             i.removeItem(i.getItemList().get(0).getId());
@@ -39,14 +39,14 @@ public class InventoryTest {
 
     @Test
     public void searchItem(){
-        Inventory i = new Inventory("Testing");
+        Inventory i = new Inventory("Testing", "ID");
         i.addItem("Grill", "En vanlig grill för bruk utomhus");
         assertEquals("Grill", i.searchItem("Grill").get(0).getName());
     }
 
     @Test
     public void searchCategory(){
-        Inventory i = new Inventory("Testinv");
+        Inventory i = new Inventory("Testinv", "ID");
         i.addItem("Boll", "Rund boll");
         i.getItemList().get(0).addCategory("Sport");
         assertTrue(i.getItemList().get(0).getCategories().contains("Sport"));

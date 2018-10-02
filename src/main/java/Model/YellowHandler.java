@@ -50,6 +50,7 @@ public class YellowHandler {
 
     public void joinGroup(String inviteCode){
         activeUser.addGroup(inviteCode);
+
         observable.notifyObserver();
 
     }
@@ -58,6 +59,7 @@ public class YellowHandler {
         // Static factory to retrieve a type 4 (pseudo randomly generated) UUID
         String crunchifyUUID = UUID.randomUUID().toString();
         return crunchifyUUID;
+
     }
 
 
