@@ -1,4 +1,5 @@
 import Model.Item;
+import Model.Observable;
 import Model.Order;
 import org.junit.Test;
 
@@ -11,6 +12,7 @@ public class OrderTest {
 
     @Test // tests if the date is correct when you create an order
     public void createOrderDateTest(){
+
         Order o = new Order("id");
         System.out.print(o.getOrderDate());
         assertEquals(getCurrentDate(),o.getOrderDate());
@@ -18,6 +20,7 @@ public class OrderTest {
 
     @Test // tests if a new item can be added to the item list in the order.
     public void addItemTest(){
+
         Order o = new Order("id");
         Item tmp = new Item("test","test");
         o.addItem(tmp);
@@ -26,6 +29,7 @@ public class OrderTest {
 
     @Test // tests the removeitem function
      public void removeItemTest(){
+
         Order o = new Order ("id");
         Item tmp = new Item("test","test");
         o.addItem(tmp);

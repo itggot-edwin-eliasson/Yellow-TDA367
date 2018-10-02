@@ -3,21 +3,20 @@ package Model;
 import java.util.*;
 
 public class User {
+
     private String username;
     private String name;
     private String email;
     private List<String> groupIds = new ArrayList<>();
 
-
-    public User(String username) {
-        this.username = username;
-    }
-
-    public User(String username, String name, String email) {
-
+    public User (String username, String name, String email){
         this.username = username;
         this.name = name;
         this.email = email;
+    }
+
+    public User (String username) {
+        this.username = username;
     }
 
     public void addGroup(String groupId){
@@ -40,4 +39,10 @@ public class User {
         this.email = email;
     }
 
+
+
+
 }
+
+
+

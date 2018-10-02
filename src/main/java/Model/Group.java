@@ -1,6 +1,9 @@
 package Model;
 
+
+
 import java.util.List;
+
 
 /**
  * @author Mona Kilsgård
@@ -22,12 +25,13 @@ public class Group {
     /**
      * Creates a group
      * @param name The name of the group
+     *
      */
+
 
     public Group (String name) {
         this.name = name;
     }
-
     /**
      * Generates an invitecode and checks if it is not taken
      * @param groupInviteCodes A list with current invite codes
@@ -69,4 +73,7 @@ public class Group {
         selectedInventory = i;
 
     }
+
+
+
 }

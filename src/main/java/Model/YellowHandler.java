@@ -7,12 +7,16 @@ import java.util.*;
  * @date 2018.09-28
  */
 public class YellowHandler {
+
     private User activeUser;
     public List<Group> groups = new ArrayList<>();
     public List<User> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
+    private Observable observable;
 
-    public YellowHandler (){}
+    public YellowHandler (){
+        observable = new Observable();
+    }
 
     /**
      * Creates a group and adds it to the list with groups.
@@ -28,9 +32,13 @@ public class YellowHandler {
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
      */
-    public void createUser(String username){
-        activeUser = new User(username);
+    public void createUser(String username, String name, String email){
+        activeUser = new User(username, name, email);
         users.add(activeUser);
+    }
+
+    public void createUser (String username) {
+        activeUser = new User(username);
     }
 
     public void joinGroup(String inviteCode){
