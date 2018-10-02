@@ -40,7 +40,9 @@ public class YellowHandler {
     }
 
     public void createUser (String username) {
-        activeUser = new User(username);
+        User u = new User(username);
+        activeUser = u;
+        users.add(u);
         observable.notifyObserver();
     }
 

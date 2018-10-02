@@ -17,6 +17,6 @@ public class YellowHandlerTest {
     public void createUser(){
         YellowHandler yh = new YellowHandler();
         yh.createUser("Moki");
-        assertTrue(yh.users.size() == 1);
+        assertEquals(1, yh.users.size());
     }
 }
