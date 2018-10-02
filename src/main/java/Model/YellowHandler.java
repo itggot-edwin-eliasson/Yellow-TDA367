@@ -1,6 +1,7 @@
 package Model;
 import java.util.*;
 
+
 /**
  * @author Mona Kilsgård
  * @date 2018.09-28
@@ -35,6 +36,12 @@ public class YellowHandler {
     public void joinGroup(String inviteCode){
         activeUser.addGroup(inviteCode);
 
+    }
+
+    public String generateUniqueKeyUsingUUID() {
+        // Static factory to retrieve a type 4 (pseudo randomly generated) UUID
+        String crunchifyUUID = UUID.randomUUID().toString();
+        return crunchifyUUID;
     }
 
 
