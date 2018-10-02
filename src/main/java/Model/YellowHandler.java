@@ -26,6 +26,7 @@ public class YellowHandler {
         Group g = new Group(groupName);
         g.generateInviteCode(groupInviteCodes);
         groups.add(g);
+        observable.notifyObserver();
     }
 
     /**
@@ -35,14 +36,19 @@ public class YellowHandler {
     public void createUser(String username, String name, String email){
         activeUser = new User(username, name, email);
         users.add(activeUser);
+        observable.notifyObserver();
     }
 
     public void createUser (String username) {
         activeUser = new User(username);
+        observable.notifyObserver();
     }
+
+    
 
     public void joinGroup(String inviteCode){
         activeUser.addGroup(inviteCode);
+        observable.notifyObserver();
 
     }
 
