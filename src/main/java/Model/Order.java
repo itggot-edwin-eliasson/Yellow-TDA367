@@ -15,6 +15,7 @@ import java.util.List;
  * to it. Also added timestamps to the order.
  * 28/09 Modified by Viktor. Made it possible to remove items from the order.
  * 02/10 Modified by Viktor. Added javadoc documentation.
+ * 02/10 Modified by Viktor. Added renter to the order.
  *
  */
 
@@ -41,8 +42,17 @@ public class Order {
     public void addItem (Item item){
         itemList.add(item);
     }
-    public void addRenter(String name, String phoneNr){
-        renter = new Renter(name,phoneNr);
+
+    /**
+     * Sets the renter for the order.
+     * @param name name of the renter from the GUI.
+     * @param phoneNr phone number from the renter from the GUI.
+     */
+    public void setRenter(String name, String phoneNr){
+        this.renter = new Renter(name, phoneNr);
+    }
+    public Renter getRenter(){
+        return renter;
     }
 
     /**
@@ -80,6 +90,9 @@ public class Order {
 
     public List<Item> getOrderList(){
         return itemList;
+    }
+    public String getOrderID(){
+        return orderID;
     }
 
 

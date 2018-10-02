@@ -10,7 +10,7 @@ public class ItemTest {
 
     @Test
     public void addCategory(){
-        Item item = new Item("Boll", "En boll");
+        Item item = new Item("Boll", "En boll", "ID");
         item.addCategory("Sport");
         assertTrue(item.getCategories().contains("Sport"));
     }

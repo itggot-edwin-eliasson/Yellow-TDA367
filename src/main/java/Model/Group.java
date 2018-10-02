@@ -2,6 +2,7 @@ package Model;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -10,7 +11,8 @@ import java.util.List;
  * @date 2018-09-26
  *
  * ---
- *
+ * 02/10 Modified by Viktor. Added methods to find Inventory, Item and Order by ID. Also added addItemToOrder
+ * Method that removes items from said inventory and adds them to said order.
  *
  *
  */
@@ -20,8 +22,8 @@ public class Group {
    private String name;
    private Inventory selectedInventory;
    private int inviteCode;
-   private List <Inventory> inventories;
-   private List <Order> orderList;
+   private List <Inventory> inventories = new ArrayList<>();
+   private List <Order> orderList = new ArrayList<>();
 
     /**
      * Creates a group
@@ -60,8 +62,8 @@ public class Group {
      * Creates and adds a new inventory int the List with inventories.
      * @param name The name of the new inventory
      */
-    public void createInventory (String name) {
-        Inventory i = new Inventory(name, "ID");
+    public void createInventory (String name, String ID) {
+        Inventory i = new Inventory(name, ID);
         inventories.add(i);
     }
 
@@ -73,28 +75,77 @@ public class Group {
         Order order = new Order(ID);
         orderList.add(order);
     }
-    public void findOrder (String ID){
 
+    /**
+     * Finds a certain order by its ID.
+     * @param ID the ID of the order you want to find.
+     * @return the Order.
+     */
+    public Order findOrder (String ID){
+        for (Order order: orderList) {
+            if (order.getOrderID().equals(ID)){
+                return order;
+            }
+        }
+        return null;
     }
-    public void addItemToOrder (String ItemID){
 
+    /**
+     * Finds a certain inventory by its ID.
+     * @param ID the ID of the inventory to find.
+     * @return the inventory.
+     */
+    public Inventory findInventory (String ID){
+        for (Inventory inventory: inventories){
+            if (inventory.getID().equals(ID)){
+                return inventory;
+            }
+        }return null;
     }
-    public void findItemByID (){
 
+    /**
+     * Finds an item with a certain ID in said inventory.
+     * @param ID ID of the item to find.
+     * @return returns the Item.
+     */
+    public Item findItemByID (String ID){
+        for (Item item: selectedInventory.getItemList()){
+            if (item.getId().equals(ID)){
+                return item;
+            }
+        }
+        return null;
     }
+
+    /**
+     * Adds a item to an order and removes it from its inventory.
+     * @param itemID The ID of the item that should be moved.
+     * @param orderID The ID of the order that it should be moved to.
+     * @param inventoryID The ID of the inventory that the item should be moved from.
+     *
+     */
+    public void addItemToOrder (String itemID, String orderID, String inventoryID){
+        Order order = findOrder(orderID);
+        Inventory inventory = findInventory(inventoryID);
+        Item item = findItemByID(itemID);
+        order.addItem(item);
+        inventory.removeItem(item.getId());
+    }
+
     public void removeItemFromOrder(){
 
     }
 
 
-    public Inventory getInventory () {
-        return null;
+    public Inventory getSelectedInventory () {
+        return selectedInventory;
     }
 
-    public void selectInventory (Inventory i) {
-        selectedInventory = i;
+    /**
+     * selects an inventory as the active inventory.
+     * @param inventoryID the ID of the inventory that is to be selected.
+     */
+    public void selectInventory (String inventoryID) {
+        selectedInventory = findInventory(inventoryID);
     }
-
-
-
 }

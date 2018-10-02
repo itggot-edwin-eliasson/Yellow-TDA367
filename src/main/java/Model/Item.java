@@ -29,11 +29,14 @@ public class Item {
      * @param description The description of the item
      */
 
-    public Item (String name, String description) {
+    public Item (String name, String description, String ID) {
         this.name = name;
         this.description = description;
-        this.id = "RandomId";
+        this.id = ID;
 
+    }
+    public void setName (String name){
+        this.name = name;
     }
 
     public String getId() {

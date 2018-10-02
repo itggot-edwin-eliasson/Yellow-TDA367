@@ -42,8 +42,8 @@ public class Inventory {
      */
 
 
-    public void addItem(String itemName, String itemDescription){ //Add Item to list if amount =1
-        Item item = new Item(itemName,itemDescription);
+    public void addItem(String itemName, String itemDescription, String itemID){ //Add Item to list if amount =1
+        Item item = new Item(itemName,itemDescription, itemID);
         itemlist.add(item);
     }
 
@@ -55,14 +55,14 @@ public class Inventory {
      * @param amount Amount of item you want to create
      */
 
-    public void addItem (String itemName, String itemDescription, int amount) { //Adds Items to list if amout > 1
+    public void addItem (String itemName, String itemDescription, String itemID, int amount) { //Adds Items to list if amout > 1
         if(amount > 1){
             for(int i = 0; i < amount; i++){
-                Item item = new Item(itemName, itemDescription);
+                Item item = new Item(itemName, itemDescription, itemID);
                 itemlist.add(item);
             }
         }else{
-            addItem(itemName, itemDescription);
+            addItem(itemName, itemDescription, itemID);
         }
     }
 
@@ -129,6 +129,8 @@ public class Inventory {
     public List <Item> getItemList ()  {
         return itemlist;
     }
+
+    public String getID (){return ID;}
 
     /**
      * Change the name of the inventory

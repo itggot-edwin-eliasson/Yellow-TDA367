@@ -19,6 +19,8 @@ public class Renter {
     public String getName() {
         return name;
     }
+    public String getPhoneNr(){return phoneNr;}
 
 
+    public void setName(String name) {this.name = name;}
 }
