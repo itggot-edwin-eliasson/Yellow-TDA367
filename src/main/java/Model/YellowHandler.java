@@ -23,6 +23,10 @@ public class YellowHandler {
         groups.add(g);
     }
 
+    /**
+     * Creates a user and adds it to the list with users. The new user is also set to activeUser.
+     * @param username The username of the new user.
+     */
     public void createUser(String username){
         activeUser = new User(username);
         users.add(activeUser);
