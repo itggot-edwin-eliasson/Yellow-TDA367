@@ -1,3 +1,5 @@
+package Model;
+
 import Model.YellowHandler;
 import org.junit.Test;
 

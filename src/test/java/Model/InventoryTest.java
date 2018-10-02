@@ -1,3 +1,5 @@
+package Model;
+
 import Model.Inventory;
 import Model.Item;
 import Model.Observable;

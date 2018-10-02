@@ -1,3 +1,5 @@
+package Model;
+
 import Model.Group;
 import org.junit.Test;
 

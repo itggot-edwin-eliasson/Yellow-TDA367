@@ -1,3 +1,5 @@
+package Model;
+
 import Model.User;
 import org.junit.Test;
 
