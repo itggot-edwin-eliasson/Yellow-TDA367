@@ -2,6 +2,7 @@ import Model.Item;
 import Model.Observable;
 import Model.Order;
 import org.junit.Test;
+import java.text.SimpleDateFormat;
 
 import java.util.Date;
 
@@ -14,8 +15,10 @@ public class OrderTest {
     public void createOrderDateTest(){
 
         Order o = new Order("id");
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         System.out.print(o.getOrderDate());
-        assertEquals(getCurrentDate(),o.getOrderDate());
+        assertEquals(s.format(d), o.getOrderDate());
     }
 
     @Test // tests if a new item can be added to the item list in the order.
@@ -38,24 +41,6 @@ public class OrderTest {
         assertEquals(1,o.getOrderList().size());
         Item tmpItem2 = o.removeItem("RandomId");
         assertEquals(0,o.getOrderList().size());
-    }
-
-
-    private String getCurrentDate(){
-        Date now = new Date();
-        StringBuilder tmp = new StringBuilder();
-        tmp.append((now.getYear()+1900)+"");
-        if (now.getMonth() < 10){
-            tmp.append("-0"+(now.getMonth()+1));
-        }else {
-            tmp.append("-"+(now.getMonth()+1));
-        }
-        if (now.getDate() < 10){
-            tmp.append("-0"+now.getDate());
-        }else {
-            tmp.append("-"+now.getDate());
-        }
-        return tmp.toString();
     }
 
 }
