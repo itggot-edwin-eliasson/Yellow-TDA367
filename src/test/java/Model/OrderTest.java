@@ -40,7 +40,7 @@ public class OrderTest {
         assertEquals(1,o.getOrderList().size());
         Item tmpItem = o.removeItem("WrongId");
         assertEquals(1,o.getOrderList().size());
-        Item tmpItem2 = o.removeItem("RandomId");
+        Item tmpItem2 = o.removeItem("ID");
         assertEquals(0,o.getOrderList().size());
     }
 
