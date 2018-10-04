@@ -2,7 +2,7 @@ package Model;
 
 import java.util.*;
 
-public class User {
+public class User implements UserInterface {
 
     private String username;
     private String name;
@@ -21,26 +21,32 @@ public class User {
         this.username = username;
     }
 
+   @Override
     public void addGroup(String groupId){
         groupIds.add(groupId);
     }
 
+    @Override
     public List<String> getGroupIds(){
         return groupIds;
     }
 
+    @Override
     public String getUsername() {
         return username;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
 
+    @Override
     public String getId() {
         return id;
     }

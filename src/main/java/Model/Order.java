@@ -19,7 +19,7 @@ import java.util.List;
  *
  */
 
-public class Order {
+public class Order implements OrderInterface{
     private String orderDate;
     private String dateOfReturn;
     private List <Item> itemList = new ArrayList<>();
@@ -39,6 +39,7 @@ public class Order {
      * Adds an item to the list of items in the order.
      * @param item the item that should be added.
      */
+    @Override
     public void addItem (Item item){
         itemList.add(item);
     }
@@ -48,9 +49,12 @@ public class Order {
      * @param name name of the renter from the GUI.
      * @param phoneNr phone number from the renter from the GUI.
      */
+    @Override
     public void setRenter(String name, String phoneNr){
         this.renter = new Renter(name, phoneNr);
     }
+
+    @Override
     public Renter getRenter(){
         return renter;
     }
@@ -60,6 +64,7 @@ public class Order {
      * @param ID the ID of the item that should be removed.
      * @return returns the item back to the inventory.
      */
+    @Override
     public Item removeItem(String ID){
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getId() == ID){
@@ -75,22 +80,27 @@ public class Order {
      * Sets the date the order should be returned.
      * @param dateOfReturn generated from the GUI to address when the order is to be returned.
      */
+    @Override
     public void setDateOfReturn (String dateOfReturn){
         this.dateOfReturn = dateOfReturn;
     }
 
+    @Override
     public String getDateOfReturn(){
         return dateOfReturn;
     }
 
-
+    @Override
     public String getOrderDate(){
         return orderDate;
     }
 
+    @Override
     public List<Item> getOrderList(){
         return itemList;
     }
+
+    @Override
     public String getOrderID(){
         return orderID;
     }

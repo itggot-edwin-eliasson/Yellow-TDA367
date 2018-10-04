@@ -14,7 +14,7 @@ import java.util.List;
  * 02/10 Modified by Viktor. Added ID to the constructor.
  */
 
-public class Inventory {
+public class Inventory implements InventoryInterface{
 
 
     private String name;
@@ -41,7 +41,7 @@ public class Inventory {
      * @param itemDescription The description of the item
      */
 
-
+    @Override
     public void addItem(String itemName, String itemDescription, String itemID){ //Add Item to list if amount =1
         Item item = new Item(itemName,itemDescription, itemID);
         itemlist.add(item);
@@ -54,7 +54,7 @@ public class Inventory {
      * @param itemDescription The description of item
      * @param amount Amount of item you want to create
      */
-
+    @Override
     public void addItem (String itemName, String itemDescription, String itemID, int amount) { //Adds Items to list if amout > 1
         if(amount > 1){
             for(int i = 0; i < amount; i++){
@@ -72,7 +72,7 @@ public class Inventory {
      * @param id The selected Id of the item chooses which item that
      *           should be removed
      */
-
+    @Override
     public void removeItem (String id) {
         if (itemlist.size() > 0) {
             Item item;
@@ -88,7 +88,7 @@ public class Inventory {
             System.out.print ("Nothing to remove, the list is empty");
         }
     }
-
+    @Override
     public List<Item> searchItem(String search){
         List<Item> results = new ArrayList<>();
         for(int i = 0; i < itemlist.size(); i++){
@@ -106,7 +106,7 @@ public class Inventory {
         return results;
     }
 
-
+    @Override
     public List <String> getCategories() {
         return categories;
     }
@@ -116,7 +116,7 @@ public class Inventory {
      * Get the inventory name
      * @return The name of the inventory
      */
-
+    @Override
     public String getName() {
         return this.name;
     }
@@ -125,18 +125,19 @@ public class Inventory {
      * Get the complete list of items in inventory
      * @return The complete list of items in inventory
      */
-
+    @Override
     public List <Item> getItemList ()  {
         return itemlist;
     }
 
+    @Override
     public String getID (){return ID;}
 
     /**
      * Change the name of the inventory
      * @param name the new name of the inventory
      */
-
+    @Override
     public void setName (String name) {
         this.name = name;
     }

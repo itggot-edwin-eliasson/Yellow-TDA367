@@ -1,12 +1,11 @@
 package Model;
 import java.util.*;
 
-
 /**
  * @author Mona Kilsgård
  * @date 2018.09-28
  */
-public class YellowHandler {
+public class YellowHandler implements YellowHandlerInterface {
 
     private User activeUser;
     public List<Group> groups = new ArrayList<>();
@@ -22,6 +21,7 @@ public class YellowHandler {
      * Creates a group and adds it to the list with groups.
      * @param groupName The name of the new group.
      */
+    @Override
     public void createGroup(String groupName, String color){
         Group g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
@@ -44,12 +44,14 @@ public class YellowHandler {
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
      */
+    @Override
     public void createUser(String username, String name, String email){
         activeUser = new User(username, name, email, generateUniqueKeyUsingUUID());
         users.add(activeUser);
         observable.notifyObserver();
     }
 
+    @Override
     public void createUser (String username) {
         User u = new User(username);
         activeUser = u;
@@ -57,11 +59,9 @@ public class YellowHandler {
         observable.notifyObserver();
     }
 
-    
-
+    @Override
     public void joinGroup(String inviteCode){
         activeUser.addGroup(inviteCode);
-
         observable.notifyObserver();
     }
 
@@ -69,11 +69,11 @@ public class YellowHandler {
      * Generates a unique id
      * @return The unique id
      */
+     @Override
     public String generateUniqueKeyUsingUUID() {
         // Static factory to retrieve a type 4 (pseudo randomly generated) UUID
         String crunchifyUUID = UUID.randomUUID().toString();
         return crunchifyUUID;
-
     }
 
 

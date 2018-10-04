@@ -16,8 +16,7 @@ import java.util.List;
  *@date 2018-10-04
  *
  */
-
-public class Group {
+public class Group implements GroupInterface{
 
    private String name;
    private Inventory selectedInventory;
@@ -58,7 +57,7 @@ public class Group {
      * Get the invite code
      * @return The invite code
      */
-
+    @Override
     public int getInviteCode(){
         return inviteCode;
     }
@@ -91,6 +90,7 @@ public class Group {
      * Creates and adds a new inventory int the List with inventories.
      * @param name The name of the new inventory
      */
+    @Override
     public void createInventory (String name, String ID) {
         Inventory i = new Inventory(name, ID);
         inventories.add(i);
@@ -100,6 +100,7 @@ public class Group {
      * Creates a new order.
      * @param ID the generated ID for the order.
      */
+    @Override
     public void createOrder (String ID){
         Order order = new Order(ID);
         orderList.add(order);
@@ -110,6 +111,7 @@ public class Group {
      * @param ID the ID of the order you want to find.
      * @return the Order.
      */
+    @Override
     public Order findOrder (String ID){
         for (Order order: orderList) {
             if (order.getOrderID().equals(ID)){
@@ -124,6 +126,7 @@ public class Group {
      * @param ID the ID of the inventory to find.
      * @return the inventory.
      */
+    @Override
     public Inventory findInventory (String ID){
         for (Inventory inventory: inventories){
             if (inventory.getID().equals(ID)){
@@ -137,6 +140,7 @@ public class Group {
      * @param ID ID of the item to find.
      * @return returns the Item.
      */
+    @Override
     public Item findItemByID (String ID){
         for (Item item: selectedInventory.getItemList()){
             if (item.getId().equals(ID)){
@@ -153,6 +157,7 @@ public class Group {
      * @param inventoryID The ID of the inventory that the item should be moved from.
      *
      */
+    @Override
     public void addItemToOrder (String itemID, String orderID, String inventoryID){
         Order order = findOrder(orderID);
         Inventory inventory = findInventory(inventoryID);
@@ -160,12 +165,10 @@ public class Group {
         order.addItem(item);
         inventory.removeItem(item.getId());
     }
+    @Override
+    public void removeItemFromOrder(){}
 
-    public void removeItemFromOrder(){
-
-    }
-
-
+    @Override
     public Inventory getSelectedInventory () {
         return selectedInventory;
     }
@@ -174,6 +177,7 @@ public class Group {
      * selects an inventory as the active inventory.
      * @param inventoryID the ID of the inventory that is to be selected.
      */
+    @Override
     public void selectInventory (String inventoryID) {
         selectedInventory = findInventory(inventoryID);
     }
