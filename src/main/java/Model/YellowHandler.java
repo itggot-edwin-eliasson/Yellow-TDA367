@@ -22,9 +22,9 @@ public class YellowHandler {
      * Creates a group and adds it to the list with groups.
      * @param groupName The name of the new group.
      */
-    public void createGroup(String groupName){
-        Group g = new Group(groupName);
-        g.generateInviteCode(groupInviteCodes);
+    public void createGroup(String groupName, String color){
+        Group g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
+        groupInviteCodes.add(g.getInviteCode())
         groups.add(g);
         observable.notifyObserver();
     }

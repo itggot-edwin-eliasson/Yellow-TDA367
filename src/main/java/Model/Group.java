@@ -26,6 +26,7 @@ public class Group {
    private List <Order> orderList = new ArrayList<>();
    private List <Inventory> inventories;
    private String color;
+   private String id;
 
     /**
      * Creates a group
@@ -33,9 +34,11 @@ public class Group {
      * @param color The GUI color for the group.
      *
      */
-    public Group (String name, String color) {
+    public Group (String name, String color, String id, List<String> groupInviteCodes) {
         this.name = name;
         this.color = color;
+        this.id = id;
+        this.inviteCode = generateInviteCode(groupInviteCodes);
     }
 
     /**
