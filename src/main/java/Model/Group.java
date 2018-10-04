@@ -41,7 +41,7 @@ public class Group {
         this.name = name;
         this.color = color;
     }
-    
+
     /**
      * Generates an invitecode and checks if it is not taken
      * @param groupInviteCodes A list with current invite codes
