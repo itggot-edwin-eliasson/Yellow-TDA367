@@ -13,8 +13,9 @@ public class GroupItem extends AnchorPane {
     View parentView;
 
     @FXML private Label groupName;
+    @FXML private AnchorPane background;
 
-    public GroupItem(String name, View view) {
+    public GroupItem(String name, String color, View view) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("groupItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -29,5 +30,6 @@ public class GroupItem extends AnchorPane {
         this.parentView = view;
 
         groupName.setText(name);
+        background.setStyle("-fx-background-color:" + color);
     }
 }

@@ -25,10 +25,22 @@ public class YellowHandler {
     public void createGroup(String groupName, String color){
         Group g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
+    /*public void createGroup(String groupName){
+        Group g = new Group(groupName);
+        g.generateInviteCode(groupInviteCodes);
+         Adds methods in group, main yellowhandler and groupitem
         groups.add(g);
         observable.notifyObserver();
-    }
+    }*/
 
+    public Map<String, List<String>> getGroupInfo(){
+        Map<String, List<String>> groupsMap = new HashMap<>();
+        for(int i = 0; i < groups.size(); i++){
+            groupsMap.entrySet(groups.get(i).getId())
+        }
+
+        return ;
+    }
     /**
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
