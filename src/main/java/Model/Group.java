@@ -7,17 +7,13 @@ import java.util.List;
 
 
 /**
- * @author Mona Kilsgård
  * @date 2018-09-26
  * ---
-<<<<<<< HEAD
  * 02/10 Modified by Viktor. Added methods to find Inventory, Item and Order by ID. Also added addItemToOrder
  * Method that removes items from said inventory and adds them to said order.
  *
-=======
  *@author Mona Kilsgård
  *@date 2018-10-04
->>>>>>> Adds color to group
  *
  */
 
