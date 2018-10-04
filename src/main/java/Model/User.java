@@ -7,12 +7,14 @@ public class User {
     private String username;
     private String name;
     private String email;
+    private String id;
     private List<String> groupIds = new ArrayList<>();
 
-    public User (String username, String name, String email){
+    public User (String username, String name, String email, String id){
         this.username = username;
         this.name = name;
         this.email = email;
+        this.id = id;
     }
 
     public User (String username) {
@@ -39,9 +41,9 @@ public class User {
         this.email = email;
     }
 
-
-
-
+    public String getId() {
+        return id;
+    }
 }
 
 

@@ -24,7 +24,7 @@ public class YellowHandler {
      */
     public void createGroup(String groupName, String color){
         Group g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
-        groupInviteCodes.add(g.getInviteCode())
+        groupInviteCodes.add(g.getInviteCode());
         groups.add(g);
         observable.notifyObserver();
     }
@@ -34,7 +34,7 @@ public class YellowHandler {
      * @param username The username of the new user.
      */
     public void createUser(String username, String name, String email){
-        activeUser = new User(username, name, email);
+        activeUser = new User(username, name, email, generateUniqueKeyUsingUUID());
         users.add(activeUser);
         observable.notifyObserver();
     }
@@ -52,9 +52,12 @@ public class YellowHandler {
         activeUser.addGroup(inviteCode);
 
         observable.notifyObserver();
-
     }
 
+    /**
+     * Generates a unique id
+     * @return The unique id
+     */
     public String generateUniqueKeyUsingUUID() {
         // Static factory to retrieve a type 4 (pseudo randomly generated) UUID
         String crunchifyUUID = UUID.randomUUID().toString();

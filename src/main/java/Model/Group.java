@@ -24,7 +24,6 @@ public class Group {
    private int inviteCode;
    private List <Inventory> inventories = new ArrayList<>();
    private List <Order> orderList = new ArrayList<>();
-   private List <Inventory> inventories;
    private String color;
    private String id;
 
@@ -34,7 +33,7 @@ public class Group {
      * @param color The GUI color for the group.
      *
      */
-    public Group (String name, String color, String id, List<String> groupInviteCodes) {
+    public Group (String name, String color, String id, List<Integer> groupInviteCodes) {
         this.name = name;
         this.color = color;
         this.id = id;
@@ -45,13 +44,14 @@ public class Group {
      * Generates an invitecode and checks if it is not taken
      * @param groupInviteCodes A list with current invite codes
      */
-    public void generateInviteCode(List<Integer> groupInviteCodes){
+    private int generateInviteCode(List<Integer> groupInviteCodes){
         inviteCode = (int)(Math.random()*9000)+1000;
         if (groupInviteCodes.contains(inviteCode)){
             generateInviteCode(groupInviteCodes);
         } else {
             groupInviteCodes.add(inviteCode);
         }
+        return inviteCode;
     }
 
     /**
