@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<fx:root prefHeight="65.0" prefWidth="200" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="inventoryName" layoutX="14.0" layoutY="19.0" text="Inventory Name">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+    </children>
+</fx:root>
+

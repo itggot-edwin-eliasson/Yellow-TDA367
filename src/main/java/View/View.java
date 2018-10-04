@@ -5,6 +5,7 @@ import Model.Observable;
 import Model.YellowHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 
 import java.util.*;
@@ -16,6 +17,7 @@ public class View implements Observer {
 
     @FXML private Button addGroupButton;
     @FXML private FlowPane groupMenu;
+    @FXML private ImageView itemImage;
 
     private Map<String, GroupItem> groupItemMap = new HashMap<>();
 
