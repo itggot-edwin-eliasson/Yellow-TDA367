@@ -4,7 +4,6 @@ import Controller.Controller;
 import Model.Observable;
 import Model.YellowHandler;
 import javafx.fxml.FXML;
-import com.jfoenix.controls.JFXHamburger;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 

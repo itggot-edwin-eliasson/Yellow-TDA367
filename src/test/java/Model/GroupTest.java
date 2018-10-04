@@ -15,24 +15,22 @@ public class GroupTest {
 
     @Test
     public void generateInviteCode(){
-        Group g = new Group("Test");
         List<Integer> l = new ArrayList<>();
-        g.generateInviteCode(l);
+        Group g = new Group("Test", "red", "ID", l);
         assertTrue(g.getInviteCode() > 999 || g.getInviteCode() < 10000);
     }
 
     @Test
     public void generateUniqueInviteCode(){
-        Group g = new Group("Test");
         List<Integer> l = new ArrayList<>();
-        g.generateInviteCode(l);
+        Group g = new Group("Test","red","ID",l);
         int tmp = g.getInviteCode();
-        g.generateInviteCode(l);
-        assertTrue(tmp != g.getInviteCode());
+        assertTrue(tmp == g.getInviteCode());
     }
     @Test
     public void findItemByIdTest(){
-        Group g = new Group("test");
+        List<Integer> l = new ArrayList<>();
+        Group g = new Group("test","red","ID",l);
         g.createInventory("inventory", "ID123");
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
@@ -44,7 +42,8 @@ public class GroupTest {
     }
     @Test
     public void findInventoryByIdTest(){
-        Group g = new Group("test");
+        List<Integer> l = new ArrayList<>();
+        Group g = new Group("test","red","ID",l);
         g.createInventory("inventory123", "ID123");
         Inventory tmp = g.findInventory("ID123");
         assertEquals("inventory123",tmp.getName());
@@ -52,7 +51,8 @@ public class GroupTest {
 
     @Test
     public void findOrderByIdTest(){
-        Group g = new Group("test");
+        List<Integer> l = new ArrayList<>();
+        Group g = new Group("test","red","ID",l);
         g.createOrder("orderId");
         Order tmp = g.findOrder("orderId");
         tmp.setRenter("hej","123");
@@ -61,7 +61,8 @@ public class GroupTest {
     }
     @Test
     public void addItemToOrderTest(){
-        Group g = new Group("test");
+        List<Integer> l = new ArrayList<>();
+        Group g = new Group("test","red","ID",l);
         g.createInventory("inventory", "ID123");
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
