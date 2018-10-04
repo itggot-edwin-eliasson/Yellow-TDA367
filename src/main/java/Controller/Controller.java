@@ -27,7 +27,7 @@ public class Controller {
      * will get saved is based on the @param.
      * @param whatToSeralize should be groups, inventories or users, based on what is to be saved.
      */
-    private void seralize(String whatToSeralize){
+    public void seralize(String whatToSeralize){
         try {
             FileOutputStream fileOut;
             switch (whatToSeralize) {
@@ -70,7 +70,7 @@ public class Controller {
      *
      * @param whatToDeseralize should be groups, inventories or users depending on what is to be fetched.
      */
-    private void deseralize(String whatToDeseralize){
+    public void deseralize(String whatToDeseralize){
         try {
             FileInputStream fileIn;
             switch (whatToDeseralize) {
