@@ -64,6 +64,30 @@ public class Group {
     }
 
     /**
+     * Get the group id
+     * @return The group id
+     */
+    public String getId(){
+        return id;
+    }
+
+    /**
+     * Get the group name
+     * @return The group name
+     */
+    public String getName(){
+        return name;
+    }
+
+    /**
+     * Get the color
+     * @return The color
+     */
+    public String getColor(){
+        return color;
+    }
+
+    /**
      * Creates and adds a new inventory int the List with inventories.
      * @param name The name of the new inventory
      */

@@ -32,10 +32,13 @@ public class YellowHandler {
     public Map<String, List<String>> getGroupInfo(){
         Map<String, List<String>> groupsMap = new HashMap<>();
         for(int i = 0; i < groups.size(); i++){
-            groupsMap.entrySet(groups.get(i).getId());
+            List<String> tmpList = new ArrayList<>();
+            tmpList.add(groups.get(i).getName());
+            tmpList.add(groups.get(i).getColor());
+            groupsMap.put(groups.get(i).getId(), tmpList);
         }
 
-        return ;
+        return groupsMap;
     }
     /**
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
