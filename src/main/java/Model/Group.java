@@ -9,11 +9,15 @@ import java.util.List;
 /**
  * @author Mona Kilsgård
  * @date 2018-09-26
- *
  * ---
+<<<<<<< HEAD
  * 02/10 Modified by Viktor. Added methods to find Inventory, Item and Order by ID. Also added addItemToOrder
  * Method that removes items from said inventory and adds them to said order.
  *
+=======
+ *@author Mona Kilsgård
+ *@date 2018-10-04
+>>>>>>> Adds color to group
  *
  */
 
@@ -24,22 +28,24 @@ public class Group {
    private int inviteCode;
    private List <Inventory> inventories = new ArrayList<>();
    private List <Order> orderList = new ArrayList<>();
+   private List <Inventory> inventories;
+   private String color;
 
     /**
      * Creates a group
      * @param name The name of the group
+     * @param color The GUI color for the group.
      *
      */
-
-
-    public Group (String name) {
+    public Group (String name, String color) {
         this.name = name;
+        this.color = color;
     }
+    
     /**
      * Generates an invitecode and checks if it is not taken
      * @param groupInviteCodes A list with current invite codes
      */
-
     public void generateInviteCode(List<Integer> groupInviteCodes){
         inviteCode = (int)(Math.random()*9000)+1000;
         if (groupInviteCodes.contains(inviteCode)){
