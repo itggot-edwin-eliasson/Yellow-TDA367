@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="405.0" fitWidth="600.0" layoutX="-2.0" opacity="0.44" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@img/logIn.jpeg" />
+            <Image url="@../res/img/logIn.jpeg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="24.0" layoutY="26.0" prefHeight="348.0" prefWidth="283.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-background-radius: 8;" AnchorPane.leftAnchor="24.0">
@@ -35,7 +35,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/whiteExit.png" />
+                  <Image url="@../res/img/whiteExit.png" />
                </image></ImageView>
          </graphic>
       </Button>
