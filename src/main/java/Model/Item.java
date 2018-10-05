@@ -19,6 +19,7 @@ public class Item implements ItemInterface{
     private String description;
     private String id;
     private List<String> categories = new ArrayList<>();
+    private boolean isRented = false;
 
     /**
      *
@@ -62,5 +63,9 @@ public class Item implements ItemInterface{
         categories.add(category);
     }
 
+    public void setIsRented (Boolean isRented){
+        this.isRented = isRented;
+    }
+    public Boolean getIsrented (){return isRented;}
 
 }

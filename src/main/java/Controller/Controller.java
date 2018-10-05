@@ -13,7 +13,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
+/**
+ * @date 2018-10-02
+ * ---
+ * 05/10 Modified by Viktor. Added methods to save and load groups, inventories and users. Also getters/setters.
+ *
+ *
+ *@author Viktor
+ *@date 2018-10-04
+ *
+ */
 public class Controller implements Initializable {
 
     private List<Group> allGroups = new ArrayList<>();

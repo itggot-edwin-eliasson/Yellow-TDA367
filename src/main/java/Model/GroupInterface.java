@@ -48,13 +48,12 @@ public interface GroupInterface extends Serializable {
     /**
      * Adds a item to an order and removes it from its inventory.
      * @param itemID The ID of the item that should be moved.
-     * @param orderID The ID of the order that it should be moved to.
-     * @param inventoryID The ID of the inventory that the item should be moved from.
+     *
      *
      */
-    public void addItemToOrder (String itemID, String orderID, String inventoryID);
+    public void addItemToOrder (String itemID);
 
-    public void removeItemFromOrder();
+    public void removeItemFromOrder(String itemID);
 
 
     public Inventory getSelectedInventory ();

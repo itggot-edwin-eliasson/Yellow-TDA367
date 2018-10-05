@@ -10,7 +10,11 @@ import java.util.List;
  * @date 2018-09-26
  * ---
  * 02/10 Modified by Viktor. Added methods to find Inventory, Item and Order by ID. Also added addItemToOrder
- * Method that removes items from said inventory and adds them to said order.
+ * method that removes items from said inventory and adds them to said order.
+ *
+ * 05/10 Modified the order handling by adding "activeOrder" to the class. Fixed the functions and tests.
+ * also added removeItemFromOrder method.
+ *
  *
  *@author Mona Kilsgård
  *@date 2018-10-04
@@ -23,6 +27,8 @@ public class Group implements GroupInterface{
    private int inviteCode;
    private List <Inventory> inventories = new ArrayList<>();
    private List <Order> orderList = new ArrayList<>();
+   private List <Order> oldOrders = new ArrayList<>();
+   private Order activeOrder;
    private String color;
    private String id;
 
@@ -111,7 +117,7 @@ public class Group implements GroupInterface{
     @Override
     public void createOrder (String ID){
         Order order = new Order(ID);
-        orderList.add(order);
+        activeOrder = order;
     }
 
     /**
@@ -159,22 +165,27 @@ public class Group implements GroupInterface{
     }
 
     /**
-     * Adds a item to an order and removes it from its inventory.
-     * @param itemID The ID of the item that should be moved.
-     * @param orderID The ID of the order that it should be moved to.
-     * @param inventoryID The ID of the inventory that the item should be moved from.
+     * Adds a item to an order and changes its state to "Rented".
+     * @param itemID The ID of the item that should be handled.
      *
      */
     @Override
-    public void addItemToOrder (String itemID, String orderID, String inventoryID){
-        Order order = findOrder(orderID);
-        Inventory inventory = findInventory(inventoryID);
+    public void addItemToOrder (String itemID){
         Item item = findItemByID(itemID);
-        order.addItem(item);
-        inventory.removeItem(item.getId());
+        activeOrder.addItem(item);
+        item.setIsRented(true);
     }
+
+    /**
+     * Removes an item from the active order and sets its state to not rented.
+     * @param itemID the ID of the item that should be handled.
+     */
     @Override
-    public void removeItemFromOrder(){}
+    public void removeItemFromOrder(String itemID){
+        Item item = findItemByID(itemID);
+        activeOrder.removeItem(itemID);
+        item.setIsRented(false);
+    }
 
     @Override
     public Inventory getSelectedInventory () {
@@ -188,5 +199,17 @@ public class Group implements GroupInterface{
     @Override
     public void selectInventory (String inventoryID) {
         selectedInventory = findInventory(inventoryID);
+    }
+    public void selectOrder (String orderID){
+        activeOrder = findOrder(orderID);
+    }
+    public void orderIsCompleted(){
+        orderList.add(activeOrder);
+    }
+    public Order getActiveOrder(){
+        return activeOrder;
+    }
+    public void orderIsReturned(String orderID){
+
     }
 }
