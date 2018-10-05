@@ -4,12 +4,16 @@ import Model.Group;
 import Model.Inventory;
 import Model.User;
 import Model.YellowHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     private List<Group> allGroups = new ArrayList<>();
     private List<Inventory> allInventories = new ArrayList<>();
@@ -20,7 +24,8 @@ public class Controller {
 
     }
 
-    private void initilize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 
@@ -133,5 +138,10 @@ public class Controller {
         return allUsers;
     }
 
+
+    @FXML
+    public void addGroup(){
+
+    }
 
 }

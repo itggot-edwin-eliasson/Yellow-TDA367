@@ -12,10 +12,9 @@ public class YellowHandler implements YellowHandlerInterface {
     public List<Group> groups = new ArrayList<>();
     public List<User> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
-    private Observable observable;
+
 
     public YellowHandler (){
-        observable = new Observable();
     }
 
     /**
@@ -27,7 +26,7 @@ public class YellowHandler implements YellowHandlerInterface {
         Group g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
         groups.add(g);
-        observable.notifyObserver();
+
     }
 
     public Map<String, List<String>> getGroupInfo(){
@@ -49,7 +48,7 @@ public class YellowHandler implements YellowHandlerInterface {
     public void createUser(String username, String name, String email){
         activeUser = new User(username, name, email, generateUniqueKeyUsingUUID());
         users.add(activeUser);
-        observable.notifyObserver();
+
     }
 
     @Override
@@ -57,7 +56,7 @@ public class YellowHandler implements YellowHandlerInterface {
         User u = new User(username);
         activeUser = u;
         users.add(u);
-        observable.notifyObserver();
+
     }
 
     @Override
@@ -75,7 +74,7 @@ public class YellowHandler implements YellowHandlerInterface {
     @Override
     public void joinGroup(String inviteCode){
         activeUser.addGroup(inviteCode);
-        observable.notifyObserver();
+
     }
 
     @Override

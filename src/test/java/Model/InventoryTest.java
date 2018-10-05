@@ -1,8 +1,5 @@
 package Model;
 
-import Model.Inventory;
-import Model.Item;
-import Model.Observable;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
