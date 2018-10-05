@@ -21,11 +21,7 @@ public class Controller implements Initializable {
     private List<Inventory> allInventories = new ArrayList<>();
     private YellowHandler yh = new YellowHandler(allUsers, allGroups);
 
-
-
-    public Controller (){
-
-    }
+    @FXML private SignUp signUp;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
