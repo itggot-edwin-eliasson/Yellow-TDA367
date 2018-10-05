@@ -8,13 +8,15 @@ public class User implements UserInterface {
     private String name;
     private String email;
     private String id;
+    private String password;
     private List<String> groupIds = new ArrayList<>();
 
-    public User (String username, String name, String email, String id){
+    public User (String username, String name, String email, String id, String password){
         this.username = username;
         this.name = name;
         this.email = email;
         this.id = id;
+        this.password = password;
     }
 
     public User (String username) {
@@ -58,6 +60,14 @@ public class User implements UserInterface {
     public String getId() {
         return id;
     }
+
+    public boolean comparePassword (String newPassword) {
+        if (newPassword.equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
 }
 
 

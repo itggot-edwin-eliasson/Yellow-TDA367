@@ -6,6 +6,7 @@ import Model.User;
 import Model.YellowHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 
 import java.io.*;
 import java.net.URL;
@@ -19,6 +20,8 @@ public class Controller implements Initializable {
     private List<Inventory> allInventories = new ArrayList<>();
     private List<User> allUsers = new ArrayList<>();
     private YellowHandler yh = new YellowHandler();
+
+
 
     public Controller (){
 
