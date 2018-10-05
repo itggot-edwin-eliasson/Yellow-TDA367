@@ -1,5 +1,4 @@
 package Model;
-import View.Observer;
 import java.util.ArrayList;
 
 /**

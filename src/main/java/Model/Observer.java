@@ -1,4 +1,4 @@
-package View;
+package Model;
 
 /**
  * @author Joakim Agnemyr

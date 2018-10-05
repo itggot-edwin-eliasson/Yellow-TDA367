@@ -26,6 +26,14 @@ public class User implements UserInterface {
         groupIds.add(groupId);
     }
 
+    public void removeGroup (String groupId) {
+        for (int i = 0 ; i < groupIds.size() ; i++) {
+            if (groupId.equals(groupIds.get(i))) {
+                groupIds.remove(i);
+            }
+        }
+    }
+
     @Override
     public List<String> getGroupIds(){
         return groupIds;

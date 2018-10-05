@@ -3,6 +3,7 @@ package Controller;
 import Model.Group;
 import Model.Inventory;
 import Model.User;
+import Model.YellowHandler;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Controller {
     private List<Group> allGroups = new ArrayList<>();
     private List<Inventory> allInventories = new ArrayList<>();
     private List<User> allUsers = new ArrayList<>();
+    private YellowHandler yh = new YellowHandler();
 
     public Controller (){
 

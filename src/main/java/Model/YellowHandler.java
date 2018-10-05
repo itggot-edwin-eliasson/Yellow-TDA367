@@ -8,6 +8,7 @@ import java.util.*;
 public class YellowHandler implements YellowHandlerInterface {
 
     private User activeUser;
+    private Group activegroup;
     public List<Group> groups = new ArrayList<>();
     public List<User> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
@@ -60,9 +61,26 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
     @Override
+    public void addItem (String name, String description, String inventoryId, int amount) {
+        String id = generateUniqueKeyUsingUUID();
+        activegroup.addItem(name, description, id, inventoryId, amount);
+    }
+
+    @Override
+    public void removeItem (String id) {
+        activegroup.removeItem(id);
+    }
+
+
+    @Override
     public void joinGroup(String inviteCode){
         activeUser.addGroup(inviteCode);
         observable.notifyObserver();
+    }
+
+    @Override
+    public void removeGroup (String id) {
+        activeUser.removeGroup(id);
     }
 
     /**
@@ -75,6 +93,7 @@ public class YellowHandler implements YellowHandlerInterface {
         String crunchifyUUID = UUID.randomUUID().toString();
         return crunchifyUUID;
     }
+
 
 
 }

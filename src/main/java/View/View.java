@@ -2,6 +2,7 @@ package View;
 
 import Controller.Controller;
 import Model.Observable;
+import Model.Observer;
 import Model.YellowHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

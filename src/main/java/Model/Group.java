@@ -53,6 +53,14 @@ public class Group implements GroupInterface{
         return inviteCode;
     }
 
+    public void addItem(String name, String description, String id, String inventoryId, int amount) {
+        selectedInventory.addItem(name, description, id, amount);
+    }
+
+    public void removeItem (String id) {
+        selectedInventory.removeItem(id);
+    }
+
     /**
      * Get the invite code
      * @return The invite code

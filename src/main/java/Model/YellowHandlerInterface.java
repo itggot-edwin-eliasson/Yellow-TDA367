@@ -18,6 +18,12 @@ public interface YellowHandlerInterface {
 
     public void joinGroup(String inviteCode);
 
+    public void removeGroup (String id);
+
+    public void addItem(String name, String description, String inventoryId, int amount);
+
+    public void removeItem(String id);
+
     /**
      * Generates a unique id
      * @return The unique id
