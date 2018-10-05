@@ -4,6 +4,11 @@ import java.util.*;
 /**
  * @author Mona Kilsgård
  * @date 2018.09-28
+ *
+ * ---
+ * 05/10 Modified by Joakim. Adds complexity and functionality to remove and add items.
+ * 05/10 Modified by Joakim. Login functionality added.
+ *
  */
 public class YellowHandler implements YellowHandlerInterface {
 
@@ -14,7 +19,9 @@ public class YellowHandler implements YellowHandlerInterface {
     private List<Integer> groupInviteCodes = new ArrayList<>();
 
 
-    public YellowHandler (){
+    public YellowHandler (List <User> users, List <Group> groups){
+        this.users = users;
+        this.groups = groups;
     }
 
     /**
@@ -43,21 +50,48 @@ public class YellowHandler implements YellowHandlerInterface {
     /**
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
+     * @param name The name of the user
+     * @param email The email of the user
+     * @param password The users password
      */
     @Override
-    public void createUser(String username, String name, String email){
-        activeUser = new User(username, name, email, generateUniqueKeyUsingUUID());
-        users.add(activeUser);
+    public User createUser(String username, String name, String email, String password){
+        for (int i = 0; i < users.size(); i++) {
+            if (username.equals(users.get(i).getUsername())) {
+                return null;
+                // ERROR MESSAGE
+            }
 
+        }
+        activeUser = new User(username, name, email, generateUniqueKeyUsingUUID(), password);
+        users.add(activeUser);
+        return activeUser;
     }
 
+    /**
+     * The user logs in, checks if username exists and if password matches user
+     * @param username
+     * @param password
+     */
+
     @Override
+    public void logIn (String username, String password) {
+        for (int i = 0; i < users.size(); i++) {
+            if (username.equals(users.get(i).getUsername())) {
+                if (password.equals(users.get(i).comparePassword(password))) {
+                    activeUser = users.get(i);
+                }
+            }
+        }
+    }
+
+    /*@Override
     public void createUser (String username) {
         User u = new User(username);
         activeUser = u;
         users.add(u);
 
-    }
+    }*/
 
     @Override
     public void addItem (String name, String description, String inventoryId, int amount) {

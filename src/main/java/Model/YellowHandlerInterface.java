@@ -12,9 +12,11 @@ public interface YellowHandlerInterface {
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
      */
-    public void createUser(String username, String name, String email);
+    public User createUser(String username, String name, String email, String password);
 
-    public void createUser (String username);
+    public void logIn (String username, String password);
+
+    //public User createUser (String username);
 
     public void joinGroup(String inviteCode);
 
