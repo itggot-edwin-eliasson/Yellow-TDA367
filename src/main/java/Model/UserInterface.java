@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface UserInterface {
+public interface UserInterface extends Serializable {
 
     public void addGroup(String groupId);
 

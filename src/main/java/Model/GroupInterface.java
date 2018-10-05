@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface GroupInterface {
+public interface GroupInterface extends Serializable {
 
     /**
      * Get the invite code

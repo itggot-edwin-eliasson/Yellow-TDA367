@@ -35,18 +35,18 @@ public class Controller {
             switch (whatToSeralize) {
                 case "groups":
                     fileOut =
-                            new FileOutputStream("tmp/allGroups.ser");
+                            new FileOutputStream("src/main/res/allGroups.ser");
                     break;
                 case "inventories":
                     fileOut =
-                            new FileOutputStream("tmp/allInventories.ser");
+                            new FileOutputStream("src/main/res/allInventories.ser");
                     break;
                 case "users":
                     fileOut =
-                            new FileOutputStream("tmp/allUsers.ser");
+                            new FileOutputStream("src/main/res/allUsers.ser");
                     break;
                 default:
-                    fileOut = new FileOutputStream("tmp/errorSave.ser");
+                    fileOut = new FileOutputStream("src/main/res/errorSave.ser");
                     break;
             }
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -78,18 +78,18 @@ public class Controller {
             switch (whatToDeseralize) {
                 case "groups":
                     fileIn =
-                            new FileInputStream("tmp/allGroups.ser");
+                            new FileInputStream("src/main/res/allGroups.ser");
                     break;
                 case "inventories":
                     fileIn =
-                            new FileInputStream("tmp/allInventories.ser");
+                            new FileInputStream("src/main/res/allInventories.ser");
                     break;
                 case "users":
                     fileIn =
-                            new FileInputStream("tmp/allUsers.ser");
+                            new FileInputStream("src/main/res/allUsers.ser");
                     break;
                 default:
-                    fileIn = new FileInputStream("tmp/errorSave.ser");
+                    fileIn = new FileInputStream("src/main/res/errorSave.ser");
                     break;
             }
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -112,6 +112,26 @@ public class Controller {
             c.printStackTrace();
             return;
         }
+
     }
+    public void saveGroup (Group group){
+        allGroups.add(group);
+    }
+    public void saveInventory (Inventory inventory){
+        allInventories.add(inventory);
+    }
+    public void saveUser (User user){
+        allUsers.add(user);
+    }
+    public List<Group> getAllGroups (){
+        return allGroups;
+    }
+    public List<Inventory> getAllInventories(){
+        return allInventories;
+    }
+    public List <User> getAllUsers (){
+        return allUsers;
+    }
+
 
 }
