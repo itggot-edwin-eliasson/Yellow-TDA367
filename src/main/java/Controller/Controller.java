@@ -17,9 +17,9 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     private List<Group> allGroups = new ArrayList<>();
-    private List<Inventory> allInventories = new ArrayList<>();
     private List<User> allUsers = new ArrayList<>();
-    private YellowHandler yh = new YellowHandler();
+    private List<Inventory> allInventories = new ArrayList<>();
+    private YellowHandler yh = new YellowHandler(allUsers, allGroups);
 
 
 
