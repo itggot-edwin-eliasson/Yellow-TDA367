@@ -9,19 +9,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="159.0" layoutY="120.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
                <children>
-                  <ScrollPane hbarPolicy="NEVER" layoutX="-12.0" layoutY="66.0" prefHeight="332.0" prefWidth="175.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
+                  <ScrollPane hbarPolicy="NEVER" layoutX="-12.0" layoutY="66.0" prefHeight="332.0" prefWidth="175.0" style="-fx-background-color: #1F1E18;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="330.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="330.0" prefWidth="200.0" style="-fx-background-color: #1F1E18;" />
                     </content>
                   </ScrollPane>
-                  <Label layoutX="14.0" layoutY="14.0" text="Groups" textAlignment="CENTER">
+                  <Label layoutX="14.0" layoutY="14.0" text="Groups" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -33,7 +32,10 @@
                   </Button>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
+               <children>
+                  <JFXHamburger layoutX="362.0" layoutY="22.0" />
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>
