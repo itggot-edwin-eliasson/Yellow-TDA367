@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ItemView"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="600.0" prefWidth="425.0" style="-fx-background-color: #1F1E18;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ItemView">
+   <children>
+      <Label layoutX="27.0" layoutY="150.0" text="Item Name" textFill="#fffbfb">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="306.0" layoutY="546.0" style="-fx-background-color: #FFE919;" text="Add to order" />
+      <JFXSlider layoutX="34.0" layoutY="300.0" prefHeight="14.0" prefWidth="358.0" />
+      <ImageView fitHeight="150.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../res/img/whiteitem.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="29.0" layoutY="271.0" text="Choose amount" textFill="WHITE" />
+      <Label layoutX="27.0" layoutY="184.0" text="Discription" textFill="WHITE" />
+      <Label layoutX="29.0" layoutY="335.0" text="Calendar" textFill="WHITE" />
+   </children>
 </AnchorPane>
