@@ -18,6 +18,12 @@ public class YellowHandler implements YellowHandlerInterface {
     public List<User> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
 
+    /**
+     * Creates a handler of the model
+     * @param users List of all users in the application
+     * @param groups List of all groups in the application
+     */
+
 
     public YellowHandler (List <User> users, List <Group> groups){
         this.users = users;
@@ -85,13 +91,13 @@ public class YellowHandler implements YellowHandlerInterface {
         }
     }
 
-    /*@Override
-    public void createUser (String username) {
-        User u = new User(username);
-        activeUser = u;
-        users.add(u);
-
-    }*/
+    /**
+     * Adds an item into an inventory
+     * @param name Name of item
+     * @param description Description of item
+     * @param inventoryId Id of inventory
+     * @param amount amount of items to add
+     */
 
     @Override
     public void addItem (String name, String description, String inventoryId, int amount) {
@@ -99,17 +105,31 @@ public class YellowHandler implements YellowHandlerInterface {
         activegroup.addItem(name, description, id, inventoryId, amount);
     }
 
+    /**
+     * Removes an item from inventory
+     * @param id id of the item to be removed
+     */
+
     @Override
     public void removeItem (String id) {
         activegroup.removeItem(id);
     }
 
+    /**
+     * Adds user to group
+     * @param inviteCode The invitecode the user gets
+     */
 
     @Override
     public void joinGroup(String inviteCode){
         activeUser.addGroup(inviteCode);
 
     }
+
+    /**
+     * Removes user from group
+     * @param id id of the group to be removed
+     */
 
     @Override
     public void removeGroup (String id) {

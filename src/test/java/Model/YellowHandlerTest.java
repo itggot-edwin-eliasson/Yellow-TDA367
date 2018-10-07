@@ -10,6 +10,33 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class YellowHandlerTest {
+    @Test
+    public void getGroupInfo() throws Exception {
+    }
+
+    @Test
+    public void logIn() throws Exception {
+    }
+
+    @Test
+    public void addItem() throws Exception {
+    }
+
+    @Test
+    public void removeItem() throws Exception {
+    }
+
+    @Test
+    public void joinGroup() throws Exception {
+    }
+
+    @Test
+    public void removeGroup() throws Exception {
+    }
+
+    @Test
+    public void generateUniqueKeyUsingUUID() throws Exception {
+    }
 
     @Test
     public void createGroup(){
