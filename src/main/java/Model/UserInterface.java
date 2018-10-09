@@ -16,4 +16,8 @@ public interface UserInterface extends Serializable {
     public void setEmail(String email);
 
     public String getId();
+
+    public boolean comparePassword(String password);
+
+    public void removeGroup(String id);
 }

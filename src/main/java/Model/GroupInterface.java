@@ -63,6 +63,16 @@ public interface GroupInterface extends Serializable {
      * @param inventoryID the ID of the inventory that is to be selected.
      */
     public void selectInventory (String inventoryID);
+
+    public String getName();
+
+    public String getColor();
+
+    public String getId();
+
+    public void addItem(String name, String description, String id, String inventoryId, int amount);
+
+    public void removeItem(String id);
 }
 
 

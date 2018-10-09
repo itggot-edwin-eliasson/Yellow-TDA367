@@ -15,11 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUp">
-=======
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
->>>>>>> adds login functionality and creating user functionality
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
    <children>
       <ImageView fitHeight="405.0" fitWidth="600.0" layoutX="-2.0" opacity="0.44" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -28,17 +24,17 @@
       </ImageView>
       <AnchorPane layoutX="24.0" layoutY="26.0" prefHeight="348.0" prefWidth="283.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-background-radius: 8;" AnchorPane.leftAnchor="24.0">
          <children>
-            <JFXTextField layoutX="35.0" layoutY="157.0" promptText="Email" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXTextField layoutX="33.0" layoutY="202.0" promptText="Username" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffdfd" />
-            <JFXTextField layoutX="35.0" layoutY="110.0" promptText="Last name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#f8f6f6" />
-            <JFXTextField layoutX="33.0" layoutY="248.0" promptText="Password" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXTextField focusColor="#465a94" layoutX="35.0" layoutY="65.0" promptText="First name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffbfb" />
+            <JFXTextField fx:id="newFirstNameField" focusColor="#465a94" layoutX="35.0" layoutY="65.0" promptText="First name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffbfb" />
+            <JFXTextField fx:id="newLastNameField" layoutX="35.0" layoutY="110.0" promptText="Last name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#f8f6f6" />
+            <JFXTextField fx:id="newEmailTextField" layoutX="35.0" layoutY="157.0" promptText="Email" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="newUsernameField" layoutX="33.0" layoutY="202.0" promptText="Username" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffdfd" />
+            <JFXTextField fx:id="newPasswordField" layoutX="33.0" layoutY="248.0" promptText="Password" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
             <Label layoutX="37.0" layoutY="20.0" text="Sign Up" textFill="#f5f0f0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton layoutX="142.0" layoutY="309.0" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #FFE919;" text="Sign Up" />
+            <JFXButton layoutX="142.0" layoutY="309.0" onAction="#signUp" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #FFE919;" text="Sign Up" />
          </children>
       </AnchorPane>
       <Button layoutX="546.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);" AnchorPane.rightAnchor="14.0">

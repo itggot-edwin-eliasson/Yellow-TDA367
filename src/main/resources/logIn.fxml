@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,15 +19,13 @@
       </ImageView>
       <AnchorPane layoutX="316.0" layoutY="61.0" prefHeight="278.0" prefWidth="243.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-background-radius: 8;">
          <children>
-<<<<<<< HEAD
             <JFXTextField focusColor="#f5fc2a" layoutX="28.0" layoutY="74.0" prefHeight="25.0" prefWidth="188.0" promptText="username" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffdfd" />
             <JFXPasswordField focusColor="#2bd044" layoutX="28.0" layoutY="138.0" prefHeight="25.0" prefWidth="188.0" promptText="password" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fff7f7" />
             <JFXButton layoutX="46.0" layoutY="207.0" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FFE919;" text="Sign In" />
-=======
+
             <JFXTextField fx:id="usernameField" focusColor="#f5fc2a" layoutX="28.0" layoutY="74.0" prefHeight="25.0" prefWidth="188.0" promptText="username" unFocusColor="#fffdfd" />
             <JFXPasswordField fx:id="passwordField" focusColor="#2bd044" layoutX="28.0" layoutY="138.0" prefHeight="25.0" prefWidth="188.0" promptText="password" unFocusColor="#fff7f7" />
             <JFXButton layoutX="46.0" layoutY="207.0" onAction="#login" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FFE919;" text="Sign In" />
->>>>>>> adds login functionality and creating user functionality
             <Label layoutX="95.0" layoutY="31.0" text="Sign In" textFill="WHITE">
                <font>
                   <Font size="18.0" />
@@ -40,6 +38,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <JFXButton layoutX="87.0" layoutY="200.0" onAction="#goToSignUp" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FFE919;" text="Sign up" />
+      <JFXButton layoutX="87.0" layoutY="200.0" onAction="#toSignupScreen" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FFE919;" text="Sign up" />
    </children>
 </AnchorPane>

@@ -12,10 +12,10 @@ import java.util.*;
  */
 public class YellowHandler implements YellowHandlerInterface {
 
-    private User activeUser;
-    private Group activegroup;
-    public List<Group> groups = new ArrayList<>();
-    public List<User> users = new ArrayList<>();
+    private UserInterface activeUser;
+    private GroupInterface activegroup;
+    public List<GroupInterface> groups = new ArrayList<>();
+    public List<UserInterface> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
 
     /**
@@ -25,7 +25,7 @@ public class YellowHandler implements YellowHandlerInterface {
      */
 
 
-    public YellowHandler (List <User> users, List <Group> groups){
+    public YellowHandler (List <UserInterface> users, List <GroupInterface> groups){
         this.users = users;
         this.groups = groups;
     }
@@ -36,7 +36,7 @@ public class YellowHandler implements YellowHandlerInterface {
      */
     @Override
     public void createGroup(String groupName, String color){
-        Group g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
+        GroupInterface g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
         groups.add(g);
 
@@ -61,7 +61,7 @@ public class YellowHandler implements YellowHandlerInterface {
      * @param password The users password
      */
     @Override
-    public User createUser(String username, String name, String email, String password){
+    public UserInterface createUser(String username, String name, String email, String password){
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
                 return null;

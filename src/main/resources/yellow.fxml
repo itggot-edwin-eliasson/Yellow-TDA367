@@ -15,20 +15,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
-    <children>
-        <AnchorPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-=======
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
     <children>
-        <AnchorPane fx:id="signUp" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
->>>>>>> adds login functionality and creating user functionality
-           <children>
-               <fx:include source="signUp.fxml" />
-           </children>
-        </AnchorPane>
-      <SplitPane dividerPositions="0.29797979797979796" layoutX="159.0" layoutY="120.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <fx:include fx:id="signUp" source="signUp.fxml" />
+      <SplitPane fx:id="mainWindow" dividerPositions="0.29797979797979796" layoutX="159.0" layoutY="120.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
                <children>
@@ -56,10 +46,6 @@
                </children></AnchorPane>
         </items>
       </SplitPane>
-        <AnchorPane fx:id="login" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-           <children>
-               <fx:include source="logIn.fxml" />
-           </children>
-        </AnchorPane>
+       <fx:include fx:id="login" source="logIn.fxml" />
    </children>
 </AnchorPane>

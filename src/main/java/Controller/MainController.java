@@ -1,25 +1,20 @@
 package Controller;
 
-import Model.Group;
-import Model.Inventory;
-import Model.User;
-import Model.YellowHandler;
-<<<<<<< HEAD:src/main/java/Controller/Controller.java
+import Model.*;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-=======
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
->>>>>>> adds login functionality and creating user functionality:src/main/java/Controller/MainController.java
 
 import javax.xml.soap.Text;
 import java.io.*;
@@ -39,22 +34,14 @@ import java.util.ResourceBundle;
  */
 public class MainController implements Initializable {
 
-    private List<Group> allGroups = new ArrayList<>();
-    private List<User> allUsers = new ArrayList<>();
+    private List<GroupInterface> allGroups = new ArrayList<>();
+    private List<UserInterface> allUsers = new ArrayList<>();
     private List<Inventory> allInventories = new ArrayList<>();
     private YellowHandler yh = new YellowHandler(allUsers, allGroups);
 
-   @FXML JFXTextField usernameField;
-   @FXML JFXPasswordField passwordField;
-   @FXML JFXTextField newUsernameField;
-   @FXML JFXTextField newPasswordField;
-   @FXML JFXTextField newFirstNameField;
-   @FXML JFXTextField newLastNameField;
-   @FXML JFXTextField newEmailTextField;
 
-   @FXML AnchorPane signUp;
-   @FXML AnchorPane login;
-
+    @FXML private SignUpController signUpController;
+    @FXML private LoginController loginController;
 
     @FXML
     private JFXDrawer drawer;
@@ -62,53 +49,41 @@ public class MainController implements Initializable {
     @FXML
     private JFXHamburger hamburger;
 
+    @FXML AnchorPane signUp;
+    @FXML AnchorPane login;
+    @FXML SplitPane mainWindow;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-<<<<<<< HEAD:src/main/java/Controller/Controller.java
         hamburgerSetup();
-=======
-        if(login!=null){
-            login.toFront();
 
-        }
+        signUpController.injectMainController(this);
+        loginController.injectMainController(this);
 
     }
-    @FXML
-    public void login () {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
 
-        yh.logIn(username, password);
-
-        System.out.println("hej");
-
-        // SHOW NEXT SCREEN
+    public void login(String username, String password)  {
+                   yh.logIn(username, password);
     }
 
-    @FXML
+
+
     public void goToSignUp () {
 
         signUp.toFront();
 
->>>>>>> adds login functionality and creating user functionality:src/main/java/Controller/MainController.java
     }
 
-    public void signUp () {
-        String username = newUsernameField.getText();
-        String firstName = newFirstNameField.getText();
-        String lastName = newLastNameField.getText();
-
-        String name = firstName + " " + lastName;
-
-        String password = newPasswordField.getText();
-        String email = newEmailTextField.getText();
-
-        User user = yh.createUser(username, name, email, password );
-
-        saveUser(user);
-
-        //SHOW NEXT SCREEN
+    public void goToMainWindow () {
+        mainWindow.toFront();
     }
+
+   public void createUser (String username, String name, String email, String password) {
+       UserInterface user = yh.createUser(username, name, email, password);
+       saveUser(user);
+
+   }
 
 
 
@@ -185,13 +160,13 @@ public class MainController implements Initializable {
             }
             ObjectInputStream in = new ObjectInputStream(fileIn);
             if(whatToDeseralize.equals("groups")) {
-                allGroups = (List<Group>) in.readObject();
+                allGroups = (List<GroupInterface>) in.readObject();
             }
             if(whatToDeseralize.equals("inventories")){
                 allInventories = (List<Inventory>) in.readObject();
             }
             if(whatToDeseralize.equals("users")){
-                allUsers = (List<User>) in.readObject();
+                allUsers = (List<UserInterface>) in.readObject();
             }
             in.close();
             fileIn.close();
@@ -227,16 +202,16 @@ public class MainController implements Initializable {
     public void saveInventory (Inventory inventory){
         allInventories.add(inventory);
     }
-    public void saveUser (User user){
+    public void saveUser (UserInterface user){
         allUsers.add(user);
     }
-    public List<Group> getAllGroups (){
+    public List<GroupInterface> getAllGroups (){
         return allGroups;
     }
     public List<Inventory> getAllInventories(){
         return allInventories;
     }
-    public List <User> getAllUsers (){
+    public List <UserInterface> getAllUsers (){
         return allUsers;
     }
 
