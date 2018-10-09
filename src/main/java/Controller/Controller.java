@@ -4,9 +4,13 @@ import Model.Group;
 import Model.Inventory;
 import Model.User;
 import Model.YellowHandler;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.io.*;
 import java.net.URL;
@@ -32,9 +36,15 @@ public class Controller implements Initializable {
 
     @FXML private SignUp signUp;
 
+    @FXML
+    private JFXDrawer drawer;
+
+    @FXML
+    private JFXHamburger hamburger;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        hamburgerSetup();
     }
 
     /**
@@ -127,6 +137,22 @@ public class Controller implements Initializable {
         }
 
     }
+
+    public void hamburgerSetup(){
+        HamburgerBasicCloseTransition hamTask = new HamburgerBasicCloseTransition(hamburger);
+        hamTask.setRate(-1);
+        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+            hamTask.setRate(hamTask.getRate() * -1);
+            hamTask.play();
+
+            if(drawer.isOpened()){
+                drawer.close();
+            }else{
+                drawer.open();
+            }
+        });
+    }
+
     public void saveGroup (Group group){
         allGroups.add(group);
     }
