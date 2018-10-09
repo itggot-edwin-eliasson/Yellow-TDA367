@@ -168,12 +168,12 @@ public class Group implements GroupInterface{
 
     /**
      * Adds a item to an order and changes its state to "Rented".
-     * @param itemID The ID of the item that should be handled.
+     * @param itemId The ID of the item that should be handled.
      *
      */
     @Override
-    public void addItemToOrder (String itemID){
-        Item item = findItemByID(itemID);
+    public void addItemToOrder (int amount, String itemId){
+        Item item = findItemByID(itemId);
         activeOrder.addItem(item);
     }
 

@@ -51,7 +51,7 @@ public interface GroupInterface extends Serializable {
      *
      *
      */
-    public void addItemToOrder (String itemID);
+    public void addItemToOrder (int amount, String itemID);
 
     public void removeItemFromOrder(String itemID);
 

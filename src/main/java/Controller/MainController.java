@@ -20,9 +20,8 @@ import javafx.scene.layout.AnchorPane;
 import javax.xml.soap.Text;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+
 /**
  * @date 2018-10-02
  * ---
@@ -38,7 +37,9 @@ public class MainController implements Initializable {
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
     private List<Inventory> allInventories = new ArrayList<>();
-    private YellowHandler yh = new YellowHandler(allUsers, allGroups);
+    private YellowHandler yh;
+
+    private Map<String, GroupItemController> groupItemControllerMap = new HashMap<>();
 
 
     @FXML private SignUpController signUpController;
@@ -61,11 +62,18 @@ public class MainController implements Initializable {
 
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
+        seralize("");
+        this.yh = new YellowHandler(allUsers, allGroups);
+
 
     }
 
     public void login(String username, String password)  {
                    yh.logIn(username, password);
+    }
+
+    public void addToOrder (int amount, String itemId) {
+        yh.addItemToOrder(amount, itemId);
     }
 
 
@@ -128,7 +136,7 @@ public class MainController implements Initializable {
             }
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /tmp/whatToSeralise.ser");
+            System.out.printf("Serialized data is saved in /tmp/"+ whatToSeralize + ".ser");
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -222,31 +230,15 @@ public class MainController implements Initializable {
         String name = "";
         String email = "";
         String password = "";
-        User user = yh.createUser(username,name,email,password);
+        UserInterface user = yh.createUser(username,name,email,password);
         if (user == null){
             //errormessage popup
         }
-    }
-    @FXML
-    public void addItemToOrder (){
-        String itemID = ""; //this should get the itemID of the item in the list.
-        yh.addItemToOrder(itemID);
-    }
-    @FXML
-    public void completeOrder (){
-        yh.completeOrder ();
     }
 
     @FXML
     public void addGroup(){
 
-    }
-    @FXML
-    public void goToInventory(){
-        yh.updateInventory();
-        yh.selectInventory("ID");//ID will come from the gui
-
-        //inventorypane.tofront
     }
 
 }

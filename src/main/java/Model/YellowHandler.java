@@ -147,22 +147,25 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
 
-    public void addItemToOrder(String itemID) {
-         if(activegroup.getActiveOrder() == null){
-             activegroup.createOrder(generateUniqueKeyUsingUUID());
-         }
-         activegroup.addItemToOrder(itemID);
-    }
+    /*public void addItemToOrder(int amount, String itemID) {
+         activegroup.createOrder(generateUniqueKeyUsingUUID());
+         activegroup.addItemToOrder(amount, itemID);
+    }*/
 
-    public void completeOrder() {
+    /*public void completeOrder() {
          activegroup.orderIsCompleted();
-    }
+    }*/
 
-    public void updateInventory() {
+    /*public void updateInventory() {
         activegroup.updateInventory();
-    }
+    }*/
 
     public void selectInventory(String id) {
-         activegroup.selectInventory(id);
+        activegroup.selectInventory(id);
+    }
+
+    public void addItemToOrder(int amount, String itemId) {
+         activegroup.addItemToOrder(amount, itemId);
+         
     }
 }
