@@ -67,7 +67,6 @@ public class YellowHandler implements YellowHandlerInterface {
                 return null;
                 // ERROR MESSAGE
             }
-
         }
         activeUser = new User(username, name, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
@@ -148,5 +147,7 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
 
-
+    public void addItemToOrder(Item item) {
+         
+    }
 }
