@@ -1,4 +1,4 @@
-import Controller.Controller;
+import Controller.MainController;
 import Model.Group;
 import Model.Inventory;
 import Model.User;
@@ -12,7 +12,7 @@ import static junit.framework.TestCase.assertEquals;
 public class ControllerTest {
     @Test
     public void saveAndFetchTestUsers(){
-        Controller c = new Controller();
+        MainController c = new MainController();
         User user = new User ("test","hej","hej","ID", "password");
         User user2 = new User ("test2","hej","hej","ID2", "password");
         User user3 = new User ("test3","hej","hej","ID3", "password");
@@ -27,7 +27,7 @@ public class ControllerTest {
     }
     @Test
     public void saveAndFetchTestGroups(){
-        Controller c = new Controller();
+        MainController c = new MainController();
         List<Integer> tmp = new ArrayList();
         Group group = new Group ("test","red","ID",tmp);
         Group group2 = new Group ("test1","red","ID",tmp);
@@ -43,7 +43,7 @@ public class ControllerTest {
     }
     @Test
     public void saveAndFetchTestInventories(){
-        Controller c = new Controller();
+        MainController c = new MainController();
         Inventory inventory = new Inventory("test","ID");
         Inventory inventory1 = new Inventory("test2","ID");
         Inventory inventory2 = new Inventory("test3", "ID");

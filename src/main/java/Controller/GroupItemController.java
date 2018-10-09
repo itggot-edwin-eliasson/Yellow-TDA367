@@ -7,15 +7,15 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class GroupItem extends AnchorPane {
+public class GroupItemController extends AnchorPane {
 
     String name;
-    Controller parentController;
+    MainController parentController;
 
     @FXML private Label groupName;
     @FXML private AnchorPane background;
 
-    public GroupItem(String name, String color, Controller controller) {
+    public GroupItemController(String name, String color, MainController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("groupItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

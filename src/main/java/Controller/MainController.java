@@ -4,6 +4,7 @@ import Model.Group;
 import Model.Inventory;
 import Model.User;
 import Model.YellowHandler;
+<<<<<<< HEAD:src/main/java/Controller/Controller.java
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
@@ -11,7 +12,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+=======
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+>>>>>>> adds login functionality and creating user functionality:src/main/java/Controller/MainController.java
 
+import javax.xml.soap.Text;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,14 +37,24 @@ import java.util.ResourceBundle;
  *@date 2018-10-04
  *
  */
-public class Controller implements Initializable {
+public class MainController implements Initializable {
 
     private List<Group> allGroups = new ArrayList<>();
     private List<User> allUsers = new ArrayList<>();
     private List<Inventory> allInventories = new ArrayList<>();
     private YellowHandler yh = new YellowHandler(allUsers, allGroups);
 
-    @FXML private SignUp signUp;
+   @FXML JFXTextField usernameField;
+   @FXML JFXPasswordField passwordField;
+   @FXML JFXTextField newUsernameField;
+   @FXML JFXTextField newPasswordField;
+   @FXML JFXTextField newFirstNameField;
+   @FXML JFXTextField newLastNameField;
+   @FXML JFXTextField newEmailTextField;
+
+   @FXML AnchorPane signUp;
+   @FXML AnchorPane login;
+
 
     @FXML
     private JFXDrawer drawer;
@@ -44,8 +64,56 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+<<<<<<< HEAD:src/main/java/Controller/Controller.java
         hamburgerSetup();
+=======
+        if(login!=null){
+            login.toFront();
+
+        }
+
     }
+    @FXML
+    public void login () {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        yh.logIn(username, password);
+
+        System.out.println("hej");
+
+        // SHOW NEXT SCREEN
+    }
+
+    @FXML
+    public void goToSignUp () {
+
+        signUp.toFront();
+
+>>>>>>> adds login functionality and creating user functionality:src/main/java/Controller/MainController.java
+    }
+
+    public void signUp () {
+        String username = newUsernameField.getText();
+        String firstName = newFirstNameField.getText();
+        String lastName = newLastNameField.getText();
+
+        String name = firstName + " " + lastName;
+
+        String password = newPasswordField.getText();
+        String email = newEmailTextField.getText();
+
+        User user = yh.createUser(username, name, email, password );
+
+        saveUser(user);
+
+        //SHOW NEXT SCREEN
+    }
+
+
+
+
+
 
     /**
      * Saves the lists allGroups, allInventories or allUsers to three different .ser files. What files that
