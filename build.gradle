@@ -2,7 +2,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-sourceCompatibility = 9
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -14,6 +14,6 @@ dependencies {
     compile group: 'com.jfoenix', name: 'jfoenix', version: '8.0.7'
     compile 'eu.hansolo:Medusa:8.0'
     
-    compile 'com.jfoenix:jfoenix:9.0.6'
+    compile 'com.jfoenix:jfoenix:8.0.7'
 
 }
