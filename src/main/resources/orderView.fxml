@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="424.0" style="-fx-background-color: #1F1E18;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderView">
+   <children>
+      <JFXButton layoutX="6.0" layoutY="5.0" prefHeight="55.0" prefWidth="142.0" style="-fx-background-color: rgba(0, 0, 0, 0.50); -fx-border-color: #ffcc00; -fx-border-width: 2px; -fx-border-style: solid none solid none;" text="Active order" textFill="#f8f8f8" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <JFXButton layoutX="141.0" layoutY="5.0" prefHeight="55.0" prefWidth="142.0" style="-fx-background-color: rgba(0, 0, 0, 0.50); -fx-border-color: #ffcc00; -fx-border-width: 2px; -fx-border-style: solid solid solid;" text="Ongoing orders" textFill="WHITE" AnchorPane.topAnchor="0.0" />
+      <JFXButton layoutX="283.0" prefHeight="55.0" prefWidth="142.0" style="-fx-background-color: rgba(0, 0, 0, 0.50); -fx-border-color: #ffcc00; -fx-border-style: solid none solid none; -fx-border-width: 2px;" text="Old orders" textFill="WHITE" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

@@ -6,3 +6,7 @@
     -fx-background-color: white;
     -fx-background-radius: 10;
 }
+
+.jfx-slider > .colored-track {
+    -fx-background-color: #ffcc00;
+}

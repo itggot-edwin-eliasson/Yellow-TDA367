@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="425.0" style="-fx-background-color: #1F1E18;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ItemView">
+<AnchorPane prefHeight="600.0" prefWidth="425.0" style="-fx-background-color: #1F1E18;" styleClass="yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ItemView">
    <children>
       <Label layoutX="27.0" layoutY="150.0" text="Item Name" textFill="#fffbfb">
          <font>
