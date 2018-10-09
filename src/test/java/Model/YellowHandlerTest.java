@@ -40,8 +40,8 @@ public class YellowHandlerTest {
 
     @Test
     public void createGroup(){
-        List<Group> allGroups = new ArrayList<>();
-        List<User> allUsers = new ArrayList<>();
+        List<GroupInterface> allGroups = new ArrayList<>();
+        List<UserInterface> allUsers = new ArrayList<>();
         YellowHandler yh = new YellowHandler(allUsers, allGroups);
         yh.createGroup("test", "red");
         assertTrue(yh.groups.size() == 1 || yh.users.size() == 1);
@@ -49,8 +49,8 @@ public class YellowHandlerTest {
 
     @Test
     public void createUser(){
-         List<Group> allGroups = new ArrayList<>();
-         List<User> allUsers = new ArrayList<>();
+         List<GroupInterface> allGroups = new ArrayList<>();
+         List<UserInterface> allUsers = new ArrayList<>();
         YellowHandler yh = new YellowHandler(allUsers, allGroups);
         yh.createUser("Moki","hej","hej", "hej");
         assertEquals(1, yh.users.size());

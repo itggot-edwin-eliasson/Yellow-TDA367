@@ -58,7 +58,7 @@ public class ControllerTest {
     }
     @Test
     public void DeserializeNothingTest(){
-        Controller c = new Controller();
+        MainController c = new MainController();
         c.deseralize("inventories");
         c.seralize("inventories");
 

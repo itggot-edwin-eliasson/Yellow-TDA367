@@ -68,7 +68,7 @@ public class GroupTest {
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
-        g.addItemToOrder("itemID123");
+        g.addItemToOrder(1,"itemID123");
         g.orderIsCompleted();
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
     }
@@ -80,7 +80,7 @@ public class GroupTest {
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
-        g.addItemToOrder("itemID123");
+        g.addItemToOrder(1,"itemID123");
         g.orderIsCompleted();
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
         g.selectOrder("orderID");
@@ -95,7 +95,7 @@ public class GroupTest {
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
-        g.addItemToOrder("itemID123");
+        g.addItemToOrder(1,"itemID123");
         g.orderIsCompleted();
         assertEquals(1,g.getOrderList().size());
         g.orderIsReturned("orderID");

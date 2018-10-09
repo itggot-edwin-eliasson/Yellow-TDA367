@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +53,8 @@ public class MainController implements Initializable {
     @FXML AnchorPane signUp;
     @FXML AnchorPane login;
     @FXML SplitPane mainWindow;
+
+    @FXML Button addGroupButton;
 
 
     @Override
@@ -111,7 +114,7 @@ public class MainController implements Initializable {
      * will get saved is based on the @param.
      * @param whatToSeralize should be groups, inventories or users, based on what is to be saved.
      */
-    private void seralize(String whatToSeralize){
+    public void seralize(String whatToSeralize){
         try {
             FileOutputStream fileOut;
             switch (whatToSeralize) {
@@ -154,7 +157,7 @@ public class MainController implements Initializable {
      *
      * @param whatToDeseralize should be groups, inventories or users depending on what is to be fetched.
      */
-    private void deseralize(String whatToDeseralize){
+    public void deseralize(String whatToDeseralize){
         try {
             FileInputStream fileIn;
             switch (whatToDeseralize) {
