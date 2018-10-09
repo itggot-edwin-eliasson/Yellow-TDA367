@@ -157,4 +157,12 @@ public class YellowHandler implements YellowHandlerInterface {
     public void completeOrder() {
          activegroup.orderIsCompleted();
     }
+
+    public void updateInventory() {
+        activegroup.updateInventory();
+    }
+
+    public void selectInventory(String id) {
+         activegroup.selectInventory(id);
+    }
 }

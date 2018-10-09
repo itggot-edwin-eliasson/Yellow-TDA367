@@ -2,7 +2,9 @@ package Model;
 
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -221,4 +223,16 @@ public class Group implements GroupInterface{
     }
     public List getOldOrders(){return oldOrders;}
     public List getOrderList(){return orderList;}
+
+    public void updateInventory() {
+        for (Item item: selectedInventory.getItemList()){
+            item.setIsRented(item.checkDateIsNotInRentedPeriod(getCurrentTimeStamp()));
+        }
+    }
+    private static String getCurrentTimeStamp() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        return strDate;
+    }
 }

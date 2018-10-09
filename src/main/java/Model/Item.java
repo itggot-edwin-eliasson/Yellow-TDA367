@@ -24,8 +24,8 @@ public class Item implements ItemInterface{
     private String id;
     private List<String> categories = new ArrayList<>();
     private Map<String , String> rentedDates = new HashMap<>();
-    private List<? extends Map<String, String>> rentedDatesList = new ArrayList<>();
     private int orderCount = 0;
+    private Boolean isRented = false;
 
     /**
      *
@@ -107,5 +107,12 @@ public class Item implements ItemInterface{
     @Override
     public void addCategory(String category){
         categories.add(category);
+    }
+
+    public void setIsRented(Boolean isRented) {
+        this.isRented = isRented;
+    }
+    public Boolean getIsRented(){
+        return isRented;
     }
 }

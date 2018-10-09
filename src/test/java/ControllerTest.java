@@ -56,5 +56,11 @@ public class ControllerTest {
         assertEquals(2,c.getAllInventories().size());
         assertEquals("test", c.getAllInventories().get(0).getName());
     }
+    @Test
+    public void DeserializeNothingTest(){
+        Controller c = new Controller();
+        c.deseralize("inventories");
+        c.seralize("inventories");
 
+    }
 }

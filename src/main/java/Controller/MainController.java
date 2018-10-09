@@ -172,7 +172,7 @@ public class MainController implements Initializable {
             in.close();
             fileIn.close();
         } catch (IOException i) {
-            i.printStackTrace();
+            seralize(whatToDeseralize);
             return;
         } catch (ClassNotFoundException c) {
             System.out.println("Class not found");
@@ -237,10 +237,16 @@ public class MainController implements Initializable {
         yh.completeOrder ();
     }
 
-
     @FXML
     public void addGroup(){
 
+    }
+    @FXML
+    public void goToInventory(){
+        yh.updateInventory();
+        yh.selectInventory("ID");//ID will come from the gui
+
+        //inventorypane.tofront
     }
 
 }
