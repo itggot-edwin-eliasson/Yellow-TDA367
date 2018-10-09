@@ -47,8 +47,7 @@
 }
 
 .scrollview  .scroll-bar .increment-arrow,
-.scrollview  .scroll-bar .decrement-arrow,
- {
+.scrollview  .scroll-bar .decrement-arrow{
 	-fx-shape: " ";
 	-fx-padding:0;
 }
@@ -92,8 +91,7 @@
 }
 
 .scrollview  .scroll-bar .increment-arrow,
-.scrollview  .scroll-bar .decrement-arrow,
- {
+.scrollview  .scroll-bar .decrement-arrow{
 	-fx-shape: " ";
 	-fx-padding:0;
 }
