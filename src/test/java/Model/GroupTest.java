@@ -69,7 +69,6 @@ public class GroupTest {
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
         g.addItemToOrder("itemID123");
-        assertEquals(true,g.getSelectedInventory().getItemList().get(0).getIsrented());
         g.orderIsCompleted();
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
     }
@@ -82,11 +81,26 @@ public class GroupTest {
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
         g.addItemToOrder("itemID123");
-        assertEquals(true,g.getSelectedInventory().getItemList().get(0).getIsrented());
         g.orderIsCompleted();
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
         g.selectOrder("orderID");
         g.removeItemFromOrder("itemID123");
         assertEquals(0,g.getActiveOrder().getOrderList().size());
     }
+    @Test
+    public void removeOrderTest(){
+        List<Integer> l = new ArrayList<>();
+        Group g = new Group("test","red","ID",l);
+        g.createInventory("inventory", "ID123");
+        g.selectInventory("ID123");
+        g.getSelectedInventory().addItem("boll","en boll", "itemID123");
+        g.createOrder("orderID");
+        g.addItemToOrder("itemID123");
+        g.orderIsCompleted();
+        assertEquals(1,g.getOrderList().size());
+        g.orderIsReturned("orderID");
+        assertEquals(0,g.getOrderList().size());
+        assertEquals(1,g.getOldOrders().size());
+    }
+
 }

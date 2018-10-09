@@ -173,7 +173,6 @@ public class Group implements GroupInterface{
     public void addItemToOrder (String itemID){
         Item item = findItemByID(itemID);
         activeOrder.addItem(item);
-        item.setIsRented(true);
     }
 
     /**
@@ -182,9 +181,7 @@ public class Group implements GroupInterface{
      */
     @Override
     public void removeItemFromOrder(String itemID){
-        Item item = findItemByID(itemID);
         activeOrder.removeItem(itemID);
-        item.setIsRented(false);
     }
 
     @Override
@@ -209,7 +206,19 @@ public class Group implements GroupInterface{
     public Order getActiveOrder(){
         return activeOrder;
     }
-    public void orderIsReturned(String orderID){
 
+    /**
+     * returns the order and moves it from the order list to the old order list.
+     * @param orderID ID of the order that is returned.
+     */
+    public void orderIsReturned(String orderID){
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).getOrderID().equals(orderID)){
+                oldOrders.add(orderList.get(i));
+                orderList.remove(i);
+            }
+        }
     }
+    public List getOldOrders(){return oldOrders;}
+    public List getOrderList(){return orderList;}
 }

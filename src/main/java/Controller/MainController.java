@@ -216,6 +216,27 @@ public class MainController implements Initializable {
         return allUsers;
     }
 
+    @FXML
+    public void signUp(){
+        String username = ""; // this should be textfield.gettext from the GUI
+        String name = "";
+        String email = "";
+        String password = "";
+        User user = yh.createUser(username,name,email,password);
+        if (user == null){
+            //errormessage popup
+        }
+    }
+    @FXML
+    public void addItemToOrder (){
+        String itemID = ""; //this should get the itemID of the item in the list.
+        yh.addItemToOrder(itemID);
+    }
+    @FXML
+    public void completeOrder (){
+        yh.completeOrder ();
+    }
+
 
     @FXML
     public void addGroup(){
