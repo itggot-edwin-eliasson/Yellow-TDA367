@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root prefHeight="65.0" prefWidth="200" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="55.0" prefWidth="200" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 5;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label fx:id="inventoryName" layoutX="14.0" layoutY="19.0" text="Inventory Name">
+        <Label fx:id="inventoryName" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="146.0" text="Inventory Name" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font>

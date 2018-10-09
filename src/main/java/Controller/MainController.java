@@ -3,6 +3,7 @@ package Controller;
 import Model.*;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
