@@ -21,7 +21,7 @@
       <JFXSlider layoutX="34.0" layoutY="300.0" prefHeight="14.0" prefWidth="358.0" />
       <ImageView fitHeight="150.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../res/img/whiteitem.png" />
+            <Image url="@img/whiteitem.png" />
          </image>
       </ImageView>
       <Label layoutX="29.0" layoutY="271.0" text="Choose amount" textFill="WHITE" />

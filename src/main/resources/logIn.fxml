@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../res/img/logIn.jpeg" />
+            <Image url="@img/logIn.jpeg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="316.0" layoutY="61.0" prefHeight="278.0" prefWidth="243.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-background-radius: 8;">

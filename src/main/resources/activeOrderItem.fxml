@@ -21,7 +21,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../res/img/whiteExit.png" />
+                  <Image url="@img/whiteExit.png" />
                </image>
             </ImageView>
          </graphic>
