@@ -45,11 +45,9 @@ public class MainController implements Initializable {
     @FXML private SignUpController signUpController;
     @FXML private LoginController loginController;
 
-    @FXML
-    private JFXDrawer drawer;
+    @FXML private JFXDrawer drawer;
 
-    @FXML
-    private JFXHamburger hamburger;
+    @FXML private JFXHamburger hamburger;
 
     @FXML AnchorPane signUp;
     @FXML AnchorPane login;
@@ -59,44 +57,53 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hamburgerSetup();
-
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
         seralize("");
+
         this.yh = new YellowHandler(allUsers, allGroups);
-
-
     }
 
-    public void login(String username, String password)  {
-                   yh.logIn(username, password);
+     public void login(String username, String password)  { yh.logIn(username, password); }
+
+    public void createUser (String username, String name, String email, String password) {
+        UserInterface user = yh.createUser(username, name, email, password);
+        saveUser(user);
     }
 
     public void addToOrder (int amount, String itemId) {
         yh.addItemToOrder(amount, itemId);
     }
 
+    public void addGroup(){ }
 
-
-    public void goToSignUp () {
-
-        signUp.toFront();
-
-    }
+    public void goToSignUp () { signUp.toFront(); }
 
     public void goToMainWindow () {
         mainWindow.toFront();
     }
 
-   public void createUser (String username, String name, String email, String password) {
-       UserInterface user = yh.createUser(username, name, email, password);
-       saveUser(user);
-
-   }
+    public void toLoginScreen () { login.toFront(); }
 
 
-
-
+    public void saveGroup (Group group){
+        allGroups.add(group);
+    }
+    public void saveInventory (Inventory inventory){
+        allInventories.add(inventory);
+    }
+    public void saveUser (UserInterface user){
+        allUsers.add(user);
+    }
+    public List<GroupInterface> getAllGroups (){
+        return allGroups;
+    }
+    public List<Inventory> getAllInventories(){
+        return allInventories;
+    }
+    public List <UserInterface> getAllUsers (){
+        return allUsers;
+    }
 
 
     /**
@@ -104,7 +111,7 @@ public class MainController implements Initializable {
      * will get saved is based on the @param.
      * @param whatToSeralize should be groups, inventories or users, based on what is to be saved.
      */
-    public void seralize(String whatToSeralize){
+    private void seralize(String whatToSeralize){
         try {
             FileOutputStream fileOut;
             switch (whatToSeralize) {
@@ -147,7 +154,7 @@ public class MainController implements Initializable {
      *
      * @param whatToDeseralize should be groups, inventories or users depending on what is to be fetched.
      */
-    public void deseralize(String whatToDeseralize){
+    private void deseralize(String whatToDeseralize){
         try {
             FileInputStream fileIn;
             switch (whatToDeseralize) {
@@ -190,7 +197,7 @@ public class MainController implements Initializable {
 
     }
 
-    public void hamburgerSetup(){
+    private void hamburgerSetup(){
         HamburgerBasicCloseTransition hamTask = new HamburgerBasicCloseTransition(hamburger);
         hamTask.setRate(-1);
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
@@ -205,40 +212,6 @@ public class MainController implements Initializable {
         });
     }
 
-    public void saveGroup (Group group){
-        allGroups.add(group);
-    }
-    public void saveInventory (Inventory inventory){
-        allInventories.add(inventory);
-    }
-    public void saveUser (UserInterface user){
-        allUsers.add(user);
-    }
-    public List<GroupInterface> getAllGroups (){
-        return allGroups;
-    }
-    public List<Inventory> getAllInventories(){
-        return allInventories;
-    }
-    public List <UserInterface> getAllUsers (){
-        return allUsers;
-    }
 
-    @FXML
-    public void signUp(){
-        String username = ""; // this should be textfield.gettext from the GUI
-        String name = "";
-        String email = "";
-        String password = "";
-        UserInterface user = yh.createUser(username,name,email,password);
-        if (user == null){
-            //errormessage popup
-        }
-    }
-
-    @FXML
-    public void addGroup(){
-
-    }
 
 }

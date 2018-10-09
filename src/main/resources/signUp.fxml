@@ -37,7 +37,7 @@
             <JFXButton layoutX="142.0" layoutY="309.0" onAction="#signUp" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #FFE919;" text="Sign Up" />
          </children>
       </AnchorPane>
-      <Button layoutX="546.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);" AnchorPane.rightAnchor="14.0">
+      <Button fx:id="signUpExitButton" layoutX="546.0" layoutY="10.0" mnemonicParsing="false" onAction="#toLoginScreen" style="-fx-background-color: rgba(0,0,0,0);" AnchorPane.rightAnchor="14.0">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>

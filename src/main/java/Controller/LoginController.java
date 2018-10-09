@@ -6,19 +6,17 @@ import javafx.fxml.FXML;
 
 public class LoginController {
 
-    MainController mainController;
+    private MainController mainController;
 
-    @FXML JFXTextField usernameField;
-    @FXML JFXPasswordField passwordField;
-
-
+    @FXML private JFXTextField usernameField;
+    @FXML private JFXPasswordField passwordField;
 
     public void injectMainController (MainController mainController) {
         this.mainController = mainController;
     }
 
     @FXML
-    public void login () {
+    private void login () {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -30,7 +28,7 @@ public class LoginController {
     }
 
     @FXML
-    public void toSignupScreen() {
+    private void toSignupScreen() {
         mainController.goToSignUp();
     }
 

@@ -2,15 +2,19 @@ package Controller;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
 public class SignUpController {
-    MainController mainController;
 
-    @FXML JFXTextField newUsernameField;
-    @FXML JFXTextField newPasswordField;
-    @FXML JFXTextField newFirstNameField;
-    @FXML JFXTextField newLastNameField;
-    @FXML JFXTextField newEmailTextField;
+    private MainController mainController;
+
+    @FXML private JFXTextField newUsernameField;
+    @FXML private JFXTextField newPasswordField;
+    @FXML private JFXTextField newFirstNameField;
+    @FXML private JFXTextField newLastNameField;
+    @FXML private JFXTextField newEmailTextField;
+
+    @FXML Button signUpExitButton;
 
     public void injectMainController(MainController mainController){
         this.mainController = mainController;
@@ -21,7 +25,7 @@ public class SignUpController {
     }
 
     @FXML
-    public void signUp () {
+    private void signUp () {
         String username = newUsernameField.getText();
         String firstName = newFirstNameField.getText();
         String lastName = newLastNameField.getText();
@@ -31,8 +35,15 @@ public class SignUpController {
         String password = newPasswordField.getText();
         String email = newEmailTextField.getText();
 
-        mainController.createUser(username, name, email, password);
-        mainController.goToMainWindow();
+        if(!username.isEmpty() && !password.isEmpty()) {
 
+            mainController.createUser(username, name, email, password);
+            mainController.goToMainWindow();
+        }
+
+    }
+
+    @FXML private void toLoginScreen () {
+        mainController.toLoginScreen();
     }
 }
