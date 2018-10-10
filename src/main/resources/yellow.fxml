@@ -20,48 +20,53 @@
     <children>
         <fx:include fx:id="signUp" source="signUp.fxml" />
        <fx:include fx:id="login" source="logIn.fxml" />
-      <SplitPane fx:id="mainWindow" dividerPositions="0.29797979797979796" layoutX="159.0" layoutY="120.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane maxHeight="389.0" maxWidth="175.0" minHeight="398.0" minWidth="175.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
-               <children>
-                  <ScrollPane hbarPolicy="NEVER" layoutX="-12.0" layoutY="66.0" prefHeight="277.0" prefWidth="175.0" style="-fx-background-color: #1F1E18;" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="200.0" style="-fx-background-color: #1F1E18;" />
-                    </content>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </ScrollPane>
-                  <Label layoutX="7.0" layoutY="8.0" prefHeight="20.0" prefWidth="58.0" text="Groups" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="addGroupButton" layoutX="121.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: rgba(0, 0, 0, 0);" text="Hej" textFill="#fff4f4" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
-
-                     <graphic>
-                        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/addGroup.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="18.0" />
-                     </font></Button>
-                  <JFXButton layoutY="358.0" prefHeight="45.0" prefWidth="175.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-border-color: #ffcc00; -fx-background-radius: 5; -fx-border-style: solid none solid none; -fx-border-width: 2px;" text="Orders" textFill="#fffefe" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="398.0" minWidth="417.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
-               <children>
-                  <JFXDrawer fx:id="drawer" direction="RIGHT" layoutX="312.0" prefHeight="398.0" prefWidth="100.0" />
-                  <JFXHamburger fx:id="hamburger" layoutX="362.0" layoutY="22.0" />
-               </children></AnchorPane>
-        </items>
-      </SplitPane>
+      <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0">
+              <items>
+                <AnchorPane maxHeight="389.0" maxWidth="175.0" minHeight="398.0" minWidth="175.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
+                     <children>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="-12.0" layoutY="66.0" prefHeight="288.0" prefWidth="175.0" style="-fx-background-color: #1F1E18;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <content>
+                              <FlowPane fx:id="groupListFlowPane" prefHeight="295.0" prefWidth="200.0" style="-fx-background-color: #1f1e19;" />
+                           </content>
+                        </ScrollPane>
+                        <Label layoutX="14.0" layoutY="18.0" prefHeight="23.0" prefWidth="76.0" text="Groups" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="18.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addGroupButton" layoutX="121.0" mnemonicParsing="false" onAction="#createGroup" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: rgba(0, 0, 0, 0);" textFill="#fff4f4" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0">
+                           <graphic>
+                              <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/addGroup.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <JFXButton layoutY="358.0" prefHeight="45.0" prefWidth="175.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-border-color: #ffcc00; -fx-background-radius: 5; -fx-border-style: solid none solid none; -fx-border-width: 2px;" text="Orders" textFill="#fffefe" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="398.0" minWidth="417.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
+                     <children>
+                        <JFXDrawer fx:id="drawer" direction="RIGHT" layoutX="317.0" prefHeight="398.0" prefWidth="100.0" style="-fx-background-color: #1f1e19;" />
+                        <JFXHamburger fx:id="hamburger" layoutX="362.0" layoutY="22.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

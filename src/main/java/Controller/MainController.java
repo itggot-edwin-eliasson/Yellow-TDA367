@@ -1,24 +1,23 @@
 package Controller;
 
 import Model.*;
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.controls.JFXSnackbar;
+import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
-import javax.xml.soap.Text;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
@@ -50,9 +49,10 @@ public class MainController implements Initializable {
 
     @FXML private JFXHamburger hamburger;
 
-    @FXML AnchorPane signUp;
-    @FXML AnchorPane login;
-    @FXML SplitPane mainWindow;
+    @FXML private AnchorPane signUp;
+    @FXML private AnchorPane login;
+    @FXML private StackPane mainWindow;
+    @FXML private FlowPane groupListFlowPane;
 
     @FXML Button addGroupButton;
 
@@ -62,9 +62,12 @@ public class MainController implements Initializable {
         hamburgerSetup();
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
-        seralize("");
+        //seralize("");
 
         this.yh = new YellowHandler(allUsers, allGroups);
+
+        updateGroupItemMap();
+        updateGroupList();
     }
 
      public void login(String username, String password)  { yh.logIn(username, password); }
@@ -78,9 +81,33 @@ public class MainController implements Initializable {
         yh.addItemToOrder(amount, itemId);
     }
 
-    public void createGroup(String name, String color){
-        yh.createGroup(name, color);
-        updateGroupItemMap();
+    @FXML
+    public void createGroup(){
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Create a group"));
+        GridPane g = new GridPane();
+        JFXTextField textField = new JFXTextField();
+        textField.setPromptText("Group name");
+        g.add(textField, 1, 1);
+        g.add(new Label("Pick a color"), 1,2);
+        JFXColorPicker colorPicker = new JFXColorPicker(Color.web("#1f1e19"));
+        g.add(colorPicker, 2,2);
+        content.setBody(g);
+        JFXDialog dialog = new JFXDialog(mainWindow, content, JFXDialog.DialogTransition.CENTER);
+        JFXButton button = new JFXButton("Create group");
+        button.setStyle("-fx-background-color: #ffcc00");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                yh.createGroup(textField.getText(), colorPicker.getValue().toString());
+                updateGroupItemMap();
+                updateGroupList();
+                dialog.close();
+            }
+        });
+        content.setActions(button);
+        dialog.show();
+
     }
 
     private void updateGroupItemMap(){
@@ -92,7 +119,12 @@ public class MainController implements Initializable {
     }
 
     private void updateGroupList(){
-
+        groupListFlowPane.getChildren().clear();
+        GroupItemController item;
+        for(String id: groupItemControllerMap.keySet()){
+            item = groupItemControllerMap.get(id);
+            groupListFlowPane.getChildren().add(item);
+        }
     }
 
     public void goToSignUp () { signUp.toFront(); }

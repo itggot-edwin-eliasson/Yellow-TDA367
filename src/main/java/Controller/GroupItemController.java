@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ public class GroupItemController extends AnchorPane {
     @FXML private AnchorPane background;
 
     public GroupItemController(String name, String color, MainController controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("groupItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../groupItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -30,6 +31,6 @@ public class GroupItemController extends AnchorPane {
         this.parentController = controller;
 
         groupName.setText(name);
-        background.setStyle("-fx-background-color:" + color);
+        //background.setStyle("-fx-background-color: " + Paint.valueOf(color));
     }
 }

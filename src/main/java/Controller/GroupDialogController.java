@@ -20,7 +20,7 @@ public class GroupDialogController {
 
     @FXML
     public void createGroup(){
-        mainController.createGroup(groupName.getText(), groupColor.getText());
+        mainController.createGroup();
     }
 
 }

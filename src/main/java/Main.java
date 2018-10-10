@@ -4,6 +4,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ResourceBundle;
+
 public class Main extends Application {
 
     public static void main(String[] args){
@@ -13,13 +15,13 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("yellow.fxml"));
+        ResourceBundle bundle = java.util.ResourceBundle.getBundle("Yellow");
 
-
+        Parent root = FXMLLoader.load(getClass().getResource("../resources/yellow.fxml"), bundle);
 
         Scene scene = new Scene(root);
 
-        stage.setTitle("Yellow");
+        stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);
         stage.show();
     }
