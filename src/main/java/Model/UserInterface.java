@@ -20,4 +20,8 @@ public interface UserInterface extends Serializable {
     public boolean comparePassword(String password);
 
     public void removeGroup(String id);
+
+    public void setPassword (String password);
+
+    public void setUsername (String username);
 }

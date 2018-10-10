@@ -44,6 +44,7 @@ public class MainController implements Initializable {
 
     @FXML private SignUpController signUpController;
     @FXML private LoginController loginController;
+    @FXML private UserSettingsController userSettingsController;
 
     @FXML private JFXDrawer drawer;
 
@@ -63,6 +64,7 @@ public class MainController implements Initializable {
         hamburgerSetup();
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
+        userSettingsController.injectMainController(this);
         //seralize("");
 
         this.yh = new YellowHandler(allUsers, allGroups);
@@ -80,6 +82,10 @@ public class MainController implements Initializable {
 
     public void addToOrder (int amount, String itemId) {
         yh.addItemToOrder(amount, itemId);
+    }
+
+    public void changeUserSettings (String name, String username, String email, String password) {
+        yh.changeUserSettings(name, username, email, password);
     }
 
     @FXML
@@ -127,6 +133,8 @@ public class MainController implements Initializable {
             groupListFlowPane.getChildren().add(item);
         }
     }
+
+
 
     public void goToSignUp () { signUp.toFront(); }
 

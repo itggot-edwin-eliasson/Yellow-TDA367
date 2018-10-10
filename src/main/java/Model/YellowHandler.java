@@ -42,6 +42,16 @@ public class YellowHandler implements YellowHandlerInterface {
 
     }
 
+    @Override
+    public void changeUserSettings (String name, String username, String email, String password) {
+        activeUser.setName(name);
+        activeUser.setUsername(username);
+        activeUser.setEmail(email);
+        activeUser.setPassword(password);
+
+
+    }
+
     public List<GroupInterface> getGroups(){
         return groups;
     }

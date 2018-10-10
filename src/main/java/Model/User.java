@@ -57,6 +57,12 @@ public class User implements UserInterface {
     }
 
     @Override
+    public void setPassword (String password) {this.password = password;}
+
+    @Override
+    public void setUsername (String username) {this.username = username;}
+
+    @Override
     public String getId() {
         return id;
     }
