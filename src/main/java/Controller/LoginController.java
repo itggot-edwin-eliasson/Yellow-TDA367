@@ -21,9 +21,6 @@ public class LoginController {
         String password = passwordField.getText();
 
         mainController.login(username, password);
-
-        System.out.println("hej");
-
         // SHOW NEXT SCREEN
     }
 

@@ -78,7 +78,22 @@ public class MainController implements Initializable {
         yh.addItemToOrder(amount, itemId);
     }
 
-    public void addGroup(){ }
+    public void createGroup(String name, String color){
+        yh.createGroup(name, color);
+        updateGroupItemMap();
+    }
+
+    private void updateGroupItemMap(){
+        List<GroupInterface> groups = yh.getGroups();
+        for(GroupInterface group: groups){
+            GroupItemController item = new GroupItemController(group.getName(), group.getColor(), this);
+            groupItemControllerMap.put(group.getId(), item);
+        }
+    }
+
+    private void updateGroupList(){
+
+    }
 
     public void goToSignUp () { signUp.toFront(); }
 

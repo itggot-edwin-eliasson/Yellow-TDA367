@@ -42,6 +42,10 @@ public class YellowHandler implements YellowHandlerInterface {
 
     }
 
+    public List<GroupInterface> getGroups(){
+        return groups;
+    }
+
     public Map<String, List<String>> getGroupInfo(){
         Map<String, List<String>> groupsMap = new HashMap<>();
         for(int i = 0; i < groups.size(); i++){
