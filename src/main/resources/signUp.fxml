@@ -24,11 +24,11 @@
       </ImageView>
       <AnchorPane layoutX="24.0" layoutY="26.0" prefHeight="348.0" prefWidth="283.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-background-radius: 8;" AnchorPane.leftAnchor="24.0">
          <children>
-            <JFXTextField fx:id="newFirstNameField" focusColor="#465a94" layoutX="35.0" layoutY="65.0" promptText="First name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffbfb" />
-            <JFXTextField fx:id="newLastNameField" layoutX="35.0" layoutY="110.0" promptText="Last name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#f8f6f6" />
-            <JFXTextField fx:id="newEmailTextField" layoutX="35.0" layoutY="157.0" promptText="Email" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXTextField fx:id="newUsernameField" layoutX="33.0" layoutY="202.0" promptText="Username" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffdfd" />
-            <JFXTextField fx:id="newPasswordField" layoutX="33.0" layoutY="248.0" promptText="Password" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="newFirstNameField" focusColor="#ffcc00" layoutX="35.0" layoutY="65.0" promptText="First name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffbfb" />
+            <JFXTextField fx:id="newLastNameField" focusColor="#ffcc00" layoutX="35.0" layoutY="110.0" promptText="Last name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#f8f6f6" />
+            <JFXTextField fx:id="newEmailTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="157.0" promptText="Email" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="newUsernameField" focusColor="#ffcc00" layoutX="33.0" layoutY="202.0" promptText="Username" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffdfd" />
+            <JFXTextField fx:id="newPasswordField" focusColor="#ffcc00" layoutX="33.0" layoutY="248.0" promptText="Password" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" />
             <Label layoutX="37.0" layoutY="20.0" text="Sign Up" textFill="#f5f0f0">
                <font>
                   <Font size="18.0" />

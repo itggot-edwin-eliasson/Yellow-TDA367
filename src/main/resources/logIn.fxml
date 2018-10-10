@@ -23,8 +23,8 @@
             <JFXPasswordField focusColor="#2bd044" layoutX="28.0" layoutY="138.0" prefHeight="25.0" prefWidth="188.0" promptText="password" unFocusColor="#fff7f7" />
             <JFXButton layoutX="46.0" layoutY="207.0" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FFE919;" text="Sign In" />
 
-            <JFXTextField fx:id="usernameField" focusColor="#f5fc2a" layoutX="28.0" layoutY="74.0" prefHeight="25.0" prefWidth="188.0" promptText="username" unFocusColor="#fffdfd" />
-            <JFXPasswordField fx:id="passwordField" focusColor="#2bd044" layoutX="28.0" layoutY="138.0" prefHeight="25.0" prefWidth="188.0" promptText="password" unFocusColor="#fff7f7" />
+            <JFXTextField fx:id="usernameField" focusColor="#ffcc00" layoutX="28.0" layoutY="74.0" prefHeight="25.0" prefWidth="188.0" promptText="username" unFocusColor="#fffdfd" />
+            <JFXPasswordField fx:id="passwordField" focusColor="#ffcc00" layoutX="28.0" layoutY="138.0" prefHeight="25.0" prefWidth="188.0" promptText="password" unFocusColor="#fff7f7" />
             <JFXButton layoutX="46.0" layoutY="207.0" onAction="#login" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FFE919;" text="Sign In" />
             <Label layoutX="95.0" layoutY="31.0" text="Sign In" textFill="WHITE">
                <font>
