@@ -53,6 +53,7 @@ public class MainController implements Initializable {
     @FXML private AnchorPane login;
     @FXML private StackPane mainWindow;
     @FXML private FlowPane groupListFlowPane;
+    @FXML private FlowPane listFlowPane;
 
     @FXML Button addGroupButton;
 
@@ -70,7 +71,7 @@ public class MainController implements Initializable {
         updateGroupList();
     }
 
-     public void login(String username, String password)  { yh.logIn(username, password); }
+    public void login(String username, String password)  { yh.logIn(username, password); }
 
     public void createUser (String username, String name, String email, String password) {
         UserInterface user = yh.createUser(username, name, email, password);
