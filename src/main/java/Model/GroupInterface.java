@@ -73,6 +73,11 @@ public interface GroupInterface extends Serializable {
     public void addItem(String name, String description, String id, String inventoryId, int amount);
 
     public void removeItem(String id);
+
+
+    public void orderIsCompleted();
+
+    public void updateInventory();
 }
 
 
