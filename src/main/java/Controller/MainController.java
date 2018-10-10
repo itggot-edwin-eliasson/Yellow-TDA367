@@ -64,7 +64,7 @@ public class MainController implements Initializable {
         hamburgerSetup();
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
-        userSettingsController.injectMainController(this);
+        //userSettingsController.injectMainController(this);
         //seralize("");
 
         this.yh = new YellowHandler(allUsers, allGroups);
@@ -86,6 +86,11 @@ public class MainController implements Initializable {
 
     public void changeUserSettings (String name, String username, String email, String password) {
         yh.changeUserSettings(name, username, email, password);
+    }
+
+    public void goToUserSettings () {
+        userSettingsController.setUsernameTextField(yh.getActiveUser().getUsername());
+        userSettingsController.setEmailTextField(yh.getActiveUser().getEmail());
     }
 
     @FXML

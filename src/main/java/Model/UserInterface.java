@@ -9,6 +9,8 @@ public interface UserInterface extends Serializable {
 
     public List<String> getGroupIds();
 
+    public String getEmail();
+
     public String getUsername();
 
     public void setName(String name);

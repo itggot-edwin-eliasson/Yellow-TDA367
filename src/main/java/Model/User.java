@@ -47,6 +47,9 @@ public class User implements UserInterface {
     }
 
     @Override
+    public String getEmail () {return email;}
+
+    @Override
     public void setName(String name) {
         this.name = name;
     }

@@ -48,8 +48,6 @@ public class YellowHandler implements YellowHandlerInterface {
         activeUser.setUsername(username);
         activeUser.setEmail(email);
         activeUser.setPassword(password);
-
-
     }
 
     public List<GroupInterface> getGroups(){
@@ -164,6 +162,10 @@ public class YellowHandler implements YellowHandlerInterface {
     public void addItemToOrder(int amount, String itemID) {
          activegroup.createOrder(generateUniqueKeyUsingUUID());
          activegroup.addItemToOrder(amount, itemID);
+    }
+
+    public UserInterface getActiveUser () {
+         return this.activeUser;
     }
 
     public void completeOrder() {
