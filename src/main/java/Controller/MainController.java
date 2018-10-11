@@ -3,6 +3,7 @@ package Controller;
 import Model.*;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -70,15 +71,19 @@ public class MainController implements Initializable {
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
         userSettingsController.injectMainController(this);
-        //seralize("");
-
+        deseralize("groups");
+        deseralize("users");
+        deseralize("inventories");
         this.yh = new YellowHandler(allUsers, allGroups);
 
         updateGroupItemMap();
         updateGroupList();
     }
 
-    public void login(String username, String password)  { yh.logIn(username, password); }
+    public void login(String username, String password)  {
+        yh.logIn(username, password);
+        goToMainWindow();
+    }
 
     public void createUser (String username, String firstName, String lastName, String email, String password) {
         UserInterface user = yh.createUser(username, firstName, lastName, email, password);
@@ -152,6 +157,13 @@ public class MainController implements Initializable {
             }
         }
 
+    }
+
+    @FXML public void exitApplication (ActionEvent event) {
+        seralize("groups");
+        seralize("inventories");
+        seralize("users");
+        Platform.exit();
     }
 
     private void updateGroupItemMap(){

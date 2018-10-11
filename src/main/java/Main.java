@@ -26,4 +26,10 @@ public class Main extends Application {
         stage.show();
     }
 
+    @Override
+    public void stop() {
+        System.out.println("Hejdå");
+
+    }
+
 }
