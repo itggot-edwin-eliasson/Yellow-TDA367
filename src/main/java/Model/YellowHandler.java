@@ -124,6 +124,11 @@ public class YellowHandler implements YellowHandlerInterface {
         return false;
     }
 
+    @Override
+    public void setActiveUserToNull () {
+        activeUser = null;
+    }
+
     /**
      * Adds an item into an inventory
      * @param name Name of item

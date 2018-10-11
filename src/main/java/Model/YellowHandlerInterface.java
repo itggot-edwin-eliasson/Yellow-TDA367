@@ -28,6 +28,8 @@ public interface YellowHandlerInterface {
 
     public void removeItem(String id);
 
+    public void setActiveUserToNull();
+
     public void changeUserSettings(String firstName, String lastName, String username, String email, String password);
 
     /**

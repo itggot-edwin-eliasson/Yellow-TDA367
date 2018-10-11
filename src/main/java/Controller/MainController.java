@@ -218,6 +218,14 @@ public class MainController implements Initializable {
         Platform.exit();
     }
 
+    public void logOut () {
+        seralize("groups");
+        seralize("inventories");
+        seralize("users");
+        yh.setActiveUserToNull();
+        login.toFront();
+    }
+
     private void updateGroupItemMap(){
         List<GroupInterface> groups = yh.getGroups();
         for(GroupInterface group: groups){
