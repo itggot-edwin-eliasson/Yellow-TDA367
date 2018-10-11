@@ -25,13 +25,13 @@ public class Order implements OrderInterface{
     private List <Item> itemList = new ArrayList<>();
     private String orderID;
     private Renter renter;
+    private List <Boolean> isRentable = new ArrayList<>();
 
     /**
      * Creates a new Order
      * @param orderID the generated ID assigned to the order.
      */
     public Order (String orderID){
-        this.orderDate = getCurrentTimeStamp();
         this.orderID = orderID;
     }
 
@@ -41,6 +41,7 @@ public class Order implements OrderInterface{
      */
     @Override
     public void addItem (Item item){
+        isRentable.add(null);
         itemList.add(item);
     }
 
@@ -93,6 +94,11 @@ public class Order implements OrderInterface{
     @Override
     public String getOrderDate(){
         return orderDate;
+    }
+
+    @Override
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     @Override

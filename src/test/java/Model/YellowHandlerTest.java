@@ -52,7 +52,7 @@ public class YellowHandlerTest {
          List<GroupInterface> allGroups = new ArrayList<>();
          List<UserInterface> allUsers = new ArrayList<>();
         YellowHandler yh = new YellowHandler(allUsers, allGroups);
-        yh.createUser("Moki","hej","hej", "hej");
+        yh.createUser("Moki","hej","hej", "hej", "hej");
         assertEquals(1, yh.users.size());
     }
 }

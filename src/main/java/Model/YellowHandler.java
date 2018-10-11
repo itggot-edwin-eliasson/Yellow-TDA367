@@ -43,11 +43,17 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
     @Override
-    public void changeUserSettings (String name, String username, String email, String password) {
-        activeUser.setName(name);
+    public void changeUserSettings (String firstName, String lastName, String username, String email, String password) {
+        activeUser.setName(firstName);
+        activeUser.setLastName(lastName);
         activeUser.setUsername(username);
         activeUser.setEmail(email);
         activeUser.setPassword(password);
+    }
+
+    public String[] getUserInfo () {
+
+        return null;
     }
 
     public List<GroupInterface> getGroups(){
@@ -68,19 +74,20 @@ public class YellowHandler implements YellowHandlerInterface {
     /**
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
-     * @param name The name of the user
+     * @param firstName The name of the user
+     * @param lastName The first name of the user
      * @param email The email of the user
      * @param password The users password
      */
     @Override
-    public UserInterface createUser(String username, String name, String email, String password){
+    public UserInterface createUser(String username, String firstName, String lastName, String email, String password){
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
                 return null;
                 // ERROR MESSAGE
             }
         }
-        activeUser = new User(username, name, email, generateUniqueKeyUsingUUID(), password);
+        activeUser = new User(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
         return activeUser;
     }
@@ -160,7 +167,10 @@ public class YellowHandler implements YellowHandlerInterface {
 
 
     public void addItemToOrder(int amount, String itemID) {
-         activegroup.createOrder(generateUniqueKeyUsingUUID());
+         if (activegroup.getActiveOrder() == null){
+             activegroup.createOrder(generateUniqueKeyUsingUUID());
+         }
+
          activegroup.addItemToOrder(amount, itemID);
     }
 
@@ -168,8 +178,11 @@ public class YellowHandler implements YellowHandlerInterface {
          return this.activeUser;
     }
 
-    public void completeOrder() {
-         activegroup.orderIsCompleted();
+    public Boolean completeOrder(String startDate, String endDate) {
+         if (activegroup.orderIsCompleted(startDate,endDate)){
+             return true;
+         }
+         return false;
     }
 
     public void updateInventory() {

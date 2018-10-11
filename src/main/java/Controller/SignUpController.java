@@ -30,17 +30,14 @@ public class SignUpController {
         String firstName = newFirstNameField.getText();
         String lastName = newLastNameField.getText();
 
-        String name = firstName + " " + lastName;
-
         String password = newPasswordField.getText();
         String email = newEmailTextField.getText();
 
         if(!username.isEmpty() && !password.isEmpty()) {
 
-            mainController.createUser(username, name, email, password);
+            mainController.createUser(username, firstName, lastName, email, password);
             mainController.goToMainWindow();
         }
-
     }
 
     @FXML private void toLoginScreen () {

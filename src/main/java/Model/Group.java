@@ -118,8 +118,10 @@ public class Group implements GroupInterface{
      */
     @Override
     public void createOrder (String ID){
-        Order order = new Order(ID);
-        activeOrder = order;
+        if(activeOrder == null) {
+            Order order = new Order(ID);
+            activeOrder = order;
+        }
     }
 
     /**
@@ -202,9 +204,26 @@ public class Group implements GroupInterface{
     public void selectOrder (String orderID){
         activeOrder = findOrder(orderID);
     }
-    public void orderIsCompleted(){
-        orderList.add(activeOrder);
+
+    @Override
+    public Boolean orderIsCompleted(String startDate, String endDate){
+        if (allDatesAreOkay(activeOrder.getOrderList(),startDate,endDate)){
+            orderList.add(activeOrder);
+            activeOrder = null;
+            return true;
+        }
+        return false;
     }
+
+    private boolean allDatesAreOkay(List<Item> itemList, String startDate, String endDate) {
+        for (Item item: itemList) {
+            if(!item.checkDateIsNotInRentedPeriod(startDate) || !item.checkDateIsNotInRentedPeriod(endDate)){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Order getActiveOrder(){
         return activeOrder;
     }

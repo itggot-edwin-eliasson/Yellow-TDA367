@@ -32,6 +32,8 @@ public interface OrderInterface {
 
     public String getOrderDate();
 
+    void setOrderDate(String orderDate);
+
     public List<Item> getOrderList();
 
     public String getOrderID();

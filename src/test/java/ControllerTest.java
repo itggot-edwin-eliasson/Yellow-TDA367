@@ -13,9 +13,9 @@ public class ControllerTest {
     @Test
     public void saveAndFetchTestUsers(){
         MainController c = new MainController();
-        User user = new User ("test","hej","hej","ID", "password");
-        User user2 = new User ("test2","hej","hej","ID2", "password");
-        User user3 = new User ("test3","hej","hej","ID3", "password");
+        User user = new User ("test","hej","hej","ID", "password", "hej");
+        User user2 = new User ("test2","hej","hej","ID2", "password", "hej");
+        User user3 = new User ("test3","hej","hej","ID3", "password", "Hej");
         c.saveUser(user);
         c.saveUser(user2);
         c.seralize("users");

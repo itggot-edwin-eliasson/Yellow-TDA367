@@ -52,11 +52,13 @@ public class MainController implements Initializable {
 
     @FXML private AnchorPane signUp;
     @FXML private AnchorPane login;
+    @FXML private AnchorPane userSettings;
     @FXML private StackPane mainWindow;
     @FXML private FlowPane groupListFlowPane;
     @FXML private FlowPane listFlowPane;
 
     @FXML Button addGroupButton;
+    @FXML JFXButton userSettingsButton;
 
 
     @Override
@@ -64,7 +66,7 @@ public class MainController implements Initializable {
         hamburgerSetup();
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
-        //userSettingsController.injectMainController(this);
+        userSettingsController.injectMainController(this);
         //seralize("");
 
         this.yh = new YellowHandler(allUsers, allGroups);
@@ -75,8 +77,8 @@ public class MainController implements Initializable {
 
     public void login(String username, String password)  { yh.logIn(username, password); }
 
-    public void createUser (String username, String name, String email, String password) {
-        UserInterface user = yh.createUser(username, name, email, password);
+    public void createUser (String username, String firstName, String lastName, String email, String password) {
+        UserInterface user = yh.createUser(username, firstName, lastName, email, password);
         saveUser(user);
     }
 
@@ -84,13 +86,16 @@ public class MainController implements Initializable {
         yh.addItemToOrder(amount, itemId);
     }
 
-    public void changeUserSettings (String name, String username, String email, String password) {
-        yh.changeUserSettings(name, username, email, password);
+    public void changeUserSettings (String firstName, String lastName, String username, String email, String password) {
+        yh.changeUserSettings(firstName, lastName, username, email, password);
     }
 
+    @FXML
     public void goToUserSettings () {
-        userSettingsController.setUsernameTextField(yh.getActiveUser().getUsername());
-        userSettingsController.setEmailTextField(yh.getActiveUser().getEmail());
+        userSettings.toFront();
+        userSettingsController.setFields(yh.getActiveUser());
+
+
     }
 
     @FXML
@@ -186,18 +191,18 @@ public class MainController implements Initializable {
             switch (whatToSeralize) {
                 case "groups":
                     fileOut =
-                            new FileOutputStream("src/main/res/allGroups.ser");
+                            new FileOutputStream("src/main/resources/Database/allGroups.ser");
                     break;
                 case "inventories":
                     fileOut =
-                            new FileOutputStream("src/main/res/allInventories.ser");
+                            new FileOutputStream("src/main/resources/Database/allInventories.ser");
                     break;
                 case "users":
                     fileOut =
-                            new FileOutputStream("src/main/res/allUsers.ser");
+                            new FileOutputStream("src/main/resources/Database/allUsers.ser");
                     break;
                 default:
-                    fileOut = new FileOutputStream("src/main/res/errorSave.ser");
+                    fileOut = new FileOutputStream("src/main/resources/Database/errorSave.ser");
                     break;
             }
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -212,7 +217,7 @@ public class MainController implements Initializable {
             }
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /tmp/"+ whatToSeralize + ".ser");
+            System.out.printf("Serialized data is saved in /"+ whatToSeralize + ".ser");
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -229,18 +234,18 @@ public class MainController implements Initializable {
             switch (whatToDeseralize) {
                 case "groups":
                     fileIn =
-                            new FileInputStream("src/main/res/allGroups.ser");
+                            new FileInputStream("src/main/resources/Database/allGroups.ser");
                     break;
                 case "inventories":
                     fileIn =
-                            new FileInputStream("src/main/res/allInventories.ser");
+                            new FileInputStream("src/main/resources/Database/allInventories.ser");
                     break;
                 case "users":
                     fileIn =
-                            new FileInputStream("src/main/res/allUsers.ser");
+                            new FileInputStream("src/main/resources/Database/allUsers.ser");
                     break;
                 default:
-                    fileIn = new FileInputStream("src/main/res/errorSave.ser");
+                    fileIn = new FileInputStream("src/main/resources/Database/errorSave.ser");
                     break;
             }
             ObjectInputStream in = new ObjectInputStream(fileIn);

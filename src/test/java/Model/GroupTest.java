@@ -54,7 +54,7 @@ public class GroupTest {
         List<Integer> l = new ArrayList<>();
         Group g = new Group("test","red","ID",l);
         g.createOrder("orderId");
-        g.orderIsCompleted();
+        g.orderIsCompleted("2018-05-10","2018-05-12");
         Order tmp = g.findOrder("orderId");
         tmp.setRenter("hej","123");
         Order tmp2 = g.findOrder("orderId");
@@ -69,7 +69,7 @@ public class GroupTest {
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
         g.addItemToOrder(1,"itemID123");
-        g.orderIsCompleted();
+        g.orderIsCompleted("2018-05-10","2018-05-12");
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
     }
     @Test
@@ -81,7 +81,7 @@ public class GroupTest {
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
         g.addItemToOrder(1,"itemID123");
-        g.orderIsCompleted();
+        g.orderIsCompleted("2018-05-10","2018-05-12");
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
         g.selectOrder("orderID");
         g.removeItemFromOrder("itemID123");
@@ -96,7 +96,7 @@ public class GroupTest {
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
         g.addItemToOrder(1,"itemID123");
-        g.orderIsCompleted();
+        g.orderIsCompleted("2018-05-10","2018-05-12");
         assertEquals(1,g.getOrderList().size());
         g.orderIsReturned("orderID");
         assertEquals(0,g.getOrderList().size());

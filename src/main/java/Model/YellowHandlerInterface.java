@@ -12,7 +12,7 @@ public interface YellowHandlerInterface {
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
      */
-    public UserInterface createUser(String username, String name, String email, String password);
+    public UserInterface createUser(String username, String firstName, String lastName, String email, String password);
 
     public void logIn (String username, String password);
 
@@ -26,7 +26,7 @@ public interface YellowHandlerInterface {
 
     public void removeItem(String id);
 
-    public void changeUserSettings(String name, String username, String email, String password);
+    public void changeUserSettings(String firstName, String lastName, String username, String email, String password);
 
     /**
      * Generates a unique id
