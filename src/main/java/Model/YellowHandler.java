@@ -101,14 +101,16 @@ public class YellowHandler implements YellowHandlerInterface {
      */
 
     @Override
-    public void logIn (String username, String password) {
+    public boolean logIn (String username, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
                 if (password.equals(users.get(i).comparePassword(password))) {
                     activeUser = users.get(i);
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     /**

@@ -16,7 +16,7 @@ public interface YellowHandlerInterface {
      */
     public UserInterface createUser(String username, String firstName, String lastName, String email, String password);
 
-    public void logIn (String username, String password);
+    public boolean logIn (String username, String password);
 
     //public User createUser (String username);
 

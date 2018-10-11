@@ -82,8 +82,10 @@ public class MainController implements Initializable {
     }
 
     public void login(String username, String password)  {
-        yh.logIn(username, password);
-        goToMainWindow();
+        if (yh.logIn(username, password)) {
+            goToMainWindow();
+        }
+
     }
 
     public void createUser (String username, String firstName, String lastName, String email, String password) {
@@ -265,14 +267,17 @@ public class MainController implements Initializable {
                 case "groups":
                     fileOut =
                             new FileOutputStream("src/main/resources/Database/allGroups.ser");
+                            System.out.println("fetching groups");
                     break;
                 case "inventories":
                     fileOut =
                             new FileOutputStream("src/main/resources/Database/allInventories.ser");
+                            System.out.println("fetching inventories");
                     break;
                 case "users":
                     fileOut =
                             new FileOutputStream("src/main/resources/Database/allUsers.ser");
+                            System.out.println("fetching users");
                     break;
                 default:
                     fileOut = new FileOutputStream("src/main/resources/Database/errorSave.ser");
@@ -308,14 +313,17 @@ public class MainController implements Initializable {
                 case "groups":
                     fileIn =
                             new FileInputStream("src/main/resources/Database/allGroups.ser");
+                            System.out.println("fetching groups");
                     break;
                 case "inventories":
                     fileIn =
                             new FileInputStream("src/main/resources/Database/allInventories.ser");
+                            System.out.println("fetching inventories");
                     break;
                 case "users":
                     fileIn =
                             new FileInputStream("src/main/resources/Database/allUsers.ser");
+                            System.out.println("fetching users");
                     break;
                 default:
                     fileIn = new FileInputStream("src/main/resources/Database/errorSave.ser");
