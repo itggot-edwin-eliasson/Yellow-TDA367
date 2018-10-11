@@ -6,16 +6,12 @@ import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -23,6 +19,7 @@ import javafx.scene.text.Text;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * @date 2018-10-02
@@ -35,6 +32,8 @@ import java.util.*;
  *
  */
 public class MainController implements Initializable {
+
+
 
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
@@ -363,18 +362,32 @@ public class MainController implements Initializable {
     }
 
     private void hamburgerSetup(){
-        HamburgerBasicCloseTransition hamTask = new HamburgerBasicCloseTransition(hamburger);
-        hamTask.setRate(-1);
-        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-            hamTask.setRate(hamTask.getRate() * -1);
-            hamTask.play();
 
-            if(drawer.isOpened()){
-                drawer.close();
-            }else{
-                drawer.open();
-            }
-        });
+        VBox box = null;
+        try {
+            box = FXMLLoader.load(getClass().getResource("../drawer.fxml"));
+            drawer.setSidePane(box);
+
+            drawer.setSidePane(box);
+
+            HamburgerBasicCloseTransition hamTask = new HamburgerBasicCloseTransition(hamburger);
+            hamTask.setRate(-1);
+            hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+                hamTask.setRate(hamTask.getRate() * -1);
+                hamTask.play();
+
+
+                if (drawer.isOpened()) {
+                    drawer.close();
+                } else {
+                    drawer.open();
+                }
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
