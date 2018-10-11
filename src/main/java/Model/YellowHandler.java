@@ -1,4 +1,6 @@
 package Model;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.*;
 
 /**
@@ -200,6 +202,13 @@ public class YellowHandler implements YellowHandlerInterface {
          return this.activeUser;
     }
 
+    /**
+     * This tries to complete an order. Returns true if the order can be completed for said date and false
+     * if a item is already rented on that date.
+     * @param startDate startDate when the order wants to be made.
+     * @param endDate endDate when the order wants to be made.
+     * @return read description.
+     */
     public Boolean completeOrder(String startDate, String endDate) {
         if (activegroup.orderIsCompleted(startDate, endDate)) {
             return true;
@@ -227,11 +236,30 @@ public class YellowHandler implements YellowHandlerInterface {
         activegroup = group;
     }
 
+    /**
+     * This should be used when an order could not be completed.
+     * @return A list of booleans that matches the order list in index and says if the item is rentable or not.
+     */
+    public List<Boolean> completeOrderFailed(){
+         return activegroup.getActiveOrder().getIsRentable();
+    }
+
+    /**
+     * This sets the isRented boolean on every item in the active inventory.
+     * Should be called when an inventory is opened.
+     */
     public void updateInventory() {
         activegroup.updateInventory();
     }
 
+    /**
+     * Sets activeInventory in the group.
+     * @param id of the inventory that is selected
+     */
     public void selectInventory(String id) {
         activegroup.selectInventory(id);
+    }
+    public void orderIsReturned(String orderID){
+        activegroup.orderIsReturned(orderID);
     }
 }

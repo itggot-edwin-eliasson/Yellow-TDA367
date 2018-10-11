@@ -39,4 +39,7 @@ public interface OrderInterface {
     public String getOrderID();
 
 
+    List<Boolean> getIsRentable();
+
+    public void setIsRentable(int i, boolean b);
 }

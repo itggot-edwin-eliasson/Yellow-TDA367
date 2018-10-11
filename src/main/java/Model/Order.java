@@ -1,8 +1,6 @@
 package Model;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /** @author Viktor Valadi
@@ -111,17 +109,13 @@ public class Order implements OrderInterface{
         return orderID;
     }
 
-
-    /**
-     * Gets the current date for the GUI
-     * @return the date as a string.
-     */
-    private static String getCurrentTimeStamp() {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
-        Date now = new Date();
-        String strDate = sdfDate.format(now);
-        return strDate;
+    public void setIsRentable(int index, boolean canBeRented) {
+        isRentable.remove(index);
+        isRentable.add(index,canBeRented);
     }
 
-
+    @Override
+    public List<Boolean> getIsRentable() {
+        return isRentable;
+    }
 }

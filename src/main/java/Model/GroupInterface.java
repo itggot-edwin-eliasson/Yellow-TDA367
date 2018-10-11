@@ -76,9 +76,13 @@ public interface GroupInterface extends Serializable {
 
     public List<InventoryInterface> getInventories();
 
+    void orderIsReturned(String orderID);
+
     public void updateInventory();
 
     public Boolean orderIsCompleted(String startDate, String endDate);
+
+    boolean allDatesAreOkay(String startDate, String endDate);
 
     public OrderInterface getActiveOrder();
 }

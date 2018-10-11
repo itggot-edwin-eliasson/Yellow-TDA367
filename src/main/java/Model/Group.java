@@ -25,12 +25,12 @@ import java.util.List;
 public class Group implements GroupInterface{
 
    private String name;
-   private InventoryInterface selectedInventory;
+   private Inventory selectedInventory;
    private int inviteCode;
-   private List <InventoryInterface> inventories = new ArrayList<>();
-   private List <OrderInterface> orderList = new ArrayList<>();
-   private List <OrderInterface> oldOrders = new ArrayList<>();
-   private OrderInterface activeOrder;
+   private List <Inventory> inventories = new ArrayList<>();
+   private List <Order> orderList = new ArrayList<>();
+   private List <Order> oldOrders = new ArrayList<>();
+   private Order activeOrder;
    private String color;
    private String id;
 
@@ -67,11 +67,6 @@ public class Group implements GroupInterface{
 
     public void removeItem (String id) {
         selectedInventory.removeItem(id);
-    }
-
-    @Override
-    public List<InventoryInterface> getInventories() {
-        return inventories;
     }
 
     /**
@@ -135,8 +130,8 @@ public class Group implements GroupInterface{
      * @return the Order.
      */
     @Override
-    public OrderInterface findOrder (String ID){
-        for (OrderInterface order: orderList) {
+    public Order findOrder (String ID){
+        for (Order order: orderList) {
             if (order.getOrderID().equals(ID)){
                 return order;
             }
@@ -150,8 +145,8 @@ public class Group implements GroupInterface{
      * @return the inventory.
      */
     @Override
-    public InventoryInterface findInventory (String ID){
-        for (InventoryInterface inventory: inventories){
+    public Inventory findInventory (String ID){
+        for (Inventory inventory: inventories){
             if (inventory.getID().equals(ID)){
                 return inventory;
             }
@@ -194,7 +189,7 @@ public class Group implements GroupInterface{
     }
 
     @Override
-    public InventoryInterface getSelectedInventory () {
+    public Inventory getSelectedInventory () {
         return selectedInventory;
     }
 
@@ -212,7 +207,7 @@ public class Group implements GroupInterface{
 
     @Override
     public Boolean orderIsCompleted(String startDate, String endDate){
-        if (allDatesAreOkay(activeOrder.getOrderList(),startDate,endDate)){
+        if (allDatesAreOkay(startDate,endDate)){
             orderList.add(activeOrder);
             activeOrder = null;
             return true;
@@ -220,16 +215,19 @@ public class Group implements GroupInterface{
         return false;
     }
 
-    private boolean allDatesAreOkay(List<ItemInterface> itemList, String startDate, String endDate) {
-        for (ItemInterface item: itemList) {
-            if(!item.checkDateIsNotInRentedPeriod(startDate) || !item.checkDateIsNotInRentedPeriod(endDate)){
-                return false;
+    public boolean allDatesAreOkay(String startDate, String endDate) {
+        boolean works = true;
+        for (int i = 0; i < activeOrder.getOrderList().size(); i++) {
+            if(!activeOrder.getOrderList().get(i).checkDateIsNotInRentedPeriod(startDate) || !activeOrder.getOrderList().get(i).checkDateIsNotInRentedPeriod(endDate)){
+                works = false;
+                activeOrder.setIsRentable(i,false);
             }
+            activeOrder.setIsRentable(i,true);
         }
-        return true;
+        return works;
     }
 
-    public OrderInterface getActiveOrder(){
+    public Order getActiveOrder(){
         return activeOrder;
     }
 
@@ -237,6 +235,7 @@ public class Group implements GroupInterface{
      * returns the order and moves it from the order list to the old order list.
      * @param orderID ID of the order that is returned.
      */
+    @Override
     public void orderIsReturned(String orderID){
         for (int i = 0; i < orderList.size(); i++) {
             if (orderList.get(i).getOrderID().equals(orderID)){
@@ -252,6 +251,11 @@ public class Group implements GroupInterface{
         for (ItemInterface item: selectedInventory.getItemList()){
             item.setIsRented(item.checkDateIsNotInRentedPeriod(getCurrentTimeStamp()));
         }
+    }
+
+    @Override
+    public List getInventories(){
+        return inventories;
     }
     private static String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
