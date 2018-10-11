@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
@@ -22,7 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
     <children>
       <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -60,7 +53,7 @@
                               <Font size="18.0" />
                            </font>
                         </JFXButton>
-                        <Button fx:id="backButton" layoutX="-1.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToGroups" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
+                        <Button layoutX="-1.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -73,21 +66,19 @@
                   </AnchorPane>
                 <AnchorPane maxHeight="398.0" maxWidth="417.0" minHeight="398.0" minWidth="417.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutY="35.0" prefHeight="363.0" prefWidth="417.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+                         <fx:include fx:id="userSettings" source="userSettingsView.fxml" />
+                        <ScrollPane hbarPolicy="NEVER" layoutY="31.0" prefHeight="363.0" prefWidth="417.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="31.0">
                            <content>
                                <FlowPane fx:id="listFlowPane" prefHeight="323.0" prefWidth="200.0" />
-                               <fx:include fx:id="userSettings" source="userSettingsView.fxml" />
                            </content></ScrollPane>
-                        <JFXDrawer fx:id="drawer" direction="RIGHT" layoutX="258.0" prefHeight="398.0" prefWidth="159.0">
-                           <children>
-                              <JFXButton fx:id="userSettingsButton" onAction="#goToUserSettings" text="User Settings" textFill="#c91616" />
-                           </children></JFXDrawer>
+                        <JFXDrawer fx:id="drawer" defaultDrawerSize="160.0" direction="RIGHT" layoutX="242.0" prefHeight="398.0" prefWidth="175.0" />
                         <JFXHamburger fx:id="hamburger" layoutX="377.0" layoutY="11.0" />
                         <Label layoutX="29.0" layoutY="14.0" text="&quot;Where I'm at&quot;- label" textFill="#f8f8f8">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
+                        <JFXButton layoutX="173.0" layoutY="12.0" style="-fx-background-color: #ffcc00;" text="Add item" />
                      </children>
                   </AnchorPane>
               </items>
