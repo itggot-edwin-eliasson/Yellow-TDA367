@@ -19,7 +19,6 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
     <children>
         <fx:include fx:id="signUp" source="signUp.fxml" />
-       <fx:include fx:id="login" source="logIn.fxml" />
       <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0">
@@ -27,7 +26,7 @@
                 <AnchorPane maxHeight="389.0" maxWidth="175.0" minHeight="398.0" minWidth="175.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
                      <children>
                         <ScrollPane hbarPolicy="NEVER" layoutX="-12.0" layoutY="66.0" prefHeight="288.0" prefWidth="175.0" style="-fx-background-color: #1F1E18;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
-                           <opaqueInsets>
+                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <content>
@@ -60,8 +59,14 @@
                   </AnchorPane>
                 <AnchorPane minHeight="398.0" minWidth="417.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
                      <children>
-                        <ScrollPane layoutY="59.0" prefHeight="339.0" prefWidth="417.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0" />
-                        <JFXDrawer fx:id="drawer" direction="RIGHT" layoutX="317.0" prefHeight="398.0" prefWidth="100.0" />
+                        <ScrollPane layoutY="59.0" prefHeight="339.0" prefWidth="417.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
+                           <content>
+                               <fx:include fx:id="userSettings" source="userSettingsView.fxml" />
+                           </content></ScrollPane>
+                        <JFXDrawer fx:id="drawer" direction="RIGHT" layoutX="317.0" prefHeight="398.0" prefWidth="100.0">
+                           <children>
+                              <JFXButton fx:id="userSettingsButton" onAction="#goToUserSettings" text="User Settings" textFill="#c91616" />
+                           </children></JFXDrawer>
                         <JFXHamburger fx:id="hamburger" layoutX="362.0" layoutY="22.0" />
                      </children>
                   </AnchorPane>
@@ -69,5 +74,6 @@
             </SplitPane>
          </children>
       </StackPane>
+       <fx:include fx:id="login" source="logIn.fxml" />
    </children>
 </AnchorPane>

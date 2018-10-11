@@ -26,7 +26,7 @@ public interface YellowHandlerInterface {
 
     public void removeItem(String id);
 
-    public void changeUserSettings(String name, String username, String email, String password);
+    public void changeUserSettings(String firstName, String lastName, String username, String email, String password);
 
     /**
      * Generates a unique id

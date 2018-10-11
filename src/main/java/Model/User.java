@@ -71,6 +71,15 @@ public class User implements UserInterface {
         return id;
     }
 
+    @Override
+    public String getPassword () {return password;}
+
+    @Override
+    public String getFirstName() {return firstName; }
+
+    @Override
+    public String getLastName () { return lastName; }
+
     public boolean comparePassword (String newPassword) {
         if (newPassword.equals(password)) {
             return true;

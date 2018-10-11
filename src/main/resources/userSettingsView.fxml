@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="339.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserSettingsController">
+<AnchorPane fx:id="userSettingsView" prefHeight="339.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserSettingsController">
    <children>
       <JFXTextField fx:id="usernameTextField" layoutX="40.0" layoutY="38.0" />
       <JFXTextField fx:id="firstNameTextField" layoutX="40.0" layoutY="96.0" />

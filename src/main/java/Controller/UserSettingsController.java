@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.UserInterface;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -15,22 +16,43 @@ public class UserSettingsController {
 
     @FXML JFXButton saveButton;
 
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String username;
+
     MainController mainController;
 
     public void injectMainController(MainController mainController){
         this.mainController = mainController;
     }
 
+    public void initialize(){
+
+    }
+
+    public void setFields (UserInterface activeUser) {
+        firstNameTextField.setText(activeUser.getFirstName());
+        lastNameTextField.setText(activeUser.getLastName());
+        usernameTextField.setText(activeUser.getUsername());
+        passwordTextField.setText(activeUser.getPassword());
+        emailTextField.setText(activeUser.getEmail());
+
+    }
+
+
     @FXML public void changeUserSettings () {
+        this.firstName = firstNameTextField.getText();
+        this.lastName = lastNameTextField.getText();
+        this.email = emailTextField.getText();
+        this.password = passwordTextField.getText();
+        this.username = usernameTextField.getText();
 
-        String firstName = firstNameTextField.getText();
-        String lastName = lastNameTextField.getText();
-        String name = firstName + " " + lastName;
-        String email = emailTextField.getText();
-        String password = passwordTextField.getText();
-        String username = usernameTextField.getText();
 
-        mainController.changeUserSettings(name, username, email, password);
+        mainController.changeUserSettings(firstName, lastName, username, email, password);
+
+
 
     }
 
@@ -44,8 +66,5 @@ public class UserSettingsController {
 
     }
 
-    public void initialize(){
-
-    }
 
 }

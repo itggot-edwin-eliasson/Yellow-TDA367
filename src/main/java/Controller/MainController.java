@@ -52,11 +52,13 @@ public class MainController implements Initializable {
 
     @FXML private AnchorPane signUp;
     @FXML private AnchorPane login;
+    @FXML private AnchorPane userSettings;
     @FXML private StackPane mainWindow;
     @FXML private FlowPane groupListFlowPane;
     @FXML private FlowPane listFlowPane;
 
     @FXML Button addGroupButton;
+    @FXML JFXButton userSettingsButton;
 
 
     @Override
@@ -84,13 +86,16 @@ public class MainController implements Initializable {
         yh.addItemToOrder(amount, itemId);
     }
 
-    public void changeUserSettings (String name, String username, String email, String password) {
-        yh.changeUserSettings(name, username, email, password);
+    public void changeUserSettings (String firstName, String lastName, String username, String email, String password) {
+        yh.changeUserSettings(firstName, lastName, username, email, password);
     }
 
+    @FXML
     public void goToUserSettings () {
-        userSettingsController.setUsernameTextField(yh.getActiveUser().getUsername());
-        userSettingsController.setEmailTextField(yh.getActiveUser().getEmail());
+        userSettings.toFront();
+        userSettingsController.setFields(yh.getActiveUser());
+
+
     }
 
     @FXML
