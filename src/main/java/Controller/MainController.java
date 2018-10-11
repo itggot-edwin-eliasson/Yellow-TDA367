@@ -43,6 +43,7 @@ public class MainController implements Initializable {
 
     private Map<GroupInterface, GroupItemController> groupItemControllerMap = new HashMap<>();
     private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
+    private Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap = new HashMap<>();
 
 
     @FXML private SignUpController signUpController;
@@ -152,8 +153,13 @@ public class MainController implements Initializable {
             if (groupItemControllerMap.get(tmpGroup).equals(groupItem)) {
                 yh.setActiveGroup(tmpGroup);
                 title.setText(tmpGroup.getName());
+                listFlowPane.toFront();
+                drawer.toFront();
+                hamburger.toFront();
                 updateItemList();
                 updateItemItemMap();
+                updateInventoryItemMap();
+                updateInventoryList();
             }
         }
 
@@ -179,6 +185,23 @@ public class MainController implements Initializable {
         GroupItemController item;
         for(GroupInterface group: groupItemControllerMap.keySet()){
             item = groupItemControllerMap.get(group);
+            groupListFlowPane.getChildren().add(item);
+        }
+    }
+
+    private void updateInventoryItemMap(){
+        List<InventoryInterface> inventories = yh.getInventories();
+        for(InventoryInterface inventory: inventories){
+            InventoryItemController item = new InventoryItemController(inventory.getName(), this);
+            inventoryItemControllerMap.put(inventory, item);
+        }
+    }
+
+    private void updateInventoryList(){
+        groupListFlowPane.getChildren().clear();
+        InventoryItemController item;
+        for(InventoryInterface inventory: inventoryItemControllerMap.keySet()){
+            item = inventoryItemControllerMap.get(inventory);
             groupListFlowPane.getChildren().add(item);
         }
     }

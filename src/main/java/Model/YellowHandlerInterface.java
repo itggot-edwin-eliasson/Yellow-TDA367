@@ -46,6 +46,8 @@ public interface YellowHandlerInterface {
 
     public List<ItemInterface> getItems();
 
+    public List<InventoryInterface> getInventories();
+
     public void setActiveGroup(GroupInterface group);
 
 }

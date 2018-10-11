@@ -200,6 +200,11 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
     @Override
+    public List<InventoryInterface> getInventories(){
+         return activegroup.getInventories();
+    }
+
+    @Override
     public void setActiveGroup(GroupInterface group) {
         activegroup = group;
     }

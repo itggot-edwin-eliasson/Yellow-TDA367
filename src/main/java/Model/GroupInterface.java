@@ -36,7 +36,7 @@ public interface GroupInterface extends Serializable {
      * @param ID the ID of the inventory to find.
      * @return the inventory.
      */
-    public Inventory findInventory (String ID);
+    public InventoryInterface findInventory (String ID);
 
     /**
      * Finds an item with a certain ID in said inventory.
@@ -56,7 +56,7 @@ public interface GroupInterface extends Serializable {
     public void removeItemFromOrder(String itemID);
 
 
-    public Inventory getSelectedInventory ();
+    public InventoryInterface getSelectedInventory ();
 
     /**
      * selects an inventory as the active inventory.
@@ -74,6 +74,7 @@ public interface GroupInterface extends Serializable {
 
     public void removeItem(String id);
 
+    public List<InventoryInterface> getInventories();
 
     public void updateInventory();
 

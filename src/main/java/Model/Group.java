@@ -25,9 +25,9 @@ import java.util.List;
 public class Group implements GroupInterface{
 
    private String name;
-   private Inventory selectedInventory;
+   private InventoryInterface selectedInventory;
    private int inviteCode;
-   private List <Inventory> inventories = new ArrayList<>();
+   private List <InventoryInterface> inventories = new ArrayList<>();
    private List <OrderInterface> orderList = new ArrayList<>();
    private List <OrderInterface> oldOrders = new ArrayList<>();
    private OrderInterface activeOrder;
@@ -67,6 +67,11 @@ public class Group implements GroupInterface{
 
     public void removeItem (String id) {
         selectedInventory.removeItem(id);
+    }
+
+    @Override
+    public List<InventoryInterface> getInventories() {
+        return inventories;
     }
 
     /**
@@ -145,8 +150,8 @@ public class Group implements GroupInterface{
      * @return the inventory.
      */
     @Override
-    public Inventory findInventory (String ID){
-        for (Inventory inventory: inventories){
+    public InventoryInterface findInventory (String ID){
+        for (InventoryInterface inventory: inventories){
             if (inventory.getID().equals(ID)){
                 return inventory;
             }
@@ -189,7 +194,7 @@ public class Group implements GroupInterface{
     }
 
     @Override
-    public Inventory getSelectedInventory () {
+    public InventoryInterface getSelectedInventory () {
         return selectedInventory;
     }
 
