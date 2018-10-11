@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.scene.image.Image;
+
 import java.util.List;
 
 public interface ItemInterface {
@@ -15,4 +17,10 @@ public interface ItemInterface {
     public List<String> getCategories();
 
     public void addCategory(String category);
+
+    public Image getImage();
+
+    public void setIsRented(Boolean isRented);
+
+    public Boolean checkDateIsNotInRentedPeriod (String date);
 }

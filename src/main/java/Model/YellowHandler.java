@@ -14,8 +14,8 @@ public class YellowHandler implements YellowHandlerInterface {
 
     private UserInterface activeUser;
     private GroupInterface activegroup;
-    public List<GroupInterface> groups = new ArrayList<>();
-    public List<UserInterface> users = new ArrayList<>();
+    private List<GroupInterface> groups = new ArrayList<>();
+    private List<UserInterface> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
 
     /**
@@ -38,8 +38,10 @@ public class YellowHandler implements YellowHandlerInterface {
     public void createGroup(String groupName, String color){
         GroupInterface g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
+        String id = generateUniqueKeyUsingUUID();
+        g.createInventory("All items", id);
+        g.selectInventory(id);
         groups.add(g);
-
     }
 
     @Override
@@ -166,6 +168,7 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
 
+    @Override
     public void addItemToOrder(int amount, String itemID) {
          if (activegroup.getActiveOrder() == null){
              activegroup.createOrder(generateUniqueKeyUsingUUID());
@@ -174,15 +177,31 @@ public class YellowHandler implements YellowHandlerInterface {
          activegroup.addItemToOrder(amount, itemID);
     }
 
+    @Override
     public UserInterface getActiveUser () {
          return this.activeUser;
     }
 
     public Boolean completeOrder(String startDate, String endDate) {
-         if (activegroup.orderIsCompleted(startDate,endDate)){
-             return true;
-         }
-         return false;
+        if (activegroup.orderIsCompleted(startDate, endDate)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public GroupInterface getActiveGroup() {
+        return this.activegroup;
+    }
+
+    @Override
+    public List<ItemInterface> getItems() {
+         return activegroup.getSelectedInventory().getItemList();
+    }
+
+    @Override
+    public void setActiveGroup(GroupInterface group) {
+        activegroup = group;
     }
 
     public void updateInventory() {

@@ -22,7 +22,7 @@ import java.util.List;
 public class Order implements OrderInterface{
     private String orderDate;
     private String dateOfReturn;
-    private List <Item> itemList = new ArrayList<>();
+    private List <ItemInterface> itemList = new ArrayList<>();
     private String orderID;
     private Renter renter;
     private List <Boolean> isRentable = new ArrayList<>();
@@ -40,9 +40,9 @@ public class Order implements OrderInterface{
      * @param item the item that should be added.
      */
     @Override
-    public void addItem (Item item){
-        isRentable.add(null);
+    public void addItem (ItemInterface item){
         itemList.add(item);
+        isRentable.add(null);
     }
 
     /**
@@ -66,10 +66,10 @@ public class Order implements OrderInterface{
      * @return returns the item back to the inventory.
      */
     @Override
-    public Item removeItem(String ID){
+    public ItemInterface removeItem(String ID){
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getId() == ID){
-                Item tmpItem = itemList.get(i);
+                ItemInterface tmpItem = itemList.get(i);
                 itemList.remove(i);
                 return tmpItem;
             }
@@ -102,7 +102,7 @@ public class Order implements OrderInterface{
     }
 
     @Override
-    public List<Item> getOrderList(){
+    public List<ItemInterface> getOrderList(){
         return itemList;
     }
 

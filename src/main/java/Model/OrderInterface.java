@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface OrderInterface {
 
-    public void addItem (Item item);
+    public void addItem (ItemInterface item);
 
     /**
      * Sets the renter for the order.
@@ -20,7 +20,7 @@ public interface OrderInterface {
      * @param ID the ID of the item that should be removed.
      * @return returns the item back to the inventory.
      */
-    public Item removeItem(String ID);
+    public ItemInterface removeItem(String ID);
 
     /**
      * Sets the date the order should be returned.
@@ -34,7 +34,7 @@ public interface OrderInterface {
 
     void setOrderDate(String orderDate);
 
-    public List<Item> getOrderList();
+    public List<ItemInterface> getOrderList();
 
     public String getOrderID();
 

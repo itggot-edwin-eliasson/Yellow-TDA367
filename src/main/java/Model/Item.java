@@ -1,6 +1,7 @@
 package Model;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ public class Item implements ItemInterface{
     private Map<String , String> rentedDates = new HashMap<>();
     private int orderCount = 0;
     private Boolean isRented = false;
+    private Image image;
 
     /**
      *
@@ -107,6 +109,11 @@ public class Item implements ItemInterface{
     @Override
     public void addCategory(String category){
         categories.add(category);
+    }
+
+    @Override
+    public Image getImage() {
+        return image;
     }
 
     public void setIsRented(Boolean isRented) {

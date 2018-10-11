@@ -34,9 +34,13 @@ public class GroupItemController extends AnchorPane {
 
         this.name = name;
         this.parentController = controller;
-        System.out.println(color);
 
         groupName.setText(name);
         background.setStyle("-fx-background-color: " + color);
+    }
+
+    @FXML
+    private void selectGroup(){
+        parentController.selectGroup(this);
     }
 }

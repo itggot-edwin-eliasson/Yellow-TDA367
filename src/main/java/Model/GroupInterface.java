@@ -29,7 +29,7 @@ public interface GroupInterface extends Serializable {
      * @param ID the ID of the order you want to find.
      * @return the Order.
      */
-    public Order findOrder (String ID);
+    public OrderInterface findOrder (String ID);
 
     /**
      * Finds a certain inventory by its ID.
@@ -43,7 +43,7 @@ public interface GroupInterface extends Serializable {
      * @param ID ID of the item to find.
      * @return returns the Item.
      */
-    public Item findItemByID (String ID);
+    public ItemInterface findItemByID (String ID);
 
     /**
      * Adds a item to an order and removes it from its inventory.
@@ -79,7 +79,7 @@ public interface GroupInterface extends Serializable {
 
     public Boolean orderIsCompleted(String startDate, String endDate);
 
-    public Order getActiveOrder();
+    public OrderInterface getActiveOrder();
 }
 
 

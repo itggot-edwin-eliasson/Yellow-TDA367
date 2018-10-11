@@ -33,7 +33,7 @@ public interface InventoryInterface extends Serializable {
      */
     public void removeItem (String id);
 
-    public List<Item> searchItem(String search);
+    public List<ItemInterface> searchItem(String search);
 
 
     public List <String> getCategories();
@@ -49,7 +49,7 @@ public interface InventoryInterface extends Serializable {
      * Get the complete list of items in inventory
      * @return The complete list of items in inventory
      */
-    public List <Item> getItemList ();
+    public List<ItemInterface> getItemList ();
 
     public String getID ();
 

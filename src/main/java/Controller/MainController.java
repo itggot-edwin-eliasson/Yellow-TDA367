@@ -16,6 +16,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
 import java.io.*;
@@ -37,9 +38,10 @@ public class MainController implements Initializable {
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
     private List<Inventory> allInventories = new ArrayList<>();
-    private YellowHandler yh;
+    private YellowHandlerInterface yh;
 
-    private Map<String, GroupItemController> groupItemControllerMap = new HashMap<>();
+    private Map<GroupInterface, GroupItemController> groupItemControllerMap = new HashMap<>();
+    private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
 
 
     @FXML private SignUpController signUpController;
@@ -57,8 +59,9 @@ public class MainController implements Initializable {
     @FXML private FlowPane groupListFlowPane;
     @FXML private FlowPane listFlowPane;
 
-    @FXML Button addGroupButton;
-    @FXML JFXButton userSettingsButton;
+    @FXML private JFXButton userSettingsButton;
+    @FXML private Label title;
+    @FXML private Button addGroupButton;
 
 
     @Override
@@ -101,15 +104,22 @@ public class MainController implements Initializable {
     @FXML
     public void createGroup(){
         JFXDialogLayout content = new JFXDialogLayout();
-        content.setHeading(new Text("Create a group"));
+        Label text = new Label("Create a group");
+        text.setStyle("-fx-text-fill: white");
+        content.setHeading(text);
 
         GridPane g = new GridPane();
         JFXTextField textField = new JFXTextField();
         textField.setPromptText("Group name");
+        textField.setStyle("-fx-text-fill: white; -fx-prompt-text-fill: rgba(255,255,255,0.75)");
+        textField.setFocusColor(Paint.valueOf("#ffcc00"));
+        textField.setUnFocusColor(Paint.valueOf("#fffdfd"));
         g.setHgap(5);
         g.setVgap(5);
         g.add(textField, 1, 1);
-        g.add(new Label("Pick a color:"), 1,2);
+        Label label = new Label("Pick a color:");
+        label.setStyle("-fx-text-fill: white");
+        g.add(label, 1,2);
         JFXColorPicker colorPicker = new JFXColorPicker(Color.web("#1f1e19"));
         g.add(colorPicker, 2,2);
         content.setBody(g);
@@ -132,23 +142,51 @@ public class MainController implements Initializable {
 
     }
 
+    public void selectGroup(GroupItemController groupItem){
+        for(GroupInterface tmpGroup: groupItemControllerMap.keySet()) {
+            if (groupItemControllerMap.get(tmpGroup).equals(groupItem)) {
+                yh.setActiveGroup(tmpGroup);
+                title.setText(tmpGroup.getName());
+                updateItemList();
+                updateItemItemMap();
+            }
+        }
+
+    }
+
     private void updateGroupItemMap(){
         List<GroupInterface> groups = yh.getGroups();
         for(GroupInterface group: groups){
             GroupItemController item = new GroupItemController(group.getName(), group.getColor(), this);
-            groupItemControllerMap.put(group.getId(), item);
+            groupItemControllerMap.put(group, item);
         }
     }
 
     private void updateGroupList(){
         groupListFlowPane.getChildren().clear();
         GroupItemController item;
-        for(String id: groupItemControllerMap.keySet()){
-            item = groupItemControllerMap.get(id);
+        for(GroupInterface group: groupItemControllerMap.keySet()){
+            item = groupItemControllerMap.get(group);
             groupListFlowPane.getChildren().add(item);
         }
     }
 
+    private void updateItemItemMap(){
+        List<ItemInterface> items = yh.getItems();
+        for(ItemInterface item: items){
+            ItemItemController itemItem = new ItemItemController(item.getName(), item.getImage(), this);
+            itemItemControllerMap.put(item,itemItem);
+        }
+    }
+
+    private void updateItemList(){
+        listFlowPane.getChildren().clear();
+        ItemItemController itemItem;
+        for(ItemInterface item: itemItemControllerMap.keySet()){
+            itemItem = itemItemControllerMap.get(item);
+            listFlowPane.getChildren().add(itemItem);
+        }
+    }
 
 
     public void goToSignUp () { signUp.toFront(); }

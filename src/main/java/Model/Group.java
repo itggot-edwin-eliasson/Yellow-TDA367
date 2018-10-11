@@ -28,9 +28,9 @@ public class Group implements GroupInterface{
    private Inventory selectedInventory;
    private int inviteCode;
    private List <Inventory> inventories = new ArrayList<>();
-   private List <Order> orderList = new ArrayList<>();
-   private List <Order> oldOrders = new ArrayList<>();
-   private Order activeOrder;
+   private List <OrderInterface> orderList = new ArrayList<>();
+   private List <OrderInterface> oldOrders = new ArrayList<>();
+   private OrderInterface activeOrder;
    private String color;
    private String id;
 
@@ -130,8 +130,8 @@ public class Group implements GroupInterface{
      * @return the Order.
      */
     @Override
-    public Order findOrder (String ID){
-        for (Order order: orderList) {
+    public OrderInterface findOrder (String ID){
+        for (OrderInterface order: orderList) {
             if (order.getOrderID().equals(ID)){
                 return order;
             }
@@ -159,8 +159,8 @@ public class Group implements GroupInterface{
      * @return returns the Item.
      */
     @Override
-    public Item findItemByID (String ID){
-        for (Item item: selectedInventory.getItemList()){
+    public ItemInterface findItemByID (String ID){
+        for (ItemInterface item: selectedInventory.getItemList()){
             if (item.getId().equals(ID)){
                 return item;
             }
@@ -175,7 +175,7 @@ public class Group implements GroupInterface{
      */
     @Override
     public void addItemToOrder (int amount, String itemId){
-        Item item = findItemByID(itemId);
+        ItemInterface item = findItemByID(itemId);
         activeOrder.addItem(item);
     }
 
@@ -215,8 +215,8 @@ public class Group implements GroupInterface{
         return false;
     }
 
-    private boolean allDatesAreOkay(List<Item> itemList, String startDate, String endDate) {
-        for (Item item: itemList) {
+    private boolean allDatesAreOkay(List<ItemInterface> itemList, String startDate, String endDate) {
+        for (ItemInterface item: itemList) {
             if(!item.checkDateIsNotInRentedPeriod(startDate) || !item.checkDateIsNotInRentedPeriod(endDate)){
                 return false;
             }
@@ -224,7 +224,7 @@ public class Group implements GroupInterface{
         return true;
     }
 
-    public Order getActiveOrder(){
+    public OrderInterface getActiveOrder(){
         return activeOrder;
     }
 
@@ -244,7 +244,7 @@ public class Group implements GroupInterface{
     public List getOrderList(){return orderList;}
 
     public void updateInventory() {
-        for (Item item: selectedInventory.getItemList()){
+        for (ItemInterface item: selectedInventory.getItemList()){
             item.setIsRented(item.checkDateIsNotInRentedPeriod(getCurrentTimeStamp()));
         }
     }

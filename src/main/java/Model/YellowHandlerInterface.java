@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 public interface YellowHandlerInterface {
 
     /**
@@ -33,5 +35,17 @@ public interface YellowHandlerInterface {
      * @return The unique id
      */
     public String generateUniqueKeyUsingUUID();
+
+    public void addItemToOrder(int amount, String id);
+
+    public UserInterface getActiveUser();
+
+    public GroupInterface getActiveGroup();
+
+    public List<GroupInterface> getGroups();
+
+    public List<ItemInterface> getItems();
+
+    public void setActiveGroup(GroupInterface group);
 
 }

@@ -18,8 +18,8 @@ public class Inventory implements InventoryInterface{
 
 
     private String name;
-    private List <Item> itemlist;
-    private List <String> categories;
+    private List<ItemInterface> itemlist;
+    private List<String> categories;
     private String ID;
 
     /**
@@ -75,7 +75,7 @@ public class Inventory implements InventoryInterface{
     @Override
     public void removeItem (String id) {
         if (itemlist.size() > 0) {
-            Item item;
+            ItemInterface item;
             for (int i = 0; i < itemlist.size(); i++) {
                 item = itemlist.get(i);
 
@@ -89,10 +89,10 @@ public class Inventory implements InventoryInterface{
         }
     }
     @Override
-    public List<Item> searchItem(String search){
-        List<Item> results = new ArrayList<>();
+    public List<ItemInterface> searchItem(String search){
+        List<ItemInterface> results = new ArrayList<>();
         for(int i = 0; i < itemlist.size(); i++){
-            Item item = itemlist.get(i);
+            ItemInterface item = itemlist.get(i);
             if(item.getName().contains(search)){
                 results.add(itemlist.get(i));
             }
@@ -126,7 +126,7 @@ public class Inventory implements InventoryInterface{
      * @return The complete list of items in inventory
      */
     @Override
-    public List <Item> getItemList ()  {
+    public List<ItemInterface> getItemList ()  {
         return itemlist;
     }
 
