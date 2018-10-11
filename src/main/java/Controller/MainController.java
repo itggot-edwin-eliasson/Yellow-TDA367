@@ -202,6 +202,7 @@ public class MainController implements Initializable {
 
     private void updateInventoryItemMap(){
         List<InventoryInterface> inventories = yh.getInventories();
+        inventoryItemControllerMap.clear();
         for(InventoryInterface inventory: inventories){
             InventoryItemController item = new InventoryItemController(inventory.getName(), this);
             inventoryItemControllerMap.put(inventory, item);
