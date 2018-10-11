@@ -18,7 +18,7 @@ public class OrderTest {
         Order o = new Order("id");
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.print(o.getOrderDate());
+        o.setOrderDate(s.format(d));
         assertEquals(s.format(d), o.getOrderDate());
     }
 
