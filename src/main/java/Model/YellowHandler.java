@@ -14,7 +14,7 @@ public class YellowHandler implements YellowHandlerInterface {
 
     private UserInterface activeUser;
     private GroupInterface activegroup;
-    private List<GroupInterface> groups = new ArrayList<>();
+    public List<GroupInterface> groups = new ArrayList<>();
     public List<UserInterface> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
 
@@ -42,6 +42,7 @@ public class YellowHandler implements YellowHandlerInterface {
         g.createInventory("All items", id);
         g.selectInventory(id);
         groups.add(g);
+        activeUser.addGroup(g.getId());
     }
 
     @Override
@@ -59,7 +60,17 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
     public List<GroupInterface> getGroups(){
-        return groups;
+        List<GroupInterface> tmpGroups = new ArrayList<>();
+        if(activeUser != null) {
+            for (int i = 0; i < activeUser.getGroupIds().size(); i++) {
+                for (GroupInterface group : groups) {
+                    if (group.getId().equals(activeUser.getGroupIds().get(i))) {
+                        tmpGroups.add(group);
+                    }
+                }
+            }
+        }
+        return tmpGroups;
     }
 
     public Map<String, List<String>> getGroupInfo(){

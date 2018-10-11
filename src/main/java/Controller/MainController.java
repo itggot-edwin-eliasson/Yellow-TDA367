@@ -64,6 +64,7 @@ public class MainController implements Initializable {
     @FXML private JFXButton userSettingsButton;
     @FXML private Label title;
     @FXML private Button addGroupButton;
+    @FXML private Button backButton;
 
 
     @Override
@@ -155,6 +156,7 @@ public class MainController implements Initializable {
             if (groupItemControllerMap.get(tmpGroup).equals(groupItem)) {
                 yh.setActiveGroup(tmpGroup);
                 title.setText(tmpGroup.getName());
+                backButton.setVisible(true);
                 listFlowPane.toFront();
                 drawer.toFront();
                 hamburger.toFront();
@@ -165,6 +167,13 @@ public class MainController implements Initializable {
             }
         }
 
+    }
+
+    @FXML
+    private void backToGroups(){
+        backButton.setVisible(false);
+        title.setText("Groups");
+        updateGroupList();
     }
 
     @FXML

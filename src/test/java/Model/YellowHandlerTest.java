@@ -43,8 +43,9 @@ public class YellowHandlerTest {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
         YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        yh.createUser("test", "test","test","test","test");
         yh.createGroup("test", "red");
-        assertTrue(yh.getGroups().size() == 1 || yh.users.size() == 1);
+        assertTrue(yh.groups.size() == 1 || yh.users.size() == 1);
     }
 
     @Test
