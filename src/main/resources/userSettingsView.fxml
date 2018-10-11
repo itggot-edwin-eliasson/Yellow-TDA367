@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane fx:id="userSettingsView" prefHeight="339.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserSettingsController">
    <children>
       <JFXTextField fx:id="usernameTextField" layoutX="40.0" layoutY="38.0" />
@@ -15,6 +14,6 @@
       <JFXTextField fx:id="lastNameTextField" layoutX="40.0" layoutY="154.0" />
       <JFXTextField fx:id="emailTextField" layoutX="40.0" layoutY="208.0" />
       <JFXPasswordField fx:id="passwordTextField" layoutX="40.0" layoutY="269.0" />
-      <JFXButton fx:id="saveButton" layoutX="298.0" layoutY="276.0" onAction="#changeUserSettings" />
+      <JFXButton fx:id="saveButton" layoutX="298.0" layoutY="276.0" onAction="#changeUserSettings" style="-fx-background-color: #FFE919;" text="User" textFill="#1b1a10" />
    </children>
 </AnchorPane>

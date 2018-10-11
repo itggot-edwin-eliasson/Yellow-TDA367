@@ -51,6 +51,7 @@ public class UserSettingsController {
 
 
         mainController.changeUserSettings(firstName, lastName, username, email, password);
+        mainController.goToMainWindow();
 
 
 
