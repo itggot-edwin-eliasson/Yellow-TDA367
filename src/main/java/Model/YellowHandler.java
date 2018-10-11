@@ -167,7 +167,10 @@ public class YellowHandler implements YellowHandlerInterface {
 
 
     public void addItemToOrder(int amount, String itemID) {
-         activegroup.createOrder(generateUniqueKeyUsingUUID());
+         if (activegroup.getActiveOrder() == null){
+             activegroup.createOrder(generateUniqueKeyUsingUUID());
+         }
+
          activegroup.addItemToOrder(amount, itemID);
     }
 
@@ -175,8 +178,11 @@ public class YellowHandler implements YellowHandlerInterface {
          return this.activeUser;
     }
 
-    public void completeOrder() {
-         activegroup.orderIsCompleted();
+    public Boolean completeOrder(String startDate, String endDate) {
+         if (activegroup.orderIsCompleted(startDate,endDate)){
+             return true;
+         }
+         return false;
     }
 
     public void updateInventory() {

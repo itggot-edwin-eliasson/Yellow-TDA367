@@ -186,18 +186,18 @@ public class MainController implements Initializable {
             switch (whatToSeralize) {
                 case "groups":
                     fileOut =
-                            new FileOutputStream("src/main/res/allGroups.ser");
+                            new FileOutputStream("src/main/resources/Database/allGroups.ser");
                     break;
                 case "inventories":
                     fileOut =
-                            new FileOutputStream("src/main/res/allInventories.ser");
+                            new FileOutputStream("src/main/resources/Database/allInventories.ser");
                     break;
                 case "users":
                     fileOut =
-                            new FileOutputStream("src/main/res/allUsers.ser");
+                            new FileOutputStream("src/main/resources/Database/allUsers.ser");
                     break;
                 default:
-                    fileOut = new FileOutputStream("src/main/res/errorSave.ser");
+                    fileOut = new FileOutputStream("src/main/resources/Database/errorSave.ser");
                     break;
             }
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -212,7 +212,7 @@ public class MainController implements Initializable {
             }
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /tmp/"+ whatToSeralize + ".ser");
+            System.out.printf("Serialized data is saved in /"+ whatToSeralize + ".ser");
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -229,18 +229,18 @@ public class MainController implements Initializable {
             switch (whatToDeseralize) {
                 case "groups":
                     fileIn =
-                            new FileInputStream("src/main/res/allGroups.ser");
+                            new FileInputStream("src/main/resources/Database/allGroups.ser");
                     break;
                 case "inventories":
                     fileIn =
-                            new FileInputStream("src/main/res/allInventories.ser");
+                            new FileInputStream("src/main/resources/Database/allInventories.ser");
                     break;
                 case "users":
                     fileIn =
-                            new FileInputStream("src/main/res/allUsers.ser");
+                            new FileInputStream("src/main/resources/Database/allUsers.ser");
                     break;
                 default:
-                    fileIn = new FileInputStream("src/main/res/errorSave.ser");
+                    fileIn = new FileInputStream("src/main/resources/Database/errorSave.ser");
                     break;
             }
             ObjectInputStream in = new ObjectInputStream(fileIn);

@@ -75,9 +75,11 @@ public interface GroupInterface extends Serializable {
     public void removeItem(String id);
 
 
-    public void orderIsCompleted();
-
     public void updateInventory();
+
+    public Boolean orderIsCompleted(String startDate, String endDate);
+
+    public Order getActiveOrder();
 }
 
 
