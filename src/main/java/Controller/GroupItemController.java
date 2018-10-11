@@ -2,10 +2,15 @@ package Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Paint;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class GroupItemController extends AnchorPane {
@@ -29,8 +34,9 @@ public class GroupItemController extends AnchorPane {
 
         this.name = name;
         this.parentController = controller;
+        System.out.println(color);
 
         groupName.setText(name);
-        //background.setStyle("-fx-background-color: " + Paint.valueOf(color));
+        background.setStyle("-fx-background-color: " + color);
     }
 }

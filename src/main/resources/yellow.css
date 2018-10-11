@@ -118,3 +118,8 @@
 .scroll-pane {
 	-fx-background-color: #1f1e19;
 }
+
+.groupItem {
+	-fx-background-color:  rgba(0, 0, 0, 1);
+	-fx-background-radius: 5px;
+}

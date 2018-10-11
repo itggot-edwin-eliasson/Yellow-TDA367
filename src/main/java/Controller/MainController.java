@@ -97,21 +97,26 @@ public class MainController implements Initializable {
     public void createGroup(){
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(new Text("Create a group"));
+
         GridPane g = new GridPane();
         JFXTextField textField = new JFXTextField();
         textField.setPromptText("Group name");
+        g.setHgap(5);
+        g.setVgap(5);
         g.add(textField, 1, 1);
-        g.add(new Label("Pick a color"), 1,2);
+        g.add(new Label("Pick a color:"), 1,2);
         JFXColorPicker colorPicker = new JFXColorPicker(Color.web("#1f1e19"));
         g.add(colorPicker, 2,2);
         content.setBody(g);
         JFXDialog dialog = new JFXDialog(mainWindow, content, JFXDialog.DialogTransition.CENTER);
+
         JFXButton button = new JFXButton("Create group");
         button.setStyle("-fx-background-color: #ffcc00");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                yh.createGroup(textField.getText(), colorPicker.getValue().toString());
+                String hex = "#" + Integer.toHexString(colorPicker.getValue().hashCode());
+                yh.createGroup(textField.getText(), hex);
                 updateGroupItemMap();
                 updateGroupList();
                 dialog.close();
