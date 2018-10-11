@@ -38,9 +38,9 @@ public class OrderTest {
         Item tmp = new Item("test","test","ID");
         o.addItem(tmp);
         assertEquals(1,o.getOrderList().size());
-        Item tmpItem = o.removeItem("WrongId");
+        ItemInterface tmpItem = o.removeItem("WrongId");
         assertEquals(1,o.getOrderList().size());
-        Item tmpItem2 = o.removeItem("ID");
+        ItemInterface tmpItem2 = o.removeItem("ID");
         assertEquals(0,o.getOrderList().size());
     }
 

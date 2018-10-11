@@ -167,7 +167,8 @@ public class MainController implements Initializable {
 
     }
 
-    @FXML public void exitApplication (ActionEvent event) {
+    @FXML
+    public void exitApplication (ActionEvent event) {
         seralize("groups");
         seralize("inventories");
         seralize("users");

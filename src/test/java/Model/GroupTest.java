@@ -34,10 +34,10 @@ public class GroupTest {
         g.createInventory("inventory", "ID123");
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
-        Item tmp = g.findItemByID("itemID123");
+        ItemInterface tmp = g.findItemByID("itemID123");
         assertEquals("boll", tmp.getName());
         tmp.setName("bollen");
-        Item tmp2 = g.findItemByID("itemID123");
+        ItemInterface tmp2 = g.findItemByID("itemID123");
         assertEquals("bollen",tmp2.getName());
     }
     @Test
@@ -45,7 +45,7 @@ public class GroupTest {
         List<Integer> l = new ArrayList<>();
         Group g = new Group("test","red","ID",l);
         g.createInventory("inventory123", "ID123");
-        Inventory tmp = g.findInventory("ID123");
+        InventoryInterface tmp = g.findInventory("ID123");
         assertEquals("inventory123",tmp.getName());
     }
 
@@ -55,9 +55,9 @@ public class GroupTest {
         Group g = new Group("test","red","ID",l);
         g.createOrder("orderId");
         g.orderIsCompleted("2018-05-10","2018-05-12");
-        Order tmp = g.findOrder("orderId");
+        OrderInterface tmp = g.findOrder("orderId");
         tmp.setRenter("hej","123");
-        Order tmp2 = g.findOrder("orderId");
+        OrderInterface tmp2 = g.findOrder("orderId");
         assertEquals("hej",tmp2.getRenter().getName());
     }
     @Test

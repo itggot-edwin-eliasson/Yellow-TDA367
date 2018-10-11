@@ -15,7 +15,7 @@ public class YellowHandler implements YellowHandlerInterface {
     private UserInterface activeUser;
     private GroupInterface activegroup;
     private List<GroupInterface> groups = new ArrayList<>();
-    private List<UserInterface> users = new ArrayList<>();
+    public List<UserInterface> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
 
     /**
