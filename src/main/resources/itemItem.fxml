@@ -10,7 +10,7 @@
 
 <fx:root prefHeight="70.0" prefWidth="417" style="-fx-background-color: #1F1E18; -fx-border-color: #5B5C55; -fx-border-style: solid none solid; -fx-border-width: 2px;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label fx:id="itemItem" layoutX="81.0" layoutY="14.0" text="Item Name" textFill="WHITE">
+        <Label fx:id="itemName" layoutX="81.0" layoutY="14.0" text="Item Name" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font>

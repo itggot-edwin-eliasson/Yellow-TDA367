@@ -18,7 +18,7 @@ public class ItemItemController extends AnchorPane {
     @FXML private ImageView itemImage;
 
     public ItemItemController(String name, Image image, MainController controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("itemItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../itemItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -32,6 +32,5 @@ public class ItemItemController extends AnchorPane {
         this.parentController = controller;
 
         itemName.setText(name);
-        itemImage.setImage(image);
     }
 }

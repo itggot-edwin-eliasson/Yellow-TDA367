@@ -179,7 +179,7 @@ public class MainController implements Initializable {
     @FXML
     private void createItem(){
         JFXDialogLayout content = new JFXDialogLayout();
-        Label text = new Label("Create an item");
+        Label text = new Label("Add an item");
         text.setStyle("-fx-text-fill: white");
         content.setHeading(text);
 
@@ -189,20 +189,26 @@ public class MainController implements Initializable {
         nameTextField.setStyle("-fx-text-fill: white; -fx-prompt-text-fill: rgba(255,255,255,0.75)");
         nameTextField.setFocusColor(Paint.valueOf("#ffcc00"));
         nameTextField.setUnFocusColor(Paint.valueOf("#fffdfd"));
+        JFXTextField descriptionTextField = new JFXTextField();
+        descriptionTextField.setPromptText("Item description");
+        descriptionTextField.setStyle("-fx-text-fill: white; -fx-prompt-text-fill: rgba(255,255,255,0.75)");
+        descriptionTextField.setFocusColor(Paint.valueOf("#ffcc00"));
+        descriptionTextField.setUnFocusColor(Paint.valueOf("#fffdfd"));
         g.setHgap(5);
         g.setVgap(5);
         g.add(nameTextField, 1, 1);
+        g.add(descriptionTextField, 1,2);
         content.setBody(g);
         JFXDialog dialog = new JFXDialog(mainWindow, content, JFXDialog.DialogTransition.CENTER);
 
-        JFXButton button = new JFXButton("Create group");
+        JFXButton button = new JFXButton("Add item");
         button.setStyle("-fx-background-color: #ffcc00");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-           //     yh.addItem();
-                updateGroupItemMap();
-                updateGroupList();
+                yh.addItem(nameTextField.getText(), descriptionTextField.getText(), yh.getActiveGroup().getSelectedInventory().getID(), 1);
+                updateItemItemMap();
+                updateItemList();
                 dialog.close();
             }
         });

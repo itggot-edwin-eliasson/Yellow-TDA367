@@ -79,7 +79,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="addItemButton" layoutX="173.0" layoutY="12.0" style="-fx-background-color: #ffcc00;" text="Add item" />
+                        <JFXButton fx:id="addItemButton" layoutX="173.0" layoutY="12.0" onAction="#createItem" style="-fx-background-color: #ffcc00;" text="Add item" />
                      </children>
                   </AnchorPane>
               </items>
