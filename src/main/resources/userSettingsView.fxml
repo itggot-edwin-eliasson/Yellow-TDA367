@@ -9,17 +9,17 @@
 
 <AnchorPane fx:id="userSettingsView" prefHeight="339.0" prefWidth="417.0" style="-fx-background-color: #1F1E18;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserSettingsController">
    <children>
-      <JFXTextField fx:id="usernameTextField" focusColor="#ffcc00" layoutX="39.0" layoutY="180.0" unFocusColor="#fcfcfc" />
-      <JFXTextField fx:id="firstNameTextField" focusColor="#ffcc00" layoutX="40.0" layoutY="46.0" unFocusColor="WHITE" />
-      <JFXTextField fx:id="lastNameTextField" focusColor="#ffcc00" layoutX="40.0" layoutY="90.0" unFocusColor="#fffafa" />
-      <JFXTextField fx:id="emailTextField" focusColor="#ffcc00" layoutX="40.0" layoutY="141.0" unFocusColor="WHITE" />
-      <JFXPasswordField fx:id="passwordTextField" focusColor="#ffcc00" layoutX="40.0" layoutY="226.0" unFocusColor="WHITE" />
-      <JFXButton fx:id="saveButton" layoutX="299.0" layoutY="294.0" onAction="#changeUserSettings" style="-fx-background-color: #FFE919;" text="Update user" textFill="#1b1a10" />
-      <Label layoutX="40.0" layoutY="76.0" text="First name" textFill="#5a5555" />
-      <Label layoutX="40.0" layoutY="120.0" text="Last name" textFill="#5a5555" />
-      <Label layoutX="40.0" layoutY="170.0" text="Email" textFill="#5a5555" />
-      <Label layoutX="40.0" layoutY="211.0" text="Username" textFill="#5a5555" />
-      <Label layoutX="39.0" layoutY="253.0" text="Password" textFill="#5a5555" />
+      <JFXTextField fx:id="usernameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="153.0" unFocusColor="#fcfcfc" AnchorPane.leftAnchor="35.0" />
+      <JFXTextField fx:id="firstNameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="21.0" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
+      <JFXTextField fx:id="lastNameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="65.0" unFocusColor="#fffafa" AnchorPane.leftAnchor="35.0" />
+      <JFXTextField fx:id="emailTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="111.0" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
+      <JFXPasswordField fx:id="passwordTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="197.0" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
+      <JFXButton fx:id="saveButton" layoutX="93.0" layoutY="292.0" onAction="#changeUserSettings" style="-fx-background-color: #FFE919;" text="Update user" textFill="#1b1a10" />
+      <Label layoutX="36.0" layoutY="51.0" text="First name" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
+      <Label layoutX="36.0" layoutY="95.0" text="Last name" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
+      <Label layoutX="36.0" layoutY="142.0" text="Email" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
+      <Label layoutX="36.0" layoutY="183.0" text="Username" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
+      <Label layoutX="36.0" layoutY="226.0" text="Password" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
    </children>
    <opaqueInsets>
       <Insets />
