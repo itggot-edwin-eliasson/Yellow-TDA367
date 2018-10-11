@@ -64,6 +64,7 @@ public class MainController implements Initializable {
     @FXML private Label title;
     @FXML private Button addGroupButton;
     @FXML private Button backButton;
+    @FXML private Button addItemButton;
 
 
     @Override
@@ -173,6 +174,40 @@ public class MainController implements Initializable {
         backButton.setVisible(false);
         title.setText("Groups");
         updateGroupList();
+    }
+
+    @FXML
+    private void createItem(){
+        JFXDialogLayout content = new JFXDialogLayout();
+        Label text = new Label("Create an item");
+        text.setStyle("-fx-text-fill: white");
+        content.setHeading(text);
+
+        GridPane g = new GridPane();
+        JFXTextField nameTextField = new JFXTextField();
+        nameTextField.setPromptText("Item name");
+        nameTextField.setStyle("-fx-text-fill: white; -fx-prompt-text-fill: rgba(255,255,255,0.75)");
+        nameTextField.setFocusColor(Paint.valueOf("#ffcc00"));
+        nameTextField.setUnFocusColor(Paint.valueOf("#fffdfd"));
+        g.setHgap(5);
+        g.setVgap(5);
+        g.add(nameTextField, 1, 1);
+        content.setBody(g);
+        JFXDialog dialog = new JFXDialog(mainWindow, content, JFXDialog.DialogTransition.CENTER);
+
+        JFXButton button = new JFXButton("Create group");
+        button.setStyle("-fx-background-color: #ffcc00");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+           //     yh.addItem();
+                updateGroupItemMap();
+                updateGroupList();
+                dialog.close();
+            }
+        });
+        content.setActions(button);
+        dialog.show();
     }
 
     @FXML
