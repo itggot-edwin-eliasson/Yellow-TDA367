@@ -68,19 +68,20 @@ public class YellowHandler implements YellowHandlerInterface {
     /**
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
-     * @param name The name of the user
+     * @param firstName The name of the user
+     * @param lastName The first name of the user
      * @param email The email of the user
      * @param password The users password
      */
     @Override
-    public UserInterface createUser(String username, String name, String email, String password){
+    public UserInterface createUser(String username, String firstName, String lastName, String email, String password){
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
                 return null;
                 // ERROR MESSAGE
             }
         }
-        activeUser = new User(username, name, email, generateUniqueKeyUsingUUID(), password);
+        activeUser = new User(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
         return activeUser;
     }

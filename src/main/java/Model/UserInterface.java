@@ -11,6 +11,8 @@ public interface UserInterface extends Serializable {
 
     public String getEmail();
 
+    public void setLastName(String name);
+
     public String getUsername();
 
     public void setName(String name);

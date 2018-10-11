@@ -64,7 +64,7 @@ public class MainController implements Initializable {
         hamburgerSetup();
         signUpController.injectMainController(this);
         loginController.injectMainController(this);
-        //userSettingsController.injectMainController(this);
+        userSettingsController.injectMainController(this);
         //seralize("");
 
         this.yh = new YellowHandler(allUsers, allGroups);
@@ -75,8 +75,8 @@ public class MainController implements Initializable {
 
     public void login(String username, String password)  { yh.logIn(username, password); }
 
-    public void createUser (String username, String name, String email, String password) {
-        UserInterface user = yh.createUser(username, name, email, password);
+    public void createUser (String username, String firstName, String lastName, String email, String password) {
+        UserInterface user = yh.createUser(username, firstName, lastName, email, password);
         saveUser(user);
     }
 

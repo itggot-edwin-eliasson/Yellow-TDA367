@@ -5,22 +5,20 @@ import java.util.*;
 public class User implements UserInterface {
 
     private String username;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
     private String id;
     private String password;
     private List<String> groupIds = new ArrayList<>();
 
-    public User (String username, String name, String email, String id, String password){
+    public User (String username, String firstName, String lastName, String email, String id, String password){
         this.username = username;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.id = id;
         this.password = password;
-    }
-
-    public User (String username) {
-        this.username = username;
     }
 
    @Override
@@ -51,8 +49,11 @@ public class User implements UserInterface {
 
     @Override
     public void setName(String name) {
-        this.name = name;
+        this.firstName = name;
     }
+
+    @Override
+    public void setLastName(String name) {this.lastName = name;}
 
     @Override
     public void setEmail(String email) {
