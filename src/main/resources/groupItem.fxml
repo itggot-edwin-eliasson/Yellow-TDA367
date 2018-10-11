@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="background" onMousePressed="#selectGroup" prefHeight="65.0" prefWidth="200" styleClass="groupItem" stylesheets="@yellow.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="background" onMousePressed="#selectGroup" prefHeight="40.0" prefWidth="200" styleClass="groupItem" stylesheets="@yellow.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="groupName" layoutX="14.0" layoutY="19.0" text="Group Name" textFill="WHITE">
+      <Label fx:id="groupName" layoutX="14.0" layoutY="7.0" text="Group Name" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
