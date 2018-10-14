@@ -66,7 +66,6 @@ public class MainController implements Initializable {
     @FXML private Button backButton;
     @FXML private Button addItemButton;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hamburgerSetup();
@@ -81,35 +80,23 @@ public class MainController implements Initializable {
     }
 
     private void start(){
-        signUpController.toLoginScreen(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                toLoginScreen();
-                event.consume();
-            }
+        signUpController.toLoginScreen(event -> {
+            toLoginScreen();
+            event.consume();
         });
-        signUpController.signUp(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                createUser(signUpController.getUsername(),signUpController.getFirstName(), signUpController.getLastName(),
-                            signUpController.getEmail(), signUpController.getPassword());
-                goToMainWindow();
-                event.consume();
-            }
+        signUpController.signUp(event -> {
+            createUser(signUpController.getUsername(),signUpController.getFirstName(), signUpController.getLastName(),
+                        signUpController.getEmail(), signUpController.getPassword());
+            goToMainWindow();
+            event.consume();
         });
-        loginController.toSignupScreen(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                goToSignUp();
-                event.consume();
-            }
+        loginController.toSignupScreen(event -> {
+            goToSignUp();
+            event.consume();
         });
-        loginController.login(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                login(loginController.getUsername(),loginController.getPassword());
-                event.consume();
-            }
+        loginController.login(event -> {
+            login(loginController.getUsername(),loginController.getPassword());
+            event.consume();
         });
         userSettingsController.changeUserSettings(new EventHandler<ActionEvent>() {
             @Override
@@ -120,6 +107,16 @@ public class MainController implements Initializable {
                 goToMainWindow();
             }
         });
+    }
+
+    public List<String> getSignUpInfo(){
+        List<String> list = new ArrayList<>();
+        list.add(userSettingsController.getFirstName());
+        list.add(userSettingsController.getLastName());
+        list.add(userSettingsController.getUsername());
+        list.add(userSettingsController.getEmail());
+        list.add(userSettingsController.getPassword());
+        return list;
     }
 
     private void login(String username, String password)  {
@@ -331,7 +328,7 @@ public class MainController implements Initializable {
 
     private void goToSignUp () { signUp.toFront(); }
 
-    private void goToMainWindow () {
+    public void goToMainWindow () {
         mainWindow.toFront();
     }
 
@@ -483,7 +480,4 @@ public class MainController implements Initializable {
         }
 
     }
-
-
-
 }

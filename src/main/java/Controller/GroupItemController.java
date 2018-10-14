@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class GroupItemController extends AnchorPane {
 
-    String name;
+    private String name;
 
     @FXML private Label groupName;
     @FXML private AnchorPane background;
