@@ -13,7 +13,7 @@ public interface OrderInterface {
      */
     public void setRenter(String name, String phoneNr);
 
-    public Renter getRenter();
+    public RenterInterface getRenter();
 
     /**
      * Removes an item from the inventory

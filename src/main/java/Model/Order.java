@@ -22,7 +22,7 @@ public class Order implements OrderInterface{
     private String dateOfReturn;
     private List <ItemInterface> itemList = new ArrayList<>();
     private String orderID;
-    private Renter renter;
+    private RenterInterface renter;
     private List <Boolean> isRentable = new ArrayList<>();
 
     /**
@@ -54,7 +54,7 @@ public class Order implements OrderInterface{
     }
 
     @Override
-    public Renter getRenter(){
+    public RenterInterface getRenter(){
         return renter;
     }
 
@@ -109,6 +109,8 @@ public class Order implements OrderInterface{
         return orderID;
     }
 
+
+    @Override
     public void setIsRentable(int index, boolean canBeRented) {
         isRentable.remove(index);
         isRentable.add(index,canBeRented);

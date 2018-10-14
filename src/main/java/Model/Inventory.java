@@ -43,7 +43,7 @@ public class Inventory implements InventoryInterface{
 
     @Override
     public void addItem(String itemName, String itemDescription, String itemID){ //Add Item to list if amount =1
-        Item item = new Item(itemName,itemDescription, itemID);
+        ItemInterface item = new Item(itemName,itemDescription, itemID);
         itemlist.add(item);
     }
 
@@ -58,7 +58,7 @@ public class Inventory implements InventoryInterface{
     public void addItem (String itemName, String itemDescription, String itemID, int amount) { //Adds Items to list if amout > 1
         if(amount > 1){
             for(int i = 0; i < amount; i++){
-                Item item = new Item(itemName, itemDescription, itemID);
+                ItemInterface item = new Item(itemName, itemDescription, itemID);
                 itemlist.add(item);
             }
         }else{

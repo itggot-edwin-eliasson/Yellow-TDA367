@@ -25,12 +25,12 @@ import java.util.List;
 public class Group implements GroupInterface{
 
    private String name;
-   private Inventory selectedInventory;
+   private InventoryInterface selectedInventory;
    private int inviteCode;
-   private List <Inventory> inventories = new ArrayList<>();
-   private List <Order> orderList = new ArrayList<>();
-   private List <Order> oldOrders = new ArrayList<>();
-   private Order activeOrder;
+   private List <InventoryInterface> inventories = new ArrayList<>();
+   private List <OrderInterface> orderList = new ArrayList<>();
+   private List <OrderInterface> oldOrders = new ArrayList<>();
+   private OrderInterface activeOrder;
    private String color;
    private String id;
 
@@ -60,11 +60,11 @@ public class Group implements GroupInterface{
         }
         return inviteCode;
     }
-
+    @Override
     public void addItem(String name, String description, String id, String inventoryId, int amount) {
         selectedInventory.addItem(name, description, id, amount);
     }
-
+    @Override
     public void removeItem (String id) {
         selectedInventory.removeItem(id);
     }
@@ -82,6 +82,7 @@ public class Group implements GroupInterface{
      * Get the group id
      * @return The group id
      */
+    @Override
     public String getId(){
         return id;
     }
@@ -90,6 +91,7 @@ public class Group implements GroupInterface{
      * Get the group name
      * @return The group name
      */
+    @Override
     public String getName(){
         return name;
     }
@@ -98,6 +100,7 @@ public class Group implements GroupInterface{
      * Get the color
      * @return The color
      */
+    @Override
     public String getColor(){
         return color;
     }
@@ -108,7 +111,7 @@ public class Group implements GroupInterface{
      */
     @Override
     public void createInventory (String name, String ID) {
-        Inventory i = new Inventory(name, ID);
+        InventoryInterface i = new Inventory(name, ID);
         inventories.add(i);
     }
 
@@ -119,7 +122,7 @@ public class Group implements GroupInterface{
     @Override
     public void createOrder (String ID){
         if(activeOrder == null) {
-            Order order = new Order(ID);
+            OrderInterface order = new Order(ID);
             activeOrder = order;
         }
     }
@@ -130,8 +133,8 @@ public class Group implements GroupInterface{
      * @return the Order.
      */
     @Override
-    public Order findOrder (String ID){
-        for (Order order: orderList) {
+    public OrderInterface findOrder (String ID){
+        for (OrderInterface order: orderList) {
             if (order.getOrderID().equals(ID)){
                 return order;
             }
@@ -145,8 +148,8 @@ public class Group implements GroupInterface{
      * @return the inventory.
      */
     @Override
-    public Inventory findInventory (String ID){
-        for (Inventory inventory: inventories){
+    public InventoryInterface findInventory (String ID){
+        for (InventoryInterface inventory: inventories){
             if (inventory.getID().equals(ID)){
                 return inventory;
             }
@@ -189,7 +192,7 @@ public class Group implements GroupInterface{
     }
 
     @Override
-    public Inventory getSelectedInventory () {
+    public InventoryInterface getSelectedInventory () {
         return selectedInventory;
     }
 
@@ -214,7 +217,7 @@ public class Group implements GroupInterface{
         }
         return false;
     }
-
+    @Override
     public boolean allDatesAreOkay(String startDate, String endDate) {
         boolean works = true;
         for (int i = 0; i < activeOrder.getOrderList().size(); i++) {
@@ -227,7 +230,8 @@ public class Group implements GroupInterface{
         return works;
     }
 
-    public Order getActiveOrder(){
+    @Override
+    public OrderInterface getActiveOrder(){
         return activeOrder;
     }
 
@@ -244,9 +248,13 @@ public class Group implements GroupInterface{
             }
         }
     }
+
+    @Override
     public List getOldOrders(){return oldOrders;}
+    @Override
     public List getOrderList(){return orderList;}
 
+    @Override
     public void updateInventory() {
         for (ItemInterface item: selectedInventory.getItemList()){
             item.setIsRented(item.checkDateIsNotInRentedPeriod(getCurrentTimeStamp()));

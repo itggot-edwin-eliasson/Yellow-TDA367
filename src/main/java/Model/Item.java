@@ -34,6 +34,7 @@ public class Item implements ItemInterface{
      * @param name The name of the item
      * @param description The description of the item
      */
+
     public Item (String name, String description, String ID) {
         this.name = name;
         this.description = description;
@@ -45,6 +46,7 @@ public class Item implements ItemInterface{
      * @param date the date that will be checked.
      * @return True if no conflict. False if conflict.
      */
+    @Override
     public Boolean checkDateIsNotInRentedPeriod (String date){
         for (int i = 0; i < orderCount; i++) {
             int startDate = getDateAsInt(rentedDates.get("startDate"+(i+1)+""));
@@ -64,6 +66,8 @@ public class Item implements ItemInterface{
      * @param endDate
      * @return
      */
+
+    @Override
     public Boolean setRentedDate(String startDate, String endDate){
         if (checkDateIsNotInRentedPeriod(startDate) && checkDateIsNotInRentedPeriod(endDate)){
             String keyStart = "startDate"+(orderCount+1)+"";
@@ -75,6 +79,7 @@ public class Item implements ItemInterface{
         }
         return false;
     }
+
 
     private int getDateAsInt (String date){
         String tmp = date.charAt(0)+date.charAt(1)+date.charAt(2)+date.charAt(3)+date.charAt(5)+date.charAt(6)+date.charAt(8)+date.charAt(9)+"";
@@ -116,9 +121,12 @@ public class Item implements ItemInterface{
         return image;
     }
 
+    @Override
     public void setIsRented(Boolean isRented) {
         this.isRented = isRented;
     }
+
+    @Override
     public Boolean getIsRented(){
         return isRented;
     }

@@ -56,11 +56,6 @@ public class YellowHandler implements YellowHandlerInterface {
         activeUser.setPassword(password);
     }
 
-    public String[] getUserInfo () {
-
-        return null;
-    }
-
     public List<GroupInterface> getGroups(){
         List<GroupInterface> tmpGroups = new ArrayList<>();
         if(activeUser != null) {

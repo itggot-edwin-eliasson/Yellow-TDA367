@@ -23,4 +23,8 @@ public interface ItemInterface {
     public void setIsRented(Boolean isRented);
 
     public Boolean checkDateIsNotInRentedPeriod (String date);
+
+    public Boolean setRentedDate(String startDate, String endDate);
+
+    public Boolean getIsRented();
 }

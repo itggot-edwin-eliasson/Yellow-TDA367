@@ -85,6 +85,10 @@ public interface GroupInterface extends Serializable {
     boolean allDatesAreOkay(String startDate, String endDate);
 
     public OrderInterface getActiveOrder();
+
+    public List getOldOrders();
+
+    public List getOrderList();
 }
 
 
