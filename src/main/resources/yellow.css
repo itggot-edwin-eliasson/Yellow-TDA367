@@ -127,3 +127,7 @@
 .jfx-dialog-overlay-pane > StackPane {
 	-fx-background-color: #1f1e19;
 }
+
+.mainscrollpane {
+    -fx-background-color: transparent;
+}

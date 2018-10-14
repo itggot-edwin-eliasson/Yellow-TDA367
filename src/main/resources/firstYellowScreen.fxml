@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuScreenController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="653.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/yellowBgr.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="107.0" layoutY="97.0" prefHeight="230.0" prefWidth="388.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-background-radius: 8;">
+         <children>
+            <JFXButton layoutY="1.0" prefHeight="115.0" prefWidth="194.0" text="My Yellow" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="210.0" layoutY="1.0" prefHeight="115.0" prefWidth="194.0" text="Create group" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton layoutY="109.0" prefHeight="115.0" prefWidth="194.0" text="Manage my Yellow" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton layoutX="210.0" layoutY="1.0" prefHeight="115.0" prefWidth="194.0" text="Join group" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Label layoutX="254.0" layoutY="26.0" text="Yellow" textFill="WHITE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
