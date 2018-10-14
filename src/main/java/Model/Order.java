@@ -39,8 +39,20 @@ public class Order implements OrderInterface{
      */
     @Override
     public void addItem (ItemInterface item){
-        itemList.add(item);
-        isRentable.add(null);
+        if(!alreadyInList(item)){
+            itemList.add(item);
+            isRentable.add(null);
+        }
+    }
+
+    private boolean alreadyInList(ItemInterface itemToCheck) {
+        boolean isAdded = false;
+        for (ItemInterface item:itemList) {
+            if(item.getId().equals(itemToCheck.getId())){
+                isAdded = true;
+            }
+        }
+        return isAdded;
     }
 
     /**

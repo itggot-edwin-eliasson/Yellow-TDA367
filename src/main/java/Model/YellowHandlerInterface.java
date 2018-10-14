@@ -20,7 +20,7 @@ public interface YellowHandlerInterface {
 
     //public User createUser (String username);
 
-    public void joinGroup(String inviteCode);
+    public void joinGroup(int inviteCode);
 
     public void removeGroup (String id);
 
@@ -38,7 +38,7 @@ public interface YellowHandlerInterface {
      */
     public String generateUniqueKeyUsingUUID();
 
-    public void addItemToOrder(int amount, String id);
+    public void addItemToOrder(String id);
 
     public UserInterface getActiveUser();
 

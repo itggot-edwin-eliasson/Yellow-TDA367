@@ -177,7 +177,7 @@ public class Group implements GroupInterface{
      *
      */
     @Override
-    public void addItemToOrder (int amount, String itemId){
+    public void addItemToOrder (String itemId){
         ItemInterface item = findItemByID(itemId);
         activeOrder.addItem(item);
     }
@@ -211,12 +211,20 @@ public class Group implements GroupInterface{
     @Override
     public Boolean orderIsCompleted(String startDate, String endDate){
         if (allDatesAreOkay(startDate,endDate)){
+            setItemsToOrdered(startDate,endDate);
             orderList.add(activeOrder);
             activeOrder = null;
             return true;
         }
         return false;
     }
+
+    private void setItemsToOrdered(String startDate, String endDate) {
+        for (ItemInterface item: activeOrder.getOrderList()) {
+            item.setRentedDate(startDate,endDate);
+        }
+    }
+
     @Override
     public boolean allDatesAreOkay(String startDate, String endDate) {
         boolean works = true;

@@ -14,13 +14,6 @@ import static org.junit.Assert.*;
 public class GroupTest {
 
     @Test
-    public void generateInviteCode(){
-        List<Integer> l = new ArrayList<>();
-        Group g = new Group("Test", "red", "ID", l);
-        assertTrue(g.getInviteCode() > 999 || g.getInviteCode() < 10000);
-    }
-
-    @Test
     public void generateUniqueInviteCode(){
         List<Integer> l = new ArrayList<>();
         Group g = new Group("Test","red","ID",l);
@@ -68,7 +61,7 @@ public class GroupTest {
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
-        g.addItemToOrder(1,"itemID123");
+        g.addItemToOrder("itemID123");
         g.orderIsCompleted("2018-05-10","2018-05-12");
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
     }
@@ -80,7 +73,7 @@ public class GroupTest {
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
-        g.addItemToOrder(1,"itemID123");
+        g.addItemToOrder("itemID123");
         g.orderIsCompleted("2018-05-10","2018-05-12");
         assertEquals(1,g.findOrder("orderID").getOrderList().size());
         g.selectOrder("orderID");
@@ -95,7 +88,7 @@ public class GroupTest {
         g.selectInventory("ID123");
         g.getSelectedInventory().addItem("boll","en boll", "itemID123");
         g.createOrder("orderID");
-        g.addItemToOrder(1,"itemID123");
+        g.addItemToOrder("itemID123");
         g.orderIsCompleted("2018-05-10","2018-05-12");
         assertEquals(1,g.getOrderList().size());
         g.orderIsReturned("orderID");

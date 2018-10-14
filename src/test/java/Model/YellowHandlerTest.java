@@ -78,7 +78,7 @@ public class YellowHandlerTest {
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group1","hej");
         yh.createGroup("group2","hej");
-        String tmp = yh.getGroups().get(1).getId();
+        int tmp = yh.getGroups().get(1).getInviteCode();
         yh.createUser("Edwin","hej","hej", "hej", "hej");
         yh.createGroup("group3","hej");
         yh.createGroup("group4","hej");
@@ -106,6 +106,21 @@ public class YellowHandlerTest {
 
     @Test
     public void generateUniqueKeyUsingUUID() throws Exception {
+        List<GroupInterface> allGroups = new ArrayList<>();
+        List<UserInterface> allUsers = new ArrayList<>();
+        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        List<String> tmplist = new ArrayList<>();
+        boolean bol = true;
+        for (int i = 0; i < 10000; i++) {
+            tmplist.add(yh.generateUniqueKeyUsingUUID());
+        }
+        for (int i = 1; i < 10000; i++) {
+            if(tmplist.get(0).equals(tmplist.get(i))){
+                bol = false;
+            }
+        }
+        System.out.println(bol);
+
     }
 
     @Test
@@ -125,5 +140,70 @@ public class YellowHandlerTest {
         YellowHandler yh = new YellowHandler(allUsers, allGroups);
         yh.createUser("Moki","hej","hej", "hej", "hej");
         assertEquals(1, yh.users.size());
+    }
+    @Test
+    public void changeUserSettingsTest(){
+        List<GroupInterface> allGroups = new ArrayList<>();
+        List<UserInterface> allUsers = new ArrayList<>();
+        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        yh.createUser("test", "test","test","test","test");
+        yh.changeUserSettings("hej","hej","hej","hej","hej");
+        assertEquals("hej",yh.getActiveUser().getUsername());
+    }
+    @Test
+    public void addItemToOrderTest(){
+        List<GroupInterface> allGroups = new ArrayList<>();
+        List<UserInterface> allUsers = new ArrayList<>();
+        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        yh.createUser("Viktor","hej","hej", "hej", "hej");
+        yh.createGroup("group","hej");
+        yh.setActiveGroup(yh.getGroups().get(0));
+        yh.getActiveGroup().createInventory("inventory","inventory");
+        yh.selectInventory("inventory");
+        yh.addItem("boll","en boll","inventory",1);
+        String itemID = yh.getItems().get(0).getId();
+        yh.addItemToOrder(itemID);
+        assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
+        yh.addItemToOrder(itemID);
+        assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
+    }
+    @Test
+    public void completeOrderTest(){
+        List<GroupInterface> allGroups = new ArrayList<>();
+        List<UserInterface> allUsers = new ArrayList<>();
+        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        yh.createUser("Viktor","hej","hej", "hej", "hej");
+        yh.createGroup("group","hej");
+        yh.setActiveGroup(yh.getGroups().get(0));
+        yh.getActiveGroup().createInventory("inventory","inventory");
+        yh.selectInventory("inventory");
+        yh.addItem("boll","en boll","inventory",1);
+        String itemID = yh.getItems().get(0).getId();
+        yh.addItemToOrder(itemID);
+        assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
+        assertTrue(yh.completeOrder("2018-10-14","2018-10-16"));
+        yh.addItemToOrder(itemID);
+        assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
+        assertFalse(yh.completeOrder("2018-10-15","2018-10-18"));
+    }
+    @Test
+    public void returnOrderTest(){
+        List<GroupInterface> allGroups = new ArrayList<>();
+        List<UserInterface> allUsers = new ArrayList<>();
+        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        yh.createUser("Viktor","hej","hej", "hej", "hej");
+        yh.createGroup("group","hej");
+        yh.setActiveGroup(yh.getGroups().get(0));
+        yh.getActiveGroup().createInventory("inventory","inventory");
+        yh.selectInventory("inventory");
+        yh.addItem("boll","en boll","inventory",1);
+        String itemID = yh.getItems().get(0).getId();
+        yh.addItemToOrder(itemID);
+        assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
+        String orderID = yh.getActiveGroup().getActiveOrder().getOrderID();
+        yh.completeOrder("2018-10-14","2018-10-16");
+        yh.orderIsReturned(orderID);
+        assertEquals(0,yh.getActiveGroup().getOrderList().size());
+        assertEquals(1,yh.getActiveGroup().getOldOrders().size());
     }
 }

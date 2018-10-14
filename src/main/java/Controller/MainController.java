@@ -132,7 +132,7 @@ public class MainController implements Initializable {
     }
 
     public void addToOrder (int amount, String itemId) {
-        yh.addItemToOrder(amount, itemId);
+        yh.addItemToOrder(itemId);
     }
 
     private void changeUserSettings (String firstName, String lastName, String username, String email, String password) {

@@ -145,9 +145,12 @@ public class YellowHandler implements YellowHandlerInterface {
      */
 
     @Override
-    public void joinGroup(String inviteCode){
-        activeUser.addGroup(inviteCode);
-
+    public void joinGroup(int inviteCode){
+        for (GroupInterface group : groups) {
+            if(group.getInviteCode() == inviteCode){
+                activeUser.addGroup(group.getId());
+            }
+        }
     }
 
     /**
@@ -173,12 +176,12 @@ public class YellowHandler implements YellowHandlerInterface {
 
 
     @Override
-    public void addItemToOrder(int amount, String itemID) {
+    public void addItemToOrder(String itemID) {
          if (activegroup.getActiveOrder() == null){
              activegroup.createOrder(generateUniqueKeyUsingUUID());
          }
+         activegroup.addItemToOrder(itemID);
 
-         activegroup.addItemToOrder(amount, itemID);
     }
 
     @Override
