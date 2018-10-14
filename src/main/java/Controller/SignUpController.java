@@ -1,46 +1,53 @@
 package Controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class SignUpController {
-
-    private MainController mainController;
-
+    
     @FXML private JFXTextField newUsernameField;
     @FXML private JFXTextField newPasswordField;
     @FXML private JFXTextField newFirstNameField;
     @FXML private JFXTextField newLastNameField;
     @FXML private JFXTextField newEmailTextField;
 
-    @FXML Button signUpExitButton;
-
-    public void injectMainController(MainController mainController){
-        this.mainController = mainController;
-    }
+    @FXML private Button signUpExitButton;
+    @FXML private JFXButton signUpButton;
 
     public void initialize(){
 
     }
 
-    @FXML
-    private void signUp () {
-        String username = newUsernameField.getText();
-        String firstName = newFirstNameField.getText();
-        String lastName = newLastNameField.getText();
-
-        String password = newPasswordField.getText();
-        String email = newEmailTextField.getText();
-
-        if(!username.isEmpty() && !password.isEmpty()) {
-
-            mainController.createUser(username, firstName, lastName, email, password);
-            mainController.goToMainWindow();
-        }
+    public void signUp (EventHandler<ActionEvent> clicked) {
+        signUpButton.setOnAction(clicked);
     }
 
-    @FXML private void toLoginScreen () {
-        mainController.toLoginScreen();
+    public void toLoginScreen (EventHandler<ActionEvent> clicked) {
+        signUpExitButton.setOnAction(clicked);
+    }
+
+    public String getUsername(){
+        return newUsernameField.getText();
+    }
+
+    public String getFirstName(){
+        return newFirstNameField.getText();
+    }
+
+    public String getLastName(){
+        return newLastNameField.getText();
+    }
+
+    public String getEmail(){
+        return newEmailTextField.getText();
+    }
+
+    public String getPassword(){
+        return newPasswordField.getText();
     }
 }

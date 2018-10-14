@@ -1,9 +1,11 @@
 package Controller;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -16,12 +18,11 @@ import java.io.IOException;
 public class GroupItemController extends AnchorPane {
 
     String name;
-    MainController parentController;
 
     @FXML private Label groupName;
     @FXML private AnchorPane background;
 
-    public GroupItemController(String name, String color, MainController controller) {
+    public GroupItemController(String name, String color) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../groupItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -33,14 +34,13 @@ public class GroupItemController extends AnchorPane {
         }
 
         this.name = name;
-        this.parentController = controller;
 
         groupName.setText(name);
         background.setStyle("-fx-background-color: " + color);
     }
 
-    @FXML
-    private void selectGroup(){
-        parentController.selectGroup(this);
+    public void selectGroup(EventHandler<MouseEvent> clicked){
+        background.setOnMouseClicked(clicked);
+
     }
 }

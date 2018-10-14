@@ -9,19 +9,14 @@ import java.awt.event.MouseEvent;
 
 public class ItemViewController {
 
-    MainController mainController;
 
     String itemId;
     int amount;
 
-    @FXML JFXSlider amountSlider;
+    @FXML private JFXSlider amountSlider;
 
-    @FXML Label itemName;
-    @FXML Label itemDescription;
-
-    public void injectMainController(MainController mainController){
-        this.mainController = mainController;
-    }
+    @FXML private Label itemName;
+    @FXML private Label itemDescription;
 
     @FXML
     public void setAmount(MouseEvent e){
@@ -36,10 +31,9 @@ public class ItemViewController {
         return itemId;
     }
 
-    @FXML public void addToOrder () {
+    @FXML
+    public void addToOrder () {
 
-
-        mainController.addToOrder(amount, itemId);
     }
 
     public void setNameAndDescription (String itemName, String itemDescription) {

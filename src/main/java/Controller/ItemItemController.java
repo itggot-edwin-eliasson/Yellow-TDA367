@@ -12,12 +12,11 @@ import java.io.IOException;
 public class ItemItemController extends AnchorPane {
 
     String name;
-    MainController parentController;
 
     @FXML private Label itemName;
     @FXML private ImageView itemImage;
 
-    public ItemItemController(String name, Image image, MainController controller) {
+    public ItemItemController(String name, Image image) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../itemItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -29,7 +28,6 @@ public class ItemItemController extends AnchorPane {
         }
 
         this.name = name;
-        this.parentController = controller;
 
         itemName.setText(name);
     }

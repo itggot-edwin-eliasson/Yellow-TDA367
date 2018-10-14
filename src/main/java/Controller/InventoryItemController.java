@@ -10,11 +10,10 @@ import java.io.IOException;
 public class InventoryItemController extends AnchorPane {
 
     String name;
-    MainController parentController;
 
     @FXML private Label inventoryName;
 
-    public InventoryItemController(String name, MainController controller) {
+    public InventoryItemController(String name) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../inventoryItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -26,7 +25,6 @@ public class InventoryItemController extends AnchorPane {
         }
 
         this.name = name;
-        this.parentController = controller;
 
         inventoryName.setText(name);
     }

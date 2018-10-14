@@ -37,7 +37,7 @@ public class MainController implements Initializable {
 
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
-    private List<Inventory> allInventories = new ArrayList<>();
+    private List<InventoryInterface> allInventories = new ArrayList<>();
     private YellowHandlerInterface yh;
 
     private Map<GroupInterface, GroupItemController> groupItemControllerMap = new HashMap<>();
@@ -70,9 +70,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hamburgerSetup();
-        signUpController.injectMainController(this);
-        loginController.injectMainController(this);
-        userSettingsController.injectMainController(this);
+        start();
         deseralize("groups");
         deseralize("users");
         deseralize("inventories");
@@ -82,14 +80,56 @@ public class MainController implements Initializable {
         updateGroupList();
     }
 
-    public void login(String username, String password)  {
+    private void start(){
+        signUpController.toLoginScreen(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                toLoginScreen();
+                event.consume();
+            }
+        });
+        signUpController.signUp(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                createUser(signUpController.getUsername(),signUpController.getFirstName(), signUpController.getLastName(),
+                            signUpController.getEmail(), signUpController.getPassword());
+                goToMainWindow();
+                event.consume();
+            }
+        });
+        loginController.toSignupScreen(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                goToSignUp();
+                event.consume();
+            }
+        });
+        loginController.login(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                login(loginController.getUsername(),loginController.getPassword());
+                event.consume();
+            }
+        });
+        userSettingsController.changeUserSettings(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                changeUserSettings(userSettingsController.getFirstName(), userSettingsController.getLastName(),
+                        userSettingsController.getUsername(), userSettingsController.getEmail(),
+                        userSettingsController.getPassword());
+                goToMainWindow();
+            }
+        });
+    }
+
+    private void login(String username, String password)  {
         if (yh.logIn(username, password)) {
             goToMainWindow();
         }
 
     }
 
-    public void createUser (String username, String firstName, String lastName, String email, String password) {
+    private void createUser (String username, String firstName, String lastName, String email, String password) {
         UserInterface user = yh.createUser(username, firstName, lastName, email, password);
         saveUser(user);
     }
@@ -98,7 +138,7 @@ public class MainController implements Initializable {
         yh.addItemToOrder(amount, itemId);
     }
 
-    public void changeUserSettings (String firstName, String lastName, String username, String email, String password) {
+    private void changeUserSettings (String firstName, String lastName, String username, String email, String password) {
         yh.changeUserSettings(firstName, lastName, username, email, password);
     }
 
@@ -136,22 +176,19 @@ public class MainController implements Initializable {
 
         JFXButton button = new JFXButton("Create group");
         button.setStyle("-fx-background-color: #ffcc00");
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                String hex = "#" + Integer.toHexString(colorPicker.getValue().hashCode());
-                yh.createGroup(textField.getText(), hex);
-                updateGroupItemMap();
-                updateGroupList();
-                dialog.close();
-            }
+        button.setOnAction(event -> {
+            String hex = "#" + Integer.toHexString(colorPicker.getValue().hashCode());
+            yh.createGroup(textField.getText(), hex);
+            updateGroupItemMap();
+            updateGroupList();
+            dialog.close();
         });
         content.setActions(button);
         dialog.show();
 
     }
 
-    public void selectGroup(GroupItemController groupItem){
+    private void selectGroup(GroupItemController groupItem){
         for(GroupInterface tmpGroup: groupItemControllerMap.keySet()) {
             if (groupItemControllerMap.get(tmpGroup).equals(groupItem)) {
                 yh.setActiveGroup(tmpGroup);
@@ -235,7 +272,14 @@ public class MainController implements Initializable {
     private void updateGroupItemMap(){
         List<GroupInterface> groups = yh.getGroups();
         for(GroupInterface group: groups){
-            GroupItemController item = new GroupItemController(group.getName(), group.getColor(), this);
+            GroupItemController item = new GroupItemController(group.getName(), group.getColor());
+            item.selectGroup(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    selectGroup(item);
+                    event.consume();
+                }
+            });
             groupItemControllerMap.put(group, item);
         }
     }
@@ -253,7 +297,7 @@ public class MainController implements Initializable {
         List<InventoryInterface> inventories = yh.getInventories();
         inventoryItemControllerMap.clear();
         for(InventoryInterface inventory: inventories){
-            InventoryItemController item = new InventoryItemController(inventory.getName(), this);
+            InventoryItemController item = new InventoryItemController(inventory.getName());
             inventoryItemControllerMap.put(inventory, item);
         }
     }
@@ -270,7 +314,7 @@ public class MainController implements Initializable {
     private void updateItemItemMap(){
         List<ItemInterface> items = yh.getItems();
         for(ItemInterface item: items){
-            ItemItemController itemItem = new ItemItemController(item.getName(), item.getImage(), this);
+            ItemItemController itemItem = new ItemItemController(item.getName(), item.getImage());
             itemItemControllerMap.put(item,itemItem);
         }
     }
@@ -285,19 +329,19 @@ public class MainController implements Initializable {
     }
 
 
-    public void goToSignUp () { signUp.toFront(); }
+    private void goToSignUp () { signUp.toFront(); }
 
-    public void goToMainWindow () {
+    private void goToMainWindow () {
         mainWindow.toFront();
     }
 
-    public void toLoginScreen () { login.toFront(); }
+    private void toLoginScreen () { login.toFront(); }
 
 
-    public void saveGroup (Group group){
+    public void saveGroup (GroupInterface group){
         allGroups.add(group);
     }
-    public void saveInventory (Inventory inventory){
+    public void saveInventory (InventoryInterface inventory){
         allInventories.add(inventory);
     }
     public void saveUser (UserInterface user){
@@ -306,7 +350,7 @@ public class MainController implements Initializable {
     public List<GroupInterface> getAllGroups (){
         return allGroups;
     }
-    public List<Inventory> getAllInventories(){
+    public List<InventoryInterface> getAllInventories(){
         return allInventories;
     }
     public List <UserInterface> getAllUsers (){
@@ -393,7 +437,7 @@ public class MainController implements Initializable {
                 allGroups = (List<GroupInterface>) in.readObject();
             }
             if(whatToDeseralize.equals("inventories")){
-                allInventories = (List<Inventory>) in.readObject();
+                allInventories = (List<InventoryInterface>) in.readObject();
             }
             if(whatToDeseralize.equals("users")){
                 allUsers = (List<UserInterface>) in.readObject();

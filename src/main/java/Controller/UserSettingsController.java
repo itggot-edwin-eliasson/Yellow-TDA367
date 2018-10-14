@@ -4,17 +4,20 @@ import Model.UserInterface;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 
 public class UserSettingsController {
 
-    @FXML JFXTextField usernameTextField;
-    @FXML JFXPasswordField passwordTextField;
-    @FXML JFXTextField emailTextField;
-    @FXML JFXTextField firstNameTextField;
-    @FXML JFXTextField lastNameTextField;
+    @FXML private JFXTextField usernameTextField;
+    @FXML private JFXPasswordField passwordTextField;
+    @FXML private JFXTextField emailTextField;
+    @FXML private JFXTextField firstNameTextField;
+    @FXML private JFXTextField lastNameTextField;
 
-    @FXML JFXButton saveButton;
+    @FXML private JFXButton saveButton;
 
     private String firstName;
     private String lastName;
@@ -22,11 +25,8 @@ public class UserSettingsController {
     private String password;
     private String username;
 
-    MainController mainController;
 
-    public void injectMainController(MainController mainController){
-        this.mainController = mainController;
-    }
+
 
     public void initialize(){
 
@@ -42,19 +42,28 @@ public class UserSettingsController {
     }
 
 
-    @FXML public void changeUserSettings () {
-        this.firstName = firstNameTextField.getText();
-        this.lastName = lastNameTextField.getText();
-        this.email = emailTextField.getText();
-        this.password = passwordTextField.getText();
-        this.username = usernameTextField.getText();
+    public void changeUserSettings(EventHandler<ActionEvent> clicked) {
+        saveButton.setOnAction(clicked);
+    }
 
+    public String getFirstName(){
+        return firstNameTextField.getText();
+    }
 
-        mainController.changeUserSettings(firstName, lastName, username, email, password);
-        mainController.goToMainWindow();
+    public String getLastName(){
+        return lastNameTextField.getText();
+    }
 
+    public String getEmail(){
+        return emailTextField.getText();
+    }
 
+    public String getUsername(){
+        return usernameTextField.getText();
+    }
 
+    public String getPassword(){
+        return passwordTextField.getText();
     }
 
     public void setUsernameTextField (String username) {

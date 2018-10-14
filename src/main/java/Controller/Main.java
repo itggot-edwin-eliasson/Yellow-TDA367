@@ -1,3 +1,5 @@
+package Controller;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +19,7 @@ public class Main extends Application {
 
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("Yellow");
 
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/yellow.fxml"), bundle);
+        Parent root = FXMLLoader.load(getClass().getResource("../yellow.fxml"), bundle);
 
         Scene scene = new Scene(root);
 
