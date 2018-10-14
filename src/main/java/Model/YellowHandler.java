@@ -70,17 +70,6 @@ public class YellowHandler implements YellowHandlerInterface {
         return tmpGroups;
     }
 
-    public Map<String, List<String>> getGroupInfo(){
-        Map<String, List<String>> groupsMap = new HashMap<>();
-        for(int i = 0; i < groups.size(); i++){
-            List<String> tmpList = new ArrayList<>();
-            tmpList.add(groups.get(i).getName());
-            tmpList.add(groups.get(i).getColor());
-            groupsMap.put(groups.get(i).getId(), tmpList);
-        }
-
-        return groupsMap;
-    }
     /**
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
@@ -112,7 +101,7 @@ public class YellowHandler implements YellowHandlerInterface {
     public boolean logIn (String username, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
-                if (password.equals(users.get(i).comparePassword(password))) {
+                if (users.get(i).comparePassword(password)) {
                     activeUser = users.get(i);
                     return true;
                 }
@@ -256,5 +245,8 @@ public class YellowHandler implements YellowHandlerInterface {
     }
     public void orderIsReturned(String orderID){
         activegroup.orderIsReturned(orderID);
+    }
+
+    public List<UserInterface> getUsers() {return users;
     }
 }
