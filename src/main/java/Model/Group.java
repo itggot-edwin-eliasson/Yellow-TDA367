@@ -232,8 +232,10 @@ public class Group implements GroupInterface{
             if(!activeOrder.getOrderList().get(i).checkDateIsNotInRentedPeriod(startDate) || !activeOrder.getOrderList().get(i).checkDateIsNotInRentedPeriod(endDate)){
                 works = false;
                 activeOrder.setIsRentable(i,false);
+            }else{
+                activeOrder.setIsRentable(i,true);
             }
-            activeOrder.setIsRentable(i,true);
+
         }
         return works;
     }

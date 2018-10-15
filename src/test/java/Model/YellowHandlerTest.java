@@ -119,7 +119,7 @@ public class YellowHandlerTest {
                 bol = false;
             }
         }
-        System.out.println(bol);
+        assertTrue(bol);
 
     }
 
@@ -178,19 +178,25 @@ public class YellowHandlerTest {
         yh.getActiveGroup().createInventory("inventory","inventory");
         yh.selectInventory("inventory");
         yh.addItem("boll","en boll","inventory",1);
+        yh.addItem("boll","en boll","inventory",1);
         String itemID = yh.getItems().get(0).getId();
+        String itemID2 = yh.getItems().get(1).getId();
         yh.addItemToOrder(itemID);
         assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
         assertTrue(yh.completeOrder("2018-10-14","2018-10-16"));
         yh.addItemToOrder(itemID);
-        assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
+        yh.addItemToOrder(itemID2);
+        assertEquals(2,yh.getActiveGroup().getActiveOrder().getOrderList().size());
         assertFalse(yh.completeOrder("2018-10-15","2018-10-18"));
+        assertFalse(yh.completeOrderFailed().get(0));
+        assertTrue(yh.completeOrderFailed().get(1));
     }
     @Test
     public void returnOrderTest(){
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
         YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        allUsers = yh.getUsers();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");
         yh.setActiveGroup(yh.getGroups().get(0));
