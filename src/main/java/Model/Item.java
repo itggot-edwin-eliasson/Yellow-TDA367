@@ -81,9 +81,12 @@ public class Item implements ItemInterface{
     }
 
 
-    private int getDateAsInt (String date){
-        String tmp = date.charAt(0)+date.charAt(1)+date.charAt(2)+date.charAt(3)+date.charAt(5)+date.charAt(6)+date.charAt(8)+date.charAt(9)+"";
-        return Integer.parseInt(tmp);
+    public int getDateAsInt (String date){
+        StringBuilder tmp1 = new StringBuilder();
+        tmp1.append(date.charAt(0)+""+date.charAt(1)+""+date.charAt(2)+""+date.charAt(3));
+        tmp1.append(date.charAt(5)+""+date.charAt(6));
+        tmp1.append(date.charAt(8)+""+date.charAt(9));
+        return Integer.parseInt(tmp1.toString());
     }
 
     @Override

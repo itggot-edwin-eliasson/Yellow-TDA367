@@ -1,0 +1,72 @@
+This readme is for the project Yellow for course TDA-367
+- https://github.com/itggot-edwin-eliasson/Yellow-TDA367
+@author Viktor Valadi
+
+_____________________________________________________________________________________
+
+     ___    ___   _____      __       __         ________   __        __        __
+     \  \  /  /  |  ___|    |  |     |  |       /  ____  \  \ \      /  \      / /
+      \  \/  /   | |___     |  |     |  |      /  /    \  \  \ \    / /\ \    / /
+       \    /    |  ___|    |  |     |  |      |  |    |  |   \ \  / /  \ \  / /
+        |  |     | |___     |  |__   |  |__    \  \____/  /    \ \/ /    \ \/ /
+        |__|     |_____|    |_____|  |_____|    \________/      \__/      \__/
+
+_____________________________________________________________________________________
+
+Group member - Git username
+
+    Viktor Valadi     -   tikkiz
+    Edwin Eliasson    -   itggot-edwin-eliasson
+    Mona Kilsgård     -   monakilsgard
+    Joakim Agnemyr    -   agnemyr
+
+_____________________________________________________________________________________
+
+Content:
+    1. Introduction
+    2. User guide
+    3. Git structure
+    4. Program structure
+
+_____________________________________________________________________________________
+
+1. Introduction
+
+The readme for the inventory and renter handling application Yellow. This readme aims
+to make you understand how to run and use the program and inform you briefly of how
+the application is structured.
+
+To run the application you need to navigate to the Main class located in the
+src/main/java/Controller package. Run the class in your IDE to start the application.
+
+_____________________________________________________________________________________
+
+2. User guide
+
+The application is built around groups and inventories. When you start the application
+you will be asked to sign up or sign in. Start with creating an account if you don't
+already have one.
+
+When logged in all groups your part of are listed in a panel to the left. Click on a
+group to manage that specific group. When in a group you will see a list of all
+inventories that group has. Enter an inventory to manage that inventory.
+
+Inside an inventory is where the fun happens. Here you can add items to the inventory.
+You can see when a specific item is available or rented in the calender that shows when
+you click an item. You can also make an order on an item by pressing the "Add to order"
+button. You can add items from different inventories to the same order.
+
+After adding your items to an order you need to navigate back to the group page where
+you finnish your order. Here you press the order button. Enter the information required
+to complete the order and press the "Complete Order" button. If all the items are
+available you will now find your order in the list of your current orders. It will
+remain there until the order is returned and you press the "Order is returned" button.
+After that the order will still remain in the old orders list.
+
+_____________________________________________________________________________________
+
+3. Git structure
+
+Documents - Contains all documentation for the project. This is where the RAD, SDD and
+meeting protocols are located.
+
