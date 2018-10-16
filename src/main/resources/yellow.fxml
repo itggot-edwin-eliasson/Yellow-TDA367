@@ -17,10 +17,6 @@
 
 <AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
     <children>
-      <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-       <fx:include fx:id="menuScreen" source="firstYellowScreen.fxml" />
-       <fx:include fx:id="login" source="logIn.fxml" />
-        <fx:include fx:id="signUp" source="signUp.fxml" />
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0">
         <items>
           <AnchorPane maxHeight="389.0" maxWidth="175.0" minHeight="398.0" minWidth="175.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
@@ -83,5 +79,10 @@
             </AnchorPane>
         </items>
       </SplitPane>
+      <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+       <fx:include fx:id="manageMyYellow" source="manageMyYellow.fxml" />
+        <fx:include fx:id="signUp" source="signUp.fxml" />
+        <fx:include fx:id="menuScreen" source="firstYellowScreen.fxml" />
+       <fx:include fx:id="login" source="logIn.fxml" />
    </children>
 </AnchorPane>

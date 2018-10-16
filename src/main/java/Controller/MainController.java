@@ -48,6 +48,7 @@ public class MainController implements Initializable {
     @FXML private SignUpController signUpController;
     @FXML private LoginController loginController;
     @FXML private UserSettingsController userSettingsController;
+    @FXML private ManageMyYellowController manageMyYellowController;
 
     @FXML private JFXDrawer drawer;
 
@@ -56,9 +57,12 @@ public class MainController implements Initializable {
     @FXML private AnchorPane signUp;
     @FXML private AnchorPane login;
     @FXML private AnchorPane userSettings;
+    @FXML private AnchorPane menuScreen;
+    @FXML private AnchorPane manageMyYellow;
     @FXML private StackPane mainWindow;
     @FXML private FlowPane groupListFlowPane;
     @FXML private FlowPane listFlowPane;
+
 
     @FXML private JFXButton userSettingsButton;
     @FXML private Label title;
@@ -87,7 +91,7 @@ public class MainController implements Initializable {
         signUpController.signUp(event -> {
             createUser(signUpController.getUsername(),signUpController.getFirstName(), signUpController.getLastName(),
                         signUpController.getEmail(), signUpController.getPassword());
-            goToMainWindow();
+            goToMenuScreen();
             event.consume();
         });
         loginController.toSignupScreen(event -> {
@@ -107,6 +111,9 @@ public class MainController implements Initializable {
                 goToMainWindow();
             }
         });
+        manageMyYellowController.backToManageMyYellow(event -> {
+            menuScreen.toFront();
+        });
     }
 
     public List<String> getSignUpInfo(){
@@ -121,7 +128,7 @@ public class MainController implements Initializable {
 
     private void login(String username, String password)  {
         if (yh.logIn(username, password)) {
-            goToMainWindow();
+            goToMenuScreen();
         }
 
     }
@@ -332,6 +339,8 @@ public class MainController implements Initializable {
     public void goToMainWindow () {
         mainWindow.toFront();
     }
+    public void goToMenuScreen(){menuScreen.toFront();}
+    public void goToManageMyYellow(){manageMyYellow.toFront();}
 
     private void toLoginScreen () { login.toFront(); }
 

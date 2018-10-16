@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.svg.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="425.0" style="-fx-background-color: #1F1E18;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemViewController">
+<AnchorPane prefHeight="600.0" prefWidth="425.0" style="-fx-background-color: #1F1E18;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemViewController">
    <children>
       <Label fx:id="itemName" layoutX="27.0" layoutY="150.0" text="Item Name" textFill="#fffbfb">
          <font>
@@ -19,7 +18,7 @@
       </Label>
       <Label fx:id="itemDescription" layoutX="27.0" layoutY="184.0" text="Discription" textFill="WHITE" />
       <JFXButton layoutX="306.0" layoutY="546.0" onAction="#addToOrder" style="-fx-background-color: #FFE919;" text="Add to order" />
-      <JFXSlider fx:id="amountSlider" indicatorPosition="RIGHT" layoutX="34.0" layoutY="300.0" onMouseClicked="#setAmount" prefHeight="14.0" prefWidth="358.0" />
+      <JFXSlider fx:id="amountSlider" indicatorPosition="RIGHT" layoutX="28.0" layoutY="300.0" onMouseClicked="#setAmount" prefHeight="14.0" prefWidth="364.0" />
       <ImageView fitHeight="150.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@img/whiteitem.png" />
@@ -27,5 +26,6 @@
       </ImageView>
       <Label layoutX="29.0" layoutY="271.0" text="Choose amount" textFill="WHITE" />
       <Label layoutX="29.0" layoutY="335.0" text="Calendar" textFill="WHITE" />
+      <JFXTextField editable="false" focusColor="#1f1e18" layoutX="29.0" layoutY="206.0" prefHeight="60.0" prefWidth="358.0" unFocusColor="#1f1e18" />
    </children>
 </AnchorPane>
