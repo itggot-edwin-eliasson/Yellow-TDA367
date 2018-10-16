@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="154.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddInventoryViewController">
+   <children>
+      <Label layoutX="48.0" layoutY="60.0" text="Label" />
+      <TextField fx:id="nameTextField" layoutX="182.0" layoutY="55.0" />
+      <JFXButton layoutX="290.0" layoutY="113.0" onAction="#cancelInventory" text="Cancel" />
+      <JFXButton layoutX="173.0" layoutY="113.0" onAction="#saveInventory" text="Add Inventory" />
+   </children>
+</AnchorPane>

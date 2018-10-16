@@ -1,15 +1,12 @@
-package Controller;
+package View;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 
-public class ManageMyYellowController {
+public class ManageMyYellowController extends ViewController {
 
     @FXML private Button addGroupButton;
     @FXML private Button addInventoryButton;
@@ -27,13 +24,17 @@ public class ManageMyYellowController {
     public void backToManageMyYellow(EventHandler<ActionEvent> clicked){
         backButton.setOnAction(clicked);
     }
-    public void addItem (EventHandler<ActionEvent> clicked) { addItemButton.setOnAction(clicked);
+
+    public void addItem (EventHandler<ActionEvent> clicked) {
+        addItemButton.setOnAction(clicked);
     }
 
-    public void addGroup (EventHandler<ActionEvent> clicked) { addGroupButton.setOnAction(clicked);
+    public void addGroup (EventHandler<ActionEvent> clicked) {
+        addGroupButton.setOnAction(clicked);
     }
 
-    public void addInventory (EventHandler<ActionEvent> clicked) { addInventoryButton.setOnAction(clicked);
+    public void addInventory (EventHandler<ActionEvent> clicked) {
+        addInventoryButton.setOnAction(clicked);
     }
 
 }

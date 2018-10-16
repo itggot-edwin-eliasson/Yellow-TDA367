@@ -52,4 +52,6 @@ public interface YellowHandlerInterface {
 
     public void setActiveGroup(GroupInterface group);
 
+    public void createInventory(String name);
+
 }

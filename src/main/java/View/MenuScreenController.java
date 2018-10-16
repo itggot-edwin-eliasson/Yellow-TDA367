@@ -1,18 +1,19 @@
-package Controller;
+package View;
 
+import Model.YellowHandlerInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
-import javax.swing.*;
-import java.awt.*;
 
-public class MenuScreenController {
+public class MenuScreenController extends ViewController {
 
     @FXML private JFXButton toMyYellowButton;
     @FXML private JFXButton toManageMyYellowButton;
     @FXML private JFXButton createGroupButton;
     @FXML private JFXButton joinGroupButton;
+
+    private YellowHandlerInterface yh;
 
     public void initialize(){
     }

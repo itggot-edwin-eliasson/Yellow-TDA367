@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 5;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="inventoryBackground" prefHeight="30.0" prefWidth="172.0" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 5;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label fx:id="inventoryName" layoutX="14.0" layoutY="2.0" prefHeight="20.0" prefWidth="146.0" text="Inventory Name" textFill="WHITE">
             <font>

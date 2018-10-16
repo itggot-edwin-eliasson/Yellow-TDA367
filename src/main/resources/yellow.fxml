@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
@@ -15,11 +22,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
     <children>
-        <fx:include fx:id="menuScreen" source="firstYellowScreen.fxml" />
-       <fx:include fx:id="manageMyYellow" source="manageMyYellow.fxml" />
-        <fx:include fx:id="signUp" source="signUp.fxml" />
       <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0">
@@ -44,7 +48,7 @@
                               <Font size="13.0" />
                            </font>
                         </JFXButton>
-                        <Button fx:id="backButton" layoutX="-1.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToGroups" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
+                        <Button fx:id="backButton" layoutX="-1.0" layoutY="4.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -85,6 +89,5 @@
               </items>
             </SplitPane>
          </children></StackPane>
-       <fx:include fx:id="login" source="logIn.fxml" />
    </children>
 </AnchorPane>

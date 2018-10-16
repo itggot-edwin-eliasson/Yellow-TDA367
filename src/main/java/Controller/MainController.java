@@ -1,8 +1,7 @@
 package Controller;
 
 import Model.*;
-import View.LoginViewController;
-import View.SignUpViewController;
+import View.*;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.application.Platform;
@@ -35,10 +34,7 @@ public class MainController extends ViewController {
     private List<UserInterface> allUsers = new ArrayList<>();
     private List<InventoryInterface> allInventories = new ArrayList<>();
     private YellowHandlerInterface yh;
-
-    private Map<GroupInterface, GroupItemController> groupItemControllerMap = new HashMap<>();
     private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
-    private Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap = new HashMap<>();
 
     @FXML private SignUpViewController signUpController;
     @FXML private LoginViewController loginController;
@@ -69,12 +65,10 @@ public class MainController extends ViewController {
     public void initialize() {
         hamburgerSetup();
 
-        deseralize("groups");
-        deseralize("users");
-        deseralize("inventories");
+        //deseralize("groups");
+        //deseralize("users");
+        //deseralize("inventories");
 
-        //updateGroupItemMap();
-        //updateGroupList();
     }
 
     public void injectYellowHandler(YellowHandlerInterface yh){
@@ -198,8 +192,6 @@ public class MainController extends ViewController {
         button.setOnAction(event -> {
             String hex = "#" + Integer.toHexString(colorPicker.getValue().hashCode());
             yh.createGroup(textField.getText(), hex);
-            updateGroupItemMap();
-            updateGroupList();
             dialog.close();
         });
         content.setActions(button);
@@ -208,7 +200,7 @@ public class MainController extends ViewController {
     }
 
 
-    private void selectGroup(GroupItemController groupItem){
+    private void selectGroup(GroupItemController groupItem, Map<GroupInterface, GroupItemController> groupItemControllerMap){
         for(GroupInterface tmpGroup: groupItemControllerMap.keySet()) {
             if (groupItemControllerMap.get(tmpGroup).equals(groupItem)) {
                 yh.setActiveGroup(tmpGroup);
@@ -219,18 +211,30 @@ public class MainController extends ViewController {
                 hamburger.toFront();
                 updateItemList();
                 updateItemItemMap();
-                updateInventoryItemMap();
-                updateInventoryList();
+                //updateInventoryList();
             }
         }
 
     }
 
-    @FXML
-    private void backToGroups(){
+    public void selectGroup(){
+        title.setText(yh.getActiveGroup().getName());
+        backButton.setVisible(true);
+        listFlowPane.toFront();
+        drawer.toFront();
+        hamburger.toFront();
+        updateItemList();
+        updateItemItemMap();
+    }
+
+    public void backToGroups(Map<GroupInterface, GroupItemController> groupItemControllerMap){
         backButton.setVisible(false);
         title.setText("Groups");
-        updateGroupList();
+        updateGroupList(groupItemControllerMap);
+    }
+
+    public void setBackToGroupsListener(EventHandler<ActionEvent> event){
+        backButton.setOnAction(event);
     }
 
     @FXML
@@ -289,44 +293,22 @@ public class MainController extends ViewController {
         login.toFront();
     }
 
-    private void updateGroupItemMap(){
-        List<GroupInterface> groups = yh.getGroups();
-        for(GroupInterface group: groups){
-            GroupItemController item = new GroupItemController(group.getName(), group.getColor());
-            item.selectGroup(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    selectGroup(item);
-                    event.consume();
-                }
-            });
-            groupItemControllerMap.put(group, item);
-        }
-    }
-
-    private void updateGroupList(){
+    public void updateGroupList(Map<GroupInterface, GroupItemController> groupItemControllerMap){
         groupListFlowPane.getChildren().clear();
-        GroupItemController item;
         for(GroupInterface group: groupItemControllerMap.keySet()){
-            item = groupItemControllerMap.get(group);
+            GroupItemController item = groupItemControllerMap.get(group);
             groupListFlowPane.getChildren().add(item);
         }
     }
 
-    private void updateInventoryItemMap(){
-        List<InventoryInterface> inventories = yh.getInventories();
-        inventoryItemControllerMap.clear();
-        for(InventoryInterface inventory: inventories){
-            InventoryItemController item = new InventoryItemController(inventory.getName());
-            inventoryItemControllerMap.put(inventory, item);
-        }
-    }
-
-    private void updateInventoryList(){
+    public void updateInventoryList(Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap){
         groupListFlowPane.getChildren().clear();
         InventoryItemController item;
         for(InventoryInterface inventory: inventoryItemControllerMap.keySet()){
             item = inventoryItemControllerMap.get(inventory);
+            item.selectInventory(event -> {
+                event.consume();
+            });
             groupListFlowPane.getChildren().add(item);
         }
     }

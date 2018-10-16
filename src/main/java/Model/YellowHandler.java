@@ -84,6 +84,7 @@ public class YellowHandler implements YellowHandlerInterface {
                 // ERROR MESSAGE
             }
         }
+        System.out.println("hej");
         activeUser = new User(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
         return true;
@@ -219,6 +220,12 @@ public class YellowHandler implements YellowHandlerInterface {
     @Override
     public void setActiveGroup(GroupInterface group) {
         activegroup = group;
+    }
+
+    @Override
+    public void createInventory(String name) {
+        if(activegroup != null)
+            activegroup.createInventory(name, generateUniqueKeyUsingUUID());
     }
 
     /**
