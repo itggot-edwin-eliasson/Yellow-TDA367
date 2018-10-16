@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManageMyYellowController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" preserveRatio="true">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/yellowBgr.jpg" />
          </image>
@@ -21,13 +21,8 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="65.0" layoutY="58.0" prefHeight="317.0" prefWidth="470.0" style="-fx-background-color: rgba(0, 0, 0, 0.80); -fx-background-radius: 5;">
+      <AnchorPane layoutX="65.0" layoutY="57.0" prefHeight="313.0" prefWidth="470.0" style="-fx-background-color: rgba(0, 0, 0, 0.80); -fx-background-radius: 5;">
          <children>
-            <ScrollPane hbarPolicy="NEVER" layoutX="157.0" layoutY="38.0" prefHeight="275.0" prefWidth="157.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);">
-               <content>
-                  <FlowPane id="manageInventoryFlowPane" prefHeight="269.0" prefWidth="161.0" />
-               </content>
-            </ScrollPane>
             <Label layoutX="14.0" layoutY="11.0" text="Groups" textFill="WHITE">
                <font>
                   <Font size="14.0" />
@@ -43,7 +38,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button id="addGroupButton" layoutX="110.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
+            <Button fx:id="addGroupButton" layoutX="110.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -52,7 +47,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="addInventoryButton" layoutX="265.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
+            <Button fx:id="addInventoryButton" layoutX="265.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -61,7 +56,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="addItemButton" layoutX="425.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
+            <Button fx:id="addItemButton" layoutX="425.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: rgba(0, 0, 0, 0);">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,19 +65,24 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ScrollPane hbarPolicy="NEVER" layoutX="2.0" layoutY="38.0" prefHeight="275.0" prefWidth="157.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);">
+            <ScrollPane hbarPolicy="NEVER" layoutX="2.0" layoutY="38.0" prefHeight="272.0" prefWidth="157.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);">
                <content>
-                  <FlowPane id="manageGroupFlowPane" prefHeight="273.0" prefWidth="156.0" />
+                  <FlowPane fx:id="manageGroupFlowPane" prefHeight="273.0" prefWidth="155.0" />
                </content>
             </ScrollPane>
-            <AnchorPane layoutX="314.0" layoutY="38.0" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="157.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);">
-               <children>
-                  <FlowPane id="manageItemFlowPane" prefHeight="269.0" prefWidth="157.0" />
-               </children>
-            </AnchorPane>
+            <ScrollPane hbarPolicy="NEVER" layoutX="314.0" layoutY="38.0" prefHeight="272.0" prefWidth="157.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);">
+               <content>
+                  <FlowPane fx:id="manageItemFlowPane" prefHeight="271.0" prefWidth="155.0" />
+               </content>
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" layoutX="157.0" layoutY="38.0" prefHeight="272.0" prefWidth="157.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);">
+               <content>
+                  <FlowPane fx:id="manageInventoryFlowPane" prefHeight="273.0" prefWidth="155.0" />
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
-      <Button id="backButton" fx:id="backButton" layoutY="9.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="61.0" style="-fx-background-color: rgba(0, 0, 0, 0);">
+      <Button fx:id="backButton" layoutY="9.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="61.0" style="-fx-background-color: rgba(0, 0, 0, 0);">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
                <image>

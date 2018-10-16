@@ -33,8 +33,6 @@ import java.util.logging.Logger;
  */
 public class MainController implements Initializable {
 
-
-
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
     private List<InventoryInterface> allInventories = new ArrayList<>();
@@ -44,11 +42,11 @@ public class MainController implements Initializable {
     private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
     private Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap = new HashMap<>();
 
-
     @FXML private SignUpController signUpController;
     @FXML private LoginController loginController;
     @FXML private UserSettingsController userSettingsController;
     @FXML private ManageMyYellowController manageMyYellowController;
+    @FXML private MenuScreenController menuScreenController;
 
     @FXML private JFXDrawer drawer;
 
@@ -114,6 +112,22 @@ public class MainController implements Initializable {
         manageMyYellowController.backToManageMyYellow(event -> {
             menuScreen.toFront();
         });
+        menuScreenController.toMyYellow(event ->{
+            mainWindow.toFront();
+        });
+
+        menuScreenController.toManageMyYellow(event -> {
+            manageMyYellow.toFront();
+        });
+
+        menuScreenController.toCreateGroupPopUp(event -> {
+            createGroup();
+        });
+
+        manageMyYellowController.addGroup(event -> {
+            createGroup();
+        });
+
     }
 
     public List<String> getSignUpInfo(){
