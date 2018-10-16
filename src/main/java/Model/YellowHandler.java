@@ -77,16 +77,16 @@ public class YellowHandler implements YellowHandlerInterface {
      * @param password The users password
      */
     @Override
-    public UserInterface createUser(String username, String firstName, String lastName, String email, String password){
+    public boolean createUser(String username, String firstName, String lastName, String email, String password){
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
-                return null;
+                return false;
                 // ERROR MESSAGE
             }
         }
         activeUser = new User(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
-        return activeUser;
+        return true;
     }
 
     /**

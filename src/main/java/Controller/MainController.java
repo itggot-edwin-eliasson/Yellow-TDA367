@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.*;
+import View.LoginViewController;
+import View.SignUpViewController;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.application.Platform;
@@ -10,16 +12,12 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
 
 import java.io.*;
-import java.net.URL;
 import java.util.*;
-import java.util.logging.Logger;
 
 /**
  * @date 2018-10-02
@@ -31,7 +29,7 @@ import java.util.logging.Logger;
  *@date 2018-10-04
  *
  */
-public class MainController implements Initializable {
+public class MainController extends ViewController {
 
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
@@ -42,8 +40,8 @@ public class MainController implements Initializable {
     private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
     private Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap = new HashMap<>();
 
-    @FXML private SignUpController signUpController;
-    @FXML private LoginController loginController;
+    @FXML private SignUpViewController signUpController;
+    @FXML private LoginViewController loginController;
     @FXML private UserSettingsController userSettingsController;
     @FXML private ManageMyYellowController manageMyYellowController;
     @FXML private MenuScreenController menuScreenController;
@@ -68,20 +66,22 @@ public class MainController implements Initializable {
     @FXML private Button backButton;
     @FXML private Button addItemButton;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         hamburgerSetup();
-        start();
+
         deseralize("groups");
         deseralize("users");
         deseralize("inventories");
-        this.yh = new YellowHandler(allUsers, allGroups);
 
-        updateGroupItemMap();
-        updateGroupList();
+        //updateGroupItemMap();
+        //updateGroupList();
     }
 
-    private void start(){
+    public void injectYellowHandler(YellowHandlerInterface yh){
+        this.yh = yh;
+    }
+
+    /*private void start(){
         signUpController.toLoginScreen(event -> {
             toLoginScreen();
             event.consume();
@@ -128,7 +128,8 @@ public class MainController implements Initializable {
             createGroup();
         });
 
-    }
+
+    }*/
 
     public List<String> getSignUpInfo(){
         List<String> list = new ArrayList<>();
@@ -147,10 +148,10 @@ public class MainController implements Initializable {
 
     }
 
-    private void createUser (String username, String firstName, String lastName, String email, String password) {
+    /*private void createUser (String username, String firstName, String lastName, String email, String password) {
         UserInterface user = yh.createUser(username, firstName, lastName, email, password);
         saveUser(user);
-    }
+    }*/
 
     public void addToOrder (int amount, String itemId) {
         yh.addItemToOrder(itemId);

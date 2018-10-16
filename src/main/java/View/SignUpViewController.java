@@ -1,5 +1,7 @@
-package Controller;
+package View;
 
+import Controller.ViewController;
+import Model.YellowHandlerInterface;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -8,7 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class SignUpController {
+public class SignUpViewController extends ViewController {
     
     @FXML private JFXTextField newUsernameField;
     @FXML private JFXTextField newPasswordField;
@@ -18,6 +20,8 @@ public class SignUpController {
 
     @FXML private Button signUpExitButton;
     @FXML private JFXButton signUpButton;
+
+    private YellowHandlerInterface yh;
 
     public void initialize(){
 
