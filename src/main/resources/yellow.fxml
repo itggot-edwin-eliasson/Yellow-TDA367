@@ -17,78 +17,71 @@
 
 <AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
     <children>
-      <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0">
-              <items>
-                <AnchorPane maxHeight="389.0" maxWidth="175.0" minHeight="398.0" minWidth="175.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
-                     <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="-12.0" layoutY="41.0" prefHeight="313.0" prefWidth="175.0" style="-fx-background-color: #1F1E18;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
-                            <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <content>
-                              <FlowPane fx:id="groupListFlowPane" prefHeight="239.0" prefWidth="174.0" />
-                           </content>
-                        </ScrollPane>
-                        <Label fx:id="title" layoutX="57.0" layoutY="7.0" prefHeight="27.0" prefWidth="62.0" text="Groups" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="7.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="addGroupButton" layoutX="120.0" layoutY="-1.0" mnemonicParsing="false" onAction="#createGroup" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: rgba(0, 0, 0, 0);" textFill="#fff4f4" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="-1.0">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <JFXButton layoutY="358.0" prefHeight="45.0" prefWidth="86.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-border-color: #ffcc00; -fx-background-radius: 5; -fx-border-style: solid none solid solid; -fx-border-width: 2px;" text="Calendar" textFill="#fffefe" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </JFXButton>
-                        <Button fx:id="backButton" layoutX="-1.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToGroups" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/back.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <JFXButton layoutX="82.0" layoutY="353.0" prefHeight="45.0" prefWidth="93.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-border-color: #ffcc00; -fx-background-radius: 5; -fx-border-style: solid; -fx-border-width: 2px;" text="Orders" textFill="#fffefe">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </AnchorPane>
-                <AnchorPane maxHeight="398.0" maxWidth="417.0" minHeight="398.0" minWidth="417.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                         <fx:include fx:id="userSettings" source="userSettingsView.fxml" />
-                        <ScrollPane hbarPolicy="NEVER" layoutY="44.0" prefHeight="350.0" prefWidth="417.0" styleClass="mainscrollpane" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0">
-                           <content>
-                               <FlowPane fx:id="listFlowPane" prefHeight="323.0" prefWidth="200.0" />
-                           </content></ScrollPane>
-                        <ImageView fitHeight="440.0" fitWidth="600.0" layoutX="-183.0" pickOnBounds="true" preserveRatio="true">
+      <StackPane fx:id="mainWindow" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+       <fx:include fx:id="menuScreen" source="firstYellowScreen.fxml" />
+       <fx:include fx:id="login" source="logIn.fxml" />
+        <fx:include fx:id="signUp" source="signUp.fxml" />
+      <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0">
+        <items>
+          <AnchorPane maxHeight="389.0" maxWidth="175.0" minHeight="398.0" minWidth="175.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #1F1E18;">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="-12.0" layoutY="41.0" prefHeight="313.0" prefWidth="175.0" style="-fx-background-color: #1F1E18;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+                      <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <content>
+                        <FlowPane fx:id="groupListFlowPane" prefHeight="239.0" prefWidth="174.0" />
+                     </content>
+                  </ScrollPane>
+                  <Label fx:id="title" layoutX="57.0" layoutY="7.0" prefHeight="27.0" prefWidth="62.0" text="Groups" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="7.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton layoutY="358.0" prefHeight="45.0" prefWidth="86.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-border-color: #ffcc00; -fx-background-radius: 5; -fx-border-style: solid none solid solid; -fx-border-width: 2px;" text="Calendar" textFill="#fffefe" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <Button fx:id="backButton" layoutX="-1.0" layoutY="4.0" mnemonicParsing="false" onAction="#backToGroups" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/yellowBgr.jpg" />
+                              <Image url="@img/back.png" />
                            </image>
                         </ImageView>
-                        <JFXDrawer fx:id="drawer" defaultDrawerSize="160.0" direction="RIGHT" layoutX="242.0" prefHeight="398.0" prefWidth="175.0" />
-                        <JFXHamburger fx:id="hamburger" layoutX="377.0" layoutY="11.0" />
-                        <Label layoutX="174.0" layoutY="14.0" text="Yellow">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-         </children>
-      </StackPane>
-        <fx:include fx:id="signUp" source="signUp.fxml" />
-       <fx:include fx:id="login" source="logIn.fxml" />
-       <fx:include fx:id="menuScreen" source="firstYellowScreen.fxml" />
+                     </graphic>
+                  </Button>
+                  <JFXButton layoutX="82.0" layoutY="353.0" prefHeight="45.0" prefWidth="93.0" style="-fx-background-color: rgba(0, 0, 0, 0.61); -fx-border-color: #ffcc00; -fx-background-radius: 5; -fx-border-style: solid; -fx-border-width: 2px;" text="Orders" textFill="#fffefe" visible="false">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+          <AnchorPane maxHeight="398.0" maxWidth="417.0" minHeight="398.0" minWidth="417.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                   <fx:include fx:id="userSettings" source="userSettingsView.fxml" />
+                  <ScrollPane hbarPolicy="NEVER" layoutY="44.0" prefHeight="350.0" prefWidth="417.0" styleClass="mainscrollpane" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="44.0">
+                     <content>
+                         <FlowPane fx:id="listFlowPane" prefHeight="323.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
+                  <ImageView fitHeight="440.0" fitWidth="600.0" layoutX="-183.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/yellowBgr.jpg" />
+                     </image>
+                  </ImageView>
+                  <JFXDrawer fx:id="drawer" defaultDrawerSize="160.0" direction="RIGHT" layoutX="242.0" prefHeight="398.0" prefWidth="175.0" />
+                  <JFXHamburger fx:id="hamburger" layoutX="377.0" layoutY="11.0" />
+                  <Label layoutX="174.0" layoutY="14.0" text="Yellow">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
    </children>
 </AnchorPane>

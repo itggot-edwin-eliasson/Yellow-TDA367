@@ -185,6 +185,36 @@ public class MainController implements Initializable {
 
     }
 
+    @FXML
+    public void createInventory(){
+        JFXDialogLayout content = new JFXDialogLayout();
+        Label text = new Label("Create a inventory");
+        text.setStyle("-fx-text-fill: white");
+        content.setHeading(text);
+
+        GridPane g = new GridPane();
+        JFXTextField textField = new JFXTextField();
+        textField.setPromptText("Inventory name");
+        textField.setStyle("-fx-text-fill: white; -fx-prompt-text-fill: rgba(255,255,255,0.75)");
+        textField.setFocusColor(Paint.valueOf("#ffcc00"));
+        textField.setUnFocusColor(Paint.valueOf("#fffdfd"));
+        g.setHgap(5);
+        g.setVgap(5);
+        g.add(textField, 1, 1);
+
+        JFXButton button = new JFXButton("Create inventory");
+        button.setStyle("-fx-background-color: #ffcc00");
+        button.setOnAction(event -> {
+
+            updateGroupItemMap();
+            updateGroupList();
+            dialog.close();
+        });
+        content.setActions(button);
+        dialog.show();
+
+    }
+
     private void selectGroup(GroupItemController groupItem){
         for(GroupInterface tmpGroup: groupItemControllerMap.keySet()) {
             if (groupItemControllerMap.get(tmpGroup).equals(groupItem)) {
