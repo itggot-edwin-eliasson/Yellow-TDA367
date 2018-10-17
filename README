@@ -47,21 +47,47 @@ The application is built around groups and inventories. When you start the appli
 you will be asked to sign up or sign in. Start with creating an account if you don't
 already have one.
 
-When logged in all groups your part of are listed in a panel to the left. Click on a
-group to manage that specific group. When in a group you will see a list of all
-inventories that group has. Enter an inventory to manage that inventory.
+When logged in you will see 4 big buttons that helps you navigate through the
+application. The buttons are: My Yellow, Join group, Manage my Yellow and Create Group.
 
-Inside an inventory is where the fun happens. Here you can add items to the inventory.
-You can see when a specific item is available or rented in the calender that shows when
-you click an item. You can also make an order on an item by pressing the "Add to order"
-button. You can add items from different inventories to the same order.
+My Yellow / Order handling
 
-After adding your items to an order you need to navigate back to the group page where
-you finnish your order. Here you press the order button. Enter the information required
-to complete the order and press the "Complete Order" button. If all the items are
-available you will now find your order in the list of your current orders. It will
-remain there until the order is returned and you press the "Order is returned" button.
-After that the order will still remain in the old orders list.
+Inside My Yellow is where you get an overview of your groups, inventories, items and
+orders. Pressing a group will show that groups specific inventories and items. In the
+bottom left panel you will find a calendar that contains all your orders. If you press
+the order button next to the calendar you will get to the order window.
+
+In the order window there is a panel at the top of the screen where you chose between
+the active order (the order your making right now), ongoing orders(orders not yet
+returned) and old orders (orders already returned). To complete your order navigate to
+the active order, fill in the form and press complete order.
+
+At the top right corner of My Yellow you will find a hamburger menu. Press the menu to
+see your User settings and Invite codes.
+
+Join group
+
+To join a new group made by someone else, get their groups invite code from the
+hamburger menu in the top right corner of My Yellow. Enter the code into the text
+field where it says "Insert invite code", press join group and you're done.
+
+Manage my Yellow
+
+If you press the button Manage my Yellow you will be taken to the management page. On
+this page you have three panels. One for groups, one for inventories and one for items.
+Press a group to enter that group and press an inventory to enter that inventory and
+see its items.
+
+When having a Group, inventory or item selected a small panel pops up where it says
+"Edit". Press it to edit or remove what u selected.
+
+In the top of this window above every panel there is a hamburger menu icon with a +
+sign on it. Press this icon to add a new group, inventory or item. To add items make
+sure you already selected an inventory for that item.
+
+Create group
+
+This is another place to create a new group.
 
 _____________________________________________________________________________________
 
@@ -70,3 +96,15 @@ ________________________________________________________________________________
 Documents - Contains all documentation for the project. This is where the RAD, SDD and
 meeting protocols are located.
 
+src - This is where the code is. In src/test are all the tests located. In src/main/java
+is where the actual code is split up in a Controller, Model and View package. In
+src/main/resources you can find the local "database" .ser files, all the FXML files and
+the images.
+
+______________________________________________________________________________________
+
+4. Program structure
+
+The code is divided into three packages with the MVC pattern as a guideline. We have a
+view, a controller and a model package. The controller acts on both the controller and
+the view to update the view (GUI) and controls the data flow into the model.
