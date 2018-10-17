@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.JoinGroupDialogViewController">
+   <children>
+      <Label layoutX="22.0" layoutY="14.0" text="Join group">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="joinGroupTextField" focusColor="#ffcc00" layoutX="22.0" layoutY="75.0" prefHeight="25.0" prefWidth="161.0" promptText="Insert invite code" />
+      <JFXButton fx:id="joinGroupButton" layoutX="260.0" layoutY="150.0" onAction="#joinGroup" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #ffcc00;" text="Join group" />
+   </children>
+</AnchorPane>

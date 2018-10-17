@@ -154,6 +154,7 @@ public class Main extends Application {
                 event.consume();
             });
             controller.joinGroup(event -> {
+                showJoinGroupDialog();
                 event.consume();
             });
             controller.toManageMyYellow(event -> {
@@ -231,6 +232,37 @@ public class Main extends Application {
             if (controller.isOkClicked()) {
                 yh.addItem(controller.getItemName(), controller.getItemDescription(),
                         yh.getActiveGroup().getSelectedInventory().getID(),1);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void showJoinGroupDialog(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../joinGroupDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            JoinGroupDialogViewController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            if (controller.isOkClicked()) {
+                //do something
             }
 
         } catch (IOException e) {
