@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -91,5 +92,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <JFXButton fx:id="toMyYellowButton" layoutX="467.0" layoutY="17.0" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: rgba(0, 0, 0, 0.80); -fx-background-radius: 3;" text="To My Yellow" textFill="#f8f8f6">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

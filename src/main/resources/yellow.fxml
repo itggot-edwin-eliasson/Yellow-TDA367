@@ -77,7 +77,7 @@
                               <Image url="@img/yellowBgr.jpg" />
                            </image>
                         </ImageView>
-                        <JFXDrawer fx:id="drawer" defaultDrawerSize="160.0" direction="RIGHT" layoutX="271.0" prefHeight="398.0" prefWidth="146.0" />
+                        <JFXDrawer fx:id="drawer" defaultDrawerSize="160.0" direction="RIGHT" prefHeight="398.0" prefWidth="417.0" />
                         <JFXHamburger fx:id="hamburger" layoutX="377.0" layoutY="11.0" />
                         <Label layoutX="174.0" layoutY="14.0" text="Yellow">
                            <font>
