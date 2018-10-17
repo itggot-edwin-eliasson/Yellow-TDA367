@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="162.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <JFXButton prefHeight="34.0" prefWidth="161.0" text="Join group" textFill="#fffefe" visible="false" />
       <JFXButton prefHeight="34.0" prefWidth="161.0" text="User settings" textFill="#fffefe" />
-      <JFXButton prefHeight="34.0" prefWidth="161.0" text="Edit groups" textFill="#fffefe" />
-      <JFXButton prefHeight="34.0" prefWidth="161.0" text="Invite codes" textFill="#fffefe" />
-      <JFXButton prefHeight="34.0" prefWidth="161.0" text="Join group" textFill="#fffefe" />
+      <JFXButton fx:id="manageMyYellowDrawerButton" prefHeight="34.0" prefWidth="161.0" text="Manage my Yellow" textFill="#fffefe" />
+      <JFXButton fx:id="inviteCodesDrawerButton" prefHeight="34.0" prefWidth="161.0" text="Invite codes" textFill="#fffefe" />
+      <JFXButton fx:id="joinGroupDrawerButton" prefHeight="34.0" prefWidth="161.0" text="Join group" textFill="#fffefe" />
       <JFXButton prefHeight="34.0" prefWidth="161.0" text="Invite codes" textFill="#fffefe" visible="false" />
       <JFXButton prefHeight="34.0" prefWidth="161.0" text="Invite codes" textFill="#fffefe" visible="false" />
       <JFXButton prefHeight="34.0" prefWidth="161.0" text="Invite codes" textFill="#fffefe" visible="false" />
@@ -17,6 +22,6 @@
       <JFXButton prefHeight="34.0" prefWidth="161.0" text="Invite codes" textFill="#fffefe" visible="false" />
       <JFXButton prefHeight="34.0" prefWidth="161.0" textFill="#fffefe" visible="false" />
       <Line endX="133.8431396484375" endY="-0.7070747017860413" startX="-25.449752807617188" startY="3.2067298889160156E-5" stroke="#0000007c" />
-      <JFXButton prefHeight="34.0" prefWidth="161.0" text="Log out" textFill="#fffefe" />
+      <JFXButton fx:id="logOutDrawerButton" prefHeight="34.0" prefWidth="161.0" text="Log out" textFill="#fffefe" />
    </children>
 </VBox>
