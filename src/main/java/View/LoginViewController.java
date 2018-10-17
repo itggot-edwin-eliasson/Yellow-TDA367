@@ -18,7 +18,6 @@ public class LoginViewController extends ViewController {
 
     private YellowHandler yh;
 
-
     public void hej () {
         System.out.println("FUNKAR");
     }

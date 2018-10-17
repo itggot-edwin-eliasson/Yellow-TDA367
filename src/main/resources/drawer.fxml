@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="166.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="166.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <JFXButton prefHeight="34.0" prefWidth="161.0" text="Join group" textFill="#fffefe" visible="false" />
-      <JFXButton prefHeight="34.0" prefWidth="161.0" text="User settings" textFill="#fffefe" />
+      <JFXButton fx:id="userSettingsDrawerButton" prefHeight="34.0" prefWidth="161.0" text="User settings" textFill="#fffefe" />
       <JFXButton fx:id="manageMyYellowDrawerButton" prefHeight="34.0" prefWidth="161.0" text="Manage my Yellow" textFill="#fffefe" />
       <JFXButton fx:id="inviteCodesDrawerButton" prefHeight="34.0" prefWidth="161.0" text="Invite codes" textFill="#fffefe" />
       <JFXButton fx:id="joinGroupDrawerButton" prefHeight="34.0" prefWidth="161.0" text="Join group" textFill="#fffefe" />

@@ -153,6 +153,11 @@ public class Main extends Application {
             signUpLoader = new FXMLLoader();
             signUpLoader.setLocation(Main.class.getResource("../signUp.fxml"));
             signUpScreen = (AnchorPane) signUpLoader.load();
+            yh.logOut();
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../signUp.fxml"));
+            AnchorPane login = (AnchorPane) loader.load();
 
             SignUpViewController controller = signUpLoader.getController();
             controller.injectYellowHandler(yh);

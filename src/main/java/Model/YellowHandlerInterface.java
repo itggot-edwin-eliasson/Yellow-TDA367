@@ -24,6 +24,8 @@ public interface YellowHandlerInterface {
 
     public void removeGroup (String id);
 
+    public void logOut();
+
     public void addItem(String name, String description, String inventoryId, int amount);
 
     public void removeItem(String id);

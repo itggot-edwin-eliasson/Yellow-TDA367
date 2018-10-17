@@ -107,7 +107,13 @@ public class YellowHandler extends Observable {
         return false;
     }
 
+    @Override
+    public void logOut (){
+        activeUser = null;
+        activegroup = null;
+    }
 
+    @Override
     public void setActiveUserToNull () {
         activeUser = null;
     }

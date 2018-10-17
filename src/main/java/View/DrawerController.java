@@ -1,22 +1,31 @@
 package View;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
 public class DrawerController {
 
 
-    @FXML JFXButton userSettingsButton;
-    @FXML JFXButton manageMyYellow;
-    @FXML JFXButton inviteCodesButton;
-    @FXML JFXButton joinGroup;
-    @FXML JFXButton logOut;
+    @FXML JFXButton userSettingsDrawerButton;
+    @FXML JFXButton manageMyYellowDrawerButton;
+    @FXML JFXButton inviteCodesDrawerButton;
+    @FXML JFXButton joinGroupDrawerButton;
+    @FXML JFXButton logOutDrawerButton;
 
     public void initialize () { }
 
-    private void toUserSettings () { }
+    public void logOut (EventHandler<ActionEvent> clicked) {
+        logOutDrawerButton.setOnAction(clicked);
+    }
 
-    private void logOut () { }
+
+    private void toUserSettings (EventHandler<ActionEvent> clicked) {
+
+    }
+
+
 
 
 
