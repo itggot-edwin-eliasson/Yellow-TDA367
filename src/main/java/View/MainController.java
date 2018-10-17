@@ -36,6 +36,7 @@ public class MainController extends ViewController implements Observer {
     private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
 
     private EventHandler<MouseEvent> groupItemClick;
+    private EventHandler<MouseEvent> inventoryItemClick;
 
     @FXML private SignUpViewController signUpController;
     @FXML private LoginViewController loginController;
@@ -62,6 +63,7 @@ public class MainController extends ViewController implements Observer {
     @FXML private Button addGroupButton;
     @FXML private Button backButton;
     @FXML private Button addItemButton;
+    @FXML private Button backToMenuButton;
 
     public void initialize() {
         hamburgerSetup();
@@ -207,7 +209,6 @@ public class MainController extends ViewController implements Observer {
                 drawer.toFront();
                 hamburger.toFront();
                 updateItemList();
-                updateItemItemMap();
                 //updateInventoryList();
             }
         }
@@ -217,22 +218,27 @@ public class MainController extends ViewController implements Observer {
     public void selectGroup(){
         title.setText(super.yh.getActiveGroup().getName());
         backButton.setVisible(true);
+        backToMenuButton.setVisible(false);
         listFlowPane.toFront();
         drawer.toFront();
         hamburger.toFront();
         updateInventoryList();
         updateItemList();
-        updateItemItemMap();
     }
 
     public void backToGroups(){
         backButton.setVisible(false);
+        backToMenuButton.setVisible(true);
         title.setText("Groups");
         updateGroupList();
     }
 
     public void setBackToGroupsListener(EventHandler<ActionEvent> event){
         backButton.setOnAction(event);
+    }
+
+    public void setBackToMenuListener(EventHandler<ActionEvent> event){
+        backToMenuButton.setOnAction(event);
     }
 
     @FXML
@@ -266,7 +272,6 @@ public class MainController extends ViewController implements Observer {
             @Override
             public void handle(ActionEvent event) {
                 yh.addItem(nameTextField.getText(), descriptionTextField.getText(), yh.getActiveGroup().getSelectedInventory().getID(), 1);
-                updateItemItemMap();
                 updateItemList();
                 dialog.close();
             }
@@ -313,19 +318,11 @@ public class MainController extends ViewController implements Observer {
         }
     }
 
-    private void updateItemItemMap(){
-        List<ItemInterface> items = super.yh.getItems();
-        for(ItemInterface item: items){
-            ItemItemController itemItem = new ItemItemController(item.getName(), item.getImage());
-            itemItemControllerMap.put(item,itemItem);
-        }
-    }
-
     private void updateItemList(){
+        List<ItemInterface> items = super.yh.getItems();
         listFlowPane.getChildren().clear();
-        ItemItemController itemItem;
-        for(ItemInterface item: itemItemControllerMap.keySet()){
-            itemItem = itemItemControllerMap.get(item);
+        for(ItemInterface item: items){
+            ItemItemController itemItem = new ItemItemController(item);
             listFlowPane.getChildren().add(itemItem);
         }
     }
@@ -490,10 +487,17 @@ public class MainController extends ViewController implements Observer {
 
     @Override
     public void update() {
+
+        updateInventoryList();
+        updateItemList();
         updateGroupList();
     }
 
     public void injectGroupItemListener(EventHandler<MouseEvent> clicked) {
         groupItemClick = clicked;
+    }
+
+    public void injectInventoryItemListener(EventHandler<MouseEvent> clicked) {
+
     }
 }

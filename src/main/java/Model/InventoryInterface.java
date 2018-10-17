@@ -14,6 +14,8 @@ public interface InventoryInterface extends Serializable {
      */
     public ItemInterface addItem (String itemName, String itemDescription, String itemID);
 
+
+    public void addItemToList(ItemInterface item);
     /**
      * Removes item, if the list is empty a message will be displayed
      *

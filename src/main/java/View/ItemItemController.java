@@ -1,5 +1,6 @@
 package View;
 
+import Model.ItemInterface;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -11,12 +12,12 @@ import java.io.IOException;
 
 public class ItemItemController extends AnchorPane {
 
-    String name;
+    private ItemInterface item;
 
     @FXML private Label itemName;
     @FXML private ImageView itemImage;
 
-    public ItemItemController(String name, Image image) {
+    public ItemItemController(ItemInterface item) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../itemItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -27,8 +28,8 @@ public class ItemItemController extends AnchorPane {
             throw new RuntimeException(e);
         }
 
-        this.name = name;
+        this.item = item;
 
-        itemName.setText(name);
+        itemName.setText(item.getName());
     }
 }

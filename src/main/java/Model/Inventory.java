@@ -48,6 +48,11 @@ public class Inventory implements InventoryInterface{
         return item;
     }
 
+    @Override
+    public void addItemToList(ItemInterface item) {
+        itemlist.add(item);
+    }
+
     /**
      * Removes item, if the list is empty a message will be displayed
      *

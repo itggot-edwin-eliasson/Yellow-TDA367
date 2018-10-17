@@ -60,10 +60,14 @@ public class Group implements GroupInterface{
         }
         return inviteCode;
     }
+
     @Override
     public void addItem(String name, String description, String id, String inventoryId) {
-        selectedInventory.addItem(name, description, id);
+        ItemInterface item = selectedInventory.addItem(name, description, id);
+        if(!selectedInventory.getName().equals("All items"))
+            inventories.get(0).addItemToList(item);
     }
+
     @Override
     public void removeItem (String id) {
         selectedInventory.removeItem(id);

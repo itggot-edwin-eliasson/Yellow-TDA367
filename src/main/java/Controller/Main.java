@@ -79,6 +79,7 @@ public class Main extends Application {
     private void showYellow(){
 
         rootLayout.setCenter(yellow);
+
     }
 
     private void yellowSetup(){
@@ -99,6 +100,11 @@ public class Main extends Application {
             mainController.updateGroupList();
 
             mainController.setBackToGroupsListener(event -> {
+                mainController.backToGroups();
+                event.consume();
+            });
+            mainController.setBackToMenuListener(event -> {
+                showMenuScreen();
                 event.consume();
             });
 
