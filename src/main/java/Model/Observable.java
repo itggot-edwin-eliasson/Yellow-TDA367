@@ -17,7 +17,6 @@ public class Observable {
     }
 
     public void notifyObservers(){
-        System.out.println(observers.size());
         for(Observer o: observers){
             o.update();
         }

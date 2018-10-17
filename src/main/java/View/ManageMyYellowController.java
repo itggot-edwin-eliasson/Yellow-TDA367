@@ -1,8 +1,8 @@
 package View;
 
-import Controller.GroupItemController;
 import Model.GroupInterface;
 import Model.InventoryInterface;
+import Model.ItemInterface;
 import Model.Observer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,7 +24,8 @@ public class ManageMyYellowController extends ViewController implements Observer
     @FXML private FlowPane manageInventoryFlowPane;
     @FXML private FlowPane manageItemFlowPane;
 
-    private EventHandler <MouseEvent> groupItemClick;
+    private EventHandler<MouseEvent> groupItemClick;
+    private EventHandler<MouseEvent> inventoryItemClick;
 
     public void backToManageMyYellow(EventHandler<ActionEvent> clicked){
         backButton.setOnAction(clicked);
@@ -46,9 +47,9 @@ public class ManageMyYellowController extends ViewController implements Observer
         List<GroupInterface> groups = super.yh.getGroups();
         manageGroupFlowPane.getChildren().clear();
         for(GroupInterface group: groups){
-            ManageGroupItemViewController item = new ManageGroupItemViewController(group);
-            item.selectGroup(groupItemClick);
-            manageGroupFlowPane.getChildren().add(item);
+            ManageGroupItemViewController groupItem = new ManageGroupItemViewController(group);
+            groupItem.selectGroup(groupItemClick);
+            manageGroupFlowPane.getChildren().add(groupItem);
         }
     }
 
@@ -56,11 +57,18 @@ public class ManageMyYellowController extends ViewController implements Observer
         List<InventoryInterface> inventories = super.yh.getInventories();
         manageInventoryFlowPane.getChildren().clear();
         for(InventoryInterface inventory: inventories){
-            ManageInventoryItemViewController item = new ManageInventoryItemViewController(inventory);
-            item.selectInventory(event -> {
-                event.consume();
-            });
-            manageInventoryFlowPane.getChildren().add(item);
+            ManageInventoryItemViewController inventoryItem = new ManageInventoryItemViewController(inventory);
+            inventoryItem.selectInventory(inventoryItemClick);
+            manageInventoryFlowPane.getChildren().add(inventoryItem);
+        }
+    }
+
+    public void updateItemList(){
+        List<ItemInterface> items = super.yh.getItems();
+        manageItemFlowPane.getChildren().clear();
+        for(ItemInterface item: items){
+            ManageItemItemViewController itemItem = new ManageItemItemViewController(item);
+            manageItemFlowPane.getChildren().add(itemItem);
         }
     }
 
@@ -68,10 +76,15 @@ public class ManageMyYellowController extends ViewController implements Observer
         groupItemClick = clicked;
     }
 
+    public void injectInventoryItemListener(EventHandler<MouseEvent> clicked) {
+        inventoryItemClick = clicked;
+    }
+
     @Override
     public void update () {
         updateGroupList();
         updateInventoryList();
+        updateItemList();
     }
 
 }

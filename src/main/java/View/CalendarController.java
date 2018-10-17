@@ -1,4 +1,4 @@
-package Controller;
+package View;
 
 import Model.Item;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;

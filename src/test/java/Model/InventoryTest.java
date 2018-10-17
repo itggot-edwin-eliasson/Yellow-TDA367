@@ -15,14 +15,14 @@ public class InventoryTest {
     @Test
     public void addItem() {
         Inventory i = new Inventory("Testinv", "ID");
-        i.addItem("Boll", "En boll","ID", 3);
-        assertEquals(3, i.getItemList().size());
+        i.addItem("Boll", "En boll","ID");
+        assertEquals(1, i.getItemList().size());
     }
 
     @Test
     public void addOneItem(){
         Inventory i = new Inventory("Testinc", "ID");
-        i.addItem("Boll", "Rund boll","ID",1);
+        i.addItem("Boll", "Rund boll","ID");
         assertEquals(1, i.getItemList().size());
     }
 

@@ -7,23 +7,12 @@ import java.util.List;
 public interface InventoryInterface extends Serializable {
 
     /**
-     * Create a new item
-     *
-     * @param itemName The name of the item
-     * @param itemDescription The description of the item
-     */
-
-
-    public void addItem(String itemName, String itemDescription, String itemID);
-
-    /**
      * Creates several items of the same type
      *
      * @param itemName The name of the item
      * @param itemDescription The description of item
-     * @param amount Amount of item you want to create
      */
-    public void addItem (String itemName, String itemDescription, String itemID, int amount);
+    public ItemInterface addItem (String itemName, String itemDescription, String itemID);
 
     /**
      * Removes item, if the list is empty a message will be displayed

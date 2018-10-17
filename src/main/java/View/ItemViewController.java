@@ -1,4 +1,4 @@
-package Controller;
+package View;
 
 import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;

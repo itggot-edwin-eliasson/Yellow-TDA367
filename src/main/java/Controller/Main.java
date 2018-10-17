@@ -221,6 +221,11 @@ public class Main extends Application {
                 yh.setActiveGroup(item.getGroup());
                 event.consume();
             });
+            controller.injectInventoryItemListener(event -> {
+                ManageInventoryItemViewController item = (ManageInventoryItemViewController) event.getSource();
+                yh.selectInventory(item.getInventory().getID());
+                event.consume();
+            });
             controller.updateGroupList();
 
             controller.addGroup(event -> {

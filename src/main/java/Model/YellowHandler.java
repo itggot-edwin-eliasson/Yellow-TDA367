@@ -121,8 +121,11 @@ public class YellowHandler extends Observable {
      */
 
     public void addItem (String name, String description, String inventoryId, int amount) {
-        String id = generateUniqueKeyUsingUUID();
-        activegroup.addItem(name, description, id, inventoryId, amount);
+        for(int i = 0; i < amount; i++) {
+            String id = generateUniqueKeyUsingUUID();
+            activegroup.addItem(name, description, id, inventoryId);
+        }
+        notifyObservers();
     }
 
     /**
@@ -209,7 +212,11 @@ public class YellowHandler extends Observable {
     }
 
     public List<ItemInterface> getItems() {
-         return activegroup.getSelectedInventory().getItemList();
+        if(activegroup != null) {
+            if (activegroup.getSelectedInventory() != null)
+                return activegroup.getSelectedInventory().getItemList();
+        }
+        return new ArrayList<>();
     }
 
     public List<InventoryInterface> getInventories(){
@@ -226,6 +233,7 @@ public class YellowHandler extends Observable {
     public void createInventory(String name) {
         if(activegroup != null)
             activegroup.createInventory(name, generateUniqueKeyUsingUUID());
+        notifyObservers();
     }
 
     /**
@@ -250,6 +258,7 @@ public class YellowHandler extends Observable {
      */
     public void selectInventory(String id) {
         activegroup.selectInventory(id);
+        notifyObservers();
     }
     public void orderIsReturned(String orderID){
         activegroup.orderIsReturned(orderID);

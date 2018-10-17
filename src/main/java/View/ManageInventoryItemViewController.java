@@ -34,7 +34,7 @@ public class ManageInventoryItemViewController extends AnchorPane {
         manageInventoryItem.setText(inventory.getName());
     }
 
-    public void selectInventory(EventHandler<MouseEvent> clicked){
+    public void selectInventory(EventHandler<MouseEvent> clicked) {
         background.setOnMouseClicked(clicked);
 
     }

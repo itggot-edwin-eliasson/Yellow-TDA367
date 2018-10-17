@@ -1,4 +1,4 @@
-package Controller;
+package View;
 
 import Model.GroupInterface;
 import javafx.event.EventHandler;

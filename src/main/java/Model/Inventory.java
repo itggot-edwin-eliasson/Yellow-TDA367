@@ -35,35 +35,17 @@ public class Inventory implements InventoryInterface{
     }
 
     /**
-     * Create a new item
-     *
-     * @param itemName The name of the item
-     * @param itemDescription The description of the item
-     */
-
-    @Override
-    public void addItem(String itemName, String itemDescription, String itemID){ //Add Item to list if amount =1
-        ItemInterface item = new Item(itemName,itemDescription, itemID);
-        itemlist.add(item);
-    }
-
-    /**
      * Creates several items of the same type
      *
      * @param itemName The name of the item
      * @param itemDescription The description of item
-     * @param amount Amount of item you want to create
      */
     @Override
-    public void addItem (String itemName, String itemDescription, String itemID, int amount) { //Adds Items to list if amout > 1
-        if(amount > 1){
-            for(int i = 0; i < amount; i++){
-                ItemInterface item = new Item(itemName, itemDescription, itemID);
-                itemlist.add(item);
-            }
-        }else{
-            addItem(itemName, itemDescription, itemID);
-        }
+    public ItemInterface addItem (String itemName, String itemDescription, String itemID) {
+        ItemInterface item;
+        item = new Item(itemName, itemDescription, itemID);
+        itemlist.add(item);
+        return item;
     }
 
     /**

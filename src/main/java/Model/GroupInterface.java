@@ -70,7 +70,7 @@ public interface GroupInterface extends Serializable {
 
     public String getId();
 
-    public void addItem(String name, String description, String id, String inventoryId, int amount);
+    public void addItem(String name, String description, String id, String inventoryId);
 
     public void removeItem(String id);
 

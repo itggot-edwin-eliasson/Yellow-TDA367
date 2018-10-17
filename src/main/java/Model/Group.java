@@ -61,8 +61,8 @@ public class Group implements GroupInterface{
         return inviteCode;
     }
     @Override
-    public void addItem(String name, String description, String id, String inventoryId, int amount) {
-        selectedInventory.addItem(name, description, id, amount);
+    public void addItem(String name, String description, String id, String inventoryId) {
+        selectedInventory.addItem(name, description, id);
     }
     @Override
     public void removeItem (String id) {
@@ -193,7 +193,9 @@ public class Group implements GroupInterface{
 
     @Override
     public InventoryInterface getSelectedInventory () {
-        return selectedInventory;
+        if(selectedInventory != null)
+            return selectedInventory;
+        return null;
     }
 
     /**

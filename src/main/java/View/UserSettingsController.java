@@ -1,4 +1,4 @@
-package Controller;
+package View;
 
 import Model.UserInterface;
 import com.jfoenix.controls.JFXButton;

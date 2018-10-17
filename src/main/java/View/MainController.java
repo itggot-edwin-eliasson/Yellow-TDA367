@@ -1,11 +1,7 @@
 package View;
 
-import Controller.GroupItemController;
-import Controller.ItemItemController;
-import Controller.UserSettingsController;
 import Model.*;
 import Model.Observer;
-import View.*;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import javafx.application.Platform;
