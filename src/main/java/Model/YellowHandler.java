@@ -145,7 +145,7 @@ public class YellowHandler extends Observable {
 
     public boolean joinGroup(int inviteCode){
     for (GroupInterface group : groups) {
-            if(joinCodeExists(inviteCode)){
+            if(joinCodeExists(inviteCode, group)){
                 activeUser.addGroup(group.getId());
                 return true;
             }
@@ -154,10 +154,9 @@ public class YellowHandler extends Observable {
     }
 
 
-    private boolean joinCodeExists(int inviteCode){
-        for(int groupInviteCode: groupInviteCodes){
-            if(groupInviteCode == inviteCode)
-                return true;
+    private boolean joinCodeExists(int inviteCode, GroupInterface group){
+        if(group.getInviteCode() == inviteCode){
+            return true;
         }
         return false;
     }
