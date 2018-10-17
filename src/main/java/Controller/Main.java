@@ -34,12 +34,6 @@ public class Main extends Application {
     private List<GroupInterface> groups;
     private List<UserInterface> users;
 
-    private Map<GroupInterface, GroupItemController> groupItemControllerMap = new HashMap<>();
-    private Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap = new HashMap<>();
-    private Map<GroupInterface, ManageGroupItemViewController> manageGroupItemViewControllerMap = new HashMap<>();
-    private Map<InventoryInterface, ManageInventoryItemViewController> manageInventoryItemViewControllerMap = new HashMap<>();
-
-
     public static void main(String[] args){
         launch(args);
     }
@@ -389,27 +383,6 @@ public class Main extends Application {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void updateManageGroupItemMap(){
-        List<GroupInterface> groups = yh.getGroups();
-        manageGroupItemViewControllerMap.clear();
-        for(GroupInterface group: groups){
-            ManageGroupItemViewController item = new ManageGroupItemViewController(group);
-            item.selectGroup(event -> {
-                yh.setActiveGroup(group);
-                event.consume();
-            });
-        }
-    }
-
-    private void updateManageInventoryItemMap(){
-        List<InventoryInterface> inventories = yh.getInventories();
-        manageInventoryItemViewControllerMap.clear();
-        for(InventoryInterface inventory: inventories){
-            ManageInventoryItemViewController item = new ManageInventoryItemViewController(inventory);
-            manageInventoryItemViewControllerMap.put(inventory, item);
         }
     }
 
