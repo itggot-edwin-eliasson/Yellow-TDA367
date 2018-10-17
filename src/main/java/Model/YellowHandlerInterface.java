@@ -20,7 +20,7 @@ public interface YellowHandlerInterface {
 
     //public User createUser (String username);
 
-    public void joinGroup(int inviteCode);
+    public boolean joinGroup(int inviteCode);
 
     public void removeGroup (String id);
 

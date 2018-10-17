@@ -35,6 +35,15 @@ public class User implements UserInterface {
         }
     }
 
+    public boolean comparePassword (String newPassword) {
+        if (newPassword.equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
+
+
     @Override
     public List<String> getGroupIds(){
         return groupIds;
@@ -81,12 +90,7 @@ public class User implements UserInterface {
     @Override
     public String getLastName () { return lastName; }
 
-    public boolean comparePassword (String newPassword) {
-        if (newPassword.equals(password)) {
-            return true;
-        }
-        return false;
-    }
+
 
 }
 

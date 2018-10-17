@@ -54,6 +54,7 @@ public class YellowHandler implements YellowHandlerInterface {
         activeUser.setPassword(password);
     }
 
+
     public List<GroupInterface> getGroups(){
         List<GroupInterface> tmpGroups = new ArrayList<>();
         if(activeUser != null) {
@@ -144,12 +145,23 @@ public class YellowHandler implements YellowHandlerInterface {
      */
 
     @Override
-    public void joinGroup(int inviteCode){
+    public boolean joinGroup(int inviteCode){
         for (GroupInterface group : groups) {
-            if(group.getInviteCode() == inviteCode){
+            if(joinCodeExists(inviteCode)){
                 activeUser.addGroup(group.getId());
+                return true;
             }
         }
+        return false;
+    }
+
+
+    private boolean joinCodeExists(int inviteCode){
+        for(int groupInviteCode: groupInviteCodes){
+            if(groupInviteCode == inviteCode)
+                return true;
+        }
+        return false;
     }
 
     /**

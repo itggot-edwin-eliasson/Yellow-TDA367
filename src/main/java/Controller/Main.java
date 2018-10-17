@@ -248,7 +248,7 @@ public class Main extends Application {
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("");
+            dialogStage.setTitle("Join group");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -259,11 +259,20 @@ public class Main extends Application {
             controller.setDialogStage(dialogStage);
 
             // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
 
-            if (controller.isOkClicked()) {
-                //do something
-            }
+            dialogStage.show();
+
+            controller.handleJoinGroup(event -> {
+                int inviteCode = 0;
+                if(controller.getJoinGroupTextField().length() == 4)
+                    inviteCode = Integer.valueOf(controller.getJoinGroupTextField());
+                if (yh.joinGroup(inviteCode)) {
+                    dialogStage.close();
+                }
+                else {
+                    System.out.println("No group found");
+                }
+            });
 
         } catch (IOException e) {
             e.printStackTrace();

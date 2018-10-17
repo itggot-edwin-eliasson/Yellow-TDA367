@@ -8,14 +8,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.JoinGroupDialogViewController">
+<AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.JoinGroupDialogViewController">
    <children>
-      <Label layoutX="22.0" layoutY="14.0" text="Join group">
+      <Label layoutX="22.0" layoutY="23.0" text="Join group" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="joinGroupTextField" focusColor="#ffcc00" layoutX="22.0" layoutY="75.0" prefHeight="25.0" prefWidth="161.0" promptText="Insert invite code" />
-      <JFXButton fx:id="joinGroupButton" layoutX="260.0" layoutY="150.0" onAction="#joinGroup" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #ffcc00;" text="Join group" />
+      <JFXTextField fx:id="joinGroupTextField" focusColor="#ffcc00" layoutX="22.0" layoutY="75.0" prefHeight="25.0" prefWidth="166.0" promptText="Insert invite code (xxxx)" style="-fx-text-fill: white; fx-prompt-text-fill: rgba(255,255,255, 0.7);" unFocusColor="WHITE" />
+      <JFXButton fx:id="joinGroupButton" layoutX="221.0" layoutY="151.0" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #ffcc00;" text="Join group" />
    </children>
 </AnchorPane>

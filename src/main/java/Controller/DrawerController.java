@@ -7,21 +7,16 @@ public class DrawerController {
 
 
     @FXML JFXButton userSettingsButton;
-    @FXML JFXButton editGroupsButton;
+    @FXML JFXButton manageMyYellow;
     @FXML JFXButton inviteCodesButton;
+    @FXML JFXButton joinGroup;
     @FXML JFXButton logOut;
 
-    public void initialize () {
+    public void initialize () { }
 
-    }
+    private void toUserSettings () { }
 
-    private void toUserSettings () {
-
-    }
-
-    private void logOut () {
-
-    }
+    private void logOut () { }
 
 
 

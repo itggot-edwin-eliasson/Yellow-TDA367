@@ -3,6 +3,8 @@ package View;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
@@ -20,17 +22,26 @@ public class JoinGroupDialogViewController {
         return okCklicked;
     }
 
-    public JFXTextField getJoinGroupTextField() {
-        return joinGroupTextField;
+    public void close () {
+        dialogStage.close();
+    }
+
+    public String getJoinGroupTextField() {
+        return joinGroupTextField.getText();
     }
 
     public void setDialogStage(Stage dialogStage){
-        dialogStage.close();
+        this.dialogStage = dialogStage;
     }
 
     @FXML
     private void joinGroup(){
-        okCklicked = true;
-        dialogStage.close();
+            okCklicked = true;
+            dialogStage.close();
+
+    }
+
+    public void handleJoinGroup (EventHandler <ActionEvent> clicked) {
+        joinGroupButton.setOnAction(clicked);
     }
 }
