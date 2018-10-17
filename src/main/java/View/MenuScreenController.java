@@ -1,6 +1,6 @@
 package View;
 
-import Model.YellowHandlerInterface;
+import Model.YellowHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import com.jfoenix.controls.JFXButton;
@@ -13,7 +13,7 @@ public class MenuScreenController extends ViewController {
     @FXML private JFXButton createGroupButton;
     @FXML private JFXButton joinGroupButton;
 
-    private YellowHandlerInterface yh;
+    private YellowHandler yh;
 
     public void initialize(){
     }

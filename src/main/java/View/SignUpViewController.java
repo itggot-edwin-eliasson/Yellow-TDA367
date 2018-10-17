@@ -1,6 +1,6 @@
 package View;
 
-import Model.YellowHandlerInterface;
+import Model.YellowHandler;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -19,7 +19,7 @@ public class SignUpViewController extends ViewController {
     @FXML private Button signUpExitButton;
     @FXML private JFXButton signUpButton;
 
-    private YellowHandlerInterface yh;
+    private YellowHandler yh;
 
     public void initialize(){
 

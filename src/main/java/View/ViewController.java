@@ -1,12 +1,12 @@
 package View;
 
-import Model.YellowHandlerInterface;
+import Model.YellowHandler;
 
 public class ViewController {
 
-    private YellowHandlerInterface yh;
+    public YellowHandler yh;
 
-    public void injectYellowHandler(YellowHandlerInterface yh){
+    public void injectYellowHandler(YellowHandler yh){
         this.yh = yh;
     }
 }

@@ -1,12 +1,19 @@
 package View;
 
+import Controller.GroupItemController;
+import Model.GroupInterface;
+import Model.InventoryInterface;
+import Model.Observer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 
-public class ManageMyYellowController extends ViewController {
+import java.util.List;
+
+public class ManageMyYellowController extends ViewController implements Observer {
 
     @FXML private Button addGroupButton;
     @FXML private Button addInventoryButton;
@@ -17,9 +24,7 @@ public class ManageMyYellowController extends ViewController {
     @FXML private FlowPane manageInventoryFlowPane;
     @FXML private FlowPane manageItemFlowPane;
 
-
-    public void initialize(){
-    }
+    private EventHandler <MouseEvent> groupItemClick;
 
     public void backToManageMyYellow(EventHandler<ActionEvent> clicked){
         backButton.setOnAction(clicked);
@@ -35,6 +40,38 @@ public class ManageMyYellowController extends ViewController {
 
     public void addInventory (EventHandler<ActionEvent> clicked) {
         addInventoryButton.setOnAction(clicked);
+    }
+
+    public void updateGroupList(){
+        List<GroupInterface> groups = super.yh.getGroups();
+        manageGroupFlowPane.getChildren().clear();
+        for(GroupInterface group: groups){
+            ManageGroupItemViewController item = new ManageGroupItemViewController(group);
+            item.selectGroup(groupItemClick);
+            manageGroupFlowPane.getChildren().add(item);
+        }
+    }
+
+    public void updateInventoryList(){
+        List<InventoryInterface> inventories = super.yh.getInventories();
+        manageInventoryFlowPane.getChildren().clear();
+        for(InventoryInterface inventory: inventories){
+            ManageInventoryItemViewController item = new ManageInventoryItemViewController(inventory);
+            item.selectInventory(event -> {
+                event.consume();
+            });
+            manageInventoryFlowPane.getChildren().add(item);
+        }
+    }
+
+    public void injectGroupItemListener(EventHandler<MouseEvent> clicked) {
+        groupItemClick = clicked;
+    }
+
+    @Override
+    public void update () {
+        updateGroupList();
+        updateInventoryList();
     }
 
 }

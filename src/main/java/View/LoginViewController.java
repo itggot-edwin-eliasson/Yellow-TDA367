@@ -1,6 +1,6 @@
 package View;
 
-import Model.YellowHandlerInterface;
+import Model.YellowHandler;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -16,7 +16,7 @@ public class LoginViewController extends ViewController {
     @FXML private JFXButton toSignUpButton;
     @FXML private JFXButton loginButton;
 
-    private YellowHandlerInterface yh;
+    private YellowHandler yh;
 
 
     public void hej () {

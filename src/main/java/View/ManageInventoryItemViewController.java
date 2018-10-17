@@ -10,16 +10,16 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class InventoryItemController extends AnchorPane {
+public class ManageInventoryItemViewController extends AnchorPane {
+    private InventoryInterface inventory;
 
-    String name;
-    InventoryInterface inventory;
+    @FXML
+    private Label manageInventoryItem;
+    @FXML
+    private AnchorPane background;
 
-    @FXML private Label inventoryName;
-    @FXML private AnchorPane inventoryBackground;
-
-    public InventoryItemController(InventoryInterface inventory) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../inventoryItem.fxml"));
+    public ManageInventoryItemViewController(InventoryInterface inventory) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../manageInventoryItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -31,11 +31,12 @@ public class InventoryItemController extends AnchorPane {
 
         this.inventory = inventory;
 
-        inventoryName.setText(inventory.getName());
+        manageInventoryItem.setText(inventory.getName());
     }
 
-    public void selectInventory(EventHandler<MouseEvent> event){
-        inventoryBackground.setOnMouseClicked(event);
+    public void selectInventory(EventHandler<MouseEvent> clicked){
+        background.setOnMouseClicked(clicked);
+
     }
 
     public InventoryInterface getInventory(){

@@ -1,4 +1,4 @@
-import Controller.MainController;
+import View.MainController;
 import Model.Group;
 import Model.Inventory;
 import Model.User;

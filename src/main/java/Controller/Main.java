@@ -17,14 +17,27 @@ public class Main extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private AnchorPane menuScreen;
+    private AnchorPane yellow;
+    private AnchorPane loginScreen;
+    private AnchorPane signUpScreen;
+    private AnchorPane manageMyYellowScreen;
 
-    private YellowHandlerInterface yh;
+    private FXMLLoader menuScreenLoader;
+    private FXMLLoader yellowLoader;
+    private FXMLLoader loginLoader;
+    private FXMLLoader signUpLoader;
+    private FXMLLoader manageMyYellowLoader;
+
+    private YellowHandler yh;
 
     private List<GroupInterface> groups;
     private List<UserInterface> users;
 
     private Map<GroupInterface, GroupItemController> groupItemControllerMap = new HashMap<>();
     private Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap = new HashMap<>();
+    private Map<GroupInterface, ManageGroupItemViewController> manageGroupItemViewControllerMap = new HashMap<>();
+    private Map<InventoryInterface, ManageInventoryItemViewController> manageInventoryItemViewControllerMap = new HashMap<>();
 
 
     public static void main(String[] args){
@@ -37,11 +50,17 @@ public class Main extends Application {
         users = new ArrayList<>();
         groups = new ArrayList<>();
         this.yh = new YellowHandler(users,groups);
-
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("Yellow");
 
         stage.setTitle(bundle.getString("application.name"));
         initRoot();
+
+        menuScreenSetup();
+        yellowSetup();
+        menuScreenSetup();
+        loginSetup();
+        signUpSetup();
+        manageMyYellowSetup();
 
         showLogin();
     }
@@ -63,35 +82,49 @@ public class Main extends Application {
         }
     }
 
-    private void showYellow(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../yellow.fxml"));
-            AnchorPane yellow = (AnchorPane) loader.load();
 
-            MainController mainController = loader.getController();
+    private void showYellow(){
+
+        rootLayout.setCenter(yellow);
+    }
+
+    private void yellowSetup(){
+        try {
+            yellowLoader = new FXMLLoader();
+            yellowLoader.setLocation(Main.class.getResource("../yellow.fxml"));
+            yellow = (AnchorPane) yellowLoader.load();
+
+            MainController mainController = yellowLoader.getController();
+            yh.addObserver(mainController);
             mainController.injectYellowHandler(yh);
-            updateGroupItemMap(mainController);
-            mainController.updateGroupList(groupItemControllerMap);
+            mainController.injectGroupItemListener(event -> {
+                GroupItemController item = (GroupItemController)event.getSource();
+                yh.setActiveGroup(item.getGroup());
+                mainController.selectGroup();
+                event.consume();
+            });
+            mainController.updateGroupList();
 
             mainController.setBackToGroupsListener(event -> {
-                mainController.backToGroups(groupItemControllerMap);
                 event.consume();
             });
 
-            rootLayout.setCenter(yellow);
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     private void showLogin(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../logIn.fxml"));
-            AnchorPane login = (AnchorPane) loader.load();
+        rootLayout.setCenter(loginScreen);
+    }
 
-            LoginViewController controller = loader.getController();
+    private void loginSetup(){
+        try {
+            loginLoader = new FXMLLoader();
+            loginLoader.setLocation(Main.class.getResource("../logIn.fxml"));
+            loginScreen = (AnchorPane) loginLoader.load();
+
+            LoginViewController controller = loginLoader.getController();
             controller.injectYellowHandler(yh);
             controller.toSignupScreen(event -> {
                 showSignUp();
@@ -107,21 +140,22 @@ public class Main extends Application {
                 event.consume();
             });
 
-
-            rootLayout.setCenter(login);
-
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     private void showSignUp(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../signUp.fxml"));
-            AnchorPane login = (AnchorPane) loader.load();
+        rootLayout.setCenter(signUpScreen);
+    }
 
-            SignUpViewController controller = loader.getController();
+    private void signUpSetup(){
+        try {
+            signUpLoader = new FXMLLoader();
+            signUpLoader.setLocation(Main.class.getResource("../signUp.fxml"));
+            signUpScreen = (AnchorPane) signUpLoader.load();
+
+            SignUpViewController controller = signUpLoader.getController();
             controller.injectYellowHandler(yh);
             controller.signUp(event -> {
                 if(yh.createUser(controller.getUsername(), controller.getFirstName(), controller.getLastName(),
@@ -134,20 +168,25 @@ public class Main extends Application {
                 event.consume();
             });
 
-            rootLayout.setCenter(login);
-
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     private void showMenuScreen(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../firstYellowScreen.fxml"));
-            AnchorPane menuScreen = (AnchorPane) loader.load();
+            MenuScreenController controller = menuScreenLoader.getController();
 
-            MenuScreenController controller = loader.getController();
+            rootLayout.setCenter(menuScreen);
+
+    }
+
+    private void menuScreenSetup(){
+        try {
+            menuScreenLoader = new FXMLLoader();
+            menuScreenLoader.setLocation(Main.class.getResource("../firstYellowScreen.fxml"));
+            menuScreen = menuScreenLoader.load();
+
+            MenuScreenController controller = menuScreenLoader.getController();
             controller.injectYellowHandler(yh);
             controller.toMyYellow(event -> {
                 showYellow();
@@ -166,39 +205,49 @@ public class Main extends Application {
                 event.consume();
             });
 
-            rootLayout.setCenter(menuScreen);
-
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
     private void showManageMyYellow(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../manageMyYellow.fxml"));
-            AnchorPane login = (AnchorPane) loader.load();
+        rootLayout.setCenter(manageMyYellowScreen);
+    }
 
-            ManageMyYellowController controller = loader.getController();
+    private void manageMyYellowSetup(){
+        try {
+            manageMyYellowLoader = new FXMLLoader();
+            manageMyYellowLoader.setLocation(Main.class.getResource("../manageMyYellow.fxml"));
+            manageMyYellowScreen = (AnchorPane) manageMyYellowLoader.load();
+
+            ManageMyYellowController controller = manageMyYellowLoader.getController();
+            yh.addObserver(controller);
             controller.injectYellowHandler(yh);
+            controller.injectGroupItemListener(event -> {
+                ManageGroupItemViewController item = (ManageGroupItemViewController) event.getSource();
+                yh.setActiveGroup(item.getGroup());
+                event.consume();
+            });
+            controller.updateGroupList();
+
             controller.addGroup(event -> {
                 showCreateGroupDialog();
                 event.consume();
             });
             controller.addInventory(event -> {
-                showAddInventoryDialog();
+                if(yh.getActiveGroup() != null)
+                    showAddInventoryDialog();
                 event.consume();
             });
             controller.addItem(event -> {
-                showCreateItemDialog();
+                if(yh.getActiveGroup().getSelectedInventory() != null)
+                    showCreateItemDialog();
                 event.consume();
             });
             controller.backToManageMyYellow(event -> {
                 showMenuScreen();
                 event.consume();
             });
-
-            rootLayout.setCenter(login);
 
         } catch (IOException e){
             e.printStackTrace();
@@ -343,47 +392,24 @@ public class Main extends Application {
         }
     }
 
-    /*
-    private ViewController loader(String fileName, ViewController controller){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../" + fileName + ".fxml"));
-            AnchorPane login = (AnchorPane) loader.load();
-
-            rootLayout.setCenter(login);
-
-            controller = loader.getController();
-            controller.injectYellowHandler(yh);
-            return controller;
-        } catch (IOException e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-    */
-
-    private void updateGroupItemMap(MainController mainController){
+    private void updateManageGroupItemMap(){
         List<GroupInterface> groups = yh.getGroups();
-        groupItemControllerMap.clear();
+        manageGroupItemViewControllerMap.clear();
         for(GroupInterface group: groups){
-            GroupItemController item = new GroupItemController(group.getName(), group.getColor());
+            ManageGroupItemViewController item = new ManageGroupItemViewController(group);
             item.selectGroup(event -> {
                 yh.setActiveGroup(group);
-                mainController.selectGroup();
-                updateInventoryItemMap();
-                mainController.updateInventoryList(inventoryItemControllerMap);
                 event.consume();
             });
-            groupItemControllerMap.put(group, item);
         }
     }
 
-    private void updateInventoryItemMap(){
+    private void updateManageInventoryItemMap(){
         List<InventoryInterface> inventories = yh.getInventories();
-        inventoryItemControllerMap.clear();
+        manageInventoryItemViewControllerMap.clear();
         for(InventoryInterface inventory: inventories){
-            InventoryItemController item = new InventoryItemController(inventory.getName());
-            inventoryItemControllerMap.put(inventory, item);
+            ManageInventoryItemViewController item = new ManageInventoryItemViewController(inventory);
+            manageInventoryItemViewControllerMap.put(inventory, item);
         }
     }
 

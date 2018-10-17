@@ -1,6 +1,10 @@
-package Controller;
+package View;
 
+import Controller.GroupItemController;
+import Controller.ItemItemController;
+import Controller.UserSettingsController;
 import Model.*;
+import Model.Observer;
 import View.*;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
@@ -28,13 +32,14 @@ import java.util.*;
  *@date 2018-10-04
  *
  */
-public class MainController extends ViewController {
+public class MainController extends ViewController implements Observer {
 
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
     private List<InventoryInterface> allInventories = new ArrayList<>();
-    private YellowHandlerInterface yh;
     private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
+
+    private EventHandler<MouseEvent> groupItemClick;
 
     @FXML private SignUpViewController signUpController;
     @FXML private LoginViewController loginController;
@@ -69,10 +74,6 @@ public class MainController extends ViewController {
         //deseralize("users");
         //deseralize("inventories");
 
-    }
-
-    public void injectYellowHandler(YellowHandlerInterface yh){
-        this.yh = yh;
     }
 
     /*private void start(){
@@ -158,7 +159,7 @@ public class MainController extends ViewController {
     @FXML
     public void goToUserSettings () {
         userSettings.toFront();
-        userSettingsController.setFields(yh.getActiveUser());
+        userSettingsController.setFields(super.yh.getActiveUser());
 
 
     }
@@ -191,7 +192,7 @@ public class MainController extends ViewController {
         button.setStyle("-fx-background-color: #ffcc00");
         button.setOnAction(event -> {
             String hex = "#" + Integer.toHexString(colorPicker.getValue().hashCode());
-            yh.createGroup(textField.getText(), hex);
+            super.yh.createGroup(textField.getText(), hex);
             dialog.close();
         });
         content.setActions(button);
@@ -218,19 +219,20 @@ public class MainController extends ViewController {
     }
 
     public void selectGroup(){
-        title.setText(yh.getActiveGroup().getName());
+        title.setText(super.yh.getActiveGroup().getName());
         backButton.setVisible(true);
         listFlowPane.toFront();
         drawer.toFront();
         hamburger.toFront();
+        updateInventoryList();
         updateItemList();
         updateItemItemMap();
     }
 
-    public void backToGroups(Map<GroupInterface, GroupItemController> groupItemControllerMap){
+    public void backToGroups(){
         backButton.setVisible(false);
         title.setText("Groups");
-        updateGroupList(groupItemControllerMap);
+        updateGroupList();
     }
 
     public void setBackToGroupsListener(EventHandler<ActionEvent> event){
@@ -293,19 +295,21 @@ public class MainController extends ViewController {
         login.toFront();
     }
 
-    public void updateGroupList(Map<GroupInterface, GroupItemController> groupItemControllerMap){
+    public void updateGroupList(){
+        List<GroupInterface> groups = super.yh.getGroups();
         groupListFlowPane.getChildren().clear();
-        for(GroupInterface group: groupItemControllerMap.keySet()){
-            GroupItemController item = groupItemControllerMap.get(group);
+        for(GroupInterface group: groups){
+            GroupItemController item = new GroupItemController(group);
+            item.selectGroup(groupItemClick);
             groupListFlowPane.getChildren().add(item);
         }
     }
 
-    public void updateInventoryList(Map<InventoryInterface, InventoryItemController> inventoryItemControllerMap){
+    public void updateInventoryList(){
+        List<InventoryInterface> inventories = super.yh.getInventories();
         groupListFlowPane.getChildren().clear();
-        InventoryItemController item;
-        for(InventoryInterface inventory: inventoryItemControllerMap.keySet()){
-            item = inventoryItemControllerMap.get(inventory);
+        for(InventoryInterface inventory: inventories){
+            InventoryItemController item = new InventoryItemController(inventory);
             item.selectInventory(event -> {
                 event.consume();
             });
@@ -314,7 +318,7 @@ public class MainController extends ViewController {
     }
 
     private void updateItemItemMap(){
-        List<ItemInterface> items = yh.getItems();
+        List<ItemInterface> items = super.yh.getItems();
         for(ItemInterface item: items){
             ItemItemController itemItem = new ItemItemController(item.getName(), item.getImage());
             itemItemControllerMap.put(item,itemItem);
@@ -486,5 +490,14 @@ public class MainController extends ViewController {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void update() {
+        updateGroupList();
+    }
+
+    public void injectGroupItemListener(EventHandler<MouseEvent> clicked) {
+        groupItemClick = clicked;
     }
 }

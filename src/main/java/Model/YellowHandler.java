@@ -1,6 +1,7 @@
 package Model;
 import java.util.*;
 
+
 /**
  * @author Mona Kilsgård
  * @date 2018.09-28
@@ -10,7 +11,7 @@ import java.util.*;
  * 05/10 Modified by Joakim. Login functionality added.
  *
  */
-public class YellowHandler implements YellowHandlerInterface {
+public class YellowHandler extends Observable {
 
     private UserInterface activeUser;
     private GroupInterface activegroup;
@@ -34,7 +35,6 @@ public class YellowHandler implements YellowHandlerInterface {
      * Creates a group and adds it to the list with groups.
      * @param groupName The name of the new group.
      */
-    @Override
     public void createGroup(String groupName, String color){
         GroupInterface g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
@@ -43,9 +43,9 @@ public class YellowHandler implements YellowHandlerInterface {
         g.selectInventory(id);
         groups.add(g);
         activeUser.addGroup(g.getId());
+        notifyObservers();
     }
 
-    @Override
     public void changeUserSettings (String firstName, String lastName, String username, String email, String password) {
         activeUser.setName(firstName);
         activeUser.setLastName(lastName);
@@ -77,7 +77,6 @@ public class YellowHandler implements YellowHandlerInterface {
      * @param email The email of the user
      * @param password The users password
      */
-    @Override
     public boolean createUser(String username, String firstName, String lastName, String email, String password){
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
@@ -85,7 +84,6 @@ public class YellowHandler implements YellowHandlerInterface {
                 // ERROR MESSAGE
             }
         }
-        System.out.println("hej");
         activeUser = new User(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
         return true;
@@ -97,7 +95,6 @@ public class YellowHandler implements YellowHandlerInterface {
      * @param password
      */
 
-    @Override
     public boolean logIn (String username, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
@@ -110,7 +107,7 @@ public class YellowHandler implements YellowHandlerInterface {
         return false;
     }
 
-    @Override
+
     public void setActiveUserToNull () {
         activeUser = null;
     }
@@ -123,7 +120,6 @@ public class YellowHandler implements YellowHandlerInterface {
      * @param amount amount of items to add
      */
 
-    @Override
     public void addItem (String name, String description, String inventoryId, int amount) {
         String id = generateUniqueKeyUsingUUID();
         activegroup.addItem(name, description, id, inventoryId, amount);
@@ -134,7 +130,6 @@ public class YellowHandler implements YellowHandlerInterface {
      * @param id id of the item to be removed
      */
 
-    @Override
     public void removeItem (String id) {
         activegroup.removeItem(id);
     }
@@ -144,9 +139,9 @@ public class YellowHandler implements YellowHandlerInterface {
      * @param inviteCode The invitecode the user gets
      */
 
-    @Override
+
     public boolean joinGroup(int inviteCode){
-        for (GroupInterface group : groups) {
+    for (GroupInterface group : groups) {
             if(joinCodeExists(inviteCode)){
                 activeUser.addGroup(group.getId());
                 return true;
@@ -168,8 +163,6 @@ public class YellowHandler implements YellowHandlerInterface {
      * Removes user from group
      * @param id id of the group to be removed
      */
-
-    @Override
     public void removeGroup (String id) {
         activeUser.removeGroup(id);
     }
@@ -178,7 +171,6 @@ public class YellowHandler implements YellowHandlerInterface {
      * Generates a unique id
      * @return The unique id
      */
-     @Override
     public String generateUniqueKeyUsingUUID() {
         // Static factory to retrieve a type 4 (pseudo randomly generated) UUID
         String crunchifyUUID = UUID.randomUUID().toString();
@@ -186,7 +178,6 @@ public class YellowHandler implements YellowHandlerInterface {
     }
 
 
-    @Override
     public void addItemToOrder(String itemID) {
          if (activegroup.getActiveOrder() == null){
              activegroup.createOrder(generateUniqueKeyUsingUUID());
@@ -195,7 +186,6 @@ public class YellowHandler implements YellowHandlerInterface {
 
     }
 
-    @Override
     public UserInterface getActiveUser () {
          return this.activeUser;
     }
@@ -214,27 +204,25 @@ public class YellowHandler implements YellowHandlerInterface {
         return false;
     }
 
-    @Override
     public GroupInterface getActiveGroup() {
         return this.activegroup;
     }
 
-    @Override
     public List<ItemInterface> getItems() {
          return activegroup.getSelectedInventory().getItemList();
     }
 
-    @Override
     public List<InventoryInterface> getInventories(){
-         return activegroup.getInventories();
+        if(activegroup != null)
+            return activegroup.getInventories();
+        return new ArrayList<>();
     }
 
-    @Override
     public void setActiveGroup(GroupInterface group) {
         activegroup = group;
+        notifyObservers();
     }
 
-    @Override
     public void createInventory(String name) {
         if(activegroup != null)
             activegroup.createInventory(name, generateUniqueKeyUsingUUID());
@@ -267,6 +255,7 @@ public class YellowHandler implements YellowHandlerInterface {
         activegroup.orderIsReturned(orderID);
     }
 
-    public List<UserInterface> getUsers() {return users;
+    public List<UserInterface> getUsers() {
+        return users;
     }
 }
