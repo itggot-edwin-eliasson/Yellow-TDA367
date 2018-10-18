@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="270.0" prefWidth="300.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewInviteCodesDialog">
+<AnchorPane prefHeight="283.0" prefWidth="300.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewInviteCodesDialog">
    <children>
       <Label layoutX="25.0" layoutY="20.0" text="Group invite codes" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="25.0" layoutY="52.0" prefHeight="189.0" prefWidth="211.0" style="-fx-background-color: rgba(0, 0, 0, 0.61);" vbarPolicy="NEVER">
+      <ScrollPane layoutX="25.0" layoutY="52.0" prefHeight="182.0" prefWidth="211.0" style="-fx-background-color: rgba(0, 0, 0, 0.61);" vbarPolicy="NEVER">
          <content>
-            <FlowPane prefHeight="187.0" prefWidth="209.0" style="-fx-background-color: rgba(0, 0, 0, 0.61);" />
+            <FlowPane prefHeight="180.0" prefWidth="209.0" style="-fx-background-color: rgba(0, 0, 0, 0.61);" />
          </content>
       </ScrollPane>
+      <JFXButton fx:id="closeButton" layoutX="189.0" layoutY="250.0" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ffcc00;" text="Close" />
    </children>
 </AnchorPane>
