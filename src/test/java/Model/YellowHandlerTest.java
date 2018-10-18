@@ -14,7 +14,7 @@ public class YellowHandlerTest {
     public void getCorrectGroupsForUser() throws Exception {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group1","hej");
         yh.createGroup("group2","hej");
@@ -29,7 +29,7 @@ public class YellowHandlerTest {
     public void logIn() throws Exception {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.setActiveUserToNull();
         yh.logIn("hej","hej");
@@ -42,7 +42,7 @@ public class YellowHandlerTest {
     public void addItem() throws Exception {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");
         yh.setActiveGroup(yh.getGroups().get(0));
@@ -58,7 +58,7 @@ public class YellowHandlerTest {
     public void removeItem() throws Exception {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");
         yh.setActiveGroup(yh.getGroups().get(0));
@@ -74,7 +74,7 @@ public class YellowHandlerTest {
     public void joinGroup() throws Exception {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group1","hej");
         yh.createGroup("group2","hej");
@@ -94,7 +94,7 @@ public class YellowHandlerTest {
     public void removeGroup() throws Exception {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group1","hej");
         yh.createGroup("group2","hej");
@@ -108,7 +108,7 @@ public class YellowHandlerTest {
     public void generateUniqueKeyUsingUUID() throws Exception {
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         List<String> tmplist = new ArrayList<>();
         boolean bol = true;
         for (int i = 0; i < 10000; i++) {
@@ -127,7 +127,7 @@ public class YellowHandlerTest {
     public void createGroup(){
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("test", "test","test","test","test");
         yh.createGroup("test", "red");
         assertTrue(yh.groups.size() == 1 || yh.users.size() == 1);
@@ -137,7 +137,7 @@ public class YellowHandlerTest {
     public void createUser(){
          List<GroupInterface> allGroups = new ArrayList<>();
          List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Moki","hej","hej", "hej", "hej");
         assertEquals(1, yh.users.size());
     }
@@ -145,7 +145,7 @@ public class YellowHandlerTest {
     public void changeUserSettingsTest(){
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("test", "test","test","test","test");
         yh.changeUserSettings("hej","hej","hej","hej","hej");
         assertEquals("hej",yh.getActiveUser().getUsername());
@@ -154,7 +154,7 @@ public class YellowHandlerTest {
     public void addItemToOrderTest(){
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");
         yh.setActiveGroup(yh.getGroups().get(0));
@@ -171,7 +171,7 @@ public class YellowHandlerTest {
     public void completeOrderTest(){
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");
         yh.setActiveGroup(yh.getGroups().get(0));
@@ -195,7 +195,7 @@ public class YellowHandlerTest {
     public void returnOrderTest(){
         List<GroupInterface> allGroups = new ArrayList<>();
         List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler(allUsers, allGroups);
+        YellowHandler yh = new YellowHandler();
         allUsers = yh.getUsers();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");

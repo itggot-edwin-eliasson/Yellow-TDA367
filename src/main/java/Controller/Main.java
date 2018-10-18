@@ -11,15 +11,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-<<<<<<< HEAD
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
-=======
+
 
 import java.io.*;
->>>>>>> fixes save and load functionality between runs
 import java.util.*;
 
 public class Main extends Application {
