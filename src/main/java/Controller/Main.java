@@ -102,10 +102,19 @@ public class Main extends Application {
                 mainController.selectGroup();
                 event.consume();
             });
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../orderView.fxml"));
-            AnchorPane order = (AnchorPane) loader.load();
+            FXMLLoader orderLoader = new FXMLLoader();
+            orderLoader.setLocation(Main.class.getResource("../orderView.fxml"));
+            AnchorPane order = (AnchorPane) orderLoader.load();
+
+            OrderViewController orderController = orderLoader.getController();
+
+            FXMLLoader activeOrderLoader = new FXMLLoader();
+            activeOrderLoader.setLocation(Main.class.getResource("../activeOrder.fxml"));
+            AnchorPane activeOrder = (AnchorPane) activeOrderLoader.load();
+
             mainController.setOrderPane(order);
+            orderController.setOrderScrollPane(activeOrder);
+
             mainController.updateGroupList();
 
             mainController.setOrderButton(event -> {
