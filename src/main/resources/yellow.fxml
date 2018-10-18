@@ -86,7 +86,8 @@
                                <FlowPane fx:id="listFlowPane" prefHeight="323.0" prefWidth="200.0" />
                            </content>
                         </ScrollPane>
-                        <JFXDrawer fx:id="drawer" defaultDrawerSize="160.0" direction="RIGHT" prefHeight="398.0" prefWidth="417.0" />
+                        <BorderPane fx:id="orderBorderPane" layoutY="44.0" prefHeight="354.0" prefWidth="417.0" />
+                        <JFXDrawer fx:id="drawer" defaultDrawerSize="160.0" direction="RIGHT" layoutX="387.0" prefHeight="398.0" prefWidth="30.0" />
                         <JFXHamburger fx:id="hamburger" layoutX="377.0" layoutY="11.0" />
                         <Label layoutX="174.0" layoutY="14.0" text="Yellow">
                            <font>

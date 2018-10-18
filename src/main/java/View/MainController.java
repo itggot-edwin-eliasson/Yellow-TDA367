@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.*;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
@@ -56,6 +57,7 @@ public class MainController extends ViewController implements Observer {
     @FXML private StackPane mainWindow;
     @FXML private FlowPane groupListFlowPane;
     @FXML private FlowPane listFlowPane;
+    @FXML private BorderPane orderBorderPane;
 
 
     @FXML private JFXButton userSettingsButton;
@@ -456,9 +458,13 @@ public class MainController extends ViewController implements Observer {
 
     }
 
+    public void setOrderPane(Node node){
+        orderBorderPane.setCenter(node);
+    }
+
     private void hamburgerSetup(){
 
-        VBox box = null;
+        VBox box;
         try {
             box = FXMLLoader.load(getClass().getResource("../drawer.fxml"));
             drawer.setSidePane(box);

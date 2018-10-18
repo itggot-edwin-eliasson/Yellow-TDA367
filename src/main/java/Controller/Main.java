@@ -97,6 +97,10 @@ public class Main extends Application {
                 mainController.selectGroup();
                 event.consume();
             });
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../orderView.fxml"));
+            AnchorPane order = (AnchorPane) loader.load();
+            mainController.setOrderPane(order);
             mainController.updateGroupList();
 
             mainController.setBackToGroupsListener(event -> {
