@@ -5,11 +5,16 @@ import View.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Main extends Application {
@@ -154,6 +159,62 @@ public class Main extends Application {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    private void createCalendarOrder(Stage stage){
+
+    }
+
+    private void createCalendarItem(Stage stage){
+
+    }
+
+    private Callback<DatePicker, DateCell> getDayCellFactoryItem(ItemInterface theItem) {
+
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        //disables a date
+                        if (!theItem.checkDateIsNotInRentedPeriod(item.toString())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #ffc0cb;");
+                        }
+                    }
+
+                };
+            }
+        };
+        return dayCellFactory;
+    }
+    private Callback<DatePicker, DateCell> getDayCellFactoryOrder(OrderInterface order) {
+
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        //disables a date
+                        if(order.getOrderList().size()>0){
+                            if (!order.getOrderList().get(0).checkDateIsNotInRentedPeriod(item.toString())) {
+                                setDisable(true);
+                                setStyle("-fx-background-color: #ffc0cb;");
+                            }
+                        }
+
+                    }
+
+                };
+            }
+        };
+        return dayCellFactory;
     }
 
     private void showSignUp(){
