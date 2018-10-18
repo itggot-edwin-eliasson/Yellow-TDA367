@@ -103,12 +103,20 @@ public class Main extends Application {
             mainController.setOrderPane(order);
             mainController.updateGroupList();
 
+            mainController.setOrderButton(event -> {
+                mainController.showOrderPane();
+                event.consume();
+            });
             mainController.setBackToGroupsListener(event -> {
                 mainController.backToGroups();
                 event.consume();
             });
             mainController.setBackToMenuListener(event -> {
                 showMenuScreen();
+                event.consume();
+            });
+            mainController.setBackToItemsButton(event -> {
+                mainController.hideOrderPane();
                 event.consume();
             });
 

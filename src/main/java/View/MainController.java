@@ -66,6 +66,8 @@ public class MainController extends ViewController implements Observer {
     @FXML private Button backButton;
     @FXML private Button addItemButton;
     @FXML private Button backToMenuButton;
+    @FXML private JFXButton orderButton;
+    @FXML private Button backToItemsButton;
 
     public void initialize() {
         hamburgerSetup();
@@ -221,6 +223,7 @@ public class MainController extends ViewController implements Observer {
         title.setText(super.yh.getActiveGroup().getName());
         backButton.setVisible(true);
         backToMenuButton.setVisible(false);
+        orderButton.setVisible(true);
         listFlowPane.toFront();
         drawer.toFront();
         hamburger.toFront();
@@ -231,6 +234,8 @@ public class MainController extends ViewController implements Observer {
     public void backToGroups(){
         backButton.setVisible(false);
         backToMenuButton.setVisible(true);
+        orderButton.setVisible(false);
+        orderBorderPane.toBack();
         title.setText("Groups");
         updateGroupList();
     }
@@ -241,6 +246,14 @@ public class MainController extends ViewController implements Observer {
 
     public void setBackToMenuListener(EventHandler<ActionEvent> event){
         backToMenuButton.setOnAction(event);
+    }
+
+    public void setBackToItemsButton(EventHandler<ActionEvent> event){
+        backToItemsButton.setOnAction(event);
+    }
+
+    public void setOrderButton(EventHandler<ActionEvent> event){
+        orderButton.setOnAction(event);
     }
 
     @FXML
@@ -456,6 +469,18 @@ public class MainController extends ViewController implements Observer {
             return;
         }
 
+    }
+
+    public void showOrderPane(){
+        orderBorderPane.toFront();
+        drawer.toFront();
+        hamburger.toFront();
+        backToItemsButton.setVisible(true);
+    }
+
+    public void hideOrderPane(){
+        orderBorderPane.toBack();
+        backToItemsButton.setVisible(false);
     }
 
     public void setOrderPane(Node node){
