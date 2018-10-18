@@ -2,9 +2,10 @@ package Model;
 
 import javafx.scene.image.Image;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface ItemInterface {
+public interface ItemInterface extends Serializable {
 
     public void setName (String name);
 

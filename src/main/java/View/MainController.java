@@ -295,21 +295,6 @@ public class MainController extends ViewController implements Observer {
         dialog.show();
     }
 
-    @FXML
-    public void exitApplication (ActionEvent event) {
-        seralize("groups");
-        seralize("inventories");
-        seralize("users");
-        Platform.exit();
-    }
-
-    public void logOut () {
-        seralize("groups");
-        seralize("inventories");
-        seralize("users");
-        yh.setActiveUserToNull();
-        login.toFront();
-    }
 
     public void updateGroupList(){
         List<GroupInterface> groups = super.yh.getGroups();
@@ -374,102 +359,6 @@ public class MainController extends ViewController implements Observer {
     }
 
 
-    /**
-     * Saves the lists allGroups, allInventories or allUsers to three different .ser files. What files that
-     * will get saved is based on the @param.
-     * @param whatToSeralize should be groups, inventories or users, based on what is to be saved.
-     */
-    public void seralize(String whatToSeralize){
-        try {
-            FileOutputStream fileOut;
-            switch (whatToSeralize) {
-                case "groups":
-                    fileOut =
-                            new FileOutputStream("src/main/resources/Database/allGroups.ser");
-                            System.out.println("fetching groups");
-                    break;
-                case "inventories":
-                    fileOut =
-                            new FileOutputStream("src/main/resources/Database/allInventories.ser");
-                            System.out.println("fetching inventories");
-                    break;
-                case "users":
-                    fileOut =
-                            new FileOutputStream("src/main/resources/Database/allUsers.ser");
-                            System.out.println("fetching users");
-                    break;
-                default:
-                    fileOut = new FileOutputStream("src/main/resources/Database/errorSave.ser");
-                    break;
-            }
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            if(whatToSeralize.equals("groups")) {
-                out.writeObject(allGroups);
-            }
-            if(whatToSeralize.equals("inventories")){
-                out.writeObject(allInventories);
-            }
-            if(whatToSeralize.equals("users")){
-                out.writeObject(allUsers);
-            }
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in /"+ whatToSeralize + ".ser");
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
-    }
-
-    /**
-     * This method will fetch the allUsers, allGroups and allInventories lists from the local database.
-     *
-     * @param whatToDeseralize should be groups, inventories or users depending on what is to be fetched.
-     */
-    public void deseralize(String whatToDeseralize){
-        try {
-            FileInputStream fileIn;
-            switch (whatToDeseralize) {
-                case "groups":
-                    fileIn =
-                            new FileInputStream("src/main/resources/Database/allGroups.ser");
-                            System.out.println("fetching groups");
-                    break;
-                case "inventories":
-                    fileIn =
-                            new FileInputStream("src/main/resources/Database/allInventories.ser");
-                            System.out.println("fetching inventories");
-                    break;
-                case "users":
-                    fileIn =
-                            new FileInputStream("src/main/resources/Database/allUsers.ser");
-                            System.out.println("fetching users");
-                    break;
-                default:
-                    fileIn = new FileInputStream("src/main/resources/Database/errorSave.ser");
-                    break;
-            }
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            if(whatToDeseralize.equals("groups")) {
-                allGroups = (List<GroupInterface>) in.readObject();
-            }
-            if(whatToDeseralize.equals("inventories")){
-                allInventories = (List<InventoryInterface>) in.readObject();
-            }
-            if(whatToDeseralize.equals("users")){
-                allUsers = (List<UserInterface>) in.readObject();
-            }
-            in.close();
-            fileIn.close();
-        } catch (IOException i) {
-            seralize(whatToDeseralize);
-            return;
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
-            return;
-        }
-
-    }
 
     public void showOrderPane(){
         orderBorderPane.toFront();

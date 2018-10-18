@@ -26,10 +26,10 @@ public class YellowHandler extends Observable {
      */
 
 
-    public YellowHandler (List <UserInterface> users, List <GroupInterface> groups){
+ /*   public YellowHandler (List <UserInterface> users, List <GroupInterface> groups){
         this.users = users;
         this.groups = groups;
-    }
+    }*/
 
     /**
      * Creates a group and adds it to the list with groups.
@@ -100,10 +100,12 @@ public class YellowHandler extends Observable {
             if (username.equals(users.get(i).getUsername())) {
                 if (users.get(i).comparePassword(password)) {
                     activeUser = users.get(i);
+                    notifyObservers();
                     return true;
                 }
             }
         }
+        notifyObservers();
         return false;
     }
 
@@ -263,4 +265,12 @@ public class YellowHandler extends Observable {
     public List<UserInterface> getUsers() {
         return users;
     }
+
+    public List<GroupInterface> getAllGroups () {
+        return groups;
+    }
+
+    public void setGroups (List <GroupInterface> groups) {this.groups = groups;}
+
+    public void setAllUsers (List <UserInterface> users) {this.users = users;}
 }
