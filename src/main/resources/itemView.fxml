@@ -18,7 +18,7 @@
       </Label>
       <Label fx:id="descriptionLabel" layoutX="27.0" layoutY="184.0" text="Discription" textFill="WHITE" />
       <JFXButton fx:id="addToOrderButton" layoutX="307.0" layoutY="581.0" onAction="#addToOrder" style="-fx-background-color: #FFE919;" text="Add to order" />
-      <JFXSlider fx:id="amountSlider" indicatorPosition="RIGHT" layoutX="28.0" layoutY="300.0" onMouseClicked="#setAmount" prefHeight="14.0" prefWidth="364.0" />
+      <JFXSlider fx:id="amountSlider" indicatorPosition="RIGHT" layoutX="28.0" layoutY="300.0" prefHeight="14.0" prefWidth="364.0" />
       <ImageView fx:id="itemImage" fitHeight="150.0" fitWidth="169.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@img/whiteitem.png" />

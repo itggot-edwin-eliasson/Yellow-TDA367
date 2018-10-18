@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -13,10 +14,8 @@ import javafx.util.Callback;
 import java.time.LocalDate;
 
 public class CalendarViewController {
-    public void start(Stage primaryStage, Callback<DatePicker, DateCell> dayCellFactory) {
+    public void start(Stage primaryStage, Callback<DatePicker, DateCell> dayCellFactory, AnchorPane root) {
         try {
-            BorderPane root = new BorderPane();
-            Scene scene = new Scene(root, 400, 400);
             //scene.getStylesheets().add(getClass().getResource("yellow.css").toExternalForm());
 
             DatePicker asd = new DatePicker(LocalDate.now());
@@ -27,10 +26,7 @@ public class CalendarViewController {
 
             Node popupContent = datePickerSkin.getPopupContent();
 
-            root.setCenter(popupContent);
-
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            root.getChildren().add(popupContent);
         } catch (Exception e) {
             e.printStackTrace();
         }

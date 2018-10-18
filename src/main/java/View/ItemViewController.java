@@ -3,6 +3,7 @@ package View;
 import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 
 import java.awt.event.MouseEvent;
@@ -17,6 +18,7 @@ public class ItemViewController {
 
     @FXML private Label itemName;
     @FXML private Label itemDescription;
+    @FXML private AnchorPane itemCalendarAnchorPane;
 
     @FXML
     public void setAmount(MouseEvent e){
@@ -41,4 +43,7 @@ public class ItemViewController {
         this.itemDescription.setText(itemDescription);
     }
 
+    public AnchorPane getitemCalendarAnchorPane(){
+        return itemCalendarAnchorPane;
+    }
 }

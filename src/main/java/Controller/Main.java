@@ -103,6 +103,7 @@ public class Main extends Application {
                 mainController.selectGroup();
                 event.consume();
             });
+
             FXMLLoader orderLoader = new FXMLLoader();
             orderLoader.setLocation(Main.class.getResource("../orderView.fxml"));
             AnchorPane order = (AnchorPane) orderLoader.load();
@@ -112,6 +113,12 @@ public class Main extends Application {
             FXMLLoader activeOrderLoader = new FXMLLoader();
             activeOrderLoader.setLocation(Main.class.getResource("../activeOrder.fxml"));
             AnchorPane activeOrder = (AnchorPane) activeOrderLoader.load();
+
+            mainController.injectItemItemListener(event -> {
+                ItemItemController item = (ItemItemController) event.getSource();
+                showItemViewDialog(item.getItem());
+                event.consume();
+            });
 
             mainController.setOrderPane(order);
             orderController.setOrderScrollPane(activeOrder);
@@ -175,7 +182,8 @@ public class Main extends Application {
 
     }
 
-    private void createCalendarItem(Stage stage){
+    private void createCalendarItem(Stage stage, ItemInterface item){
+        Callback<DatePicker, DateCell> callback = getDayCellFactoryItem(item);
 
     }
 
@@ -344,6 +352,39 @@ public class Main extends Application {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+    private void showItemViewDialog (ItemInterface item) {
+
+        // Load the fxml file and create a new stage for the popup dialog.
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../itemView.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            ItemViewController controller = loader.getController();
+            //controller.setDialogStage(dialogStage);
+            Stage stage = (Stage) controller.getitemCalendarAnchorPane().getScene().getWindow();
+            Callback<DatePicker, DateCell> callback =getDayCellFactoryItem(item);
+            CalendarViewController ccontrller = new CalendarViewController();
+            ccontrller.start(stage,callback,controller.getitemCalendarAnchorPane());
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void showCreateItemDialog () {

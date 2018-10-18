@@ -38,6 +38,7 @@ public class MainController extends ViewController implements Observer {
 
     private EventHandler<MouseEvent> groupItemClick;
     private EventHandler<MouseEvent> inventoryItemClick;
+    private EventHandler<MouseEvent> itemItemClick;
 
     @FXML private SignUpViewController signUpController;
     @FXML private LoginViewController loginController;
@@ -323,6 +324,7 @@ public class MainController extends ViewController implements Observer {
         listFlowPane.getChildren().clear();
         for(ItemInterface item: items){
             ItemItemController itemItem = new ItemItemController(item);
+            itemItem.selectItem(itemItemClick);
             listFlowPane.getChildren().add(itemItem);
         }
     }
@@ -418,6 +420,10 @@ public class MainController extends ViewController implements Observer {
     }
 
     public void injectInventoryItemListener(EventHandler<MouseEvent> clicked) {
+        inventoryItemClick = clicked;
+    }
 
+    public void injectItemItemListener(EventHandler<MouseEvent> clicked){
+        itemItemClick = clicked;
     }
 }
