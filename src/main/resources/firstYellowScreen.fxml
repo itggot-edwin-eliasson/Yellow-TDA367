@@ -40,5 +40,6 @@
             <Font size="32.0" />
          </font>
       </Label>
+      <JFXButton fx:id="signOutButton" layoutX="24.0" layoutY="361.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);" text="Sign out" textFill="WHITE" />
    </children>
 </AnchorPane>

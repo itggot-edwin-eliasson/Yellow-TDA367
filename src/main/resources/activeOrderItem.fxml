@@ -26,6 +26,6 @@
          </graphic>
       </Button>
       <Circle fill="#2525265d" layoutX="344.0" layoutY="20.0" radius="17.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label layoutX="339.0" layoutY="10.0" text="8" textFill="WHITE" />
+      <Label layoutX="341.0" layoutY="11.0" text="8" textFill="WHITE" />
    </children>
 </AnchorPane>
