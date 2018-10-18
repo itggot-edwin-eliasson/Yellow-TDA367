@@ -85,3 +85,5 @@ gradle-app.setting
 .idea/modules/Yellow_test.iml
 .idea/vcs.xml
 .idea/vcs.xml
+Documents/Reports/desktop.ini
+*.ini
