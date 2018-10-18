@@ -119,9 +119,21 @@ public class Main extends Application {
                 showItemViewDialog(item.getItem());
                 event.consume();
             });
+            FXMLLoader ongoingOrderLoader = new FXMLLoader();
 
             mainController.setOrderPane(order);
             orderController.setOrderScrollPane(activeOrder);
+
+            orderController.setActiveOrderButton(event -> {
+                orderController.setOrderScrollPane(activeOrder);
+                event.consume();
+            });
+            orderController.setOngoingOrderButton(event -> {
+                event.consume();
+            });
+            orderController.setOldOrderButton(event -> {
+                event.consume();
+            });
 
             mainController.updateGroupList();
 
