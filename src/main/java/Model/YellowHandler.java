@@ -19,6 +19,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     public List<UserInterface> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
     private GroupFactory gf = new GroupFactory();
+    private UserFactory uf = new UserFactory();
 
     /**
      * Creates a handler of the model
@@ -88,7 +89,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
                 // ERROR MESSAGE
             }
         }
-        activeUser = new User(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
+        activeUser = uf.createUser(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
         return true;
     }

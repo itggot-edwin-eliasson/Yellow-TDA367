@@ -21,6 +21,7 @@ public class Inventory implements InventoryInterface{
     private List<ItemInterface> itemlist;
     private List<String> categories;
     private String ID;
+    private ItemFactory ifa = new ItemFactory();
 
     /**
      * Create a new inventory
@@ -43,7 +44,7 @@ public class Inventory implements InventoryInterface{
     @Override
     public ItemInterface addItem (String itemName, String itemDescription, String itemID) {
         ItemInterface item;
-        item = new Item(itemName, itemDescription, itemID);
+        item = ifa.createItem(itemName, itemDescription, itemID);
         itemlist.add(item);
         return item;
     }
