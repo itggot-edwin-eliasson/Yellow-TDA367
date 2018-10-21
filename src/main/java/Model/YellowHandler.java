@@ -112,11 +112,7 @@ public class YellowHandler extends Observable {
     public void logOut (){
         activeUser = null;
         activegroup = null;
-    }
-
-
-    public void setActiveUserToNull () {
-        activeUser = null;
+        notifyObservers();
     }
 
     /**

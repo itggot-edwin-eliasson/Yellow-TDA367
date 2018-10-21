@@ -313,7 +313,7 @@ public class Main extends Application {
             });
             controller.signOut(event -> {
                 showLogin();
-                yh.setActiveUserToNull();
+                yh.logOut();
             });
 
         } catch (IOException e){
