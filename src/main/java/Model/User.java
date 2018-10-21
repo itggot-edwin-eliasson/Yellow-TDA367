@@ -12,6 +12,15 @@ public class User implements UserInterface {
     private String password;
     private List<String> groupIds = new ArrayList<>();
 
+    /**
+     * Creates a user.
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param id generated from YellowHandler class.
+     * @param password
+     */
     public User (String username, String firstName, String lastName, String email, String id, String password){
         this.username = username;
         this.firstName = firstName;

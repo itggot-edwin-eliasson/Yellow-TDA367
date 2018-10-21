@@ -1,27 +1,10 @@
 package Model;
 
-
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * @date 2018-09-26
- * ---
- * 02/10 Modified by Viktor. Added methods to find Inventory, Item and Order by ID. Also added addItemToOrder
- * method that removes items from said inventory and adds them to said order.
- *
- * 05/10 Modified the order handling by adding "activeOrder" to the class. Fixed the functions and tests.
- * also added removeItemFromOrder method.
- *
- *
- *@author Mona Kilsgård
- *@date 2018-10-04
- *
- */
 public class Group implements GroupInterface{
 
    private String name;
@@ -48,10 +31,6 @@ public class Group implements GroupInterface{
         this.inviteCode = generateInviteCode(groupInviteCodes);
     }
 
-    /**
-     * Generates an invitecode and checks if it is not taken
-     * @param groupInviteCodes A list with current invite codes
-     */
     private int generateInviteCode(List<Integer> groupInviteCodes){
         inviteCode = (int)(Math.random()*9000)+1000;
         if (groupInviteCodes.contains(inviteCode)){
@@ -74,56 +53,32 @@ public class Group implements GroupInterface{
         selectedInventory.removeItem(id);
     }
 
-    /**
-     * Get the invite code
-     * @return The invite code
-     */
     @Override
     public int getInviteCode(){
         return inviteCode;
     }
 
-    /**
-     * Get the group id
-     * @return The group id
-     */
     @Override
     public String getId(){
         return id;
     }
 
-    /**
-     * Get the group name
-     * @return The group name
-     */
     @Override
     public String getName(){
         return name;
     }
 
-    /**
-     * Get the color
-     * @return The color
-     */
     @Override
     public String getColor(){
         return color;
     }
 
-    /**
-     * Creates and adds a new inventory int the List with inventories.
-     * @param name The name of the new inventory
-     */
     @Override
     public void createInventory (String name, String ID) {
         InventoryInterface i = ifa.createInventory(name, ID);
         inventories.add(i);
     }
 
-    /**
-     * Creates a new order.
-     * @param ID the generated ID for the order.
-     */
     @Override
     public void createOrder (String ID){
         if(activeOrder == null) {
@@ -132,11 +87,6 @@ public class Group implements GroupInterface{
         }
     }
 
-    /**
-     * Finds a certain order by its ID.
-     * @param ID the ID of the order you want to find.
-     * @return the Order.
-     */
     @Override
     public OrderInterface findOrder (String ID){
         for (OrderInterface order: orderList) {
@@ -147,11 +97,6 @@ public class Group implements GroupInterface{
         return null;
     }
 
-    /**
-     * Finds a certain inventory by its ID.
-     * @param ID the ID of the inventory to find.
-     * @return the inventory.
-     */
     @Override
     public InventoryInterface findInventory (String ID){
         for (InventoryInterface inventory: inventories){
@@ -161,11 +106,6 @@ public class Group implements GroupInterface{
         }return null;
     }
 
-    /**
-     * Finds an item with a certain ID in said inventory.
-     * @param ID ID of the item to find.
-     * @return returns the Item.
-     */
     @Override
     public ItemInterface findItemByID (String ID){
         for (ItemInterface item: selectedInventory.getItemList()){
@@ -176,21 +116,12 @@ public class Group implements GroupInterface{
         return null;
     }
 
-    /**
-     * Adds a item to an order and changes its state to "Rented".
-     * @param itemId The ID of the item that should be handled.
-     *
-     */
     @Override
     public void addItemToOrder (String itemId){
         ItemInterface item = findItemByID(itemId);
         activeOrder.addItem(item);
     }
 
-    /**
-     * Removes an item from the active order and sets its state to not rented.
-     * @param itemID the ID of the item that should be handled.
-     */
     @Override
     public void removeItemFromOrder(String itemID){
         activeOrder.removeItem(itemID);
@@ -203,10 +134,6 @@ public class Group implements GroupInterface{
         return null;
     }
 
-    /**
-     * selects an inventory as the active inventory.
-     * @param inventoryID the ID of the inventory that is to be selected.
-     */
     @Override
     public void selectInventory (String inventoryID) {
         selectedInventory = findInventory(inventoryID);
@@ -232,8 +159,7 @@ public class Group implements GroupInterface{
         }
     }
 
-    @Override
-    public boolean allDatesAreOkay(String startDate, String endDate) {
+    private boolean allDatesAreOkay(String startDate, String endDate) {
         boolean works = true;
         for (int i = 0; i < activeOrder.getOrderList().size(); i++) {
             if(!activeOrder.getOrderList().get(i).checkDateIsNotInRentedPeriod(startDate) || !activeOrder.getOrderList().get(i).checkDateIsNotInRentedPeriod(endDate)){
@@ -252,10 +178,6 @@ public class Group implements GroupInterface{
         return activeOrder;
     }
 
-    /**
-     * returns the order and moves it from the order list to the old order list.
-     * @param orderID ID of the order that is returned.
-     */
     @Override
     public void orderIsReturned(String orderID){
         for (int i = 0; i < orderList.size(); i++) {
@@ -268,6 +190,7 @@ public class Group implements GroupInterface{
 
     @Override
     public List getOldOrders(){return oldOrders;}
+
     @Override
     public List getOrderList(){return orderList;}
 

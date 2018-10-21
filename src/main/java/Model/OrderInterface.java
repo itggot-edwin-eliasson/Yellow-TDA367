@@ -5,6 +5,10 @@ import java.util.List;
 
 public interface OrderInterface extends Serializable {
 
+    /**
+     * Adds an item to the order
+     * @param item the item that should be added.
+     */
     public void addItem (ItemInterface item);
 
     /**
@@ -38,7 +42,6 @@ public interface OrderInterface extends Serializable {
     public List<ItemInterface> getOrderList();
 
     public String getOrderID();
-
 
     List<Boolean> getIsRentable();
 

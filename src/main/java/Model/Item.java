@@ -10,16 +10,6 @@ import java.util.Map;
 
 public class Item implements ItemInterface{
 
-    /**
-     * @author Joakim Agnemyr
-     * @date 2018-26-09
-     *
-     * A class representing an item
-     *
-     * ---
-     *
-     * 28/09 Created a method for getting Id's.
-     */
     private String name;
     private String description;
     private String id;
@@ -34,18 +24,12 @@ public class Item implements ItemInterface{
      * @param name The name of the item
      * @param description The description of the item
      */
-
     public Item (String name, String description, String ID) {
         this.name = name;
         this.description = description;
         this.id = ID;
     }
 
-    /**
-     * Checks if a date conflicts with another date that the item is rented in.
-     * @param date the date that will be checked.
-     * @return True if no conflict. False if conflict.
-     */
     @Override
     public Boolean checkDateIsNotInRentedPeriod (String date){
         for (int i = 0; i < orderCount; i++) {
@@ -58,14 +42,6 @@ public class Item implements ItemInterface{
         }
         return true;
     }
-
-    /**
-     * Checks if a start and end of an order is available and then sets the item to rented during this period.
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
 
     @Override
     public Boolean setRentedDate(String startDate, String endDate){

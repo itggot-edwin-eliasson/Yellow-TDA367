@@ -14,8 +14,12 @@ public interface InventoryInterface extends Serializable {
      */
     public ItemInterface addItem (String itemName, String itemDescription, String itemID);
 
-
+    /**
+     * Adds an item to the itemList in the inventory.
+     * @param item the Item that should be added.d
+     */
     public void addItemToList(ItemInterface item);
+
     /**
      * Removes item, if the list is empty a message will be displayed
      *
@@ -24,11 +28,14 @@ public interface InventoryInterface extends Serializable {
      */
     public void removeItem (String id);
 
+    /**
+     * Searches for an item based on its name in the inventory.
+     * @param search the name of the item you want to find.
+     * @return a list of all items with that name.
+     */
     public List<ItemInterface> searchItem(String search);
 
-
     public List <String> getCategories();
-
 
     /**
      * Get the inventory name

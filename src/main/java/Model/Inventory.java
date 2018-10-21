@@ -3,19 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-/** @author Joakim Agnemyr
- * @date 2018-09-26
- *
- * A class representing the inventory
- *
- *---
- * 26/09 Modified by Joakim. Makes it possible to add items.
- * 28/09 Modified by Joakim. Makes it possible to remove items.
- * 02/10 Modified by Viktor. Added ID to the constructor.
- */
-
 public class Inventory implements InventoryInterface{
-
 
     private String name;
     private List<ItemInterface> itemlist;
@@ -27,7 +15,6 @@ public class Inventory implements InventoryInterface{
      * Create a new inventory
      * @param name Name of the inventory
      */
-
     public Inventory (String name, String ID) {
         this.name = name;
         this.itemlist = new ArrayList<>();
@@ -35,12 +22,6 @@ public class Inventory implements InventoryInterface{
         this.ID = ID;
     }
 
-    /**
-     * Creates several items of the same type
-     *
-     * @param itemName The name of the item
-     * @param itemDescription The description of item
-     */
     @Override
     public ItemInterface addItem (String itemName, String itemDescription, String itemID) {
         ItemInterface item;
@@ -54,12 +35,6 @@ public class Inventory implements InventoryInterface{
         itemlist.add(item);
     }
 
-    /**
-     * Removes item, if the list is empty a message will be displayed
-     *
-     * @param id The selected Id of the item chooses which item that
-     *           should be removed
-     */
     @Override
     public void removeItem (String id) {
         if (itemlist.size() > 0) {
@@ -76,6 +51,7 @@ public class Inventory implements InventoryInterface{
             System.out.print ("Nothing to remove, the list is empty");
         }
     }
+
     @Override
     public List<ItemInterface> searchItem(String search){
         List<ItemInterface> results = new ArrayList<>();
@@ -99,20 +75,11 @@ public class Inventory implements InventoryInterface{
         return categories;
     }
 
-
-    /**
-     * Get the inventory name
-     * @return The name of the inventory
-     */
     @Override
     public String getName() {
         return this.name;
     }
 
-    /**
-     * Get the complete list of items in inventory
-     * @return The complete list of items in inventory
-     */
     @Override
     public List<ItemInterface> getItemList ()  {
         return itemlist;
@@ -121,14 +88,9 @@ public class Inventory implements InventoryInterface{
     @Override
     public String getID (){return ID;}
 
-    /**
-     * Change the name of the inventory
-     * @param name the new name of the inventory
-     */
     @Override
     public void setName (String name) {
         this.name = name;
     }
-
 
 }
