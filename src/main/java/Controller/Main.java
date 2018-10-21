@@ -176,8 +176,11 @@ public class Main extends Application {
                 event.consume();
             });
             activeOrderController.confirmOrderButton(event -> {
-                activeOrderController.getStartDate();
-                activeOrderController.getReturnDate();
+                if(!yh.completeOrder(activeOrderController.getStartDate(), activeOrderController.getReturnDate())) {
+                    System.out.println("Idiot");
+                } else {
+                    System.out.println("Coolt");
+                }
             });
 
             mainController.updateGroupList();

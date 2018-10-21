@@ -39,14 +39,12 @@ public class ActiveOrderView extends ViewController implements Observer {
         }
     }
 
-    public void getStartDate(){
-        String date = startDateDatePicker.getValue().toString();
-        System.out.println(date);
+    public String getStartDate(){
+        return startDateDatePicker.getValue().toString();
     }
 
-    public void getReturnDate(){
-        String date = returnDateDatePicker.getValue().toString();
-        System.out.println(date);
+    public String getReturnDate(){
+        return returnDateDatePicker.getValue().toString();
     }
 
     public void injectOrderItemListener(EventHandler<ActionEvent> event){

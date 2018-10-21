@@ -150,7 +150,8 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
 
     @Override
     public Boolean completeOrder(String startDate, String endDate) {
-        if (activegroup.orderIsCompleted(startDate, endDate)) {
+        if(activegroup.orderIsCompleted(startDate, endDate)) {
+            System.out.println("hej");
             return true;
         }
         return false;
