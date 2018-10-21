@@ -175,6 +175,10 @@ public class Main extends Application {
                 orderController.setOrderScrollPane(oldOrders);
                 event.consume();
             });
+            activeOrderController.confirmOrderButton(event -> {
+                activeOrderController.getStartDate();
+                activeOrderController.getReturnDate();
+            });
 
             mainController.updateGroupList();
 

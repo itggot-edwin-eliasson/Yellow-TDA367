@@ -205,9 +205,10 @@ public class Group implements GroupInterface{
     }
 
     @Override
-    public List getInventories(){
+    public List<InventoryInterface> getInventories(){
         return inventories;
     }
+
     private static String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd");//dd/MM/yyyy
         Date now = new Date();
