@@ -21,8 +21,8 @@ public class DrawerView {
     }
 
 
-    private void toUserSettings (EventHandler<ActionEvent> clicked) {
-
+    public void toUserSettings (EventHandler<ActionEvent> clicked) {
+        userSettingsDrawerButton.setOnAction(clicked);
     }
 
 

@@ -69,7 +69,7 @@ public class MainController extends ViewController implements Observer {
     @FXML private Button backToItemsButton;
 
     public void initialize() {
-        hamburgerSetup();
+        //hamburgerSetup();
 
         //deseralize("groups");
         //deseralize("users");
@@ -157,13 +157,6 @@ public class MainController extends ViewController implements Observer {
         yh.changeUserSettings(firstName, lastName, username, email, password);
     }
 
-    @FXML
-    public void goToUserSettings () {
-        userSettings.toFront();
-        userSettingsController.setFields(super.yh.getActiveUser());
-
-
-    }
 
     @FXML
     public void createGroup(){
@@ -374,14 +367,9 @@ public class MainController extends ViewController implements Observer {
         orderBorderPane.setCenter(node);
     }
 
-    private void hamburgerSetup(){
+    public void hamburgerSetup(VBox drawerContent){
 
-        VBox box;
-        try {
-            box = FXMLLoader.load(getClass().getResource("../drawer.fxml"));
-            drawer.setSidePane(box);
-
-            drawer.setSidePane(box);
+            drawer.setSidePane(drawerContent);
 
             HamburgerBasicCloseTransition hamTask = new HamburgerBasicCloseTransition(hamburger);
             hamTask.setRate(-1);
@@ -396,11 +384,6 @@ public class MainController extends ViewController implements Observer {
                     drawer.open();
                 }
             });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override

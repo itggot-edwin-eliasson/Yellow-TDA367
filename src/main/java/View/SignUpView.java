@@ -2,6 +2,7 @@ package View;
 
 import Model.YellowHandler;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,7 +12,7 @@ import javafx.scene.control.Button;
 public class SignUpView extends ViewController {
     
     @FXML private JFXTextField newUsernameField;
-    @FXML private JFXTextField newPasswordField;
+    @FXML private JFXPasswordField newPasswordField;
     @FXML private JFXTextField newFirstNameField;
     @FXML private JFXTextField newLastNameField;
     @FXML private JFXTextField newEmailTextField;

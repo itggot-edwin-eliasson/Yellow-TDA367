@@ -11,6 +11,7 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -118,6 +119,14 @@ public class Main extends Application {
 
             OrderView orderController = orderLoader.getController();
 
+            FXMLLoader drawerContentLoader = new FXMLLoader();
+            drawerContentLoader.setLocation(Main.class.getResource("../drawer.fxml"));
+            VBox drawerContent = (VBox) drawerContentLoader.load();
+            mainController.hamburgerSetup(drawerContent);
+
+            DrawerView drawerView = drawerContentLoader.getController();
+
+
             FXMLLoader activeOrderLoader = new FXMLLoader();
             activeOrderLoader.setLocation(Main.class.getResource("../activeOrder.fxml"));
             AnchorPane activeOrder = (AnchorPane) activeOrderLoader.load();
@@ -202,6 +211,15 @@ public class Main extends Application {
             mainController.setBackToItemsButton(event -> {
                 mainController.hideOrderPane();
                 event.consume();
+            });
+            drawerView.logOut(event -> {
+                yh.logOut();
+                yh.setActiveUserToNull();
+                showLogin();
+            });
+
+            drawerView.toUserSettings(event -> {
+            showUserSettingsView();
             });
 
         } catch (IOException e){
@@ -511,6 +529,49 @@ public class Main extends Application {
         }
 
     }
+
+    private void showUserSettingsView(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../userSettingsView.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("User settings");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the person into the controller.
+            UserSettingsView userSettingsView = loader.getController();
+            userSettingsView.setDialogStage(dialogStage);
+            userSettingsView.injectYellowHandler(yh);
+            userSettingsView.setFields();
+
+            // Show the dialog and wait until the user closes it
+
+            dialogStage.show();
+
+            userSettingsView.changeUserSettings(event -> {
+                String firstname = userSettingsView.getFirstName();
+                String lastName = userSettingsView.getLastName();
+                String username = userSettingsView.getUsername();
+                String email = userSettingsView.getEmail();
+                String password = userSettingsView.getPassword();
+
+                yh.changeUserSettings(firstname, lastName, username, email, password);
+                dialogStage.close();
+
+            });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     private void showJoinGroupDialog(){
         try {

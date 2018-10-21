@@ -1,6 +1,7 @@
 package View;
 
 import Model.UserInterface;
+import Model.YellowHandler;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -8,8 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class UserSettingsView {
+public class UserSettingsView extends ViewController{
 
     @FXML private JFXTextField usernameTextField;
     @FXML private JFXPasswordField passwordTextField;
@@ -19,6 +21,8 @@ public class UserSettingsView {
 
     @FXML private JFXButton saveButton;
 
+    Stage dialogStage;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -27,15 +31,12 @@ public class UserSettingsView {
 
 
 
-
-    public void initialize(){}
-
-    public void setFields (UserInterface activeUser) {
-        firstNameTextField.setText(activeUser.getFirstName());
-        lastNameTextField.setText(activeUser.getLastName());
-        usernameTextField.setText(activeUser.getUsername());
-        passwordTextField.setText(activeUser.getPassword());
-        emailTextField.setText(activeUser.getEmail());
+    public void setFields () {
+        firstNameTextField.setText(super.yh.getActiveUser().getFirstName());
+        lastNameTextField.setText(super.yh.getActiveUser().getLastName());
+        usernameTextField.setText(super.yh.getActiveUser().getUsername());
+        passwordTextField.setText(super.yh.getActiveUser().getPassword());
+        emailTextField.setText(super.yh.getActiveUser().getEmail());
 
     }
 
@@ -68,11 +69,12 @@ public class UserSettingsView {
         usernameTextField.setText(username);
     }
 
+    public void setDialogStage (Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
 
     public void setEmailTextField (String email)  {
         emailTextField.setText(email);
-
     }
-
 
 }
