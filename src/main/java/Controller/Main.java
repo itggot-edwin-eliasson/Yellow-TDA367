@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import View.*;
+import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -36,7 +37,6 @@ public class Main extends Application {
     private FXMLLoader loginLoader;
     private FXMLLoader signUpLoader;
     private FXMLLoader manageMyYellowLoader;
-
     private YellowHandlerInterface yh;
 
     public static void main(String[] args){
@@ -222,8 +222,8 @@ public class Main extends Application {
                     showMenuScreen();
                 }
                 else {
-                    //show error message
-                    System.out.println("Finns ingen");
+                    JFXSnackbar snackbar = new JFXSnackbar(loginScreen);
+                    snackbar.show("No user found with that password",3000);
                 }
                 event.consume();
             });
@@ -308,12 +308,22 @@ public class Main extends Application {
             SignUpView controller = signUpLoader.getController();
             controller.injectYellowHandler(yh);
             controller.signUp(event -> {
+                if(controller.getUsername().length()<5){
+                    JFXSnackbar snackbar = new JFXSnackbar(signUpScreen);
+                    snackbar.show("Username must be 5 characters or more",3000);
+                    return;
+                }if(controller.getPassword().length()<5){
+                    JFXSnackbar snackbar = new JFXSnackbar(signUpScreen);
+                    snackbar.show("Password must be 5 characters or more",3000);
+                    return;
+                }
                 if(yh.createUser(controller.getUsername(), controller.getFirstName(), controller.getLastName(),
                         controller.getEmail(), controller.getPassword())) {
                     showMenuScreen();
                 }
                 else {
-                    //TO DO:error message
+                    JFXSnackbar snackbar = new JFXSnackbar(signUpScreen);
+                    snackbar.show("A user with that name already exist.",3000);
                 }
                 event.consume();
             });
