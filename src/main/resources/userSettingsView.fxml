@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="userSettingsView" prefHeight="339.0" prefWidth="417.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UserSettingsView">
+<AnchorPane fx:id="userSettingsView" prefHeight="363.0" prefWidth="417.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UserSettingsView">
    <children>
-      <JFXTextField fx:id="usernameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="169.0" style="-fx-text-fill: white;" unFocusColor="#fcfcfc" AnchorPane.leftAnchor="35.0" />
-      <JFXTextField fx:id="firstNameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="37.0" style="-fx-text-fill: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
-      <JFXTextField fx:id="lastNameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="81.0" style="-fx-text-fill: white;" unFocusColor="#fffafa" AnchorPane.leftAnchor="35.0" />
-      <JFXTextField fx:id="emailTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="127.0" style="-fx-text-fill: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
-      <JFXPasswordField fx:id="passwordTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="213.0" style="-fx-text-fill: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
-      <JFXButton fx:id="saveButton" layoutX="259.0" layoutY="292.0" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #FFE919;" text="Update user" textFill="#1b1a10" />
-      <Label layoutX="36.0" layoutY="67.0" text="First name" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
-      <Label layoutX="36.0" layoutY="111.0" text="Last name" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
-      <Label layoutX="36.0" layoutY="158.0" text="Email" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
-      <Label layoutX="36.0" layoutY="199.0" text="Username" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
-      <Label layoutX="36.0" layoutY="242.0" text="Password" textFill="#5a5555" AnchorPane.leftAnchor="36.0" />
-      <Label layoutX="35.0" layoutY="20.0" text="Update user" textFill="WHITE">
+      <JFXTextField fx:id="usernameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="220.0" prefHeight="25.0" prefWidth="168.0" style="-fx-text-fill: white;" unFocusColor="#fcfcfc" AnchorPane.leftAnchor="35.0" />
+      <JFXTextField fx:id="firstNameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="63.0" prefHeight="25.0" prefWidth="168.0" style="-fx-text-fill: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
+      <JFXTextField fx:id="lastNameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="114.0" prefHeight="25.0" prefWidth="168.0" style="-fx-text-fill: white;" unFocusColor="#fffafa" AnchorPane.leftAnchor="35.0" />
+      <JFXTextField fx:id="emailTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="167.0" prefHeight="25.0" prefWidth="168.0" style="-fx-text-fill: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
+      <JFXPasswordField fx:id="passwordTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="272.0" prefHeight="25.0" prefWidth="168.0" style="-fx-text-fill: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />
+      <JFXButton fx:id="saveButton" layoutX="273.0" layoutY="324.0" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: #FFE919;" text="Update user" textFill="#1b1a10" />
+      <Label layoutX="147.0" layoutY="94.0" text="First name" textFill="#5a5555" AnchorPane.leftAnchor="147.0" />
+      <Label layoutX="148.0" layoutY="145.0" text="Last name" textFill="#5a5555" AnchorPane.leftAnchor="148.0" />
+      <Label layoutX="173.0" layoutY="199.0" text="Email" textFill="#5a5555" AnchorPane.leftAnchor="173.0" />
+      <Label layoutX="149.0" layoutY="251.0" text="Username" textFill="#5a5555" AnchorPane.leftAnchor="149.0" />
+      <Label layoutX="153.0" layoutY="302.0" text="Password" textFill="#5a5555" AnchorPane.leftAnchor="153.0" />
+      <Label layoutX="35.0" layoutY="17.0" text="Update user" textFill="WHITE">
          <font>
-            <Font size="13.0" />
+            <Font size="14.0" />
          </font>
       </Label>
    </children>
