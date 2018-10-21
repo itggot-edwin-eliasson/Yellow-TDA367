@@ -364,6 +364,10 @@ public class Main extends Application {
                 showMenuScreen();
                 event.consume();
             });
+            controller.goToMyYellow(event -> {
+                showYellow();
+                event.consume();
+            });
 
         } catch (IOException e){
             e.printStackTrace();

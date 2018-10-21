@@ -19,6 +19,8 @@ public class ManageMyYellow extends ViewController implements Observer {
     @FXML private Button addInventoryButton;
     @FXML private Button addItemButton;
     @FXML private Button backButton;
+    @FXML private Button toMyYellowButton;
+
 
     @FXML private FlowPane manageGroupFlowPane;
     @FXML private FlowPane manageInventoryFlowPane;
@@ -41,6 +43,10 @@ public class ManageMyYellow extends ViewController implements Observer {
 
     public void addInventory (EventHandler<ActionEvent> clicked) {
         addInventoryButton.setOnAction(clicked);
+    }
+
+    public void goToMyYellow(EventHandler<ActionEvent> clicked){
+        toMyYellowButton.setOnAction(clicked);
     }
 
     public void updateGroupList(){
