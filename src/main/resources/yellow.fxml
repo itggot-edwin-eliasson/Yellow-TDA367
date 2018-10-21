@@ -32,7 +32,7 @@
                               <FlowPane fx:id="groupListFlowPane" prefHeight="239.0" prefWidth="174.0" />
                            </content>
                         </ScrollPane>
-                        <Label fx:id="title" layoutX="57.0" layoutY="7.0" prefHeight="27.0" prefWidth="62.0" text="Groups" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="7.0">
+                        <Label fx:id="title" layoutX="43.0" layoutY="7.0" prefHeight="27.0" prefWidth="123.0" text="Groups" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="7.0">
                            <font>
                               <Font size="18.0" />
                            </font>

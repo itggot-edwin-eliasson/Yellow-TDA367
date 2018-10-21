@@ -20,7 +20,6 @@ public class AddItemView {
 
     private boolean okClicked = false;
 
-    @FXML private JFXButton cancelButton;
     @FXML private TextField nameTextField;
     @FXML private TextArea descriptionTextArea;
     @FXML private TextField amountTextField;

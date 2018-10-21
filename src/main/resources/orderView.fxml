@@ -8,7 +8,7 @@
    <children>
       <JFXButton fx:id="activeOrderButton" layoutY="-3.0" prefHeight="55.0" prefWidth="142.0" style="-fx-border-color: #ffcc00; -fx-border-style: solid none solid none; -fx-border-width: 2px; -fx-background-color: rgba(0, 0, 0, 0.60);" text="Active order" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <JFXButton fx:id="oldOrderButton" layoutX="291.0" prefHeight="55.0" prefWidth="141.0" style="-fx-border-color: #ffcc00; -fx-border-style: solid none solid none; -fx-border-width: 2px; -fx-background-color: rgba(0, 0, 0, 0.60);" text="Old orders" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <JFXButton fx:id="ongoingOrderButton" layoutX="141.0" layoutY="-3.0" prefHeight="55.0" prefWidth="142.0" style="-fx-border-style: solid; -fx-border-color: #ffcc00; -fx-border-width: 2px; -fx-background-color: rgba(0, 0, 0, 0.60);" text="Ongoing order" textFill="WHITE" AnchorPane.topAnchor="0.0" />
+      <JFXButton fx:id="ongoingOrderButton" layoutX="141.0" layoutY="-3.0" prefHeight="55.0" prefWidth="142.0" style="-fx-border-style: solid; -fx-border-color: #ffcc00; -fx-border-width: 2px; -fx-background-color: rgba(0, 0, 0, 0.60);" text="Ongoing orders" textFill="WHITE" AnchorPane.topAnchor="0.0" />
       <AnchorPane layoutY="55.0" prefHeight="294.0" prefWidth="417.0">
          <children>
             <ScrollPane fx:id="orderScrollPane" hbarPolicy="NEVER" prefHeight="294.0" prefWidth="417.0" stylesheets="@yellow.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
