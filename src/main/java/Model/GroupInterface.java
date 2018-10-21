@@ -113,9 +113,9 @@ public interface GroupInterface extends Serializable {
 
     public OrderInterface getActiveOrder();
 
-    public List getOldOrders();
+    public List<OrderInterface> getOldOrders();
 
-    public List getOrderList();
+    public List<OrderInterface> getOrderList();
 }
 
 

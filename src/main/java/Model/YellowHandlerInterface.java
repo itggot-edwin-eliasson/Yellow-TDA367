@@ -85,6 +85,8 @@ public interface YellowHandlerInterface extends ObservableInterface{
      */
     void addItemToOrder(String id);
 
+    void removeItemFromOrder(ItemInterface item);
+
     UserInterface getActiveUser();
 
     /**
@@ -138,4 +140,10 @@ public interface YellowHandlerInterface extends ObservableInterface{
     void setGroups(List<GroupInterface> groups);
 
     void setAllUsers(List<UserInterface> users);
+
+    List<ItemInterface> getActiveOrderItems();
+
+    List<OrderInterface> getOldOrders();
+
+    List<OrderInterface> getOngoingOrders();
 }

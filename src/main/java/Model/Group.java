@@ -119,7 +119,8 @@ public class Group implements GroupInterface{
     @Override
     public void addItemToOrder (String itemId){
         ItemInterface item = findItemByID(itemId);
-        activeOrder.addItem(item);
+        if(item != null)
+            activeOrder.addItem(item);
     }
 
     @Override
@@ -175,7 +176,9 @@ public class Group implements GroupInterface{
 
     @Override
     public OrderInterface getActiveOrder(){
-        return activeOrder;
+        if(activeOrder != null)
+            return activeOrder;
+        return null;
     }
 
     @Override
@@ -189,10 +192,10 @@ public class Group implements GroupInterface{
     }
 
     @Override
-    public List getOldOrders(){return oldOrders;}
+    public List<OrderInterface> getOldOrders(){return oldOrders;}
 
     @Override
-    public List getOrderList(){return orderList;}
+    public List<OrderInterface> getOrderList(){return orderList;}
 
     @Override
     public void updateInventory() {

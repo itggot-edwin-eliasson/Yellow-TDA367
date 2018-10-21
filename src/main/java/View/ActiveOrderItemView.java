@@ -1,8 +1,11 @@
 package View;
 
 import Model.ItemInterface;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -14,11 +17,12 @@ public class ActiveOrderItemView extends AnchorPane {
     private ItemInterface item;
 
     @FXML
-    private Label itemName;
-    @FXML private ImageView itemImage;
+    private Label orderItemName;
+
+    @FXML private Button removeItemButton;
 
     public ActiveOrderItemView(ItemInterface item) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../itemItem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../activeOrderItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -30,6 +34,14 @@ public class ActiveOrderItemView extends AnchorPane {
 
         this.item = item;
 
-        itemName.setText(item.getName());
+        orderItemName.setText(item.getName());
+    }
+
+    public ItemInterface getItem(){
+        return item;
+    }
+
+    public void setRemoveItemButton(EventHandler<ActionEvent> clicked){
+        removeItemButton.setOnAction(clicked);
     }
 }

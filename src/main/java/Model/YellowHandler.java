@@ -23,6 +23,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
         String id = generateUniqueKeyUsingUUID();
         g.createInventory("All items", id);
         g.selectInventory(id);
+        g.createOrder(generateUniqueKeyUsingUUID());
         groups.add(g);
         activeUser.addGroup(g.getId());
         notifyObservers();
@@ -135,7 +136,11 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
              activegroup.createOrder(generateUniqueKeyUsingUUID());
          }
          activegroup.addItemToOrder(itemID);
+    }
 
+    @Override
+    public void removeItemFromOrder(ItemInterface item){
+        activegroup.removeItemFromOrder(item.getId());
     }
 
     @Override
@@ -219,4 +224,26 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
 
     @Override
     public void setAllUsers(List<UserInterface> users) {this.users = users;}
+
+    @Override
+    public List<ItemInterface> getActiveOrderItems(){
+        if(activegroup != null) {
+            return activegroup.getActiveOrder().getOrderList();
+        }
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<OrderInterface> getOldOrders(){
+        if(activegroup != null)
+            return activegroup.getOldOrders();
+        return new ArrayList<>();
+    }
+
+    @Override
+    public List<OrderInterface> getOngoingOrders(){
+        if(activegroup != null)
+            return activegroup.getOrderList();
+        return new ArrayList<>();
+    }
 }

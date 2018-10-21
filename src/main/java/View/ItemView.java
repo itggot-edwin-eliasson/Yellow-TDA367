@@ -1,5 +1,6 @@
 package View;
 
+import Model.ItemInterface;
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -43,9 +44,10 @@ public class ItemView {
         dialogStage.close();
     }
 
-    public void setNameAndDescription (String itemName, String itemDescription) {
-        this.itemName.setText(itemName);
-        this.descriptionTextField.setText(itemDescription);
+    public void setItem (ItemInterface item) {
+        this.itemName.setText(item.getName());
+        this.descriptionTextField.setText(item.getDescription());
+        this.itemId = item.getId();
     }
 
     public AnchorPane getitemCalendarAnchorPane(){

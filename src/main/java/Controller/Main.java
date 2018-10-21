@@ -5,6 +5,7 @@ import View.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
@@ -106,6 +107,7 @@ public class Main extends Application {
             mainController.injectInventoryItemListener(event -> {
                 InventoryItemView item = (InventoryItemView) event.getSource();
                 yh.selectInventory(item.getInventory().getID());
+                mainController.hideOrderPane();
                 mainController.updateItemList();
                 event.consume();
             });
@@ -120,12 +122,43 @@ public class Main extends Application {
             activeOrderLoader.setLocation(Main.class.getResource("../activeOrder.fxml"));
             AnchorPane activeOrder = (AnchorPane) activeOrderLoader.load();
 
+            ActiveOrderView activeOrderController = activeOrderLoader.getController();
+
+            activeOrderController.injectYellowHandler(yh);
+            activeOrderController.injectOrderItemListener(event -> {
+                Button button = (Button) event.getSource();
+                ActiveOrderItemView orderItem = (ActiveOrderItemView) button.getParent();
+                yh.removeItemFromOrder(orderItem.getItem());
+                activeOrderController.updateActiveOrders();
+                event.consume();
+            });
+            yh.addObserver(activeOrderController);
+
+            FXMLLoader ongoingOrdersLoader = new FXMLLoader();
+            ongoingOrdersLoader.setLocation(Main.class.getResource("../ongoingOrders.fxml"));
+            AnchorPane ongoingOrders = (AnchorPane) ongoingOrdersLoader.load();
+
+            OngoingOrdersView ongoingOrdersController = ongoingOrdersLoader.getController();
+
+            ongoingOrdersController.injectYellowHandler(yh);
+
+            yh.addObserver(ongoingOrdersController);
+
+            FXMLLoader oldOrdersLoader = new FXMLLoader();
+            oldOrdersLoader.setLocation(Main.class.getResource("../oldOrdersView.fxml"));
+            AnchorPane oldOrders = (AnchorPane) oldOrdersLoader.load();
+
+            OldOrdersView oldOrdersController = oldOrdersLoader.getController();
+
+            oldOrdersController.injectYellowHandler(yh);
+
+            yh.addObserver(oldOrdersController);
+
             mainController.injectItemItemListener(event -> {
                 ItemItemView item = (ItemItemView) event.getSource();
                 showItemViewDialog(item.getItem());
                 event.consume();
             });
-            FXMLLoader ongoingOrderLoader = new FXMLLoader();
 
             mainController.setOrderPane(order);
             orderController.setOrderScrollPane(activeOrder);
@@ -135,9 +168,11 @@ public class Main extends Application {
                 event.consume();
             });
             orderController.setOngoingOrderButton(event -> {
+                orderController.setOrderScrollPane(ongoingOrders);
                 event.consume();
             });
             orderController.setOldOrderButton(event -> {
+                orderController.setOrderScrollPane(oldOrders);
                 event.consume();
             });
 
@@ -145,6 +180,7 @@ public class Main extends Application {
 
             mainController.setOrderButton(event -> {
                 mainController.showOrderPane();
+                activeOrderController.updateActiveOrders();
                 event.consume();
             });
             mainController.setBackToGroupsListener(event -> {
@@ -281,6 +317,10 @@ public class Main extends Application {
                 }
                 event.consume();
             });
+            controller.toLoginScreen(event -> {
+                showLogin();
+                event.consume();
+            });
 
         } catch (IOException e){
             e.printStackTrace();
@@ -401,7 +441,7 @@ public class Main extends Application {
             // Set the person into the controller.
             ItemView controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setNameAndDescription(item.getName(),item.getDescription());
+            controller.setItem(item);
             //controller.setDialogStage(dialogStage);
             Stage stage = (Stage) controller.getitemCalendarAnchorPane().getScene().getWindow();
             Callback<DatePicker, DateCell> callback =getDayCellFactoryItem(item);
