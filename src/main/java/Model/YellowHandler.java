@@ -11,7 +11,7 @@ import java.util.*;
  * 05/10 Modified by Joakim. Login functionality added.
  *
  */
-public class YellowHandler extends Observable {
+public class YellowHandler extends Observable implements YellowHandlerInterface {
 
     private UserInterface activeUser;
     private GroupInterface activegroup;
@@ -35,6 +35,7 @@ public class YellowHandler extends Observable {
      * Creates a group and adds it to the list with groups.
      * @param groupName The name of the new group.
      */
+    @Override
     public void createGroup(String groupName, String color){
         GroupInterface g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
@@ -46,6 +47,7 @@ public class YellowHandler extends Observable {
         notifyObservers();
     }
 
+    @Override
     public void changeUserSettings (String firstName, String lastName, String username, String email, String password) {
         activeUser.setName(firstName);
         activeUser.setLastName(lastName);
@@ -54,7 +56,7 @@ public class YellowHandler extends Observable {
         activeUser.setPassword(password);
     }
 
-
+    @Override
     public List<GroupInterface> getGroups(){
         List<GroupInterface> tmpGroups = new ArrayList<>();
         if(activeUser != null) {
@@ -77,6 +79,7 @@ public class YellowHandler extends Observable {
      * @param email The email of the user
      * @param password The users password
      */
+    @Override
     public boolean createUser(String username, String firstName, String lastName, String email, String password){
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
@@ -94,7 +97,7 @@ public class YellowHandler extends Observable {
      * @param username
      * @param password
      */
-
+    @Override
     public boolean logIn (String username, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
@@ -109,6 +112,7 @@ public class YellowHandler extends Observable {
         return false;
     }
 
+    @Override
     public void logOut (){
         activeUser = null;
         activegroup = null;
@@ -122,7 +126,7 @@ public class YellowHandler extends Observable {
      * @param inventoryId Id of inventory
      * @param amount amount of items to add
      */
-
+    @Override
     public void addItem (String name, String description, String inventoryId, int amount) {
         for(int i = 0; i < amount; i++) {
             String id = generateUniqueKeyUsingUUID();
@@ -135,17 +139,21 @@ public class YellowHandler extends Observable {
      * Removes an item from inventory
      * @param id id of the item to be removed
      */
-
+    @Override
     public void removeItem (String id) {
         activegroup.removeItem(id);
+    }
+
+    @Override
+    public void setActiveUserToNull() {
+        activeUser = null;
     }
 
     /**
      * Adds user to group
      * @param inviteCode The invitecode the user gets
      */
-
-
+    @Override
     public boolean joinGroup(int inviteCode){
     for (GroupInterface group : groups) {
             if(inviteCode == group.getInviteCode()){
@@ -160,6 +168,7 @@ public class YellowHandler extends Observable {
      * Removes user from group
      * @param id id of the group to be removed
      */
+    @Override
     public void removeGroup (String id) {
         activeUser.removeGroup(id);
     }
@@ -168,6 +177,7 @@ public class YellowHandler extends Observable {
      * Generates a unique id
      * @return The unique id
      */
+    @Override
     public String generateUniqueKeyUsingUUID() {
         // Static factory to retrieve a type 4 (pseudo randomly generated) UUID
         String crunchifyUUID = UUID.randomUUID().toString();
@@ -175,6 +185,7 @@ public class YellowHandler extends Observable {
     }
 
 
+    @Override
     public void addItemToOrder(String itemID) {
          if (activegroup.getActiveOrder() == null){
              activegroup.createOrder(generateUniqueKeyUsingUUID());
@@ -183,6 +194,7 @@ public class YellowHandler extends Observable {
 
     }
 
+    @Override
     public UserInterface getActiveUser () {
          return this.activeUser;
     }
@@ -201,10 +213,12 @@ public class YellowHandler extends Observable {
         return false;
     }
 
+    @Override
     public GroupInterface getActiveGroup() {
         return this.activegroup;
     }
 
+    @Override
     public List<ItemInterface> getItems() {
         if(activegroup != null) {
             if (activegroup.getSelectedInventory() != null)
@@ -213,17 +227,20 @@ public class YellowHandler extends Observable {
         return new ArrayList<>();
     }
 
+    @Override
     public List<InventoryInterface> getInventories(){
         if(activegroup != null)
             return activegroup.getInventories();
         return new ArrayList<>();
     }
 
+    @Override
     public void setActiveGroup(GroupInterface group) {
         activegroup = group;
         notifyObservers();
     }
 
+    @Override
     public void createInventory(String name) {
         if(activegroup != null)
             activegroup.createInventory(name, generateUniqueKeyUsingUUID());
@@ -234,6 +251,7 @@ public class YellowHandler extends Observable {
      * This should be used when an order could not be completed.
      * @return A list of booleans that matches the order list in index and says if the item is rentable or not.
      */
+    @Override
     public List<Boolean> completeOrderFailed(){
          return activegroup.getActiveOrder().getIsRentable();
     }
@@ -242,6 +260,7 @@ public class YellowHandler extends Observable {
      * This sets the isRented boolean on every item in the active inventory.
      * Should be called when an inventory is opened.
      */
+
     public void updateInventory() {
         activegroup.updateInventory();
     }
@@ -250,23 +269,30 @@ public class YellowHandler extends Observable {
      * Sets activeInventory in the group.
      * @param id of the inventory that is selected
      */
+    @Override
     public void selectInventory(String id) {
         activegroup.selectInventory(id);
         notifyObservers();
     }
+
+    @Override
     public void orderIsReturned(String orderID){
         activegroup.orderIsReturned(orderID);
     }
 
+    @Override
     public List<UserInterface> getUsers() {
         return users;
     }
 
-    public List<GroupInterface> getAllGroups () {
+    @Override
+    public List<GroupInterface> getAllGroups() {
         return groups;
     }
 
-    public void setGroups (List <GroupInterface> groups) {this.groups = groups;}
+    @Override
+    public void setGroups(List<GroupInterface> groups) {this.groups = groups;}
 
-    public void setAllUsers (List <UserInterface> users) {this.users = users;}
+    @Override
+    public void setAllUsers(List<UserInterface> users) {this.users = users;}
 }

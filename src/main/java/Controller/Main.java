@@ -36,7 +36,7 @@ public class Main extends Application {
     private FXMLLoader signUpLoader;
     private FXMLLoader manageMyYellowLoader;
 
-    private YellowHandler yh;
+    private YellowHandlerInterface yh;
 
     public static void main(String[] args){
         launch(args);

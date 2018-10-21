@@ -2,58 +2,69 @@ package Model;
 
 import java.util.List;
 
-public interface YellowHandlerInterface {
+public interface YellowHandlerInterface extends ObservableInterface{
 
     /**
      * Creates a group and adds it to the list with groups.
      * @param groupName The name of the new group.
      */
-    public void createGroup(String groupName, String color);
+    void createGroup(String groupName, String color);
 
     /**
      * Creates a user and adds it to the list with users. The new user is also set to activeUser.
      * @param username The username of the new user.
      */
-    public boolean createUser(String username, String firstName, String lastName, String email, String password);
+    boolean createUser(String username, String firstName, String lastName, String email, String password);
 
-    public boolean logIn (String username, String password);
+    boolean logIn (String username, String password);
 
-    //public User createUser (String username);
+    boolean joinGroup(int inviteCode);
 
-    public boolean joinGroup(int inviteCode);
+    void removeGroup (String id);
 
-    public void removeGroup (String id);
+    void logOut();
 
-    public void logOut();
+    void addItem(String name, String description, String inventoryId, int amount);
 
-    public void addItem(String name, String description, String inventoryId, int amount);
+    void removeItem(String id);
 
-    public void removeItem(String id);
+    void setActiveUserToNull();
 
-    public void setActiveUserToNull();
-
-    public void changeUserSettings(String firstName, String lastName, String username, String email, String password);
+    void changeUserSettings(String firstName, String lastName, String username, String email, String password);
 
     /**
      * Generates a unique id
      * @return The unique id
      */
-    public String generateUniqueKeyUsingUUID();
+    String generateUniqueKeyUsingUUID();
 
-    public void addItemToOrder(String id);
+    void addItemToOrder(String id);
 
-    public UserInterface getActiveUser();
+    UserInterface getActiveUser();
 
-    public GroupInterface getActiveGroup();
+    GroupInterface getActiveGroup();
 
-    public List<GroupInterface> getGroups();
+    List<GroupInterface> getGroups();
 
-    public List<ItemInterface> getItems();
+    List<ItemInterface> getItems();
 
-    public List<InventoryInterface> getInventories();
+    List<InventoryInterface> getInventories();
 
-    public void setActiveGroup(GroupInterface group);
+    void setActiveGroup(GroupInterface group);
 
-    public void createInventory(String name);
+    void createInventory(String name);
 
+    List<Boolean> completeOrderFailed();
+
+    void selectInventory(String id);
+
+    void orderIsReturned(String orderID);
+
+    List<UserInterface> getUsers();
+
+    List<GroupInterface> getAllGroups();
+
+    void setGroups(List<GroupInterface> groups);
+
+    void setAllUsers(List<UserInterface> users);
 }

@@ -27,9 +27,7 @@ public class YellowHandlerTest {
 
     @Test
     public void logIn() throws Exception {
-        List<GroupInterface> allGroups = new ArrayList<>();
-        List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler();
+        YellowHandlerInterface yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.setActiveUserToNull();
         yh.logIn("hej","hej");
@@ -40,9 +38,7 @@ public class YellowHandlerTest {
 
     @Test
     public void addItem() throws Exception {
-        List<GroupInterface> allGroups = new ArrayList<>();
-        List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler();
+        YellowHandlerInterface yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");
         yh.setActiveGroup(yh.getGroups().get(0));
@@ -56,9 +52,7 @@ public class YellowHandlerTest {
 
     @Test
     public void removeItem() throws Exception {
-        List<GroupInterface> allGroups = new ArrayList<>();
-        List<UserInterface> allUsers = new ArrayList<>();
-        YellowHandler yh = new YellowHandler();
+        YellowHandlerInterface yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
         yh.createGroup("group","hej");
         yh.setActiveGroup(yh.getGroups().get(0));
@@ -66,8 +60,8 @@ public class YellowHandlerTest {
         yh.selectInventory("inventory");
         yh.addItem("boll","en boll","inventory",1);
         assertEquals(1,yh.getItems().size());
-        yh.addItem("boll","en boll","inventory",2);
-        assertEquals(3,yh.getItems().size());
+        yh.removeItem(yh.getItems().get(0).getId());
+        assertEquals(0,yh.getItems().size());
     }
 
     @Test

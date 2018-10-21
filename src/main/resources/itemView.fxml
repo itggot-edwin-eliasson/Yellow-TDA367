@@ -25,8 +25,8 @@
          </image>
       </ImageView>
       <Label fx:id="chooseAmountLabel" layoutX="29.0" layoutY="271.0" text="Choose amount" textFill="WHITE" />
-      <Label fx:id="calendarLabel" layoutX="29.0" layoutY="335.0" text="Calendar" textFill="WHITE" />
+      <Label fx:id="calendarLabel" layoutX="29.0" layoutY="335.0" text="Calendar - Avaiability" textFill="WHITE" />
       <JFXTextField fx:id="descriptionTextField" editable="false" focusColor="#1f1e18" layoutX="29.0" layoutY="206.0" prefHeight="60.0" prefWidth="358.0" unFocusColor="#1f1e18" />
-      <AnchorPane fx:id="itemCalendarAnchorPane" layoutX="13.0" layoutY="363.0" prefHeight="200.0" prefWidth="400.0" />
+      <AnchorPane fx:id="itemCalendarAnchorPane" layoutX="29.0" layoutY="363.0" prefHeight="200.0" prefWidth="384.0" />
    </children>
 </AnchorPane>

@@ -1,13 +1,15 @@
 package View;
 
 import Model.Item;
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.skins.JFXDatePickerSkin;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -18,15 +20,13 @@ public class CalendarViewController {
         try {
             //scene.getStylesheets().add(getClass().getResource("yellow.css").toExternalForm());
 
-            DatePicker asd = new DatePicker(LocalDate.now());
+            JFXDatePicker asd = new JFXDatePicker(LocalDate.now());
             Callback<DatePicker, DateCell> dayCells = dayCellFactory;
+            asd.setDefaultColor(Paint.valueOf("#ffcc00"));
             asd.setDayCellFactory(dayCells);
 
-            DatePickerSkin datePickerSkin = new DatePickerSkin(asd);
 
-            Node popupContent = datePickerSkin.getPopupContent();
-
-            root.getChildren().add(popupContent);
+            root.getChildren().add(asd);
         } catch (Exception e) {
             e.printStackTrace();
         }

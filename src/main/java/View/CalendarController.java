@@ -1,7 +1,9 @@
 package View;
 
 import Model.Item;
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
+
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.skins.JFXDatePickerSkin;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
@@ -18,19 +20,19 @@ import java.util.Map;
 import static javafx.application.Application.launch;
 
 public class CalendarController {
-    public void start(Stage primaryStage, Item theItem) {
+    /*public void start(Stage primaryStage, Item theItem) {
         try {
             BorderPane root = new BorderPane();
             Scene scene = new Scene(root, 400, 400);
             //scene.getStylesheets().add(getClass().getResource("yellow.css").toExternalForm());
 
-            DatePicker asd = new DatePicker(LocalDate.now());
+            JFXDatePicker asd = new JFXDatePicker(LocalDate.now());
             Callback<DatePicker, DateCell> dayCellFactory= this.getDayCellFactory(theItem);
             asd.setDayCellFactory(dayCellFactory);
 
-            DatePickerSkin datePickerSkin = new DatePickerSkin(asd);
+            JFXDatePickerSkin datePickerSkin = new JFXDatePickerSkin(asd);
 
-            Node popupContent = datePickerSkin.getPopupContent();
+            Node popupContent = datePickerSkin.getDisplayNode();
 
             root.setCenter(popupContent);
 
@@ -39,7 +41,7 @@ public class CalendarController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     private Callback<DatePicker, DateCell> getDayCellFactory(Item theItem) {
 
