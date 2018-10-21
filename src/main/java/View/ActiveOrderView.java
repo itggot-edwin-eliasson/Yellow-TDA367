@@ -19,7 +19,8 @@ public class ActiveOrderView extends ViewController {
         List<ItemInterface> orderItems = super.yh.getActiveGroup().getActiveOrder().getOrderList();
         activeOrderFlowPane.getChildren().clear();
         for(ItemInterface item: orderItems){
-
+            ActiveOrderItemView orderItem = new ActiveOrderItemView(item);
+            activeOrderFlowPane.getChildren().add(orderItem);
         }
     }
 }

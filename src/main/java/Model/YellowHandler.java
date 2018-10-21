@@ -272,7 +272,6 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     @Override
     public void selectInventory(String id) {
         activegroup.selectInventory(id);
-        notifyObservers();
     }
 
     @Override

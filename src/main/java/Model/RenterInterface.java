@@ -1,6 +1,8 @@
 package Model;
 
-public interface RenterInterface {
+import java.io.Serializable;
+
+public interface RenterInterface extends Serializable {
 
     public void setPhoneNr(String phoneNr);
 

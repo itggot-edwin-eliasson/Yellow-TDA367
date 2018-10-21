@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface OrderInterface {
+public interface OrderInterface extends Serializable {
 
     public void addItem (ItemInterface item);
 

@@ -103,6 +103,12 @@ public class Main extends Application {
                 mainController.selectGroup();
                 event.consume();
             });
+            mainController.injectInventoryItemListener(event -> {
+                InventoryItemView item = (InventoryItemView) event.getSource();
+                yh.selectInventory(item.getInventory().getID());
+                mainController.updateItemList();
+                event.consume();
+            });
 
             FXMLLoader orderLoader = new FXMLLoader();
             orderLoader.setLocation(Main.class.getResource("../orderView.fxml"));
@@ -142,6 +148,7 @@ public class Main extends Application {
                 event.consume();
             });
             mainController.setBackToGroupsListener(event -> {
+                yh.setActiveGroup(null);
                 mainController.backToGroups();
                 event.consume();
             });
@@ -342,6 +349,7 @@ public class Main extends Application {
             controller.injectInventoryItemListener(event -> {
                 ManageInventoryItemView item = (ManageInventoryItemView) event.getSource();
                 yh.selectInventory(item.getInventory().getID());
+                controller.updateItemList();
                 event.consume();
             });
             controller.updateGroupList();
@@ -352,7 +360,7 @@ public class Main extends Application {
             });
             controller.addInventory(event -> {
                 if(yh.getActiveGroup() != null)
-                    showAddInventoryDialog();
+                    showCreateInventoryDialog();
                 event.consume();
             });
             controller.addItem(event -> {
@@ -392,6 +400,8 @@ public class Main extends Application {
 
             // Set the person into the controller.
             ItemView controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setNameAndDescription(item.getName(),item.getDescription());
             //controller.setDialogStage(dialogStage);
             Stage stage = (Stage) controller.getitemCalendarAnchorPane().getScene().getWindow();
             Callback<DatePicker, DateCell> callback =getDayCellFactoryItem(item);
@@ -400,6 +410,9 @@ public class Main extends Application {
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 
+            if(controller.isOkClicked()){
+                yh.addItemToOrder(controller.getId());
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -482,7 +495,7 @@ public class Main extends Application {
 
     }
 
-    private void showAddInventoryDialog(){
+    private void showCreateInventoryDialog(){
         // Load the fxml file and create a new stage for the popup dialog.
 
         try {

@@ -310,14 +310,12 @@ public class MainController extends ViewController implements Observer {
         groupListFlowPane.getChildren().clear();
         for(InventoryInterface inventory: inventories){
             InventoryItemView item = new InventoryItemView(inventory);
-            item.selectInventory(event -> {
-                event.consume();
-            });
+            item.selectInventory(inventoryItemClick);
             groupListFlowPane.getChildren().add(item);
         }
     }
 
-    private void updateItemList(){
+    public void updateItemList(){
         List<ItemInterface> items = super.yh.getItems();
         listFlowPane.getChildren().clear();
         for(ItemInterface item: items){
