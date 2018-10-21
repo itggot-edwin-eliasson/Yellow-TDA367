@@ -12,14 +12,14 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class ManageItemItemViewController extends AnchorPane {
+public class ManageItemItemView extends AnchorPane {
 
     ItemInterface item;
 
     @FXML private Label manageItemItem;
     @FXML private AnchorPane background;
 
-    public ManageItemItemViewController(ItemInterface item) {
+    public ManageItemItemView(ItemInterface item) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../manageItemItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

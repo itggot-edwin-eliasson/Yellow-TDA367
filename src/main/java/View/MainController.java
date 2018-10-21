@@ -4,7 +4,6 @@ import Model.*;
 import Model.Observer;
 import com.jfoenix.controls.*;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.*;
@@ -34,17 +33,16 @@ public class MainController extends ViewController implements Observer {
     private List<GroupInterface> allGroups = new ArrayList<>();
     private List<UserInterface> allUsers = new ArrayList<>();
     private List<InventoryInterface> allInventories = new ArrayList<>();
-    private Map<ItemInterface, ItemItemController> itemItemControllerMap = new HashMap<>();
+    private Map<ItemInterface, ItemItemView> itemItemControllerMap = new HashMap<>();
 
     private EventHandler<MouseEvent> groupItemClick;
     private EventHandler<MouseEvent> inventoryItemClick;
     private EventHandler<MouseEvent> itemItemClick;
 
-    @FXML private SignUpViewController signUpController;
-    @FXML private LoginViewController loginController;
-    @FXML private UserSettingsController userSettingsController;
-    @FXML private ManageMyYellowController manageMyYellowController;
-    @FXML private MenuScreenController menuScreenController;
+    @FXML private SignUpView signUpController;
+    @FXML private LoginView loginController;
+    @FXML private UserSettingsView userSettingsController;
+    @FXML private ManageMyYellow manageMyYellowController;
 
     @FXML private JFXDrawer drawer;
 
@@ -110,15 +108,15 @@ public class MainController extends ViewController implements Observer {
         manageMyYellowController.backToManageMyYellow(event -> {
             menuScreen.toFront();
         });
-        menuScreenController.toMyYellow(event ->{
+        menuScreen.toMyYellow(event ->{
             mainWindow.toFront();
         });
 
-        menuScreenController.toManageMyYellow(event -> {
+        menuScreen.toManageMyYellow(event -> {
             manageMyYellow.toFront();
         });
 
-        menuScreenController.toCreateGroupPopUp(event -> {
+        menuScreen.toCreateGroupPopUp(event -> {
             createGroup();
         });
 
@@ -204,7 +202,7 @@ public class MainController extends ViewController implements Observer {
     }
 
 
-    private void selectGroup(GroupItemController groupItem, Map<GroupInterface, GroupItemController> groupItemControllerMap){
+    private void selectGroup(GroupItemView groupItem, Map<GroupInterface, GroupItemView> groupItemControllerMap){
         for(GroupInterface tmpGroup: groupItemControllerMap.keySet()) {
             if (groupItemControllerMap.get(tmpGroup).equals(groupItem)) {
                 yh.setActiveGroup(tmpGroup);
@@ -301,7 +299,7 @@ public class MainController extends ViewController implements Observer {
         List<GroupInterface> groups = super.yh.getGroups();
         groupListFlowPane.getChildren().clear();
         for(GroupInterface group: groups){
-            GroupItemController item = new GroupItemController(group);
+            GroupItemView item = new GroupItemView(group);
             item.selectGroup(groupItemClick);
             groupListFlowPane.getChildren().add(item);
         }
@@ -311,7 +309,7 @@ public class MainController extends ViewController implements Observer {
         List<InventoryInterface> inventories = super.yh.getInventories();
         groupListFlowPane.getChildren().clear();
         for(InventoryInterface inventory: inventories){
-            InventoryItemController item = new InventoryItemController(inventory);
+            InventoryItemView item = new InventoryItemView(inventory);
             item.selectInventory(event -> {
                 event.consume();
             });
@@ -323,7 +321,7 @@ public class MainController extends ViewController implements Observer {
         List<ItemInterface> items = super.yh.getItems();
         listFlowPane.getChildren().clear();
         for(ItemInterface item: items){
-            ItemItemController itemItem = new ItemItemController(item);
+            ItemItemView itemItem = new ItemItemView(item);
             itemItem.selectItem(itemItemClick);
             listFlowPane.getChildren().add(itemItem);
         }

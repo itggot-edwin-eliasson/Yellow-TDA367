@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class ManageInventoryItemViewController extends AnchorPane {
+public class ManageInventoryItemView extends AnchorPane {
     private InventoryInterface inventory;
 
     @FXML
@@ -18,7 +18,7 @@ public class ManageInventoryItemViewController extends AnchorPane {
     @FXML
     private AnchorPane background;
 
-    public ManageInventoryItemViewController(InventoryInterface inventory) {
+    public ManageInventoryItemView(InventoryInterface inventory) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../manageInventoryItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

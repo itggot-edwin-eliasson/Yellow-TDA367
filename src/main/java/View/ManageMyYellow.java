@@ -13,7 +13,7 @@ import javafx.scene.layout.FlowPane;
 
 import java.util.List;
 
-public class ManageMyYellowController extends ViewController implements Observer {
+public class ManageMyYellow extends ViewController implements Observer {
 
     @FXML private Button addGroupButton;
     @FXML private Button addInventoryButton;
@@ -47,7 +47,7 @@ public class ManageMyYellowController extends ViewController implements Observer
         List<GroupInterface> groups = super.yh.getGroups();
         manageGroupFlowPane.getChildren().clear();
         for(GroupInterface group: groups){
-            ManageGroupItemViewController groupItem = new ManageGroupItemViewController(group);
+            ManageGroupItemView groupItem = new ManageGroupItemView(group);
             groupItem.selectGroup(groupItemClick);
             manageGroupFlowPane.getChildren().add(groupItem);
         }
@@ -57,7 +57,7 @@ public class ManageMyYellowController extends ViewController implements Observer
         List<InventoryInterface> inventories = super.yh.getInventories();
         manageInventoryFlowPane.getChildren().clear();
         for(InventoryInterface inventory: inventories){
-            ManageInventoryItemViewController inventoryItem = new ManageInventoryItemViewController(inventory);
+            ManageInventoryItemView inventoryItem = new ManageInventoryItemView(inventory);
             inventoryItem.selectInventory(inventoryItemClick);
             manageInventoryFlowPane.getChildren().add(inventoryItem);
         }
@@ -67,7 +67,7 @@ public class ManageMyYellowController extends ViewController implements Observer
         List<ItemInterface> items = super.yh.getItems();
         manageItemFlowPane.getChildren().clear();
         for(ItemInterface item: items){
-            ManageItemItemViewController itemItem = new ManageItemItemViewController(item);
+            ManageItemItemView itemItem = new ManageItemItemView(item);
             manageItemFlowPane.getChildren().add(itemItem);
         }
     }

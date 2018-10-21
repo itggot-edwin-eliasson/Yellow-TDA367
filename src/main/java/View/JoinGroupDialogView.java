@@ -8,7 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class JoinGroupDialogViewController {
+public class JoinGroupDialogView {
 
 
     @FXML private JFXButton joinGroupButton;

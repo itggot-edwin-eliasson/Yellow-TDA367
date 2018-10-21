@@ -5,7 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class CreateGroupDialogViewController {
+public class CreateGroupDialogView {
 
     private Stage dialogStage;
     private boolean okClicked = false;

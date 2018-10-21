@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
-public class DrawerController {
+public class DrawerView {
 
 
     @FXML JFXButton userSettingsDrawerButton;

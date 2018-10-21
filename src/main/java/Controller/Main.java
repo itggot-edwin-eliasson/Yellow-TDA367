@@ -98,7 +98,7 @@ public class Main extends Application {
             yh.addObserver(mainController);
             mainController.injectYellowHandler(yh);
             mainController.injectGroupItemListener(event -> {
-                GroupItemController item = (GroupItemController)event.getSource();
+                GroupItemView item = (GroupItemView)event.getSource();
                 yh.setActiveGroup(item.getGroup());
                 mainController.selectGroup();
                 event.consume();
@@ -108,14 +108,14 @@ public class Main extends Application {
             orderLoader.setLocation(Main.class.getResource("../orderView.fxml"));
             AnchorPane order = (AnchorPane) orderLoader.load();
 
-            OrderViewController orderController = orderLoader.getController();
+            OrderView orderController = orderLoader.getController();
 
             FXMLLoader activeOrderLoader = new FXMLLoader();
             activeOrderLoader.setLocation(Main.class.getResource("../activeOrder.fxml"));
             AnchorPane activeOrder = (AnchorPane) activeOrderLoader.load();
 
             mainController.injectItemItemListener(event -> {
-                ItemItemController item = (ItemItemController) event.getSource();
+                ItemItemView item = (ItemItemView) event.getSource();
                 showItemViewDialog(item.getItem());
                 event.consume();
             });
@@ -169,7 +169,7 @@ public class Main extends Application {
             loginLoader.setLocation(Main.class.getResource("../logIn.fxml"));
             loginScreen = (AnchorPane) loginLoader.load();
 
-            LoginViewController controller = loginLoader.getController();
+            LoginView controller = loginLoader.getController();
             controller.injectYellowHandler(yh);
             controller.toSignupScreen(event -> {
                 showSignUp();
@@ -262,7 +262,7 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("../signUp.fxml"));
             AnchorPane login = (AnchorPane) loader.load();
 
-            SignUpViewController controller = signUpLoader.getController();
+            SignUpView controller = signUpLoader.getController();
             controller.injectYellowHandler(yh);
             controller.signUp(event -> {
                 if(yh.createUser(controller.getUsername(), controller.getFirstName(), controller.getLastName(),
@@ -281,7 +281,7 @@ public class Main extends Application {
     }
 
     private void showMenuScreen(){
-            MenuScreenController controller = menuScreenLoader.getController();
+            MenuScreen controller = menuScreenLoader.getController();
 
             rootLayout.setCenter(menuScreen);
 
@@ -290,10 +290,10 @@ public class Main extends Application {
     private void menuScreenSetup(){
         try {
             menuScreenLoader = new FXMLLoader();
-            menuScreenLoader.setLocation(Main.class.getResource("../firstYellowScreen.fxml"));
+            menuScreenLoader.setLocation(Main.class.getResource("../menuScreen.fxml"));
             menuScreen = menuScreenLoader.load();
 
-            MenuScreenController controller = menuScreenLoader.getController();
+            MenuScreen controller = menuScreenLoader.getController();
             controller.injectYellowHandler(yh);
             controller.toMyYellow(event -> {
                 showYellow();
@@ -331,16 +331,16 @@ public class Main extends Application {
             manageMyYellowLoader.setLocation(Main.class.getResource("../manageMyYellow.fxml"));
             manageMyYellowScreen = (AnchorPane) manageMyYellowLoader.load();
 
-            ManageMyYellowController controller = manageMyYellowLoader.getController();
+            ManageMyYellow controller = manageMyYellowLoader.getController();
             yh.addObserver(controller);
             controller.injectYellowHandler(yh);
             controller.injectGroupItemListener(event -> {
-                ManageGroupItemViewController item = (ManageGroupItemViewController) event.getSource();
+                ManageGroupItemView item = (ManageGroupItemView) event.getSource();
                 yh.setActiveGroup(item.getGroup());
                 event.consume();
             });
             controller.injectInventoryItemListener(event -> {
-                ManageInventoryItemViewController item = (ManageInventoryItemViewController) event.getSource();
+                ManageInventoryItemView item = (ManageInventoryItemView) event.getSource();
                 yh.selectInventory(item.getInventory().getID());
                 event.consume();
             });
@@ -387,11 +387,11 @@ public class Main extends Application {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            ItemViewController controller = loader.getController();
+            ItemView controller = loader.getController();
             //controller.setDialogStage(dialogStage);
             Stage stage = (Stage) controller.getitemCalendarAnchorPane().getScene().getWindow();
             Callback<DatePicker, DateCell> callback =getDayCellFactoryItem(item);
-            CalendarViewController ccontrller = new CalendarViewController();
+            CalendarView ccontrller = new CalendarView();
             ccontrller.start(stage,callback,controller.getitemCalendarAnchorPane());
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
@@ -421,7 +421,7 @@ public class Main extends Application {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            AddItemViewController controller = loader.getController();
+            AddItemView controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
             // Show the dialog and wait until the user closes it
@@ -453,7 +453,7 @@ public class Main extends Application {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            JoinGroupDialogViewController controller = loader.getController();
+            JoinGroupDialogView controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
             // Show the dialog and wait until the user closes it
@@ -495,7 +495,7 @@ public class Main extends Application {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            AddInventoryViewController controller = loader.getController();
+            AddInventoryView controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
             // Show the dialog and wait until the user closes it
@@ -526,7 +526,7 @@ public class Main extends Application {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            CreateGroupDialogViewController controller = loader.getController();
+            CreateGroupDialogView controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
             // Show the dialog and wait until the user closes it

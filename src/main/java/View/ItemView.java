@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.awt.event.MouseEvent;
 
-public class ItemViewController {
+public class ItemView {
 
 
     String itemId;

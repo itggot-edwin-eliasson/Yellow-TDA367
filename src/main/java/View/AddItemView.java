@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class AddItemViewController {
+public class AddItemView {
 
     private Stage dialogStage;
 

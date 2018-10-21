@@ -18,8 +18,7 @@ import java.time.LocalDate;
 import java.util.Map;
 
 import static javafx.application.Application.launch;
-
-public class CalendarController {
+public class Calendar {
     /*public void start(Stage primaryStage, Item theItem) {
         try {
             BorderPane root = new BorderPane();

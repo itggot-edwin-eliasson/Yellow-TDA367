@@ -6,7 +6,7 @@ import javafx.scene.layout.FlowPane;
 
 import java.util.List;
 
-public class ActiveOrderViewController extends ViewController {
+public class ActiveOrderView extends ViewController {
 
     @FXML private FlowPane activeOrderFlowPane;
 

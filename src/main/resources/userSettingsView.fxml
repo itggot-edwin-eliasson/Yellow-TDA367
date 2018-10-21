@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="userSettingsView" prefHeight="339.0" prefWidth="417.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UserSettingsController">
+<AnchorPane fx:id="userSettingsView" prefHeight="339.0" prefWidth="417.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UserSettingsView">
    <children>
       <JFXTextField fx:id="usernameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="153.0" unFocusColor="#fcfcfc" AnchorPane.leftAnchor="35.0" />
       <JFXTextField fx:id="firstNameTextField" focusColor="#ffcc00" layoutX="35.0" layoutY="21.0" unFocusColor="WHITE" AnchorPane.leftAnchor="35.0" />

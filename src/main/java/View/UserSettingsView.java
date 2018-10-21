@@ -9,7 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
-public class UserSettingsController {
+public class UserSettingsView {
 
     @FXML private JFXTextField usernameTextField;
     @FXML private JFXPasswordField passwordTextField;

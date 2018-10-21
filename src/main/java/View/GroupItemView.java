@@ -4,22 +4,27 @@ import Model.GroupInterface;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Paint;
 
+import java.awt.*;
 import java.io.IOException;
 
-public class ManageGroupItemViewController extends AnchorPane {
+public class GroupItemView extends AnchorPane {
+
     private GroupInterface group;
 
-    @FXML
-    private Label manageGroupItem;
-    @FXML
-    private AnchorPane background;
+    @FXML private Label groupName;
+    @FXML private AnchorPane background;
 
-    public ManageGroupItemViewController(GroupInterface group) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../manageGroupItem.fxml"));
+    public GroupItemView(GroupInterface group) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../groupItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -30,8 +35,8 @@ public class ManageGroupItemViewController extends AnchorPane {
         }
 
         this.group = group;
-
-        manageGroupItem.setText(group.getName());
+        
+        groupName.setText(group.getName());
         background.setStyle("-fx-background-color: " + group.getColor());
     }
 

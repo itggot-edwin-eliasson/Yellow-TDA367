@@ -15,7 +15,7 @@ import javafx.util.Callback;
 
 import java.time.LocalDate;
 
-public class CalendarViewController {
+public class CalendarView {
     public void start(Stage primaryStage, Callback<DatePicker, DateCell> dayCellFactory, AnchorPane root) {
         try {
             //scene.getStylesheets().add(getClass().getResource("yellow.css").toExternalForm());

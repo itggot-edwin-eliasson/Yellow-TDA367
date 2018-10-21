@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 
-public class MenuScreenController extends ViewController {
+public class MenuScreen extends ViewController {
 
     @FXML private JFXButton toMyYellowButton;
     @FXML private JFXButton toManageMyYellowButton;
