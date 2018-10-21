@@ -96,7 +96,7 @@ public interface YellowHandlerInterface extends ObservableInterface{
      * @param endDate the date when the order will end.
      * @return true if the order was completed, else false.
      */
-    Boolean completeOrder(String startDate, String endDate);
+    Boolean completeOrder(String startDate, String endDate, String renterName, String renterPhoneNumber);
 
     GroupInterface getActiveGroup();
 

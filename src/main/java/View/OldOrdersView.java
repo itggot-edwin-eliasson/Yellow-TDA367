@@ -7,7 +7,7 @@ import javafx.scene.layout.FlowPane;
 
 import java.util.List;
 
-public class OldOrdersView extends ViewController implements Observer {
+public class OldOrdersView extends ViewParent implements Observer {
 
     @FXML private FlowPane oldOrdersFlowPane;
 

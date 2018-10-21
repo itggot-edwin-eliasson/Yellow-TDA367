@@ -4,6 +4,7 @@ import Model.ItemInterface;
 import Model.Observer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,12 +12,15 @@ import javafx.scene.layout.FlowPane;
 
 import java.util.List;
 
-public class ActiveOrderView extends ViewController implements Observer {
+public class ActiveOrderView extends ViewParent implements Observer {
 
     @FXML private FlowPane activeOrderFlowPane;
     @FXML private JFXButton confirmOrderButton;
     @FXML private JFXDatePicker startDateDatePicker;
     @FXML private JFXDatePicker returnDateDatePicker;
+
+    @FXML private JFXTextField renterNameTextField;
+    @FXML private JFXTextField renterPhoneNumberTextField;
 
     private EventHandler<ActionEvent> event;
 
@@ -47,6 +51,14 @@ public class ActiveOrderView extends ViewController implements Observer {
         return returnDateDatePicker.getValue().toString();
     }
 
+    public String getRenterName(){
+        return renterNameTextField.getText();
+    }
+
+    public String getRenterPhoneNumber(){
+        return renterPhoneNumberTextField.getText();
+    }
+
     public void injectOrderItemListener(EventHandler<ActionEvent> event){
         this.event = event;
     }
@@ -54,5 +66,7 @@ public class ActiveOrderView extends ViewController implements Observer {
     @Override
     public void update() {
         updateActiveOrders();
+        renterNameTextField.clear();
+        renterPhoneNumberTextField.clear();
     }
 }

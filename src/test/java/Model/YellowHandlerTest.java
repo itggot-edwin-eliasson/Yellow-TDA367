@@ -177,11 +177,11 @@ public class YellowHandlerTest {
         String itemID2 = yh.getItems().get(1).getId();
         yh.addItemToOrder(itemID);
         assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
-        assertTrue(yh.completeOrder("2018-10-14","2018-10-16"));
+        assertTrue(yh.completeOrder("2018-10-14","2018-10-16", "Hej", "hej"));
         yh.addItemToOrder(itemID);
         yh.addItemToOrder(itemID2);
         assertEquals(2,yh.getActiveGroup().getActiveOrder().getOrderList().size());
-        assertFalse(yh.completeOrder("2018-10-15","2018-10-18"));
+        assertFalse(yh.completeOrder("2018-10-15","2018-10-18","hej", "hej"));
         assertFalse(yh.completeOrderFailed().get(0));
         assertTrue(yh.completeOrderFailed().get(1));
     }
@@ -201,7 +201,7 @@ public class YellowHandlerTest {
         yh.addItemToOrder(itemID);
         assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
         String orderID = yh.getActiveGroup().getActiveOrder().getOrderID();
-        yh.completeOrder("2018-10-14","2018-10-16");
+        yh.completeOrder("2018-10-14","2018-10-16", "hej", "hej");
         yh.orderIsReturned(orderID);
         assertEquals(0,yh.getActiveGroup().getOrderList().size());
         assertEquals(1,yh.getActiveGroup().getOldOrders().size());

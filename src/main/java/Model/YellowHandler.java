@@ -150,11 +150,13 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     }
 
     @Override
-    public Boolean completeOrder(String startDate, String endDate) {
-        if(activegroup.orderIsCompleted(startDate, endDate)) {
-            System.out.println("hej");
+    public Boolean completeOrder(String startDate, String endDate, String renterName, String renterPhoneNumber) {
+        if(activegroup.orderIsCompleted(startDate, endDate, renterName, renterPhoneNumber)) {
+            activegroup.createOrder(generateUniqueKeyUsingUUID());
+            notifyObservers();
             return true;
         }
+        notifyObservers();
         return false;
     }
 

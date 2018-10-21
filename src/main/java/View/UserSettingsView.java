@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class UserSettingsView extends ViewController{
+public class UserSettingsView extends ViewParent{
 
     @FXML private JFXTextField usernameTextField;
     @FXML private JFXPasswordField passwordTextField;

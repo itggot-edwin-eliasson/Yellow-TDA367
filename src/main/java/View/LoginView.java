@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
-public class LoginView extends ViewController {
+public class LoginView extends ViewParent {
 
     @FXML private JFXTextField usernameField;
     @FXML private JFXPasswordField passwordField;

@@ -13,7 +13,7 @@ import javafx.scene.layout.FlowPane;
 
 import java.util.List;
 
-public class ManageMyYellow extends ViewController implements Observer {
+public class ManageMyYellow extends ViewParent implements Observer {
 
     @FXML private Button addGroupButton;
     @FXML private Button addInventoryButton;

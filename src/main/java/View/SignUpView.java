@@ -9,7 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class SignUpView extends ViewController {
+public class SignUpView extends ViewParent {
     
     @FXML private JFXTextField newUsernameField;
     @FXML private JFXPasswordField newPasswordField;

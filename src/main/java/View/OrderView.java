@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 
-public class OrderView extends ViewController {
+public class OrderView extends ViewParent {
 
     @FXML private JFXButton activeOrderButton;
     @FXML private JFXButton ongoingOrderButton;

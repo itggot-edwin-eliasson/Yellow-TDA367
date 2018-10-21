@@ -1,13 +1,3 @@
-import Controller.Main;
-import View.MainController;
-import Model.Group;
-import Model.Inventory;
-import Model.User;
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static junit.framework.TestCase.assertEquals;
 
 public class ControllerTest {

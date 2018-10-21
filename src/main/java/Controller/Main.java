@@ -96,20 +96,20 @@ public class Main extends Application {
             yellowLoader.setLocation(Main.class.getResource("../yellow.fxml"));
             yellow = (AnchorPane) yellowLoader.load();
 
-            MainController mainController = yellowLoader.getController();
-            yh.addObserver(mainController);
-            mainController.injectYellowHandler(yh);
-            mainController.injectGroupItemListener(event -> {
+            YellowView yellowView = yellowLoader.getController();
+            yh.addObserver(yellowView);
+            yellowView.injectYellowHandler(yh);
+            yellowView.injectGroupItemListener(event -> {
                 GroupItemView item = (GroupItemView)event.getSource();
                 yh.setActiveGroup(item.getGroup());
-                mainController.selectGroup();
+                yellowView.selectGroup();
                 event.consume();
             });
-            mainController.injectInventoryItemListener(event -> {
+            yellowView.injectInventoryItemListener(event -> {
                 InventoryItemView item = (InventoryItemView) event.getSource();
                 yh.selectInventory(item.getInventory().getID());
-                mainController.hideOrderPane();
-                mainController.updateItemList();
+                yellowView.hideOrderPane();
+                yellowView.updateItemList();
                 event.consume();
             });
 
@@ -122,7 +122,7 @@ public class Main extends Application {
             FXMLLoader drawerContentLoader = new FXMLLoader();
             drawerContentLoader.setLocation(Main.class.getResource("../drawer.fxml"));
             VBox drawerContent = (VBox) drawerContentLoader.load();
-            mainController.hamburgerSetup(drawerContent);
+            yellowView.hamburgerSetup(drawerContent);
 
             DrawerView drawerView = drawerContentLoader.getController();
 
@@ -163,13 +163,13 @@ public class Main extends Application {
 
             yh.addObserver(oldOrdersController);
 
-            mainController.injectItemItemListener(event -> {
+            yellowView.injectItemItemListener(event -> {
                 ItemItemView item = (ItemItemView) event.getSource();
                 showItemViewDialog(item.getItem());
                 event.consume();
             });
 
-            mainController.setOrderPane(order);
+            yellowView.setOrderPane(order);
             orderController.setOrderScrollPane(activeOrder);
 
             orderController.setActiveOrderButton(event -> {
@@ -185,31 +185,32 @@ public class Main extends Application {
                 event.consume();
             });
             activeOrderController.confirmOrderButton(event -> {
-                if(!yh.completeOrder(activeOrderController.getStartDate(), activeOrderController.getReturnDate())) {
+                if(!yh.completeOrder(activeOrderController.getStartDate(), activeOrderController.getReturnDate(),
+                        activeOrderController.getRenterName(),activeOrderController.getRenterPhoneNumber())) {
                     System.out.println("Idiot");
                 } else {
                     System.out.println("Coolt");
                 }
             });
 
-            mainController.updateGroupList();
+            yellowView.updateGroupList();
 
-            mainController.setOrderButton(event -> {
-                mainController.showOrderPane();
+            yellowView.setOrderButton(event -> {
+                yellowView.showOrderPane();
                 activeOrderController.updateActiveOrders();
                 event.consume();
             });
-            mainController.setBackToGroupsListener(event -> {
+            yellowView.setBackToGroupsListener(event -> {
                 yh.setActiveGroup(null);
-                mainController.backToGroups();
+                yellowView.backToGroups();
                 event.consume();
             });
-            mainController.setBackToMenuListener(event -> {
+            yellowView.setBackToMenuListener(event -> {
                 showMenuScreen();
                 event.consume();
             });
-            mainController.setBackToItemsButton(event -> {
-                mainController.hideOrderPane();
+            yellowView.setBackToItemsButton(event -> {
+                yellowView.hideOrderPane();
                 event.consume();
             });
             drawerView.logOut(event -> {

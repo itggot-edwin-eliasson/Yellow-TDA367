@@ -144,11 +144,11 @@ public class Group implements GroupInterface{
     }
 
     @Override
-    public Boolean orderIsCompleted(String startDate, String endDate){
+    public Boolean orderIsCompleted(String startDate, String endDate, String renterName, String renterPhoneNumber){
         if (allDatesAreOkay(startDate,endDate)){
             setItemsToOrdered(startDate,endDate);
+            activeOrder.setRenter(renterName,renterPhoneNumber);
             orderList.add(activeOrder);
-            activeOrder = null;
             return true;
         }
         return false;

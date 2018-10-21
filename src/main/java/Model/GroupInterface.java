@@ -109,7 +109,7 @@ public interface GroupInterface extends Serializable {
      * @param endDate end date of when you want to make the order.
      * @return true if it worked, false if it did not work.
      */
-    public Boolean orderIsCompleted(String startDate, String endDate);
+    public Boolean orderIsCompleted(String startDate, String endDate, String renterName, String renterPhoneNumber);
 
     public OrderInterface getActiveOrder();
 

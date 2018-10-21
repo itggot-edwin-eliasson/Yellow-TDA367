@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="55.0" prefWidth="425.0" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderItem">
+<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="55.0" prefWidth="425.0" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="orderDate" layoutX="14.0" layoutY="14.0" text="Order" textFill="WHITE" AnchorPane.leftAnchor="14.0">
          <font>
@@ -17,4 +17,4 @@
          </font>
       </Label>
    </children>
-</AnchorPane>
+</fx:root>

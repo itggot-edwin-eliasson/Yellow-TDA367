@@ -3,7 +3,7 @@ package View;
 import Model.YellowHandler;
 import Model.YellowHandlerInterface;
 
-public class ViewController {
+public class ViewParent {
 
     public YellowHandlerInterface yh;
 
