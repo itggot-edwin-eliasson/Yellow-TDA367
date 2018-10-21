@@ -27,6 +27,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
         groups.add(g);
         activeUser.addGroup(g.getId());
         notifyObservers();
+        activegroup = g;
     }
 
     @Override

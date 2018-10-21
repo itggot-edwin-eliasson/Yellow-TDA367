@@ -487,6 +487,8 @@ public class Main extends Application {
 
             if(controller.isOkClicked()){
                 yh.addItemToOrder(controller.getId());
+                JFXSnackbar snackbar = new JFXSnackbar(yellow);
+                snackbar.show("Item added to order",3000);
             }
 
         } catch (IOException e) {
@@ -670,6 +672,8 @@ public class Main extends Application {
 
             if(controller.isOkClicked())
                 yh.createGroup(controller.getGroupName(), controller.getGroupColor());
+                JFXSnackbar snackbar = new JFXSnackbar(menuScreen);
+                snackbar.show("Group created",3000);
 
         } catch (IOException e) {
             e.printStackTrace();
