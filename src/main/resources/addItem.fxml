@@ -34,7 +34,7 @@
             <JFXComboBox focusColor="#ffcc00" prefHeight="25.0" prefWidth="208.0" promptText="Choose Inventory" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="WHITE" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <JFXButton fx:id="addButton" layoutX="297.0" layoutY="358.0" onAction="#saveItem" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ffcc00;" text="Add item" AnchorPane.bottomAnchor="37.0" AnchorPane.rightAnchor="36.0" />
+      <JFXButton fx:id="addButton" layoutX="295.0" layoutY="360.0" onAction="#saveItem" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #ffcc00;" text="Add item" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="38.0" />
       <Label layoutX="39.0" layoutY="25.0" text="Add item" textFill="WHITE">
          <font>
             <Font size="14.0" />
@@ -45,6 +45,6 @@
             <Image url="@img/whiteitem.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="297.0" layoutY="151.0" style="-fx-background-color: rgba(0, 0, 0, 0.61);" text="Upload picture" textFill="WHITE" />
+      <JFXButton fx:id="uploadImageButton" layoutX="297.0" layoutY="151.0" style="-fx-background-color: rgba(0, 0, 0, 0.61);" text="Upload image" textFill="WHITE" />
    </children>
 </AnchorPane>

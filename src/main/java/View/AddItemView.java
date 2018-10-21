@@ -20,18 +20,12 @@ public class AddItemView {
 
     private boolean okClicked = false;
 
-    @FXML
-    JFXButton addButton;
+    @FXML private JFXButton cancelButton;
+    @FXML private TextField nameTextField;
+    @FXML private TextArea descriptionTextArea;
+    @FXML private TextField amountTextField;
+    @FXML private JFXButton uploadImageButton;
 
-    @FXML JFXButton cancelButton;
-
-    @FXML
-    TextField nameTextField;
-
-    @FXML
-    TextArea descriptionTextArea;
-
-    @FXML TextField amountTextField;
 
 
     public String getItemName () {
@@ -78,5 +72,12 @@ public class AddItemView {
         this.dialogStage = dialogStage;
     }
 
+    public void uploadImage(EventHandler<ActionEvent> clicked){
+        uploadImageButton.setOnAction(clicked);
+    }
+
+    public void itemAmount(EventHandler<ActionEvent> clicked){
+        amountTextField.setOnAction(clicked);
+    }
 
 }

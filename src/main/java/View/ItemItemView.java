@@ -43,4 +43,11 @@ public class ItemItemView extends AnchorPane {
     public void selectItem(EventHandler<MouseEvent> event){
         background.setOnMouseClicked(event);
     }
+
+
+    public void setItemName(Label itemName) {
+        this.itemName = itemName;
+    }
+
 }
+
