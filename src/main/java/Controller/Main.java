@@ -311,6 +311,10 @@ public class Main extends Application {
                 showCreateGroupDialog();
                 event.consume();
             });
+            controller.signOut(event -> {
+                showLogin();
+                yh.setActiveUserToNull();
+            });
 
         } catch (IOException e){
             e.printStackTrace();
