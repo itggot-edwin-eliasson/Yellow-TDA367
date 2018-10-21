@@ -18,6 +18,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     public List<GroupInterface> groups = new ArrayList<>();
     public List<UserInterface> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
+    private GroupFactory gf = new GroupFactory();
 
     /**
      * Creates a handler of the model
@@ -37,7 +38,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
      */
     @Override
     public void createGroup(String groupName, String color){
-        GroupInterface g = new Group(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
+        GroupInterface g = gf.createGroup(groupName, color, generateUniqueKeyUsingUUID(), groupInviteCodes);
         groupInviteCodes.add(g.getInviteCode());
         String id = generateUniqueKeyUsingUUID();
         g.createInventory("All items", id);
