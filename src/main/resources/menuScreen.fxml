@@ -20,26 +20,27 @@
                <font>
                   <Font size="18.0" />
                </font></JFXButton>
-            <JFXButton fx:id="createGroupButton" layoutX="210.0" layoutY="1.0" prefHeight="115.0" prefWidth="194.0" text="Create group" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <JFXButton fx:id="joinGroupButton" layoutX="210.0" layoutY="1.0" prefHeight="115.0" prefWidth="194.0" text="Join group" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="18.0" />
-               </font></JFXButton>
+               </font>
+            </JFXButton>
             <JFXButton fx:id="toManageMyYellowButton" layoutY="109.0" prefHeight="115.0" prefWidth="194.0" text="Manage my Yellow" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                <font>
                   <Font size="18.0" />
                </font></JFXButton>
-            <JFXButton fx:id="joinGroupButton" layoutX="210.0" layoutY="1.0" prefHeight="115.0" prefWidth="194.0" text="Join group" textFill="WHITE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <JFXButton fx:id="createGroupButton" prefHeight="115.0" prefWidth="194.0" text="Create group" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
          </children>
       </AnchorPane>
+      <JFXButton fx:id="signOutButton" layoutX="24.0" layoutY="361.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);" text="Sign out" textFill="WHITE" />
       <Label layoutX="254.0" layoutY="26.0" text="Yellow" textFill="WHITE">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <JFXButton fx:id="signOutButton" layoutX="24.0" layoutY="361.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: rgba(0, 0, 0, 0.80);" text="Sign out" textFill="WHITE" />
    </children>
 </AnchorPane>

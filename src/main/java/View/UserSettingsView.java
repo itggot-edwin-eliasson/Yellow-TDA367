@@ -28,9 +28,7 @@ public class UserSettingsView {
 
 
 
-    public void initialize(){
-
-    }
+    public void initialize(){}
 
     public void setFields (UserInterface activeUser) {
         firstNameTextField.setText(activeUser.getFirstName());
