@@ -66,6 +66,7 @@ public class Order implements OrderInterface{
 
     @Override
     public String getDateOfReturn(){
+        System.out.println(dateOfReturn);
         return dateOfReturn;
     }
 

@@ -76,7 +76,6 @@ public class YellowView extends ViewParent implements Observer {
         backToMenuButton.setVisible(false);
         orderButton.setVisible(true);
         listFlowPane.toFront();
-        drawer.toFront();
         hamburger.toFront();
         updateInventoryList();
         updateItemList();
@@ -85,6 +84,7 @@ public class YellowView extends ViewParent implements Observer {
     public void backToGroups(){
         backButton.setVisible(false);
         backToMenuButton.setVisible(true);
+        backToItemsButton.setVisible(false);
         orderButton.setVisible(false);
         orderBorderPane.toBack();
         title.setText("Groups");
@@ -140,7 +140,6 @@ public class YellowView extends ViewParent implements Observer {
 
     public void showOrderPane(){
         orderBorderPane.toFront();
-        drawer.toFront();
         hamburger.toFront();
         backToItemsButton.setVisible(true);
     }
@@ -167,7 +166,10 @@ public class YellowView extends ViewParent implements Observer {
 
             if (drawer.isOpened()) {
                 drawer.close();
+                drawer.toBack();
             } else {
+                drawer.toFront();
+                hamburger.toFront();
                 drawer.open();
             }
         });

@@ -32,7 +32,7 @@
          <children>
             <JFXTextField fx:id="renterNameTextField" focusColor="#ffcc00" promptText="Renter name" style="-fx-text-fill: white;" GridPane.rowIndex="1" />
             <JFXTextField fx:id="renterPhoneNumberTextField" focusColor="#ffcc00" promptText="Renter phone number" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXDatePicker fx:id="startDateDatePicker" defaultColor="#ffcc00" promptText="Start date" style="-fx-text-fill: white;" GridPane.rowIndex="2" />
+            <JFXDatePicker fx:id="startDateDatePicker" defaultColor="#ffcc00" promptText="Start date" style="-fx-text-fill: #ffffff;" GridPane.rowIndex="2" />
             <JFXDatePicker fx:id="returnDateDatePicker" defaultColor="#ffcc00" promptText="Return date" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>

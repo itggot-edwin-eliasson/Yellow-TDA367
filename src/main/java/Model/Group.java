@@ -148,7 +148,10 @@ public class Group implements GroupInterface{
         if (allDatesAreOkay(startDate,endDate)){
             setItemsToOrdered(startDate,endDate);
             activeOrder.setRenter(renterName,renterPhoneNumber);
+            activeOrder.setOrderDate(startDate);
+            activeOrder.setDateOfReturn(endDate);
             orderList.add(activeOrder);
+            activeOrder = null;
             return true;
         }
         return false;
