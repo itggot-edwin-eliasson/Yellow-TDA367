@@ -35,22 +35,19 @@ public class AddItemView {
         return descriptionTextArea.getText();
     }
 
-    /*public int getAmount () {
-        try {
-            int amount = Integer.parseInt(amountTextField.getText());
-            return amount;
-
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(dialogStage);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
-            alert.setContentText(e.toString());
-
-            alert.showAndWait();
-            return null;
+    public int getAmount(){
+        String amount = amountTextField.getText();
+        for (char c : amount.toCharArray()){
+            if(!Character.isDigit(c)){
+                return 0;
+            }
         }
-    }*/
+        if(!amount.isEmpty()){
+            return Integer.parseInt(amount);
+        }else {
+            return 1;
+        }
+    }
 
     public boolean isOkClicked(){
         return okClicked;

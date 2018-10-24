@@ -523,8 +523,14 @@ public class Main extends Application {
             dialogStage.showAndWait();
 
             if (controller.isOkClicked()) {
-                yh.addItem(controller.getItemName(), controller.getItemDescription(),
-                        yh.getActiveGroup().getSelectedInventory().getID(),1);
+                if(controller.getAmount() != 0){
+                    yh.addItem(controller.getItemName(), controller.getItemDescription(),
+                            yh.getActiveGroup().getSelectedInventory().getID(), controller.getAmount());
+                }else{
+                    JFXSnackbar snackbar = new JFXSnackbar(manageMyYellowScreen);
+                    snackbar.show("You must add a proper amount to add item",3000);
+                }
+
             }
 
         } catch (IOException e) {

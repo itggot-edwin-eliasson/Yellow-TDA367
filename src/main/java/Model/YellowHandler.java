@@ -11,10 +11,6 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     private GroupFactory gf = new GroupFactory();
     private UserFactory uf = new UserFactory();
 
- /*   public YellowHandler (List <UserInterface> users, List <GroupInterface> groups){
-        this.users = users;
-        this.groups = groups;
-    }*/
 
     @Override
     public void createGroup(String groupName, String color){
@@ -91,6 +87,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
 
     @Override
     public void addItem (String name, String description, String inventoryId, int amount) {
+        System.out.println(amount);
         for(int i = 0; i < amount; i++) {
             String id = generateUniqueKeyUsingUUID();
             activegroup.addItem(name, description, id, inventoryId);
