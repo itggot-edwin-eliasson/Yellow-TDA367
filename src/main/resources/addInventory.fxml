@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="194.0" prefWidth="380.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddInventoryView">
+<AnchorPane prefHeight="194.0" prefWidth="380.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AddInventoryView">
    <children>
       <Label layoutX="21.0" layoutY="21.0" text="Add inventory" textFill="WHITE">
          <font>
@@ -21,6 +16,6 @@
       <JFXButton layoutX="190.0" layoutY="118.0" onAction="#cancelInventory" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="129.0" />
       <JFXButton layoutX="255.0" layoutY="118.0" onAction="#saveInventory" style="-fx-background-color: #ffcc00;" text="Add Inventory" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
       <JFXTextField fx:id="nameTextField" focusColor="#ffcc00" layoutX="21.0" layoutY="55.0" promptText="Inventory name" style="-fx-prompt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffbfb" />
-      <JFXComboBox focusColor="#ffcc00" layoutX="21.0" layoutY="106.0" prefHeight="27.0" prefWidth="151.0" promptText="Select Group" style="-fx-promt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffbfb" />
+      <JFXComboBox fx:id="groupsComboBox" focusColor="#ffcc00" layoutX="21.0" layoutY="106.0" prefHeight="27.0" prefWidth="151.0" promptText="Select Group" style="-fx-promt-text-fill: rgba(255,255,255, 0.7); -fx-text-fill: white;" unFocusColor="#fffbfb" />
    </children>
 </AnchorPane>

@@ -1,25 +1,28 @@
 package View;
 
+import Model.Group;
+import Model.GroupInterface;
+import Model.YellowHandlerInterface;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddInventoryView {
+import java.util.HashMap;
+
+public class AddInventoryView extends ViewParent {
 
     private Stage dialogStage;
 
     private boolean okClicked = false;
 
-    @FXML
-    JFXButton addButton;
-
-    @FXML JFXButton cancelButton;
-
-    @FXML
-    TextField nameTextField;
-
+    @FXML private JFXButton addButton;
+    @FXML private JFXButton cancelButton;
+    @FXML private JFXComboBox groupsComboBox;
+    @FXML private TextField nameTextField;
 
     public String getInventoryName () {
         return nameTextField.getText();
@@ -45,5 +48,29 @@ public class AddInventoryView {
         this.dialogStage = dialogStage;
     }
 
+    @Override
+    public void injectYellowHandler(YellowHandlerInterface yh){
+        super.yh = yh;
+        setComboBox();
+    }
+
+    private void setComboBox(){
+    }
+
+    private ListCell<GroupInterface> createCell() {
+        return new ListCell<GroupInterface>() {
+            @Override
+            protected void updateItem(GroupInterface item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.getName());
+                }
+            }
+        };
+    }
 
 }

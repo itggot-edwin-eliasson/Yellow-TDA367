@@ -640,6 +640,7 @@ public class Main extends Application {
 
             // Set the person into the controller.
             AddInventoryView controller = loader.getController();
+            controller.injectYellowHandler(yh);
             controller.setDialogStage(dialogStage);
 
             // Show the dialog and wait until the user closes it
