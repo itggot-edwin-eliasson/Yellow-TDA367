@@ -40,7 +40,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="125.0" fitWidth="130.0" layoutX="276.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-border: white;">
+      <ImageView fx:id="itemImageView" fitHeight="125.0" fitWidth="130.0" layoutX="276.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-border: white;">
          <image>
             <Image url="@img/whiteitem.png" />
          </image>

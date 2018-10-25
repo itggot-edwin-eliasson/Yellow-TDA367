@@ -17,7 +17,7 @@ public class Item implements ItemInterface{
     private Map<String , String> rentedDates = new HashMap<>();
     private int orderCount = 0;
     private Boolean isRented = false;
-    private Image image;
+    private String imagePath;
 
     /**
      *
@@ -93,11 +93,6 @@ public class Item implements ItemInterface{
     @Override
     public void addCategory(String category){
         categories.add(category);
-    }
-
-    @Override
-    public Image getImage() {
-        return image;
     }
 
     @Override

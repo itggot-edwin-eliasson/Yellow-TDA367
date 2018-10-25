@@ -19,6 +19,9 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import javafx.stage.FileChooser;
+import javafx.scene.image.Image;
+
 
 import java.io.*;
 import java.util.*;
@@ -521,6 +524,23 @@ public class Main extends Application {
 
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
+
+            yh.addObserver(controller);
+            controller.injectYellowHandler(yh);
+
+            controller.uploadImage(event -> {
+                System.out.println("loading image....");
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.getExtensionFilters().add(
+                        new FileChooser.ExtensionFilter("Images", "*.jpg", "*.jpeg", "*.png"));
+                File selectedFile = fileChooser.showOpenDialog(null);
+                if(selectedFile != null){
+                    String imagePath = selectedFile.toURI().toString();
+                    controller.setImage(new Image(imagePath));
+                }
+
+            });
+
 
             if (controller.isOkClicked()) {
                 if(controller.getAmount() != 0){

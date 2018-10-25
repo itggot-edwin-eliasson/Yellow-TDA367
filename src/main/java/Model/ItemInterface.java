@@ -19,7 +19,6 @@ public interface ItemInterface extends Serializable {
 
     public void addCategory(String category);
 
-    public Image getImage();
 
     public void setIsRented(Boolean isRented);
 

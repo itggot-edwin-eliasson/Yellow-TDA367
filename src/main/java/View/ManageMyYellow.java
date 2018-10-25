@@ -4,6 +4,7 @@ import Model.GroupInterface;
 import Model.InventoryInterface;
 import Model.ItemInterface;
 import Model.Observer;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
