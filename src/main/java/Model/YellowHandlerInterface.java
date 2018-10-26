@@ -112,8 +112,9 @@ public interface YellowHandlerInterface extends ObservableInterface{
     /**
      * Creates a new inventory into the active group.
      * @param name name of the inventory that will be created.
+     * @param group the group where the inventory will be created.
      */
-    void createInventory(String name);
+    void createInventory(String name, GroupInterface group);
 
     /**
      * Use this function when the order could not be completed.

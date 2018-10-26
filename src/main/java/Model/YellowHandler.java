@@ -86,7 +86,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     }
 
     @Override
-    public void addItem (String name, String description, String imageUrl, String inventoryId, int amount) {
+    public void addItem(String name, String description, String imageUrl, String inventoryId, int amount) {
         System.out.println(amount);
         for(int i = 0; i < amount; i++) {
             String id = generateUniqueKeyUsingUUID();
@@ -185,9 +185,8 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     }
 
     @Override
-    public void createInventory(String name) {
-        if(activegroup != null)
-            activegroup.createInventory(name, generateUniqueKeyUsingUUID());
+    public void createInventory(String name, GroupInterface group) {
+        group.createInventory(name, generateUniqueKeyUsingUUID());
         notifyObservers();
     }
 

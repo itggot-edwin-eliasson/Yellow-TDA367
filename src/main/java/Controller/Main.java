@@ -694,7 +694,7 @@ public class Main extends Application {
             dialogStage.showAndWait();
 
             if (controller.isOkClicked()) {
-                yh.createInventory(controller.getInventoryName());
+                yh.createInventory(controller.getInventoryName(), controller.getSelectedGroup());
             }
 
         } catch (IOException e) {

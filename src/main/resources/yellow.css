@@ -11,9 +11,15 @@
 .jfx-snackbar-action {
     -fx-text-fill: #ff4081;
 }
+
 .jfx-date-picker .text-field{
 	-jfx-focus-color: #ffcc00;
 	-fx-text-fill: white;
+}
+
+.combo-box .list-cell:filled:selected .text,
+.choice-box .list-cell:filled:selected .text {
+	-fx-fill: white;
 }
 
 .jfx-hamburger StackPane {

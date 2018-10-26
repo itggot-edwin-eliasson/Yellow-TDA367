@@ -1,7 +1,13 @@
 package View;
 
+import Model.GroupInterface;
+import Model.InventoryInterface;
 import Model.Observer;
+import Model.YellowHandlerInterface;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
@@ -29,6 +35,8 @@ public class AddItemView extends ViewParent implements Observer {
     private Button uploadImageButton;
     @FXML
     private ImageView itemImageView;
+    @FXML private JFXComboBox groupComboBox;
+    @FXML private JFXComboBox inventoryComboBox;
 
 
     public int getAmount() {
@@ -87,6 +95,67 @@ public class AddItemView extends ViewParent implements Observer {
 
     public Image getImage(){
         return itemImageView.getImage();
+    }
+
+    @Override
+    public void injectYellowHandler(YellowHandlerInterface yh){
+        super.yh = yh;
+        setGroupComboBox();
+        setInventoryComboBox();
+    }
+
+    private void setInventoryComboBox(){
+        GroupInterface group = (GroupInterface) groupComboBox.getValue();
+        ObservableList<InventoryInterface> inventories = FXCollections.observableArrayList(group.getInventories());
+
+        inventoryComboBox.setCellFactory(lv -> createInventoryCell());
+        inventoryComboBox.setButtonCell(createInventoryCell());
+        inventoryComboBox.setItems(inventories);
+
+        inventoryComboBox.setValue(group.getSelectedInventory());
+    }
+
+    private void setGroupComboBox(){
+        ObservableList<GroupInterface> groups = FXCollections.observableArrayList(super.yh.getGroups());
+
+        groupComboBox.setCellFactory(lv -> createGroupCell());
+        groupComboBox.setButtonCell(createGroupCell());
+        groupComboBox.setItems(groups);
+
+        groupComboBox.setValue(super.yh.getActiveGroup());
+    }
+
+    private ListCell<GroupInterface> createGroupCell() {
+        return new ListCell<GroupInterface>() {
+            @Override
+            protected void updateItem(GroupInterface item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.getName());
+                    setInventoryComboBox();
+                }
+            }
+        };
+    }
+
+    private ListCell<InventoryInterface> createInventoryCell() {
+        return new ListCell<InventoryInterface>() {
+            @Override
+            protected void updateItem(InventoryInterface item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(item.getName());
+                }
+            }
+        };
     }
 
     @Override

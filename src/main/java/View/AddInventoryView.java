@@ -57,6 +57,10 @@ public class AddInventoryView extends ViewParent {
         setComboBox();
     }
 
+    public GroupInterface getSelectedGroup(){
+        return (GroupInterface) groupsComboBox.getValue();
+    }
+
     private void setComboBox(){
         ObservableList<GroupInterface> groups = FXCollections.observableArrayList(super.yh.getGroups());
 
