@@ -4,6 +4,7 @@ import Model.*;
 import View.*;
 import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -23,6 +25,7 @@ import javafx.stage.FileChooser;
 import javafx.scene.image.Image;
 
 
+import javax.imageio.ImageIO;
 import java.io.*;
 import java.util.*;
 
@@ -523,7 +526,7 @@ public class Main extends Application {
             controller.setDialogStage(dialogStage);
 
             // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
+
 
             yh.addObserver(controller);
             controller.injectYellowHandler(yh);
@@ -542,9 +545,13 @@ public class Main extends Application {
             });
 
 
+            dialogStage.showAndWait();
+
             if (controller.isOkClicked()) {
                 if(controller.getAmount() != 0){
-                    yh.addItem(controller.getItemName(), controller.getItemDescription(),
+
+                    String imageUrl = saveToFile(controller.getImage(),controller.getItemName(), 0);
+                    yh.addItem(controller.getItemName(), controller.getItemDescription(), imageUrl,
                             yh.getActiveGroup().getSelectedInventory().getID(), controller.getAmount());
                 }else{
                     JFXSnackbar snackbar = new JFXSnackbar(manageMyYellowScreen);
@@ -557,6 +564,23 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
+    }
+
+    private String saveToFile(Image image, String itemName, int num) {
+        String imageUrl;
+        File outputFile = new File("src/main/resources/img/" + itemName + num + ".png");
+        if(outputFile.exists()) {
+            imageUrl = saveToFile(image, itemName, num++);
+        } else {
+            BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
+            try {
+                boolean val = ImageIO.write(bImage, "png", outputFile);
+                imageUrl = outputFile.toURI().toURL().toString();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return imageUrl;
     }
 
     private void showUserSettingsView(){

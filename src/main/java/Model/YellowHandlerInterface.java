@@ -50,10 +50,11 @@ public interface YellowHandlerInterface extends ObservableInterface{
      * Creates and adds a new item to an inventory
      * @param name name of the item you want to create.
      * @param description description of the item you want to create.
+     * @param imageUrl reference to the image of the item.
      * @param inventoryId ID of the inventory the item should be placed in.
      * @param amount how many of the same items that should be created.
      */
-    void addItem(String name, String description, String inventoryId, int amount);
+    void addItem(String name, String description, String imageUrl, String inventoryId, int amount);
 
     /**
      * Removes an item from the selected inventory.

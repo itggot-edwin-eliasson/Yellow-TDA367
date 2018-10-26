@@ -66,7 +66,6 @@ public class AddItemView extends ViewParent implements Observer {
     }
 
     public void uploadImage(EventHandler<ActionEvent> clicked) {
-        System.out.println("Upload image button");
         uploadImageButton.setOnAction(clicked);
     }
 
@@ -84,6 +83,10 @@ public class AddItemView extends ViewParent implements Observer {
 
     public String getItemDescription() {
         return descriptionTextArea.getText();
+    }
+
+    public Image getImage(){
+        return itemImageView.getImage();
     }
 
     @Override

@@ -5,6 +5,8 @@ import Model.GroupInterface;
 import Model.YellowHandlerInterface;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
@@ -12,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class AddInventoryView extends ViewParent {
 
@@ -55,9 +58,16 @@ public class AddInventoryView extends ViewParent {
     }
 
     private void setComboBox(){
+        ObservableList<GroupInterface> groups = FXCollections.observableArrayList(super.yh.getGroups());
+
+        groupsComboBox.setCellFactory(lv -> createGroupCell());
+        groupsComboBox.setButtonCell(createGroupCell());
+        groupsComboBox.setItems(groups);
+
+        groupsComboBox.setValue(super.yh.getActiveGroup());
     }
 
-    private ListCell<GroupInterface> createCell() {
+    private ListCell<GroupInterface> createGroupCell() {
         return new ListCell<GroupInterface>() {
             @Override
             protected void updateItem(GroupInterface item, boolean empty) {
