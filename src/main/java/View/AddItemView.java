@@ -4,6 +4,7 @@ import Model.Observer;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -25,7 +26,7 @@ public class AddItemView extends ViewParent implements Observer {
     @FXML
     private TextField amountTextField;
     @FXML
-    private JFXButton uploadImageButton;
+    private Button uploadImageButton;
     @FXML
     private ImageView itemImageView;
 
@@ -64,7 +65,10 @@ public class AddItemView extends ViewParent implements Observer {
         dialogStage.close();
     }
 
-    public void uploadImage(EventHandler<ActionEvent> clicked) {uploadImageButton.setOnAction(clicked); }
+    public void uploadImage(EventHandler<ActionEvent> clicked) {
+        System.out.println("Upload image button");
+        uploadImageButton.setOnAction(clicked);
+    }
 
     public void itemAmount(EventHandler<ActionEvent> clicked) { amountTextField.setOnAction(clicked); }
 

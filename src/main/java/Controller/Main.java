@@ -538,7 +538,7 @@ public class Main extends Application {
                     String imagePath = selectedFile.toURI().toString();
                     controller.setImage(new Image(imagePath));
                 }
-
+                event.consume();
             });
 
 
