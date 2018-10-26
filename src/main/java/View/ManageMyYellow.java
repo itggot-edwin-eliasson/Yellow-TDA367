@@ -56,6 +56,9 @@ public class ManageMyYellow extends ViewParent implements Observer {
         for(GroupInterface group: groups){
             ManageGroupItemView groupItem = new ManageGroupItemView(group);
             groupItem.selectGroup(groupItemClick);
+            if(group == super.yh.getActiveGroup()){
+                groupItem.setHighlighted();
+            }
             manageGroupFlowPane.getChildren().add(groupItem);
         }
     }
@@ -66,6 +69,9 @@ public class ManageMyYellow extends ViewParent implements Observer {
         for(InventoryInterface inventory: inventories){
             ManageInventoryItemView inventoryItem = new ManageInventoryItemView(inventory);
             inventoryItem.selectInventory(inventoryItemClick);
+            if(inventory == super.yh.getActiveGroup().getSelectedInventory()){
+                inventoryItem.setHighlighted();
+            }
             manageInventoryFlowPane.getChildren().add(inventoryItem);
         }
     }

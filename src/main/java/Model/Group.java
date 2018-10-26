@@ -201,6 +201,16 @@ public class Group implements GroupInterface{
     public List<OrderInterface> getOrderList(){return orderList;}
 
     @Override
+    public void setName(String name){
+        this.name = name;
+    }
+
+    @Override
+    public void setColor(String color){
+        this.color = color;
+    }
+
+    @Override
     public void updateInventory() {
         for (ItemInterface item: selectedInventory.getItemList()){
             item.setIsRented(item.checkDateIsNotInRentedPeriod(getCurrentTimeStamp()));

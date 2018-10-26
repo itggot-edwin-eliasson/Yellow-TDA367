@@ -16,16 +16,6 @@ import javafx.scene.layout.*;
 import java.io.*;
 import java.util.*;
 
-/**
- * @date 2018-10-02
- * ---
- * 05/10 Modified by Viktor. Added methods to save and load groups, inventories and users. Also getters/setters.
- *
- *
- *@author Viktor
- *@date 2018-10-04
- *
- */
 public class YellowView extends ViewParent implements Observer {
 
     private List<GroupInterface> allGroups = new ArrayList<>();
@@ -124,6 +114,11 @@ public class YellowView extends ViewParent implements Observer {
         for(InventoryInterface inventory: inventories){
             InventoryItemView item = new InventoryItemView(inventory);
             item.selectInventory(inventoryItemClick);
+            if(super.yh.getActiveGroup().getSelectedInventory()==inventory){
+                item.setHighlighted();
+            }else{
+                item.setNotHighlighted();
+            }
             groupListFlowPane.getChildren().add(item);
         }
     }

@@ -44,6 +44,14 @@ public class GroupItemView extends AnchorPane {
         background.setOnMouseClicked(clicked);
 
     }
+    @FXML
+    public void onMouseEntered(){
+        background.setOpacity(0.8);
+    }
+    @FXML
+    public void onMouseExited(){
+        background.setOpacity(1);
+    }
 
     public GroupInterface getGroup(){
         return group;

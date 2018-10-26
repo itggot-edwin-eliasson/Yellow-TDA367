@@ -42,4 +42,9 @@ public class ManageInventoryItemView extends AnchorPane {
     public InventoryInterface getInventory(){
         return inventory;
     }
+
+    public void setHighlighted() {
+        background.setOpacity(0.75);
+    }
+
 }

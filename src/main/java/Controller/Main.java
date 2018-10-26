@@ -91,9 +91,8 @@ public class Main extends Application {
 
 
     private void showYellow(){
-
+        yh.setActiveGroup(null);
         rootLayout.setCenter(yellow);
-
     }
 
     private void yellowSetup(){
@@ -116,6 +115,7 @@ public class Main extends Application {
                 yh.selectInventory(item.getInventory().getID());
                 yellowView.hideOrderPane();
                 yellowView.updateItemList();
+                yellowView.updateInventoryList();
                 event.consume();
             });
 
@@ -425,12 +425,15 @@ public class Main extends Application {
             controller.injectYellowHandler(yh);
             controller.injectGroupItemListener(event -> {
                 ManageGroupItemView item = (ManageGroupItemView) event.getSource();
+                item.setHighlighted();
                 yh.setActiveGroup(item.getGroup());
                 event.consume();
             });
             controller.injectInventoryItemListener(event -> {
                 ManageInventoryItemView item = (ManageInventoryItemView) event.getSource();
+                item.setHighlighted();
                 yh.selectInventory(item.getInventory().getID());
+                controller.update();
                 controller.updateItemList();
                 event.consume();
             });

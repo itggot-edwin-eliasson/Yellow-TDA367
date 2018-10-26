@@ -37,10 +37,13 @@ public class ManageGroupItemView extends AnchorPane {
 
     public void selectGroup(EventHandler<MouseEvent> clicked){
         background.setOnMouseClicked(clicked);
-
     }
 
     public GroupInterface getGroup(){
         return group;
+    }
+
+    public void setHighlighted() {
+        background.setOpacity(0.75);
     }
 }

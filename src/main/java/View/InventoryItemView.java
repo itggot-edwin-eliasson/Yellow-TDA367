@@ -33,12 +33,18 @@ public class InventoryItemView extends AnchorPane {
 
         inventoryName.setText(inventory.getName());
     }
-
+    public void setHighlighted(){
+        inventoryBackground.setOpacity(1);
+    }
     public void selectInventory(EventHandler<MouseEvent> event){
         inventoryBackground.setOnMouseClicked(event);
     }
 
     public InventoryInterface getInventory(){
         return inventory;
+    }
+
+    public void setNotHighlighted() {
+        inventoryBackground.setOpacity(0.4);
     }
 }

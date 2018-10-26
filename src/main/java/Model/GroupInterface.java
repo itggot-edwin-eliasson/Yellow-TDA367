@@ -97,6 +97,10 @@ public interface GroupInterface extends Serializable {
      */
     void orderIsReturned(String orderID);
 
+    void setName(String name);
+
+    void setColor(String color);
+
     /**
      * Updates the isRented variable for every item in the selected inventory compared to today.
      */
