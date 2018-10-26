@@ -9,10 +9,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.*;
 
+import javax.swing.text.html.ImageView;
 import java.io.*;
 import java.util.*;
 
@@ -130,6 +132,9 @@ public class YellowView extends ViewParent implements Observer {
             ItemItemView itemItem = new ItemItemView(item);
             itemItem.selectItem(itemItemClick);
             listFlowPane.getChildren().add(itemItem);
+            if(item.getImageURL()!= ""){
+                itemItem.setImage(new Image(item.getImageURL()));
+            }
         }
     }
 

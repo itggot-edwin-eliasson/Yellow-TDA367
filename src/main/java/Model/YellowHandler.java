@@ -90,7 +90,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
         System.out.println(amount);
         for(int i = 0; i < amount; i++) {
             String id = generateUniqueKeyUsingUUID();
-            activegroup.addItem(name, description, id, inventoryId);
+            activegroup.addItem(name, description, id, inventoryId, imageUrl);
         }
         notifyObservers();
     }
@@ -191,8 +191,22 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     }
 
     @Override
-    public List<Boolean> completeOrderFailed(){
-         return activegroup.getActiveOrder().getIsRentable();
+    public String completeOrderFailed(){
+        List<Boolean> whoFailedList = activegroup.getActiveOrder().getIsRentable();
+        StringBuilder whoFailedMessage = new StringBuilder();
+        int count = 0;
+        whoFailedMessage.append("The item(s) at place ");
+        for (int i = 0; i < whoFailedList.size(); i++) {
+            if(!whoFailedList.get(i)){
+                if(count>0){
+                    whoFailedMessage.append(",");
+                }
+                whoFailedMessage.append(i+1+" ");
+                count++;
+            }
+        }
+        whoFailedMessage.append("are not available for rent during this period");
+        return whoFailedMessage.toString();
     }
 
     public void updateInventory() {

@@ -81,7 +81,7 @@ public interface GroupInterface extends Serializable {
      * @param id ID generated in YellowHandler class.
      * @param inventoryId ID of the inventory where the item should be placed.
      */
-    public void addItem(String name, String description, String id, String inventoryId);
+    public void addItem(String name, String description, String id, String inventoryId, String imageURL);
 
     /**
      * Removes an item with a certain ID from the selected inventory.

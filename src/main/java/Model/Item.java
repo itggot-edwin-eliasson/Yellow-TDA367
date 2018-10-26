@@ -17,17 +17,18 @@ public class Item implements ItemInterface{
     private Map<String , String> rentedDates = new HashMap<>();
     private int orderCount = 0;
     private Boolean isRented = false;
-    private String imagePath;
+    private String imageURL;
 
     /**
      *
      * @param name The name of the item
      * @param description The description of the item
      */
-    public Item (String name, String description, String ID) {
+    public Item (String name, String description, String ID, String imageURL) {
         this.name = name;
         this.description = description;
         this.id = ID;
+        this.imageURL = imageURL;
     }
 
     @Override
@@ -103,5 +104,10 @@ public class Item implements ItemInterface{
     @Override
     public Boolean getIsRented(){
         return isRented;
+    }
+
+    @Override
+    public String getImageURL(){
+        return imageURL;
     }
 }

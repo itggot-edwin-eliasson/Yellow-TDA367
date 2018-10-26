@@ -42,8 +42,8 @@ public class Group implements GroupInterface{
     }
 
     @Override
-    public void addItem(String name, String description, String id, String inventoryId) {
-        ItemInterface item = selectedInventory.addItem(name, description, id);
+    public void addItem(String name, String description, String id, String inventoryId, String imageURL) {
+        ItemInterface item = selectedInventory.addItem(name, description, id, imageURL);
         if(!selectedInventory.getName().equals("All items"))
             inventories.get(0).addItemToList(item);
     }

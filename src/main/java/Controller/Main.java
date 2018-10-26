@@ -19,6 +19,7 @@ import javafx.util.Callback;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 
 import javafx.stage.FileChooser;
@@ -45,6 +46,7 @@ public class Main extends Application {
     private FXMLLoader signUpLoader;
     private FXMLLoader manageMyYellowLoader;
     private YellowHandlerInterface yh;
+    private String tmpImageURL = "";
 
     public static void main(String[] args){
         launch(args);
@@ -193,9 +195,9 @@ public class Main extends Application {
             activeOrderController.confirmOrderButton(event -> {
                 if(!yh.completeOrder(activeOrderController.getStartDate(), activeOrderController.getReturnDate(),
                         activeOrderController.getRenterName(),activeOrderController.getRenterPhoneNumber())) {
-                    System.out.println("Idiot");
-                } else {
-                    System.out.println("Coolt");
+                    yh.completeOrderFailed();
+                    JFXSnackbar snackbar = new JFXSnackbar(yellow);
+                    snackbar.show(yh.completeOrderFailed(),5000);
                 }
             });
 
@@ -553,9 +555,10 @@ public class Main extends Application {
             if (controller.isOkClicked()) {
                 if(controller.getAmount() != 0){
 
-                    String imageUrl = saveToFile(controller.getImage(),controller.getItemName(), 0);
-                    yh.addItem(controller.getItemName(), controller.getItemDescription(), imageUrl,
+                    saveToFile(controller.getImage(),controller.getItemName(), 0);
+                    yh.addItem(controller.getItemName(), controller.getItemDescription(), tmpImageURL,
                             yh.getActiveGroup().getSelectedInventory().getID(), controller.getAmount());
+                    tmpImageURL = "";
                 }else{
                     JFXSnackbar snackbar = new JFXSnackbar(manageMyYellowScreen);
                     snackbar.show("You must add a proper amount to add item",3000);
@@ -569,21 +572,23 @@ public class Main extends Application {
 
     }
 
-    private String saveToFile(Image image, String itemName, int num) {
-        String imageUrl;
-        File outputFile = new File("src/main/resources/img/" + itemName + num + ".png");
-        if(outputFile.exists()) {
-            imageUrl = saveToFile(image, itemName, num++);
+    private void saveToFile(Image image, String itemName, int num) {
+        String imageUrl = "";
+        Image testImage = new Image("file:src/main/resources/img/" + itemName + num + ".png");
+        if(testImage.getWidth() != 0) {
+            num++;
+            saveToFile(image, itemName, num);
         } else {
+            File outputFile = new File("src/main/resources/img/" + itemName + num + ".png");
             BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
             try {
-                boolean val = ImageIO.write(bImage, "png", outputFile);
+                ImageIO.write(bImage, "png", outputFile);
                 imageUrl = outputFile.toURI().toURL().toString();
+                tmpImageURL = imageUrl;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        return imageUrl;
     }
 
     private void showUserSettingsView(){

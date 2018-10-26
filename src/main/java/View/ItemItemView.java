@@ -45,9 +45,10 @@ public class ItemItemView extends AnchorPane {
     }
 
 
-    public void setItemName(Label itemName) {
-        this.itemName = itemName;
-    }
+    public void setItemName(Label itemName) { this.itemName = itemName; }
 
+    public void setImage(Image image) {
+        itemImage.setImage(image);
+    }
 }
 

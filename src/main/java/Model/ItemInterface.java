@@ -38,4 +38,6 @@ public interface ItemInterface extends Serializable {
     public Boolean setRentedDate(String startDate, String endDate);
 
     public Boolean getIsRented();
+
+    String getImageURL();
 }

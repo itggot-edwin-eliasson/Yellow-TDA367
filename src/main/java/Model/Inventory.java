@@ -23,9 +23,9 @@ public class Inventory implements InventoryInterface{
     }
 
     @Override
-    public ItemInterface addItem (String itemName, String itemDescription, String itemID) {
+    public ItemInterface addItem (String itemName, String itemDescription, String itemID, String imageURL) {
         ItemInterface item;
-        item = ifa.createItem(itemName, itemDescription, itemID);
+        item = ifa.createItem(itemName, itemDescription, itemID, imageURL);
         itemlist.add(item);
         return item;
     }

@@ -12,7 +12,7 @@ public interface InventoryInterface extends Serializable {
      * @param itemName The name of the item
      * @param itemDescription The description of item
      */
-    public ItemInterface addItem (String itemName, String itemDescription, String itemID);
+    public ItemInterface addItem (String itemName, String itemDescription, String itemID, String imageURL);
 
     /**
      * Adds an item to the itemList in the inventory.

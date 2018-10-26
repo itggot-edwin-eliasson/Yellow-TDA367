@@ -121,7 +121,7 @@ public interface YellowHandlerInterface extends ObservableInterface{
      * @return a list of true or false that matches the active order. Used to list next to the active
      * order to see what items were available and not.
      */
-    List<Boolean> completeOrderFailed();
+    String completeOrderFailed();
 
     /**
      * Select an inventory and set it to the selected inventory.
