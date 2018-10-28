@@ -62,8 +62,6 @@ public interface YellowHandlerInterface extends ObservableInterface{
      */
     void removeItem(String id);
 
-    void setActiveUserToNull();
-
     /**
      * Changes the information of the active user to whats entered.
      * @param firstName

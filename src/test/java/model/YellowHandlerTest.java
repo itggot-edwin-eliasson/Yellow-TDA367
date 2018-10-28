@@ -28,7 +28,7 @@ public class YellowHandlerTest {
     public void logIn() throws Exception {
         YellowHandlerInterface yh = new YellowHandler();
         yh.createUser("Viktor","hej","hej", "hej", "hej");
-        yh.setActiveUserToNull();
+        yh.logOut();
         yh.logIn("hej","hej");
         assertEquals(null,yh.getActiveUser());
         yh.logIn("Viktor","hej");

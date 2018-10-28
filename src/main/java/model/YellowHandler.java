@@ -9,7 +9,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     private List<UserInterface> users = new ArrayList<>();
     private List<Integer> groupInviteCodes = new ArrayList<>();
     private GroupFactory groupFactory = new GroupFactory();
-    private UserFactory uf = new UserFactory();
+    private UserFactory userFactory = new UserFactory();
 
 
     @Override
@@ -58,7 +58,7 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
                 // ERROR MESSAGE
             }
         }
-        activeUser = uf.createUser(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
+        activeUser = userFactory.createUser(username, firstName, lastName, email, generateUniqueKeyUsingUUID(), password);
         users.add(activeUser);
         return true;
     }
@@ -97,11 +97,6 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     @Override
     public void removeItem (String id) {
         activegroup.removeItem(id);
-    }
-
-    @Override
-    public void setActiveUserToNull() {
-        activeUser = null;
     }
 
     @Override
@@ -207,10 +202,6 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
         }
         whoFailedMessage.append("are not available for rent during this period");
         return whoFailedMessage.toString();
-    }
-
-    public void updateInventory() {
-        activegroup.updateInventory();
     }
 
     @Override

@@ -17,6 +17,7 @@ public class Group implements GroupInterface{
    private String color;
    private String id;
    private InventoryFactory inventoryFactory = new InventoryFactory();
+   private OrderFactory orderFactory = new OrderFactory();
 
     /**
      * Creates a group
@@ -82,7 +83,7 @@ public class Group implements GroupInterface{
     @Override
     public void createOrder (String ID){
         if(activeOrder == null) {
-            OrderInterface order = new Order(ID);
+            OrderInterface order = orderFactory.createOrder(ID);
             activeOrder = order;
         }
     }
@@ -139,6 +140,7 @@ public class Group implements GroupInterface{
     public void selectInventory (String inventoryID) {
         selectedInventory = findInventory(inventoryID);
     }
+
     public void selectOrder (String orderID){
         activeOrder = findOrder(orderID);
     }

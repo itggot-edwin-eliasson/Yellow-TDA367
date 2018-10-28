@@ -10,6 +10,7 @@ public class Order implements OrderInterface{
     private String orderID;
     private RenterInterface renter;
     private List <Boolean> isRentable = new ArrayList<>();
+    private RenterFactory renterFactory = new RenterFactory();
 
     /**
      * Creates a new Order
@@ -39,7 +40,7 @@ public class Order implements OrderInterface{
 
     @Override
     public void setRenter(String name, String phoneNr){
-        this.renter = new Renter(name, phoneNr);
+        this.renter = renterFactory.createRenter(name, phoneNr);
     }
 
     @Override

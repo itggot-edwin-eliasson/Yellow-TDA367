@@ -231,7 +231,6 @@ public class Main extends Application {
             });
             drawerView.logOut(event -> {
                 yh.logOut();
-                yh.setActiveUserToNull();
                 yellowView.closeDrawer();
                 showLogin();
             });
@@ -691,7 +690,7 @@ public class Main extends Application {
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Join group");
+            dialogStage.setTitle("Invite codes");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);

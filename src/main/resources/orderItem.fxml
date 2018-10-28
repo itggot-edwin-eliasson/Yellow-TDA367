@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="55.0" prefWidth="425.0" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="55.0" prefWidth="425.0" style="-fx-background-color: rgba(0, 0, 0, 0.75); -fx-background-radius: 5;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="orderDate" layoutX="14.0" layoutY="14.0" text="Order" textFill="WHITE" AnchorPane.leftAnchor="14.0">
+      <Label fx:id="orderDate" layoutX="14.0" layoutY="19.0" text="Order" textFill="WHITE" AnchorPane.leftAnchor="14.0">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="renterName" layoutX="306.0" layoutY="14.0" text="date" textFill="WHITE" AnchorPane.rightAnchor="116.0">
+      <Label fx:id="renterName" layoutX="280.0" layoutY="19.0" text="date" textFill="WHITE" AnchorPane.rightAnchor="115.0">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Label>
    </children>

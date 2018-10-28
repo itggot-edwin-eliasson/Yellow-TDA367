@@ -28,7 +28,7 @@ public class OrderItemView extends AnchorPane {
 
         this.order = order;
 
-        orderDate.setText(order.getDateOfReturn());
+        orderDate.setText(order.getOrderDate() + " -> " + order.getDateOfReturn());
         renterName.setText(order.getRenter().getName());
     }
 }

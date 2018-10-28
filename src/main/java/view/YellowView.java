@@ -128,8 +128,7 @@ public class YellowView extends ViewParent implements Observer {
     }
 
     public void closeDrawer(){
-        if(e != null)
-            hamburger.fireEvent(e);
+        drawer.close();
     }
 
     public void setOrderPane(Node node){
@@ -150,12 +149,15 @@ public class YellowView extends ViewParent implements Observer {
 
             if (drawer.isOpened()) {
                 drawer.close();
+                drawer.setOnDrawerClosed(event -> {
+                    drawer.toBack();
+                    event.consume();
+                });
             } else {
                 drawer.toFront();
                 hamburger.toFront();
                 drawer.open();
             }
-            this.e = e;
         });
     }
 
