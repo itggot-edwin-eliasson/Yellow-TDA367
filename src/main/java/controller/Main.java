@@ -769,5 +769,4 @@ public class Main extends Application {
         dataHandler.serialize("users", this.yh);
         dataHandler.serialize("groups", this.yh);
     }
-
 }
