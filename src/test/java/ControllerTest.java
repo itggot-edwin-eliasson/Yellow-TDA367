@@ -9,10 +9,10 @@ public class ControllerTest {
         User user3 = new User ("test3","hej","hej","ID3", "password", "Hej");
         c.saveUser(user);
         c.saveUser(user2);
-        c.seralize("users");
+        c.serialize("users");
         c.saveUser(user3);
         assertEquals(3, c.getAllUsers().size());
-        c.deseralize("users");
+        c.deserialize("users");
         assertEquals(2, c.getAllUsers().size());
         assertEquals("test",c.getAllUsers().get(0).getUsername());
     }
@@ -25,10 +25,10 @@ public class ControllerTest {
         Group group3 = new Group ("test2","red","ID",tmp);
         c.saveGroup(group);
         c.saveGroup(group2);
-        c.seralize("groups");
+        c.serialize("groups");
         c.saveGroup(group3);
         assertEquals(3, c.getAllGroups().size());
-        c.deseralize("groups");
+        c.deserialize("groups");
         assertEquals(2, c.getAllGroups().size());
         assertEquals("test",c.getAllGroups().get(0).getName());
     }
@@ -40,18 +40,18 @@ public class ControllerTest {
         Inventory inventory2 = new Inventory("test3", "ID");
         c.saveInventory(inventory);
         c.saveInventory(inventory1);
-        c.seralize("inventories");
+        c.serialize("inventories");
         c.saveInventory(inventory2);
         assertEquals(3,c.getAllInventories().size());
-        c.deseralize("inventories");
+        c.deserialize("inventories");
         assertEquals(2,c.getAllInventories().size());
         assertEquals("test", c.getAllInventories().get(0).getName());
     }
     @Test
     public void DeserializeNothingTest(){
         MainController c = new MainController();
-        c.deseralize("inventories");
-        c.seralize("inventories");
+        c.deserialize("inventories");
+        c.serialize("inventories");
 
     }*/
 }

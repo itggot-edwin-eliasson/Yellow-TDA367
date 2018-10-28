@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import utils.DataHandler;
 import view.*;
 import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Application;
@@ -45,6 +46,7 @@ public class Main extends Application {
     private FXMLLoader signUpLoader;
     private FXMLLoader manageMyYellowLoader;
     private YellowHandlerInterface yh;
+    private DataHandler dataHandler;
 
     public static void main(String[] args){
         launch(args);
@@ -54,8 +56,10 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         this.primaryStage = stage;
         this.yh = new YellowHandler(); //(users,groups);
-        deseralize("users");
-        deseralize("groups");
+        this.dataHandler = new DataHandler();
+
+        dataHandler.deserialize("users", this.yh);
+        dataHandler.deserialize("groups", this.yh);
 
         ResourceBundle bundle = java.util.ResourceBundle.getBundle("Yellow");
 
@@ -762,91 +766,8 @@ public class Main extends Application {
     @Override
     public void stop() {
         System.out.println("Hejdå");
-        seralize("users");
-        seralize("groups");
-
-    }
-
-
-    /**
-     * Saves the lists allGroups, allInventories or allUsers to three different .ser files. What files that
-     * will get saved is based on the @param.
-     * @param whatToSeralize should be groups, inventories or users, based on what is to be saved.
-     */
-    public void seralize(String whatToSeralize){
-        try {
-            FileOutputStream fileOut;
-            switch (whatToSeralize) {
-                case "groups":
-                    fileOut =
-                            new FileOutputStream("src/main/resources/Database/allGroups.ser");
-                    System.out.println("saving groups");
-                    break;
-                case "users":
-                    fileOut =
-                            new FileOutputStream("src/main/resources/Database/allUsers.ser");
-                    System.out.println("saving users");
-                    break;
-                default:
-                    fileOut = new FileOutputStream("src/main/resources/Database/errorSave.ser");
-                    break;
-            }
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            if(whatToSeralize.equals("groups")) {
-                out.writeObject(yh.getAllGroups());
-            }
-            if(whatToSeralize.equals("users")){
-                out.writeObject(yh.getUsers());
-            }
-            out.close();
-            fileOut.close();
-            System.out.println("Serialized data is saved in /"+ whatToSeralize + ".ser");
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
-    }
-
-    /**
-     * This method will fetch the allUsers, allGroups and allInventories lists from the local database.
-     *
-     * @param whatToDeseralize should be groups, inventories or users depending on what is to be fetched.
-     */
-    public void deseralize(String whatToDeseralize){
-        try {
-            FileInputStream fileIn;
-            switch (whatToDeseralize) {
-                case "groups":
-                    fileIn =
-                            new FileInputStream("src/main/resources/Database/allGroups.ser");
-                    System.out.println("fetching groups");
-                    break;
-                case "users":
-                    fileIn =
-                            new FileInputStream("src/main/resources/Database/allUsers.ser");
-                    System.out.println("fetching users");
-                    break;
-                default:
-                    fileIn = new FileInputStream("src/main/resources/Database/errorSave.ser");
-                    break;
-            }
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            if(whatToDeseralize.equals("groups")) {
-                yh.setGroups((List<GroupInterface>) in.readObject()); //= (List<GroupInterface>) in.readObject();
-            }
-            if(whatToDeseralize.equals("users")){
-                yh.setAllUsers((List<UserInterface>) in.readObject());
-            }
-            in.close();
-            fileIn.close();
-        } catch (IOException i) {
-            seralize(whatToDeseralize);
-            return;
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
-            return;
-        }
-
+        dataHandler.serialize("users", this.yh);
+        dataHandler.serialize("groups", this.yh);
     }
 
 }
