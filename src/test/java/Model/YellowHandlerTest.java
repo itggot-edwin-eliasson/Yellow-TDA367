@@ -44,9 +44,9 @@ public class YellowHandlerTest {
         yh.setActiveGroup(yh.getGroups().get(0));
         yh.getActiveGroup().createInventory("inventory","inventory");
         yh.selectInventory("inventory");
-        yh.addItem("boll","en boll","inventory",1);
+        yh.addItem("boll","en boll","inventory",yh.getActiveGroup(), yh.getActiveGroup().getSelectedInventory().getID(),1);
         assertEquals(1,yh.getItems().size());
-        yh.addItem("boll","en boll","inventory",2);
+        yh.addItem("boll","en boll","inventory",yh.getActiveGroup(), yh.getActiveGroup().getSelectedInventory().getID(),2);
         assertEquals(3,yh.getItems().size());
     }
 
@@ -58,7 +58,7 @@ public class YellowHandlerTest {
         yh.setActiveGroup(yh.getGroups().get(0));
         yh.getActiveGroup().createInventory("inventory","inventory");
         yh.selectInventory("inventory");
-        yh.addItem("boll","en boll","inventory",1);
+        yh.addItem("boll","en boll","inventory",yh.getActiveGroup(), yh.getActiveGroup().getSelectedInventory().getID(),1);
         assertEquals(1,yh.getItems().size());
         yh.removeItem(yh.getItems().get(0).getId());
         assertEquals(0,yh.getItems().size());
@@ -154,7 +154,7 @@ public class YellowHandlerTest {
         yh.setActiveGroup(yh.getGroups().get(0));
         yh.getActiveGroup().createInventory("inventory","inventory");
         yh.selectInventory("inventory");
-        yh.addItem("boll","en boll","inventory",1);
+        yh.addItem("boll","en boll","inventory",yh.getActiveGroup(), yh.getActiveGroup().getSelectedInventory().getID(),1);
         String itemID = yh.getItems().get(0).getId();
         yh.addItemToOrder(itemID);
         assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());
@@ -171,8 +171,8 @@ public class YellowHandlerTest {
         yh.setActiveGroup(yh.getGroups().get(0));
         yh.getActiveGroup().createInventory("inventory","inventory");
         yh.selectInventory("inventory");
-        yh.addItem("boll","en boll","inventory",1);
-        yh.addItem("boll","en boll","inventory",1);
+        yh.addItem("boll","en boll","inventory",yh.getActiveGroup(), yh.getActiveGroup().getSelectedInventory().getID(),1);
+        yh.addItem("boll","en boll","inventory",yh.getActiveGroup(), yh.getActiveGroup().getSelectedInventory().getID(),1);
         String itemID = yh.getItems().get(0).getId();
         String itemID2 = yh.getItems().get(1).getId();
         yh.addItemToOrder(itemID);
@@ -182,9 +182,9 @@ public class YellowHandlerTest {
         yh.addItemToOrder(itemID2);
         assertEquals(2,yh.getActiveGroup().getActiveOrder().getOrderList().size());
         assertFalse(yh.completeOrder("2018-10-15","2018-10-18","hej", "hej"));
-        assertFalse(yh.completeOrderFailed().get(0));
-        assertTrue(yh.completeOrderFailed().get(1));
+        assertEquals("The item(s) at place 1 are not available for rent during this period", yh.completeOrderFailed());
     }
+
     @Test
     public void returnOrderTest(){
         List<GroupInterface> allGroups = new ArrayList<>();
@@ -196,7 +196,7 @@ public class YellowHandlerTest {
         yh.setActiveGroup(yh.getGroups().get(0));
         yh.getActiveGroup().createInventory("inventory","inventory");
         yh.selectInventory("inventory");
-        yh.addItem("boll","en boll","inventory",1);
+        yh.addItem("boll","en boll","inventory", yh.getActiveGroup(), yh.getActiveGroup().getSelectedInventory().getID(),1);
         String itemID = yh.getItems().get(0).getId();
         yh.addItemToOrder(itemID);
         assertEquals(1,yh.getActiveGroup().getActiveOrder().getOrderList().size());

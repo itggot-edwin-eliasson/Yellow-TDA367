@@ -26,7 +26,7 @@ public class GroupTest {
         Group g = new Group("test","red","ID",l);
         g.createInventory("inventory", "ID123");
         g.selectInventory("ID123");
-        g.getSelectedInventory().addItem("boll","en boll", "itemID123");
+        g.getSelectedInventory().addItem("boll","en boll", "itemID123", "");
         ItemInterface tmp = g.findItemByID("itemID123");
         assertEquals("boll", tmp.getName());
         tmp.setName("bollen");
@@ -59,7 +59,7 @@ public class GroupTest {
         Group g = new Group("test","red","ID",l);
         g.createInventory("inventory", "ID123");
         g.selectInventory("ID123");
-        g.getSelectedInventory().addItem("boll","en boll", "itemID123");
+        g.getSelectedInventory().addItem("boll","en boll", "itemID123", "");
         g.createOrder("orderID");
         g.addItemToOrder("itemID123");
         g.orderIsCompleted("2018-05-10","2018-05-12", "hej", "hej");
@@ -71,7 +71,7 @@ public class GroupTest {
         Group g = new Group("test","red","ID",l);
         g.createInventory("inventory", "ID123");
         g.selectInventory("ID123");
-        g.getSelectedInventory().addItem("boll","en boll", "itemID123");
+        g.getSelectedInventory().addItem("boll","en boll", "itemID123", "");
         g.createOrder("orderID");
         g.addItemToOrder("itemID123");
         g.orderIsCompleted("2018-05-10","2018-05-12", "hej", "hej");
@@ -86,7 +86,7 @@ public class GroupTest {
         Group g = new Group("test","red","ID",l);
         g.createInventory("inventory", "ID123");
         g.selectInventory("ID123");
-        g.getSelectedInventory().addItem("boll","en boll", "itemID123");
+        g.getSelectedInventory().addItem("boll","en boll", "itemID123", "");
         g.createOrder("orderID");
         g.addItemToOrder("itemID123");
         g.orderIsCompleted("2018-05-10","2018-05-12", "hej", "hej");
