@@ -1,5 +1,6 @@
 package view;
 
+import javafx.event.Event;
 import model.*;
 import model.Observer;
 import com.jfoenix.controls.*;
@@ -17,40 +18,23 @@ import java.util.*;
 
 public class YellowView extends ViewParent implements Observer {
 
-    private List<GroupInterface> allGroups = new ArrayList<>();
-    private List<UserInterface> allUsers = new ArrayList<>();
-    private List<InventoryInterface> allInventories = new ArrayList<>();
-    private Map<ItemInterface, ItemItemView> itemItemControllerMap = new HashMap<>();
-
     private EventHandler<MouseEvent> groupItemClick;
     private EventHandler<MouseEvent> inventoryItemClick;
     private EventHandler<MouseEvent> itemItemClick;
 
-    @FXML private SignUpView signUpController;
-    @FXML private LoginView loginController;
-    @FXML private UserSettingsView userSettingsController;
-    @FXML private ManageMyYellow manageMyYellowController;
+    private Event e;
 
     @FXML private JFXDrawer drawer;
 
     @FXML private JFXHamburger hamburger;
 
-    @FXML private AnchorPane signUp;
-    @FXML private AnchorPane login;
-    @FXML private AnchorPane userSettings;
-    @FXML private AnchorPane menuScreen;
-    @FXML private AnchorPane manageMyYellow;
     @FXML private StackPane mainWindow;
     @FXML private FlowPane groupListFlowPane;
     @FXML private FlowPane listFlowPane;
     @FXML private BorderPane orderBorderPane;
 
-
-    @FXML private JFXButton userSettingsButton;
     @FXML private Label title;
-    @FXML private Button addGroupButton;
     @FXML private Button backButton;
-    @FXML private Button addItemButton;
     @FXML private Button backToMenuButton;
     @FXML private JFXButton orderButton;
     @FXML private Button backToItemsButton;
@@ -129,9 +113,6 @@ public class YellowView extends ViewParent implements Observer {
             ItemItemView itemItem = new ItemItemView(item);
             itemItem.selectItem(itemItemClick);
             listFlowPane.getChildren().add(itemItem);
-            if(item.getImageURL()!= ""){
-                itemItem.setImage(new Image(item.getImageURL()));
-            }
         }
     }
 
@@ -146,6 +127,11 @@ public class YellowView extends ViewParent implements Observer {
         backToItemsButton.setVisible(false);
     }
 
+    public void closeDrawer(){
+        if(e != null)
+            hamburger.fireEvent(e);
+    }
+
     public void setOrderPane(Node node){
         orderBorderPane.setCenter(node);
     }
@@ -153,6 +139,7 @@ public class YellowView extends ViewParent implements Observer {
     public void hamburgerSetup(VBox drawerContent){
 
         drawer.setSidePane(drawerContent);
+
 
         HamburgerBasicCloseTransition hamTask = new HamburgerBasicCloseTransition(hamburger);
         hamTask.setRate(-1);
@@ -163,15 +150,12 @@ public class YellowView extends ViewParent implements Observer {
 
             if (drawer.isOpened()) {
                 drawer.close();
-                drawer.setOnDrawerClosed(event -> {
-                    drawer.toBack();
-                    event.consume();
-                });
             } else {
                 drawer.toFront();
                 hamburger.toFront();
                 drawer.open();
             }
+            this.e = e;
         });
     }
 

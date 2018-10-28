@@ -27,4 +27,12 @@ public class DrawerView {
     public void showGroupInviteCodes(EventHandler<ActionEvent> clicked){
         inviteCodesDrawerButton.setOnAction(clicked);
     }
+
+    public void toManageMyYellow(EventHandler<ActionEvent> clicked){
+        manageMyYellowDrawerButton.setOnAction(clicked);
+    }
+
+    public void showJoinGroup(EventHandler<ActionEvent> clicked){
+        joinGroupDrawerButton.setOnAction(clicked);
+    }
 }

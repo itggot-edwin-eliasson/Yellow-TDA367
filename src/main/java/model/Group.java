@@ -16,7 +16,7 @@ public class Group implements GroupInterface{
    private OrderInterface activeOrder;
    private String color;
    private String id;
-   private InventoryFactory ifa = new InventoryFactory();
+   private InventoryFactory inventoryFactory = new InventoryFactory();
 
     /**
      * Creates a group
@@ -75,7 +75,7 @@ public class Group implements GroupInterface{
 
     @Override
     public void createInventory (String name, String ID) {
-        InventoryInterface i = ifa.createInventory(name, ID);
+        InventoryInterface i = inventoryFactory.createInventory(name, ID);
         inventories.add(i);
     }
 

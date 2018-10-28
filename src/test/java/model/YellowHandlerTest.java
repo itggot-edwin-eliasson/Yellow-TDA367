@@ -123,7 +123,7 @@ public class YellowHandlerTest {
         YellowHandler yh = new YellowHandler();
         yh.createUser("test", "test","test","test","test");
         yh.createGroup("test", "red");
-        assertTrue(yh.groups.size() == 1 || yh.users.size() == 1);
+        assertTrue(yh.getAllGroups().size() == 1 || yh.getUsers().size() == 1);
     }
 
     @Test
@@ -132,7 +132,7 @@ public class YellowHandlerTest {
          List<UserInterface> allUsers = new ArrayList<>();
         YellowHandler yh = new YellowHandler();
         yh.createUser("Moki","hej","hej", "hej", "hej");
-        assertEquals(1, yh.users.size());
+        assertEquals(1, yh.getUsers().size());
     }
     @Test
     public void changeUserSettingsTest(){

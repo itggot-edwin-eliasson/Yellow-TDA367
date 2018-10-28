@@ -34,6 +34,9 @@ public class ItemItemView extends AnchorPane {
         this.item = item;
 
         itemName.setText(item.getName());
+        if(!item.getImageURL().equals("")){
+            itemImage.setImage(new Image(item.getImageURL(), 70, 70, false, false));
+        }
     }
 
     public ItemInterface getItem(){
@@ -47,8 +50,5 @@ public class ItemItemView extends AnchorPane {
 
     public void setItemName(Label itemName) { this.itemName = itemName; }
 
-    public void setImage(Image image) {
-        itemImage.setImage(image);
-    }
 }
 

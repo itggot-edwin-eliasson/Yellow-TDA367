@@ -195,11 +195,16 @@ public class Main extends Application {
                 event.consume();
             });
             activeOrderController.confirmOrderButton(event -> {
-                if(!yh.completeOrder(activeOrderController.getStartDate(), activeOrderController.getReturnDate(),
-                        activeOrderController.getRenterName(),activeOrderController.getRenterPhoneNumber())) {
-                    yh.completeOrderFailed();
+                if(yh.getActiveOrderItems().size() != 0) {
+                    if (!yh.completeOrder(activeOrderController.getStartDate(), activeOrderController.getReturnDate(),
+                            activeOrderController.getRenterName(), activeOrderController.getRenterPhoneNumber())) {
+                        yh.completeOrderFailed();
+                        JFXSnackbar snackbar = new JFXSnackbar(yellow);
+                        snackbar.show(yh.completeOrderFailed(), 7000);
+                    }
+                } else {
                     JFXSnackbar snackbar = new JFXSnackbar(yellow);
-                    snackbar.show(yh.completeOrderFailed(),5000);
+                    snackbar.show("No items in order",3000);
                 }
             });
 
@@ -217,6 +222,7 @@ public class Main extends Application {
             });
             yellowView.setBackToMenuListener(event -> {
                 showMenuScreen();
+                yellowView.closeDrawer();
                 event.consume();
             });
             yellowView.setBackToItemsButton(event -> {
@@ -226,14 +232,23 @@ public class Main extends Application {
             drawerView.logOut(event -> {
                 yh.logOut();
                 yh.setActiveUserToNull();
+                yellowView.closeDrawer();
                 showLogin();
             });
-
             drawerView.toUserSettings(event -> {
-            showUserSettingsView();
+                showUserSettingsView();
+                event.consume();
             });
             drawerView.showGroupInviteCodes(event -> {
                 showGroupInviteCodesDialog();
+                event.consume();
+            });
+            drawerView.toManageMyYellow(event -> {
+                showManageMyYellow();
+                event.consume();
+            });
+            drawerView.showJoinGroup(event -> {
+                showJoinGroupDialog();
                 event.consume();
             });
 
@@ -568,7 +583,7 @@ public class Main extends Application {
     }
 
     private String saveToFile(Image image, String itemName, int num) {
-        String imageUrl = "";
+        String imageUrl;
         File outputFile = new File("src/main/resources/img/" + itemName + num + ".png");
         if(outputFile.exists()) {
             num++;

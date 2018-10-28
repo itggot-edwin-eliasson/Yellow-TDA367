@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<fx:root fx:id="background" prefHeight="70.0" prefWidth="417" style="-fx-background-color: #1F1E18; -fx-border-color: #5B5C55; -fx-border-style: solid none solid; -fx-border-width: 2px;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="background" prefHeight="70.0" prefWidth="417" style="-fx-background-color: #1F1E18; -fx-border-color: #5B5C55; -fx-border-style: solid none solid; -fx-border-width: 2px;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label fx:id="itemName" layoutX="81.0" layoutY="14.0" text="Item Name" textFill="WHITE">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-      <ImageView fx:id="itemImage" fitHeight="70.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="itemImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/whiteitem.png" />
          </image></ImageView>
