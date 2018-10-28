@@ -46,7 +46,6 @@ public class Main extends Application {
     private FXMLLoader signUpLoader;
     private FXMLLoader manageMyYellowLoader;
     private YellowHandlerInterface yh;
-    private String tmpImageURL = "";
 
     public static void main(String[] args){
         launch(args);
@@ -554,10 +553,8 @@ public class Main extends Application {
 
             if (controller.isOkClicked()) {
                 if(controller.getAmount() != 0){
-
-                    saveToFile(controller.getImage(),controller.getItemName(), 0);
-                    saveToFile(controller.getImage(),controller.getItemName(), 0);
-                    yh.addItem(controller.getItemName(), controller.getItemDescription(), tmpImageURL,
+                    String imageURL = saveToFile(controller.getImage(),controller.getItemName(), 0);
+                    yh.addItem(controller.getItemName(), controller.getItemDescription(), imageURL,
                             controller.getGroup(), controller.getInventory().getID(), controller.getAmount());
                 }else{
                     JFXSnackbar snackbar = new JFXSnackbar(manageMyYellowScreen);
@@ -572,19 +569,18 @@ public class Main extends Application {
 
     }
 
-    private void saveToFile(Image image, String itemName, int num) {
+    private String saveToFile(Image image, String itemName, int num) {
         String imageUrl = "";
-        Image testImage = new Image("file:src/main/resources/img/" + itemName + num + ".png");
-        if(testImage.getWidth() != 0) {
+        File outputFile = new File("src/main/resources/img/" + itemName + num + ".png");
+        if(outputFile.exists()) {
             num++;
-            saveToFile(image, itemName, num);
+            return saveToFile(image, itemName, num);
         } else {
-            File outputFile = new File("src/main/resources/img/" + itemName + num + ".png");
             BufferedImage bImage = SwingFXUtils.fromFXImage(image, null);
             try {
                 ImageIO.write(bImage, "png", outputFile);
                 imageUrl = outputFile.toURI().toURL().toString();
-                tmpImageURL = imageUrl;
+                return imageUrl;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
