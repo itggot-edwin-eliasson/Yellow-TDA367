@@ -53,9 +53,8 @@ application. The buttons are: My Yellow, Join group, Manage my Yellow and Create
 My Yellow / Order handling
 
 Inside My Yellow is where you get an overview of your groups, inventories, items and
-orders. Pressing a group will show that groups specific inventories and items. In the
-bottom left panel you will find a calendar that contains all your orders. If you press
-the order button next to the calendar you will get to the order window.
+orders. Pressing a group will show that groups specific inventories and items. If you press
+the order button in the bottom left panel you will get to the order window.
 
 In the order window there is a panel at the top of the screen where you chose between
 the active order (the order your making right now), ongoing orders(orders not yet
@@ -77,9 +76,6 @@ If you press the button Manage my Yellow you will be taken to the management pag
 this page you have three panels. One for groups, one for inventories and one for items.
 Press a group to enter that group and press an inventory to enter that inventory and
 see its items.
-
-When having a Group, inventory or item selected a small panel pops up where it says
-"Edit". Press it to edit or remove what u selected.
 
 In the top of this window above every panel there is a hamburger menu icon with a +
 sign on it. Press this icon to add a new group, inventory or item. To add items make
