@@ -10,6 +10,7 @@ public interface InventoryInterface extends Serializable {
      *
      * @param itemName The name of the item
      * @param itemDescription The description of item
+     * @param imageURL reference to the item image.
      */
     public ItemInterface addItem (String itemName, String itemDescription, String itemID, String imageURL);
 
