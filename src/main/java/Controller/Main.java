@@ -19,7 +19,6 @@ import javafx.util.Callback;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDate;
 
 import javafx.stage.FileChooser;
@@ -229,6 +228,10 @@ public class Main extends Application {
             drawerView.toUserSettings(event -> {
             showUserSettingsView();
             });
+            drawerView.showGroupInviteCodes(event -> {
+                showGroupInviteCodesDialog();
+                event.consume();
+            });
 
         } catch (IOException e){
             e.printStackTrace();
@@ -264,15 +267,6 @@ public class Main extends Application {
         } catch (IOException e){
             e.printStackTrace();
         }
-    }
-
-    private void createCalendarOrder(Stage stage){
-
-    }
-
-    private void createCalendarItem(Stage stage, ItemInterface item){
-        Callback<DatePicker, DateCell> callback = getDayCellFactoryItem(item);
-
     }
 
     private Callback<DatePicker, DateCell> getDayCellFactoryItem(ItemInterface theItem) {
@@ -371,7 +365,7 @@ public class Main extends Application {
     }
 
     private void showMenuScreen(){
-            MenuScreen controller = menuScreenLoader.getController();
+            MenuScreenView controller = menuScreenLoader.getController();
 
             rootLayout.setCenter(menuScreen);
 
@@ -383,7 +377,7 @@ public class Main extends Application {
             menuScreenLoader.setLocation(Main.class.getResource("../menuScreen.fxml"));
             menuScreen = menuScreenLoader.load();
 
-            MenuScreen controller = menuScreenLoader.getController();
+            MenuScreenView controller = menuScreenLoader.getController();
             controller.injectYellowHandler(yh);
             controller.toMyYellow(event -> {
                 showYellow();
@@ -685,15 +679,13 @@ public class Main extends Application {
             dialogStage.setScene(scene);
 
             // Set the person into the controller.
-            JoinGroupDialogView controller = loader.getController();
+            ViewInviteCodesDialogView controller = loader.getController();
             controller.setDialogStage(dialogStage);
+            controller.injectYellowHandler(yh);
 
             // Show the dialog and wait until the user closes it
 
-            dialogStage.show();
-
-            controller.handleJoinGroup(event -> {
-            });
+            dialogStage.showAndWait();
 
         } catch (IOException e) {
             e.printStackTrace();

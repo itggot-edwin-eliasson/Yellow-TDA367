@@ -6,7 +6,7 @@ import javafx.event.EventHandler;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 
-public class MenuScreen extends ViewParent {
+public class MenuScreenView extends ViewParent {
 
     @FXML private JFXButton toMyYellowButton;
     @FXML private JFXButton toManageMyYellowButton;

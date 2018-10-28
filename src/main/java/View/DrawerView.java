@@ -20,20 +20,11 @@ public class DrawerView {
         logOutDrawerButton.setOnAction(clicked);
     }
 
-
     public void toUserSettings (EventHandler<ActionEvent> clicked) {
         userSettingsDrawerButton.setOnAction(clicked);
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    public void showGroupInviteCodes(EventHandler<ActionEvent> clicked){
+        inviteCodesDrawerButton.setOnAction(clicked);
+    }
 }

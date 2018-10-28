@@ -108,7 +108,8 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     public boolean joinGroup(int inviteCode){
     for (GroupInterface group : groups) {
             if(inviteCode == group.getInviteCode()){
-                activeUser.addGroup(group.getId());
+                if(!activeUser.getGroupIds().contains(group.getId()))
+                    activeUser.addGroup(group.getId());
                 return true;
             }
         }
