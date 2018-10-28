@@ -555,10 +555,16 @@ public class Main extends Application {
             if (controller.isOkClicked()) {
                 if(controller.getAmount() != 0){
 
+<<<<<<< HEAD
                     saveToFile(controller.getImage(),controller.getItemName(), 0);
                     yh.addItem(controller.getItemName(), controller.getItemDescription(), tmpImageURL,
                             yh.getActiveGroup().getSelectedInventory().getID(), controller.getAmount());
                     tmpImageURL = "";
+=======
+                    String imageUrl = saveToFile(controller.getImage(),controller.getItemName(), 0);
+                    yh.addItem(controller.getItemName(), controller.getItemDescription(), imageUrl,
+                            controller.getGroup(), controller.getInventory().getID(), controller.getAmount());
+>>>>>>> Makes it possible to choose group and inventory when you create items
                 }else{
                     JFXSnackbar snackbar = new JFXSnackbar(manageMyYellowScreen);
                     snackbar.show("You must add a proper amount to add item",3000);

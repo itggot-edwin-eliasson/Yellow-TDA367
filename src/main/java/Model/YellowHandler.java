@@ -86,11 +86,10 @@ public class YellowHandler extends Observable implements YellowHandlerInterface 
     }
 
     @Override
-    public void addItem(String name, String description, String imageUrl, String inventoryId, int amount) {
-        System.out.println(amount);
+    public void addItem(String name, String description, String imageUrl, GroupInterface group, String inventoryId, int amount) {
         for(int i = 0; i < amount; i++) {
             String id = generateUniqueKeyUsingUUID();
-            activegroup.addItem(name, description, id, inventoryId, imageUrl);
+            group.addItem(name, description, id, inventoryId, imageUrl);
         }
         notifyObservers();
     }

@@ -97,6 +97,14 @@ public class AddItemView extends ViewParent implements Observer {
         return itemImageView.getImage();
     }
 
+    public InventoryInterface getInventory(){
+        return (InventoryInterface) inventoryComboBox.getValue();
+    }
+
+    public GroupInterface getGroup(){
+        return (GroupInterface) groupComboBox.getValue();
+    }
+
     @Override
     public void injectYellowHandler(YellowHandlerInterface yh){
         super.yh = yh;
