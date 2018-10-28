@@ -166,7 +166,10 @@ public class YellowView extends ViewParent implements Observer {
 
             if (drawer.isOpened()) {
                 drawer.close();
-                drawer.toBack();
+                drawer.setOnDrawerClosed(event -> {
+                    drawer.toBack();
+                    event.consume();
+                });
             } else {
                 drawer.toFront();
                 hamburger.toFront();
