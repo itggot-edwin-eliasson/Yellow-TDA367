@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="354.0" prefWidth="417.0" style="-fx-background-color: #1F1E18;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.OngoingOrdersView">
+<AnchorPane prefHeight="354.0" prefWidth="417.0" style="-fx-background-color: #1F1E18;" stylesheets="@yellow.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.OngoingOrdersView">
    <children>
       <Label layoutX="28.0" layoutY="14.0" text="Ongoing orders" textFill="WHITE">
          <font>

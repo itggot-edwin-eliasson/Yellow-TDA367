@@ -37,7 +37,7 @@ to make you understand how to run and use the program and inform you briefly of 
 the application is structured.
 
 To run the application you need to navigate to the Main class located in the
-src/main/java/Controller package. Run the class in your IDE to start the application.
+src/main/java/controller package. Run the class in your IDE to start the application.
 
 _____________________________________________________________________________________
 
@@ -97,7 +97,7 @@ Documents - Contains all documentation for the project. This is where the RAD, S
 meeting protocols are located.
 
 src - This is where the code is. In src/test are all the tests located. In src/main/java
-is where the actual code is split up in a Controller, Model and View package. In
+is where the actual code is split up in a controller, model and view package. In
 src/main/resources you can find the local "database" .ser files, all the FXML files and
 the images.
 

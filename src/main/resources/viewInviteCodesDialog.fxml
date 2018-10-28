@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="283.0" prefWidth="300.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.ViewInviteCodesDialogView">
+<AnchorPane prefHeight="283.0" prefWidth="300.0" style="-fx-background-color: rgba(0, 0, 0, 0.8);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewInviteCodesDialogView">
    <children>
       <Label layoutX="25.0" layoutY="20.0" text="Group invite codes" textFill="WHITE">
          <font>
