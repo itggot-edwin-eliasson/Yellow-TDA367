@@ -13,6 +13,7 @@ public class DataHandler {
      * Saves the lists allGroups, allInventories or allUsers to three different .ser files. What files that
      * will get saved is based on the @param.
      * @param whatToSerialize should be groups, inventories or users, based on what is to be saved.
+     * @param yh reference to Yellow Handler.
      */
     public void serialize(String whatToSerialize, YellowHandlerInterface yh){
         try {
@@ -51,6 +52,7 @@ public class DataHandler {
      * This method will fetch the allUsers, allGroups and allInventories lists from the local database.
      *
      * @param whatToDeserialize should be groups, inventories or users depending on what is to be fetched.
+     * @param yh reference to YellowHandler.
      */
     public void deserialize(String whatToDeserialize, YellowHandlerInterface yh){
         try {

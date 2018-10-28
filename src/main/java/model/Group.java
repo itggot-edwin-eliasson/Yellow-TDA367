@@ -23,6 +23,8 @@ public class Group implements GroupInterface{
      * Creates a group
      * @param name The name of the group
      * @param color The GUI color for the group.
+     * @param id id of the group.
+     * @param groupInviteCodes list of group invite codes
      *
      */
     public Group (String name, String color, String id, List<Integer> groupInviteCodes) {

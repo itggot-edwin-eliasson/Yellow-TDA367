@@ -15,6 +15,7 @@ public interface GroupInterface extends Serializable {
     /**
      * Creates and adds a new inventory int the List with inventories.
      * @param name The name of the new inventory
+     * @param ID id of the inventory
      */
     public void createInventory (String name, String ID);
 
@@ -80,6 +81,7 @@ public interface GroupInterface extends Serializable {
      * @param description Description of the item you want to create.
      * @param id ID generated in YellowHandler class.
      * @param inventoryId ID of the inventory where the item should be placed.
+     * @param imageURL refernce to the item image.
      */
     public void addItem(String name, String description, String id, String inventoryId, String imageURL);
 
@@ -93,7 +95,7 @@ public interface GroupInterface extends Serializable {
 
     /**
      * Moves the order from the onGoing orders list to the oldOrders list.
-     * @param orderID
+     * @param orderID id of the order you want to return.
      */
     void orderIsReturned(String orderID);
 
@@ -111,6 +113,8 @@ public interface GroupInterface extends Serializable {
      * the order will be added to the onGoing orders list. Else it will return false.
      * @param startDate start date of when you want to make the order.
      * @param endDate end date of when you want to make the order.
+     * @param renterName name of the renter of the order.
+     * @param renterPhoneNumber phone number of the renter.
      * @return true if it worked, false if it did not work.
      */
     public Boolean orderIsCompleted(String startDate, String endDate, String renterName, String renterPhoneNumber);

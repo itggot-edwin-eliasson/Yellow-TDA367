@@ -7,6 +7,7 @@ public interface YellowHandlerInterface extends ObservableInterface{
     /**
      * Creates a group and adds it to the list with groups.
      * @param groupName The name of the new group.
+     * @param color The color of the group
      */
     void createGroup(String groupName, String color);
 
@@ -17,6 +18,8 @@ public interface YellowHandlerInterface extends ObservableInterface{
      * @param lastName The first name of the user
      * @param email The email of the user
      * @param password The users password
+     *
+     * @return true if able to create a user.
      */
     boolean createUser(String username, String firstName, String lastName, String email, String password);
 
@@ -51,6 +54,7 @@ public interface YellowHandlerInterface extends ObservableInterface{
      * @param name name of the item you want to create.
      * @param description description of the item you want to create.
      * @param imageUrl reference to the image of the item.
+     * @param group reference to the group where the item should be put.
      * @param inventoryId ID of the inventory the item should be placed in.
      * @param amount how many of the same items that should be created.
      */
@@ -64,11 +68,11 @@ public interface YellowHandlerInterface extends ObservableInterface{
 
     /**
      * Changes the information of the active user to whats entered.
-     * @param firstName
-     * @param lastName
-     * @param username
-     * @param email
-     * @param password
+     * @param firstName First name of the user
+     * @param lastName Last name of the user
+     * @param username Username of the user
+     * @param email Email of the user
+     * @param password Password of the user
      */
     void changeUserSettings(String firstName, String lastName, String username, String email, String password);
 
@@ -93,6 +97,8 @@ public interface YellowHandlerInterface extends ObservableInterface{
      * the order will be added to the onGoing orders list.
      * @param startDate the date when the order will start.
      * @param endDate the date when the order will end.
+     * @param renterName Name of the renter for the order.
+     * @param renterPhoneNumber Phone number to the renter.
      * @return true if the order was completed, else false.
      */
     Boolean completeOrder(String startDate, String endDate, String renterName, String renterPhoneNumber);
@@ -129,7 +135,7 @@ public interface YellowHandlerInterface extends ObservableInterface{
 
     /**
      * Used when an order is returned to add it from the onGoing orders list to the oldOrders list.
-     * @param orderID
+     * @param orderID Id of the order you want to return.
      */
     void orderIsReturned(String orderID);
 

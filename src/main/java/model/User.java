@@ -14,12 +14,12 @@ public class User implements UserInterface {
 
     /**
      * Creates a user.
-     * @param username
-     * @param firstName
-     * @param lastName
-     * @param email
+     * @param username Username
+     * @param firstName First name of the user
+     * @param lastName Last name of the user
+     * @param email Email of the user
      * @param id generated from YellowHandler class.
-     * @param password
+     * @param password Password for the user.
      */
     public User (String username, String firstName, String lastName, String email, String id, String password){
         this.username = username;
